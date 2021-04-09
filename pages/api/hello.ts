@@ -1,5 +1,12 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { NextApiRequest, NextApiResponse } from 'next';
+import { query } from '../../lib/database';
 
-export default (req, res) => {
-  res.status(200).json({ name: 'John Doe' })
-}
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  try {
+    const results: any = await query(`SELECT * FROM products`);
+
+    return res.json(results);
+  } catch (e) {
+    return res.status(500).json({ message: e.message });
+  }
+};
