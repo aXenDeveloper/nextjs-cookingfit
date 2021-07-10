@@ -1,7 +1,12 @@
+import Container from '../components/layouts/container/Container';
 import Layout from '../components/layouts/layout/Layout';
 
-const Home = () => {
-  return <Layout>Home</Layout>;
+const HomeView = () => {
+  return (
+    <Layout>
+      <Container>Home</Container>
+    </Layout>
+  );
 };
 
-export default Home;
+export default HomeView;
