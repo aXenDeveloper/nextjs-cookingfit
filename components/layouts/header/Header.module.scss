@@ -1,0 +1,11 @@
+.main {
+  background-color: var(--container);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--height-header);
+  margin-left: var(--width-nav);
+  padding: 10px 20px;
+}
