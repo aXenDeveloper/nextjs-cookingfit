@@ -1,7 +1,5 @@
-import style from './ActionBar.module.scss';
-
 const ActionBar = () => (
-  <ul className={style.main}>
+  <ul className="action_bar">
     <li>ActionBar</li>
   </ul>
 );

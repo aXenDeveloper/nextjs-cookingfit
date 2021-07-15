@@ -1,5 +1,5 @@
-import Container from '../components/layouts/container/Container';
-import Layout from '../components/layouts/layout/Layout';
+import Container from '../components/layouts/Container';
+import Layout from '../components/layouts/Layout';
 
 const HomeView = () => {
   return (
