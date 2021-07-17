@@ -1,9 +1,18 @@
 :root {
-  --border-radius: 8px;
+  --color-primary--number: 231, 144, 15;
+  --color-primary: rgb(var(--color-primary--number));
+  --color-primary-dark--number: 209, 131, 16;
+  --color-primary-dark: rgb(var(--color-primary-dark--number));
+
+  --radius: 8px;
 
   --nav-width: 210px;
   --header-height: 80px;
   --container-width: 1500px;
+
+  --button-primary-background: var(--color-primary);
+  --button-primary-background--hover: var(--color-primary-dark);
+  --button-primary-color: #fff;
 
   --body-background: #f5f5f5;
   --container-background: #fff;

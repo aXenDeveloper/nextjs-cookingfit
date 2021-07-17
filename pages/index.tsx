@@ -1,11 +1,12 @@
-import Container from '../components/layouts/Container';
-import Layout from '../components/layouts/Layout';
+import { ButtonLink } from '../components/buttons/ButtonLink';
 
 const HomeView = () => {
   return (
-    <Layout>
-      <Container>Home</Container>
-    </Layout>
+    <div>
+      <ButtonLink href="/test" type="primary">
+        Test button
+      </ButtonLink>
+    </div>
   );
 };
 
