@@ -1,5 +1,7 @@
-.main {
-  margin: var(--header-height) 0 0 var(--nav-width);
+@media screen and (min-width: 981px) {
+  .main {
+    margin: var(--header-height) 0 0 var(--nav-width);
+  }
 }
 
 .header {

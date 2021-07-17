@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 interface Props {
   href: string;
-  type: 'primary';
+  type: 'primary' | 'secondary' | 'light' | 'important';
   external?: boolean;
 }
 

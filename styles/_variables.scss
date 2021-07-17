@@ -1,8 +1,23 @@
 :root {
-  --color-primary--number: 231, 144, 15;
-  --color-primary: rgb(var(--color-primary--number));
-  --color-primary-dark--number: 209, 131, 16;
-  --color-primary-dark: rgb(var(--color-primary-dark--number));
+  --color-primary--code: 231, 144, 15;
+  --color-primary: rgb(var(--color-primary--code));
+  --color-primary-dark--code: 209, 131, 16;
+  --color-primary-dark: rgb(var(--color-primary-dark--code));
+  --color-secondary--code: 69, 69, 69;
+  --color-secondary: rgb(var(--color-secondary--code));
+  --color-secondary-light--code: 121, 121, 121;
+  --color-secondary-light: rgb(var(--color-secondary-light--code));
+  --color-light--code: 243, 243, 243;
+  --color-light: rgb(var(--color-light--code));
+  --color-light-dark--code: 231, 231, 231;
+  --color-light-dark: rgb(var(--color-light-dark--code));
+  --color-important--code: 212, 40, 40;
+  --color-important: rgb(var(--color-important--code));
+  --color-important-dark--code: 197, 37, 37;
+  --color-important-dark: rgb(var(--color-important-dark--code));
+
+  --body-color-code: 44, 44, 44;
+  --body-color: rgb(var(--body-color-code));
 
   --radius: 8px;
 
@@ -10,9 +25,7 @@
   --header-height: 80px;
   --container-width: 1500px;
 
-  --button-primary-background: var(--color-primary);
-  --button-primary-background--hover: var(--color-primary-dark);
-  --button-primary-color: #fff;
+  --button-light-color: #000;
 
   --body-background: #f5f5f5;
   --container-background: #fff;
