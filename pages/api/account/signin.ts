@@ -1,9 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { compare } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
 
 import { query } from '../../../functions/database';
 
 const signin = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (!process.env.CSRF_KEY) {
+    return res.status(400).json({
+      error: {
+        id: '2C101/5',
+        message: 'EMPTY_CSRF_KEY'
+      }
+    });
+  }
+
   if (req.method !== 'POST') {
     return res.status(400).json({
       error: {
@@ -23,15 +33,16 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
       error: {
         id: '2C101/3',
         message: 'INVALID_DATA',
-        data: process.env.API_DEBUG ? data : null
+        data: process.env.DEBUG_API ? data : null
       }
     });
   }
 
   try {
-    const existMember = (await query('SELECT email, password FROM core_members WHERE email=?', [
+    const existMember = (await query('SELECT id, email, password FROM core_members WHERE email=?', [
       data.email
     ])) as {
+      id: number;
       email: string;
       password: string;
     }[];
@@ -41,7 +52,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
         error: {
           id: '2C101/4',
           message: 'INVALID_EMAIL_OR_PASSWORD',
-          data: process.env.API_DEBUG ? existMember : null
+          data: process.env.DEBUG_API ? existMember : null
         }
       });
     }
@@ -53,17 +64,19 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
         error: {
           id: '2C101/4',
           message: 'INVALID_EMAIL_OR_PASSWORD',
-          data: process.env.API_DEBUG ? existMember : null
+          data: process.env.DEBUG_API ? existMember : null
         }
       });
     }
 
-    return res.status(200).json({ email: data.email });
+    const token = sign({ sub: existMember[0].id }, process.env.CSRF_KEY);
+
+    return res.status(200).json({ email: data.email, csrf: token });
   } catch (e) {
     return res.status(500).json({
       error: {
         id: '5C101/1',
-        message: process.env.API_DEBUG ? e.message : null
+        message: process.env.DEBUG_API ? e.message : null
       }
     });
   }

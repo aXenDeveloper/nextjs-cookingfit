@@ -42,14 +42,18 @@ MYSQL_DATABASE=
 MYSQL_USERNAME=
 MYSQL_PASSWORD=
 MYSQL_PORT=
+
+CSRF_KEY=
 ```
+
+You can generate **CSRF_KEY** by [GUID / UUID Generator](https://www.guidgenerator.com/online-guid-generator.aspx).
 
 ## ⚒ Debugging API
 
 In file **.env.local** change:
 
 ```
-API_DEBUG=true
+DEBUG_API=true
 ```
 
 ## 📂 Packages
@@ -66,13 +70,66 @@ API_DEBUG=true
 
 ## ‼ Errors
 
-| Code    | Description                               |
-| ------- | ----------------------------------------- |
-| 5C100/1 | (Sign up) Catch error function (500)      |
-| 3C100/2 | (Sign up) Invalid method API (400)        |
-| 2C100/3 | (Sign up) Invalid data from body (403)    |
-| 1C100/4 | (Sign up) Exist user (403)                |
-| 5C101/1 | (Sign in) Catch error function (500)      |
-| 3C101/2 | (Sign in) Invalid method API (400)        |
-| 2C101/3 | (Sign up) Invalid data from body (403)    |
-| 2C101/4 | (Sign up) Invalid email or password (401) |
+| Code    | Description                                           |
+| ------- | ----------------------------------------------------- |
+| 5C100/1 | (Sign up) Catch error function (500)                  |
+| 3C100/2 | (Sign up) Invalid method API (400)                    |
+| 2C100/3 | (Sign up) Invalid data from body (403)                |
+| 1C100/4 | (Sign up) Exist user (403)                            |
+| 5C101/1 | (Sign in) Catch error function (500)                  |
+| 3C101/2 | (Sign in) Invalid method API (400)                    |
+| 2C101/3 | (Sign in) Invalid data from body (403)                |
+| 2C101/4 | (Sign in) Invalid email or password (401)             |
+| 2C101/5 | (Sign in) Empty CSRF key in **.env.local** file (400) |
+
+## 😀 Group ID
+
+| ID  | Description   |
+| --- | ------------- |
+| 1   | Guest         |
+| 2   | Banned        |
+| 3   | User          |
+| 4   | Administrator |
+
+## 📕 API
+
+### (POST) Sign Up
+
+```
+api/account/signup
+```
+
+#### Body
+
+- name: _varchar(100)_,
+- email: _varchar(255)_,
+- password: _varchar(255)_,
+- confirmPassword: _varchar(255)_
+
+#### Response
+
+```
+{
+
+}
+```
+
+### (POST) Sign In
+
+```
+api/account/signin
+```
+
+#### Body
+
+- email: _varchar(255)_,
+- password: _varchar(255)_
+
+#### Response
+
+```
+{
+  email: string,
+  csrf: string
+}
+```
