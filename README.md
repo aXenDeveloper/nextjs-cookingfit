@@ -66,9 +66,13 @@ API_DEBUG=true
 
 ## ‼ Errors
 
-| Code    | Description                            |
-| ------- | -------------------------------------- |
-| 5C100/1 | (Sign up) Catch error function (500)   |
-| 3C100/2 | (Sign up) Invalid method API (400)     |
-| 1C100/3 | (Sign up) Invalid data from body (403) |
-| 1C100/4 | (Sign up) Exist user (403)             |
+| Code    | Description                               |
+| ------- | ----------------------------------------- |
+| 5C100/1 | (Sign up) Catch error function (500)      |
+| 3C100/2 | (Sign up) Invalid method API (400)        |
+| 2C100/3 | (Sign up) Invalid data from body (403)    |
+| 1C100/4 | (Sign up) Exist user (403)                |
+| 5C101/1 | (Sign in) Catch error function (500)      |
+| 3C101/2 | (Sign in) Invalid method API (400)        |
+| 2C101/3 | (Sign up) Invalid data from body (403)    |
+| 2C101/4 | (Sign up) Invalid email or password (401) |

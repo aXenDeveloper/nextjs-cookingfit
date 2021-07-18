@@ -29,7 +29,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   ) {
     return res.status(403).json({
       error: {
-        id: '1C100/3',
+        id: '2C100/3',
         message: 'INVALID_DATA',
         data: process.env.API_DEBUG ? data : null
       }
@@ -46,7 +46,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(403).json({
         error: {
           id: '1C100/4',
-          message: 'EXIST_USER',
+          message: 'EXIST_MEMBER',
           data: process.env.API_DEBUG ? existMember : null
         }
       });
