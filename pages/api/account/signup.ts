@@ -7,7 +7,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     return res.status(400).json({
       error: {
-        id: '3C100/2',
+        id: '3C101/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -29,7 +29,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   ) {
     return res.status(403).json({
       error: {
-        id: '2C100/3',
+        id: '2C101/3',
         message: 'INVALID_DATA',
         data: process.env.DEBUG_API ? data : null
       }
@@ -45,7 +45,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     if (existMember.length !== 0) {
       return res.status(403).json({
         error: {
-          id: '1C100/4',
+          id: '1C101/4',
           message: 'EXIST_MEMBER',
           data: process.env.DEBUG_API ? existMember : null
         }
@@ -63,7 +63,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C100/1',
+        id: '5C101/1',
         message: process.env.DEBUG_API ? e.message : null
       }
     });

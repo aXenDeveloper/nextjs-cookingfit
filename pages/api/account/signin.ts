@@ -8,7 +8,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!process.env.CSRF_KEY) {
     return res.status(400).json({
       error: {
-        id: '2C101/5',
+        id: '2C102/5',
         message: 'EMPTY_CSRF_KEY'
       }
     });
@@ -17,7 +17,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     return res.status(400).json({
       error: {
-        id: '3C101/2',
+        id: '3C102/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -31,7 +31,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!data.email || !data.password) {
     return res.status(403).json({
       error: {
-        id: '2C101/3',
+        id: '2C102/3',
         message: 'INVALID_DATA',
         data: process.env.DEBUG_API ? data : null
       }
@@ -50,7 +50,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
     if (!existMember[0]) {
       return res.status(401).json({
         error: {
-          id: '2C101/4',
+          id: '2C102/4',
           message: 'INVALID_EMAIL_OR_PASSWORD',
           data: process.env.DEBUG_API ? existMember : null
         }
@@ -62,20 +62,23 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
     if (existMember.length === 0 || !validPassword) {
       return res.status(401).json({
         error: {
-          id: '2C101/4',
+          id: '2C102/4',
           message: 'INVALID_EMAIL_OR_PASSWORD',
           data: process.env.DEBUG_API ? existMember : null
         }
       });
     }
 
-    const token = sign({ sub: existMember[0].id }, process.env.CSRF_KEY);
+    const token = sign(
+      { id: existMember[0].id, email: existMember[0].email },
+      process.env.CSRF_KEY
+    );
 
     return res.status(200).json({ email: data.email, csrf: token });
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C101/1',
+        id: '5C102/1',
         message: process.env.DEBUG_API ? e.message : null
       }
     });

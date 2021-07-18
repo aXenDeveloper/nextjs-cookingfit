@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { authenticated } from '../../functions/authenticated';
 import { query } from '../../functions/database';
 
 const hello = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -11,4 +12,4 @@ const hello = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default hello;
+export default authenticated(hello);
