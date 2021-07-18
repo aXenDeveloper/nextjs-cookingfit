@@ -78,6 +78,7 @@ DEBUG_API=true
 | 3C100/3 | (Authenticated) Invalid CSRF (401)                          |
 | 2C100/4 | (Authenticated) Empty CSRF (400)                            |
 | 2C100/5 | (Authenticated) Empty CSRF key in **.env.local** file (400) |
+| 2C100/6 | (Authenticated) Banned user (401)                           |
 | 5C101/1 | (Sign up) Catch error function (500)                        |
 | 3C101/2 | (Sign up) Invalid method API (400)                          |
 | 2C101/3 | (Sign up) Invalid data from body (403)                      |

@@ -28,6 +28,8 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
     password: req.body.password
   };
 
+  // TODO: Add email regex
+
   if (!data.email || !data.password) {
     return res.status(403).json({
       error: {
@@ -39,7 +41,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const existMember = (await query('SELECT id, email, password FROM core_members WHERE email=?', [
+    const existUser = (await query('SELECT id, email, password FROM core_members WHERE email=?', [
       data.email
     ])) as {
       id: number;
@@ -47,32 +49,29 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
       password: string;
     }[];
 
-    if (!existMember[0]) {
+    if (!existUser[0]) {
       return res.status(401).json({
         error: {
           id: '2C102/4',
           message: 'INVALID_EMAIL_OR_PASSWORD',
-          data: process.env.DEBUG_API ? existMember : null
+          data: process.env.DEBUG_API ? existUser : null
         }
       });
     }
 
-    const validPassword = await compare(data.password, existMember[0].password);
+    const validPassword = await compare(data.password, existUser[0].password);
 
-    if (existMember.length === 0 || !validPassword) {
+    if (existUser.length === 0 || !validPassword) {
       return res.status(401).json({
         error: {
           id: '2C102/4',
           message: 'INVALID_EMAIL_OR_PASSWORD',
-          data: process.env.DEBUG_API ? existMember : null
+          data: process.env.DEBUG_API ? existUser : null
         }
       });
     }
 
-    const token = sign(
-      { id: existMember[0].id, email: existMember[0].email },
-      process.env.CSRF_KEY
-    );
+    const token = sign({ id: existUser[0].id, email: existUser[0].email }, process.env.CSRF_KEY);
 
     return res.status(200).json({ email: data.email, csrf: token });
   } catch (e) {

@@ -1,12 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { verify } from 'jsonwebtoken';
+
 import { authenticated } from '../../functions/authenticated';
 import { query } from '../../functions/database';
 
 const hello = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const results: any = await query(`SELECT * FROM core_members`);
+    verify(req.headers.csrf! as string, process.env.CSRF_KEY!, async (err, decoded) => {
+      const results: any = await query(`SELECT * FROM core_members`);
 
-    return res.json(results);
+      return res.json({ results, decoded });
+    });
   } catch (e) {
     return res.status(500).json({ message: e.message });
   }

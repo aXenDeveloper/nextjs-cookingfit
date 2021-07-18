@@ -46,20 +46,29 @@ export const authenticated =
           });
         }
 
-        const existMember = (await query(
-          'SELECT id, email, name, group_id FROM core_members WHERE id=? AND email=?',
+        const existUser = (await query(
+          'SELECT id, email, group_id FROM core_members WHERE id=? AND email=?',
           [decoded.id, decoded.email]
         )) as {
           id: number;
           email: string;
-          password: string;
+          group_id: number;
         }[];
 
-        if (existMember.length === 0) {
+        if (existUser.length === 0) {
           return res.status(401).json({
             error: {
               id: '2C100/4',
               message: 'INVALID_CSRF'
+            }
+          });
+        }
+
+        if (existUser[0].group_id === 2) {
+          return res.status(401).json({
+            error: {
+              id: '2C100/6',
+              message: 'BANNED_USER'
             }
           });
         }

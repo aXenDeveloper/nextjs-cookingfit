@@ -20,6 +20,8 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     confirmPassword: req.body.confirmPassword
   };
 
+  // TODO: Add email and password regex
+
   if (
     !data.name ||
     !data.email ||
@@ -37,17 +39,17 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const existMember = (await query(
-      'SELECT name, email FROM core_members WHERE email=? OR name=?',
-      [data.email, data.name]
-    )) as [];
+    const existUser = (await query('SELECT name, email FROM core_members WHERE email=? OR name=?', [
+      data.email,
+      data.name
+    ])) as [];
 
-    if (existMember.length !== 0) {
+    if (existUser.length !== 0) {
       return res.status(403).json({
         error: {
           id: '1C101/4',
-          message: 'EXIST_MEMBER',
-          data: process.env.DEBUG_API ? existMember : null
+          message: 'EXIST_USER',
+          data: process.env.DEBUG_API ? existUser : null
         }
       });
     }
