@@ -37,3 +37,12 @@ MYSQL_PORT=
 | [Typescript](https://www.typescriptlang.org/) | Types in JavaScript                         |
 | [Font Awesome](https://fontawesome.com/)      | Icons SVG                                   |
 | [SASS](https://www.npmjs.com/package/sass)    | CSS Preprocessors                           |
+
+## Errors
+
+| Code    | Description                            |
+| ------- | -------------------------------------- |
+| 5C100/1 | (Sign up) Catch error function (500)   |
+| 3C100/2 | (Sign up) Invalid method API (400)     |
+| 1C100/3 | (Sign up) Invalid data from body (403) |
+| 1C100/4 | (Sign up) Exist user (403)             |
