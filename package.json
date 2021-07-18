@@ -16,6 +16,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@types/bcrypt": "^5.0.0",
     "@types/react": "^17.0.14",
     "bcrypt": "^5.0.1",
     "eslint": "^7.30.0",

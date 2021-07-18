@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { hash } from 'bcrypt';
+
 import { query } from '../../../functions/database';
 
 const signup = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -50,9 +52,11 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
+    const hashedPassword = await hash(data.password, 16);
+
     const results = await query(
       'INSERT INTO core_members (name, email, password) VALUES (?, ?, ?)',
-      [data.name, data.email, data.password]
+      [data.name, data.email, hashedPassword]
     );
 
     return res.status(200).json(results);
@@ -60,7 +64,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({
       error: {
         id: '5C100/1',
-        message: e.message
+        message: process.env.API_DEBUG ? e.message : null
       }
     });
   }

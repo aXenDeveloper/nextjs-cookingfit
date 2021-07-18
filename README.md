@@ -7,12 +7,28 @@ git clone https://github.com/aXenDeveloper/nextjs-cookingfit
 
 npm i
 # or
-yarn install
+yarn
 
 npm run dev
 # or
 yarn dev
 ```
+
+## 🔨 Deployment
+
+Use commands:
+
+```bash
+npm run build
+# or
+yarn build
+
+npm start
+# or
+yarn start
+```
+
+See the section about [deployment](https://nextjs.org/docs/deployment) for more information.
 
 ## 🛠️ Configuration
 
@@ -28,17 +44,27 @@ MYSQL_PASSWORD=
 MYSQL_PORT=
 ```
 
+## ⚒ Debugging API
+
+In file **.env.local** change:
+
+```
+API_DEBUG=true
+```
+
 ## 📂 Packages
 
-| Packages                                      | Description                                 |
-| --------------------------------------------- | ------------------------------------------- |
-| [NextJS](https://nextjs.org/)                 | Core for Single Page Application _(SPA)_    |
-| [React](https://reactjs.org/)                 | Library for Single Page Application _(SPA)_ |
-| [Typescript](https://www.typescriptlang.org/) | Types in JavaScript                         |
-| [Font Awesome](https://fontawesome.com/)      | Icons SVG                                   |
-| [SASS](https://www.npmjs.com/package/sass)    | CSS Preprocessors                           |
+| Packages                                       | Description                                                               |
+| ---------------------------------------------- | ------------------------------------------------------------------------- |
+| [nextjs](https://nextjs.org/)                  | Core for Single Page Application _(SPA)_                                  |
+| [react](https://reactjs.org/)                  | Library for Single Page Application _(SPA)_                               |
+| [typescript](https://www.typescriptlang.org/)  | Types in JavaScript                                                       |
+| [font-awesome](https://fontawesome.com/)       | Icons SVG                                                                 |
+| [sass](https://www.npmjs.com/package/sass)     | CSS Preprocessors                                                         |
+| [eslint](https://eslint.org/)                  | Identifying and reporting on patterns found in ECMAScript/JavaScript code |
+| [bcrypt](https://www.npmjs.com/package/bcrypt) | Hash passwords                                                            |
 
-## Errors
+## ‼ Errors
 
 | Code    | Description                            |
 | ------- | -------------------------------------- |
