@@ -58,15 +58,16 @@ DEBUG_API=true
 
 ## 📂 Packages
 
-| Packages                                       | Description                                                               |
-| ---------------------------------------------- | ------------------------------------------------------------------------- |
-| [nextjs](https://nextjs.org/)                  | Core for Single Page Application _(SPA)_                                  |
-| [react](https://reactjs.org/)                  | Library for Single Page Application _(SPA)_                               |
-| [typescript](https://www.typescriptlang.org/)  | Types in JavaScript                                                       |
-| [font-awesome](https://fontawesome.com/)       | Icons SVG                                                                 |
-| [sass](https://www.npmjs.com/package/sass)     | CSS Preprocessors                                                         |
-| [eslint](https://eslint.org/)                  | Identifying and reporting on patterns found in ECMAScript/JavaScript code |
-| [bcrypt](https://www.npmjs.com/package/bcrypt) | Hash passwords                                                            |
+| Packages                                                   | Description                                                                           |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [nextjs](https://nextjs.org/)                              | Core for Single Page Application _(SPA)_                                              |
+| [react](https://reactjs.org/)                              | Library for Single Page Application _(SPA)_                                           |
+| [typescript](https://www.typescriptlang.org/)              | Types in JavaScript                                                                   |
+| [font-awesome](https://fontawesome.com/)                   | Icons SVG                                                                             |
+| [sass](https://www.npmjs.com/package/sass)                 | CSS Preprocessors                                                                     |
+| [eslint](https://eslint.org/)                              | Identifying and reporting on patterns found in ECMAScript/JavaScript code             |
+| [bcrypt](https://www.npmjs.com/package/bcrypt)             | Hash passwords                                                                        |
+| [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) | An implementation of [JSON Web Tokens](https://datatracker.ietf.org/doc/html/rfc7519) |
 
 ## ‼ Errors
 
