@@ -3,6 +3,7 @@ import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 
 import { query } from '../../../functions/database';
+import { emailRegex } from '../../../_utils/regex';
 
 const signin = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!process.env.CSRF_KEY) {
@@ -30,7 +31,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
 
   // TODO: Add email regex
 
-  if (!data.email || !data.password) {
+  if (!data.email || !data.password || !emailRegex.test(data.email)) {
     return res.status(403).json({
       error: {
         id: '2C102/3',

@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { hash } from 'bcrypt';
 
 import { query } from '../../../functions/database';
+import { emailRegex } from '../../../_utils/regex';
 
 const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
@@ -27,7 +28,8 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     !data.email ||
     !data.password ||
     !data.confirmPassword ||
-    data.password !== data.confirmPassword
+    data.password !== data.confirmPassword ||
+    !emailRegex.test(data.email)
   ) {
     return res.status(403).json({
       error: {
