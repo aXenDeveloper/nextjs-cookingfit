@@ -20,16 +20,15 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     password: req.body.password,
     confirmPassword: req.body.confirmPassword
   };
-
-  // TODO: Add email and password regex
+  const { name, email, password, confirmPassword } = data;
 
   if (
-    !data.name ||
-    !data.email ||
-    !data.password ||
-    !data.confirmPassword ||
-    data.password !== data.confirmPassword ||
-    !emailRegex.test(data.email)
+    !name ||
+    !email ||
+    !password ||
+    !confirmPassword ||
+    password !== confirmPassword ||
+    !emailRegex.test(email)
   ) {
     return res.status(403).json({
       error: {
@@ -42,8 +41,8 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const existUser = (await query('SELECT name, email FROM core_members WHERE email=? OR name=?', [
-      data.email,
-      data.name
+      email,
+      name
     ])) as [];
 
     if (existUser.length !== 0) {
@@ -56,11 +55,11 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-    const hashedPassword = await hash(data.password, 16);
+    const hashedPassword = await hash(password, 16);
 
     const results = await query(
       'INSERT INTO core_members (name, email, password) VALUES (?, ?, ?)',
-      [data.name, data.email, hashedPassword]
+      [name, email, hashedPassword]
     );
 
     return res.status(200).json(results);

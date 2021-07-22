@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import Header from './Header';
-import Navigator from './Navigator';
+import Header from './navigation/Navigation';
+import Navigator from './Header';
 
 const Layout: FC = ({ children }) => (
   <>

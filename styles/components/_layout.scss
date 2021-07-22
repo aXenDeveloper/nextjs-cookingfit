@@ -1,6 +1,6 @@
 @media screen and (min-width: 981px) {
   .main {
-    margin: var(--header-height) 0 0 var(--nav-width);
+    margin: var(--nav-height) 0 0 var(--header-width);
   }
 }
 
@@ -9,12 +9,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  width: 100%;
-  height: var(--header-height);
-  margin-left: var(--nav-width);
-  padding: 10px 20px;
-  z-index: 999;
+  width: var(--header-width);
+  height: 100%;
+  padding: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .container {
@@ -37,12 +39,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: var(--nav-width);
-  height: 100%;
-  padding: 20px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  right: 0;
+  width: 100%;
+  height: var(--nav-height);
+  margin-left: var(--header-width);
+  padding: 10px 20px;
+  z-index: 999;
 }

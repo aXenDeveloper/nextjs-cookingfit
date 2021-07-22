@@ -28,10 +28,9 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
     email: req.body.email,
     password: req.body.password
   };
+  const { email, password } = data;
 
-  // TODO: Add email regex
-
-  if (!data.email || !data.password || !emailRegex.test(data.email)) {
+  if (!email || !password || !emailRegex.test(email)) {
     return res.status(403).json({
       error: {
         id: '2C102/3',
@@ -43,7 +42,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const existUser = (await query('SELECT id, email, password FROM core_members WHERE email=?', [
-      data.email
+      email
     ])) as {
       id: number;
       email: string;
@@ -60,7 +59,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-    const validPassword = await compare(data.password, existUser[0].password);
+    const validPassword = await compare(password, existUser[0].password);
 
     if (existUser.length === 0 || !validPassword) {
       return res.status(401).json({
@@ -74,7 +73,7 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const token = sign({ id: existUser[0].id, email: existUser[0].email }, process.env.CSRF_KEY);
 
-    return res.status(200).json({ email: data.email, csrf: token });
+    return res.status(200).json({ email, csrf: token });
   } catch (e) {
     return res.status(500).json({
       error: {
