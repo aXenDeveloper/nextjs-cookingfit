@@ -1,3 +1,6 @@
 {
-  "test": "pl"
+  "menu_main_home": "Strona główna",
+  "menu_main_recipes": "Przepisy",
+  "menu_main_products": "Produkty",
+  "menu_main_calculators": "Kalkulator"
 }

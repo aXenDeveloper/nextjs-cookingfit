@@ -1,20 +1,36 @@
 :root {
   --color-primary--code: 231, 144, 15;
   --color-primary: rgb(var(--color-primary--code));
-  --color-primary-dark--code: 209, 131, 16;
-  --color-primary-dark: rgb(var(--color-primary-dark--code));
-  --color-secondary--code: 69, 69, 69;
-  --color-secondary: rgb(var(--color-secondary--code));
-  --color-secondary-light--code: 121, 121, 121;
-  --color-secondary-light: rgb(var(--color-secondary-light--code));
-  --color-light--code: 243, 243, 243;
+  --color-primary--dark--code: 220, 138, 16;
+  --color-primary--dark: rgb(var(--color-primary--dark--code));
+  --color-light--code: 103, 103, 103;
   --color-light: rgb(var(--color-light--code));
-  --color-light-dark--code: 231, 231, 231;
-  --color-light-dark: rgb(var(--color-light-dark--code));
-  --color-important--code: 212, 40, 40;
-  --color-important: rgb(var(--color-important--code));
-  --color-important-dark--code: 197, 37, 37;
-  --color-important-dark: rgb(var(--color-important-dark--code));
+
+  --button-primary--code: 231, 144, 15;
+  --button-primary: rgb(var(--button-primary--code));
+  --button-primary-dark--code: 209, 131, 16;
+  --button-primary-dark: rgb(var(--button-primary-dark--code));
+  --button-secondary--code: 69, 69, 69;
+  --button-secondary: rgb(var(--button-secondary--code));
+  --button-secondary-light--code: 121, 121, 121;
+  --button-secondary-light: rgb(var(--button-secondary-light--code));
+  --button-light--code: 243, 243, 243;
+  --button-light: rgb(var(--button-light--code));
+  --button-light-dark--code: 231, 231, 231;
+  --button-light-dark: rgb(var(--button-light-dark--code));
+  --button-important--code: 212, 40, 40;
+  --button-important: rgb(var(--button-important--code));
+  --button-important-dark--code: 197, 37, 37;
+  --button-important-dark: rgb(var(--button-important-dark--code));
+
+  --menu-text: var(--color-light);
+  --menu-text--hover: var(--body-color);
+  --menu-background--hover: var(--body-background);
+  --menu-box-shadow--focus: 0 0 0 4px rgba(var(--color-light--code), 0.5);
+  --menu-background-active: var(--color-primary);
+  --menu-text-active: #fff;
+  --menu-background-active--hover: var(--color-primary--dark);
+  --menu-box-shadow-active--focus: 0 0 0 4px rgba(var(--color-primary--dark--code), 0.5);
 
   --body-color-code: 44, 44, 44;
   --body-color: rgb(var(--body-color-code));

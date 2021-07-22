@@ -5,8 +5,8 @@ import Navigator from './Header';
 
 const Layout: FC = ({ children }) => (
   <>
-    <Header />
     <Navigator />
+    <Header />
     <main className="main">{children}</main>
   </>
 );

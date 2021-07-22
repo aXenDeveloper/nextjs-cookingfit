@@ -1,0 +1,66 @@
+.menu {
+  @include resetList();
+
+  &_main {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    > li {
+      > a {
+        flex-direction: column;
+        justify-content: center;
+        padding: 6px 16px;
+
+        > svg {
+          font-size: 20px;
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+
+  &_item {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    > a {
+      display: flex;
+      align-items: center;
+      color: var(--menu-text);
+      border-radius: var(--radius);
+      @include font(15px, 20px);
+      transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+
+      &:hover {
+        background-color: var(--menu-background--hover);
+        color: var(--menu-text--hover);
+        text-decoration: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        box-shadow: var(--menu-box-shadow--focus);
+      }
+    }
+
+    &\:active a {
+      background-color: var(--menu-background-active);
+      color: var(--menu-text-active);
+      font-weight: bold;
+
+      &:hover {
+        background-color: var(--menu-background-active--hover);
+        color: var(--menu-text-active);
+      }
+
+      &:focus-visible {
+        box-shadow: var(--menu-box-shadow-active--focus);
+      }
+    }
+  }
+}

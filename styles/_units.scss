@@ -1,0 +1,14 @@
+@mixin font($size, $line, $weight: 0) {
+  font-size: $size;
+  line-height: $line;
+
+  @if $weight != 0 {
+    font-weight: $weight;
+  }
+}
+
+@mixin resetList($padding: 0, $margin: 0) {
+  padding: $padding;
+  margin: $margin;
+  list-style: none;
+}

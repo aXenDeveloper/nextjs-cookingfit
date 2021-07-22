@@ -1,4 +1,5 @@
 @import './variables';
+@import './units';
 
 * {
   box-sizing: border-box;
@@ -16,7 +17,7 @@ body {
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--button-primary);
   text-decoration: none;
 
   &:hover {
@@ -26,5 +27,7 @@ a {
 
 @import './components/layout';
 @import './components/buttons';
+
+@import './components/layouts/menu';
 
 @import './responsives';
