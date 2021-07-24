@@ -1,8 +1,8 @@
-import { ManuMain } from './ManuMain';
+import { NavigationMenu } from './NavigationMenu';
 
 const Navigation = () => (
   <nav className="nav">
-    <ManuMain />
+    <NavigationMenu />
   </nav>
 );
 
