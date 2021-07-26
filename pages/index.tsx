@@ -1,14 +1,9 @@
-import { Button } from '../components/Button';
-import useTranslation from 'next-translate/useTranslation';
+import { InputText } from '../components/inputs/InputText';
 
 const HomeView = () => {
-  const { t } = useTranslation('global');
-
   return (
     <div>
-      <Button type="link" href="/test" color="important">
-        {t('test')}
-      </Button>
+      <InputText id="test" />
     </div>
   );
 };

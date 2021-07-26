@@ -14,6 +14,7 @@ export const UserBarLogin = () => {
           {t('userbar_button_login')} <FontAwesomeIcon icon={faCaretDown} />
         </button>
       </li>
+
       <li>
         <Button type="link" href="/register" color="primary">
           {t('userbar_button_register')}
