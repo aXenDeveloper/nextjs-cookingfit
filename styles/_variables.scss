@@ -5,6 +5,7 @@
   --color-primary--dark: rgb(var(--color-primary--dark--code));
   --color-light--code: 103, 103, 103;
   --color-light: rgb(var(--color-light--code));
+  --color-error: #d42828;
 
   --button-primary--code: 231, 144, 15;
   --button-primary: rgb(var(--button-primary--code));
@@ -25,6 +26,7 @@
 
   --input-background: #fff;
   --input-light: #a8a8a8;
+  --input-description-text: var(--color-light);
   --input-box-shadow--focus: 0 0 0 4px rgba(var(--color-primary--code), 0.5);
 
   --menu-text: var(--color-light);

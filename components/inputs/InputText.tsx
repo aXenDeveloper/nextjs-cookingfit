@@ -1,17 +1,16 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faMailBulk } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FC, ChangeEvent, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { ChangeEvent, useState } from 'react';
-import { FC } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
   id: string;
   icon?: IconProp;
   disabled?: boolean;
+  required?: boolean;
 }
 
-export const InputText: FC<Props> = ({ id, icon, disabled }) => {
+export const InputText: FC<Props> = ({ id, icon, disabled, children, required }) => {
   const { t } = useTranslation('global');
   const [value, setValue] = useState('');
 
@@ -25,16 +24,20 @@ export const InputText: FC<Props> = ({ id, icon, disabled }) => {
         <input
           id={id}
           type="text"
-          className={`${value ? 'input_fill' : ''}${icon ? ' input_icon' : ''}`}
+          className={`${value ? 'input:fill' : ''}${icon ? ' input:icon' : ''}`}
           onChange={handleInput}
           value={value}
           disabled={disabled}
+          required={required}
         />
-        <label htmlFor={id}>{t(`input_text_label_${id}`)}</label>
+        <label htmlFor={id}>
+          {t(`input_text_label_${id}`)}
+          {required && <span className="input:required"> *</span>}
+        </label>
         {icon && <FontAwesomeIcon icon={icon} />}
       </div>
 
-      <p>test</p>
+      {children && <p>{children}</p>}
     </div>
   );
 };
