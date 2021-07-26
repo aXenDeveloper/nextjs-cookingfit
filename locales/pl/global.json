@@ -2,5 +2,7 @@
   "menu_main_home": "Strona główna",
   "menu_main_recipes": "Przepisy",
   "menu_main_products": "Produkty",
-  "menu_main_calculators": "Kalkulator"
+  "menu_main_calculators": "Kalkulator",
+  "userbar_button_register": "Zarejestruj się",
+  "userbar_button_login": "Masz już konto? Zaloguj się"
 }

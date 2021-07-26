@@ -1,4 +1,4 @@
-import { ButtonLink } from '../components/buttons/ButtonLink';
+import { Button } from '../components/Button';
 import useTranslation from 'next-translate/useTranslation';
 
 const HomeView = () => {
@@ -6,9 +6,9 @@ const HomeView = () => {
 
   return (
     <div>
-      <ButtonLink href="/test" type="important">
+      <Button type="link" href="/test" color="important">
         {t('test')}
-      </ButtonLink>
+      </Button>
     </div>
   );
 };
