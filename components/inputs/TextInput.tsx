@@ -10,7 +10,7 @@ interface Props {
   required?: boolean;
 }
 
-export const InputText: FC<Props> = ({ id, icon, disabled, children, required }) => {
+export const TextInput: FC<Props> = ({ id, icon, disabled, children, required }) => {
   const { t } = useTranslation('global');
   const [value, setValue] = useState('');
 
@@ -19,7 +19,7 @@ export const InputText: FC<Props> = ({ id, icon, disabled, children, required })
   };
 
   return (
-    <div className="input_text">
+    <div className="input input_text">
       <div className="input_text_content">
         <input
           id={id}
@@ -32,7 +32,7 @@ export const InputText: FC<Props> = ({ id, icon, disabled, children, required })
         />
         <label htmlFor={id}>
           {t(`input_text_label_${id}`)}
-          {required && <span className="input:required"> *</span>}
+          {required && <span className="input:required">{t('input_required')}</span>}
         </label>
         {icon && <FontAwesomeIcon icon={icon} />}
       </div>

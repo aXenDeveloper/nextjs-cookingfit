@@ -28,6 +28,7 @@
   --input-light: #a8a8a8;
   --input-description-text: var(--color-light);
   --input-box-shadow--focus: 0 0 0 4px rgba(var(--color-primary--code), 0.5);
+  --input-checkbox-text: #fff;
 
   --menu-text: var(--color-light);
   --menu-text--hover: var(--body-color);
@@ -41,6 +42,7 @@
   --body-color-code: 44, 44, 44;
   --body-color: rgb(var(--body-color-code));
 
+  --radius--half: 4px;
   --radius: 8px;
 
   --header-width: 210px;

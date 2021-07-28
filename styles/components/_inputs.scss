@@ -1,4 +1,6 @@
 .input {
+  position: relative;
+
   &_text {
     padding: 10px 0;
 
@@ -73,7 +75,72 @@
     }
   }
 
+  &_checkbox {
+    display: flex;
+    align-items: center;
+
+    &_icon {
+      position: relative;
+      font-size: 0;
+
+      > input {
+        opacity: 0.000001;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        margin: 0;
+        border-radius: var(--radius--half);
+
+        &:checked + span {
+          background-color: var(--color-primary);
+          color: var(--input-checkbox-text);
+          border-color: var(--color-primary);
+
+          > span {
+            display: block;
+          }
+        }
+
+        &:focus + span {
+          border-color: var(--color-primary);
+          box-shadow: var(--input-box-shadow--focus);
+        }
+      }
+
+      > span {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-color: var(--input-background);
+        border: 1px solid var(--input-light);
+        border-radius: var(--radius--half);
+        transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+        > span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 11px;
+          display: none;
+          pointer-events: none;
+        }
+      }
+    }
+
+    > label {
+      margin-left: 8px;
+    }
+  }
+
   &\:required {
+    font-size: 12px;
+    text-transform: uppercase;
     color: var(--color-error);
+    margin-left: 10px;
   }
 }

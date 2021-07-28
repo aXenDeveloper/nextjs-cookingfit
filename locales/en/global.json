@@ -4,5 +4,6 @@
   "menu_main_products": "Products",
   "menu_main_calculators": "Calkulator",
   "userbar_button_register": "Sign Up",
-  "userbar_button_login": "Existing user? Sign In"
+  "userbar_button_login": "Existing user? Sign In",
+  "input_required": "Required"
 }

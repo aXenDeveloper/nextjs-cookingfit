@@ -1,12 +1,14 @@
 import { faMailBulk } from '@fortawesome/free-solid-svg-icons';
-import { InputText } from '../components/inputs/InputText';
+import { Checkbox } from '../components/inputs/Checkbox';
+import { TextInput } from '../components/inputs/TextInput';
 
 const HomeView = () => {
   return (
     <div>
-      <InputText id="test" icon={faMailBulk} required>
+      <TextInput id="test" icon={faMailBulk} required>
         Lorem Ipsum is simply dummy text of...
-      </InputText>
+      </TextInput>
+      <Checkbox id="test123" required />
     </div>
   );
 };
