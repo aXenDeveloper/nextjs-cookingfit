@@ -6,11 +6,16 @@
     align-items: center;
     height: 100%;
 
+    @media screen and (max-width: 980px) {
+      display: none;
+    }
+
     > li {
       > a {
         flex-direction: column;
         justify-content: center;
         padding: 6px 16px;
+        text-align: center;
 
         > svg {
           font-size: 20px;

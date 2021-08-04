@@ -6,6 +6,10 @@
   align-items: center;
   justify-content: center;
 
+  @media screen and (max-width: 980px) {
+    display: none;
+  }
+
   > li:not(:last-child) {
     margin-right: 20px;
   }

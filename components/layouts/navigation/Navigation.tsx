@@ -1,10 +1,13 @@
+import { NavigationBottom } from './NavigationBottom';
 import { NavigationMenu } from './NavigationMenu';
 import { UserBar } from './userBar/UserBar';
 
 const Navigation = () => (
-  <nav className="nav">
+  <nav className='nav'>
     <NavigationMenu />
     <UserBar />
+
+    <NavigationBottom />
   </nav>
 );
 
