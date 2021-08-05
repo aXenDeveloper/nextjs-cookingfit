@@ -32,6 +32,14 @@ export const NavigationBottom = () => {
           </a>
         </Link>
       </li>
+
+      <li>
+        <Link href='/login'>
+          <a>
+            <FontAwesomeIcon icon={faUser} />
+          </a>
+        </Link>
+      </li>
     </ul>
   );
 };
