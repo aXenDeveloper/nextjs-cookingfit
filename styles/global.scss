@@ -48,8 +48,9 @@ a {
 @import './components/layout';
 @import './components/buttons';
 @import './components/inputs';
+@import './components/manu';
 
-@import './components/layouts/navigation/menu';
+@import './components/layouts/navigation/navigation';
 @import './components/layouts/navigation/userBar';
 
 @import './responsives';

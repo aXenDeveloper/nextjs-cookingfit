@@ -1,8 +1,8 @@
 {
-  "menu_main_home": "Home",
-  "menu_main_recipes": "Recipes",
-  "menu_main_products": "Products",
-  "menu_main_calculators": "Calkulator",
+  "navigation_main_home": "Home",
+  "navigation_main_recipes": "Recipes",
+  "navigation_main_products": "Products",
+  "navigation_main_calculators": "Calkulator",
   "userbar_button_register": "Sign Up",
   "userbar_button_login": "Existing user? Sign In",
   "input_required": "Required"

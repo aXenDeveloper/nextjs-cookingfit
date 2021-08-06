@@ -70,6 +70,7 @@ DEBUG_API=true
 | [bcrypt](https://www.npmjs.com/package/bcrypt)                 | Hash passwords                                                                        |
 | [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)     | An implementation of [JSON Web Tokens](https://datatracker.ietf.org/doc/html/rfc7519) |
 | [js-cookie](https://www.npmjs.com/package/js-cookie)           | Cookies                                                                               |
+| [tippyjs](https://atomiks.github.io/tippyjs/)                  | tooltip, popover, dropdown                                                            |
 
 ## ‼ Errors
 
