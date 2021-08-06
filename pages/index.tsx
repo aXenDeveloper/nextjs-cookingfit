@@ -5,10 +5,10 @@ import { TextInput } from '../components/inputs/TextInput';
 const HomeView = () => {
   return (
     <div>
-      <TextInput id="test" icon={faMailBulk} required>
+      <TextInput id='test' icon={faMailBulk} required>
         Lorem Ipsum is simply dummy text of...
       </TextInput>
-      <Checkbox id="test123" required />
+      <Checkbox id='test123' required />
     </div>
   );
 };

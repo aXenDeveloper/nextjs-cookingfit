@@ -22,6 +22,23 @@
         pointer-events: none;
       }
 
+      &_icon {
+        width: 26px;
+        height: 26px;
+        background-color: var(--input-background);
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 50%;
+        left: -12px;
+        transform: translateY(50%);
+        color: var(--input-light);
+        transition: color 0.15s ease-in-out;
+        font-size: 14px;
+      }
+
       > input {
         padding: 12px 16px;
         border-radius: var(--radius);
@@ -32,19 +49,6 @@
         font-weight: inherit;
         font-family: inherit;
         transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
-
-        &.input\:icon {
-          padding: 12px 40px 12px 16px;
-        }
-
-        ~ svg {
-          position: absolute;
-          top: 49%;
-          right: 14px;
-          transform: translateY(-49%);
-          color: var(--input-light);
-          transition: color 0.15s ease-in-out;
-        }
 
         &:focus {
           outline: none;
@@ -61,7 +65,7 @@
           border-color: var(--color-primary);
 
           & + label,
-          & ~ svg {
+          & ~ .input_text_content_icon {
             color: var(--color-primary);
           }
         }
