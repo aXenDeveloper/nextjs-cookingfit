@@ -1,17 +1,20 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useTranslation from 'next-translate/useTranslation';
 
 interface Props {
   title: string;
   path: string;
-  icon: IconProp;
+  icon: {
+    fontAwesome: boolean;
+    icon: IconProp;
+  };
   active: boolean;
 }
 
-export const NavigationMenuItem: FC<Props> = ({
+export const NavigationRecipesItem: FC<Props> = ({
   title,
   path,
   icon,
@@ -21,13 +24,13 @@ export const NavigationMenuItem: FC<Props> = ({
 
   return (
     <li
-      className={`navigation_item navigation_menu_item${
+      className={`navigation_item navigation_recipes_item${
         active ? ' navigation_item:active' : ''
       }`}
     >
       <Link href={path}>
         <a>
-          <FontAwesomeIcon icon={icon} />
+          <FontAwesomeIcon icon={icon.icon} />
           <span>{t(`navigation_main_${title}`)}</span>
         </a>
       </Link>

@@ -1,7 +1,26 @@
 .navigation {
   @include resetList();
 
-  &_main {
+  &_recipes {
+    width: 100%;
+    margin: 20px 0 auto 0;
+
+    &_item {
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
+
+      > a {
+        padding: 10px;
+
+        > span {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  &_menu {
     display: flex;
     align-items: center;
     height: 100%;
@@ -10,7 +29,11 @@
       display: none;
     }
 
-    > li {
+    &_item {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
       > a {
         flex-direction: column;
         justify-content: center;
@@ -26,10 +49,6 @@
   }
 
   &_item {
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
-
     > a {
       display: flex;
       align-items: center;

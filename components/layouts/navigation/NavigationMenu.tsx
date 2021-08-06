@@ -7,7 +7,7 @@ export const NavigationMenu = () => {
   const currentPath = `/${pathname.split('/')[1].split('?')[0]}`;
 
   return (
-    <ul className='navigation navigation_main'>
+    <ul className='navigation navigation_menu'>
       {navigationMenuList.map(({ id, title, path, icon }) => (
         <NavigationMenuItem
           key={id}
