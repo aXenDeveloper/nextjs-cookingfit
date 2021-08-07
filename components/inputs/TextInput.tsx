@@ -8,26 +8,31 @@ import { FormValuesTypes } from '../../_utils/types/FormValuesTypes';
 
 interface Props {
   id: Path<FormValuesTypes>;
-  type?: 'text' | 'password';
   register: UseFormRegister<FormValuesTypes>;
+  error: boolean;
+  type?: 'text' | 'password';
   icon?: IconProp;
   disabled?: boolean;
-  required?: boolean;
+  required?: {
+    required: boolean;
+    text?: boolean;
+  };
+  requiredText?: boolean;
 }
 
 export const TextInput: FC<Props> = ({
   id,
+  register,
+  error,
   type = 'text',
   icon,
   disabled,
-  children,
   required,
-  register,
+  children,
 }) => {
-  // TODO: Add error
   const { t } = useTranslation('global');
   const [value, setValue] = useState('');
-  const { ref, ...rest } = register(id, { required });
+  const { ref, ...rest } = register(id, { required: required?.required });
 
   const handleInput = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setValue(target.value);
@@ -41,7 +46,9 @@ export const TextInput: FC<Props> = ({
           id={id}
           type={type}
           name={id}
-          className={`${value ? 'input:fill' : ''}${icon ? ' input:icon' : ''}`}
+          className={`${value ? 'input:fill' : ''}${icon ? ' input:icon' : ''}${
+            error ? ' input:error' : ''
+          }`}
           onChange={handleInput}
           value={value}
           disabled={disabled}
@@ -50,7 +57,7 @@ export const TextInput: FC<Props> = ({
 
         <label htmlFor={id}>
           {t(`input_text_label_${id}`)}
-          {required && (
+          {required?.required && required?.text && (
             <span className='input:required'>{t('input_required')}</span>
           )}
         </label>

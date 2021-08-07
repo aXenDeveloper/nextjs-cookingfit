@@ -69,6 +69,20 @@
             color: var(--color-primary);
           }
         }
+
+        &.input\:error {
+          border-color: var(--color-error);
+
+          & + label,
+          & ~ .input_text_content_icon {
+            color: var(--color-error);
+          }
+
+          &:focus-visible {
+            box-shadow: var(--input-error-box-shadow--focus);
+            border-color: var(--color-error);
+          }
+        }
       }
     }
 

@@ -38,14 +38,22 @@ const LoginPage = () => {
               id='email'
               icon={faMailBulk}
               register={register}
-              required
+              error={!!errors.email}
+              required={{
+                required: true,
+                text: false,
+              }}
             />
             <TextInput
               type='password'
               id='password'
               icon={faMailBulk}
               register={register}
-              required
+              error={!!errors.password}
+              required={{
+                required: true,
+                text: false,
+              }}
             />
 
             <Button type='button' color='primary' typeButton='submit' fullWidth>
