@@ -63,6 +63,7 @@ DEBUG_API=true
 | [nextjs](https://nextjs.org/)                                  | Core for Single Page Application _(SPA)_                                              |
 | [next-translate](https://github.com/vinissimus/next-translate) | Translate                                                                             |
 | [react](https://reactjs.org/)                                  | Library for Single Page Application _(SPA)_                                           |
+| [react-query](https://react-query.tanstack.com/)               | Fetch, cache and update data                                                          |
 | [typescript](https://www.typescriptlang.org/)                  | Types in JavaScript                                                                   |
 | [font-awesome](https://fontawesome.com/)                       | Icons SVG                                                                             |
 | [sass](https://www.npmjs.com/package/sass)                     | CSS Preprocessors                                                                     |

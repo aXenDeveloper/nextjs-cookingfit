@@ -1,25 +1,78 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
-interface Props {
-  type: 'link';
-  href: string;
+interface ColorButtonProps {
   color: 'primary' | 'secondary' | 'light' | 'important';
-  external?: boolean;
 }
 
-export const Button: FC<Props> = ({ children, href, color, external }) => {
-  if (external) {
+interface LinkProps {
+  type: 'link';
+  href: string;
+  external?: boolean;
+  onClick?(): never;
+  typeButton?: never;
+  fullWidth?: boolean;
+}
+
+interface ButtonProps {
+  type: 'button';
+  onClick?(): void;
+  href?: never;
+  external?: never;
+  typeButton?: 'button' | 'submit' | 'reset';
+  fullWidth?: boolean;
+}
+
+type Props = (LinkProps | ButtonProps) & ColorButtonProps;
+
+export const Button: FC<Props> = ({
+  type,
+  children,
+  href,
+  color,
+  external,
+  onClick,
+  typeButton,
+  fullWidth,
+}) => {
+  if (type === 'button') {
     return (
-      <a href={href} className={`button button_${color}`} target="_blank" rel="nofollow noreferrer">
+      <button
+        type={typeButton}
+        className={`button button_${color}${
+          fullWidth ? ' button:fullWidth' : ''
+        }`}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    );
+  }
+
+  if (type === 'link' && external) {
+    return (
+      <a
+        href={href}
+        className={`button button_${color}${
+          fullWidth ? ' button:fullWidth' : ''
+        }`}
+        target='_blank'
+        rel='nofollow noreferrer'
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <Link href={href}>
-      <a className={`button button_${color}`}>{children}</a>
+    <Link href={type === 'link' && href ? href : '/'}>
+      <a
+        className={`button button_${color}${
+          fullWidth ? ' button:fullWidth' : ''
+        }`}
+      >
+        {children}
+      </a>
     </Link>
   );
 };

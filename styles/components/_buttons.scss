@@ -8,6 +8,10 @@
   border: 1px solid transparent;
   font-weight: 600;
   text-align: center;
+  background-color: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out;
 
@@ -89,5 +93,9 @@
     &:focus {
       box-shadow: 0 0 0 4px rgba(var(--button-important--code), 0.5);
     }
+  }
+
+  &\:fullWidth {
+    width: 100%;
   }
 }

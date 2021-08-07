@@ -12,9 +12,9 @@ export const Checkbox: FC<Props> = ({ id, required }) => {
   const { t } = useTranslation('global');
 
   return (
-    <div className="input input_checkbox">
-      <span className="input_checkbox_icon">
-        <input type="checkbox" id={id} />
+    <div className='input input_checkbox'>
+      <span className='input_checkbox_icon'>
+        <input type='checkbox' id={id} />
         <span>
           <span>
             <FontAwesomeIcon icon={faCheck} />
@@ -24,7 +24,9 @@ export const Checkbox: FC<Props> = ({ id, required }) => {
 
       <label htmlFor={id}>
         {t(`input_checkbox_label_${id}`)}
-        {required && <span className="input:required">{t('input_required')}</span>}
+        {required && (
+          <span className='input:required'>{t('input_required')}</span>
+        )}
       </label>
     </div>
   );

@@ -8,5 +8,7 @@
   "userbar_button_register": "Zarejestruj się",
   "userbar_button_login": "Masz już konto? Zaloguj się",
   "input_required": "Wymagane",
-  "input_text_label_email": "Adres email"
+  "input_text_label_email": "Adres email",
+  "input_text_label_password": "Hasło",
+  "button_text_sign_in": "Zaloguj się"
 }

@@ -8,5 +8,7 @@
   "userbar_button_register": "Sign Up",
   "userbar_button_login": "Existing user? Sign In",
   "input_required": "Required",
-  "input_text_label_email": "Email Address"
+  "input_text_label_email": "Email Address",
+  "input_text_label_password": "Password",
+  "button_text_sign_in": "Sign In"
 }
