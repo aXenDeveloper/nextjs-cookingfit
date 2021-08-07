@@ -1,5 +1,13 @@
 import { FC } from 'react';
 
-const Container: FC = ({ children }) => <div className="container">{children}</div>;
+interface Props {
+  small?: boolean;
+}
+
+const Container: FC<Props> = ({ children, small }) => (
+  <div className={`container${small ? ' container:small' : ''}`}>
+    {children}
+  </div>
+);
 
 export default Container;

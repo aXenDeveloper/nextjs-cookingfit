@@ -3,6 +3,8 @@
   --color-primary: rgb(var(--color-primary--code));
   --color-primary--dark--code: 220, 138, 16;
   --color-primary--dark: rgb(var(--color-primary--dark--code));
+  --color-secondary--code: 240, 240, 240;
+  --color-secondary: rgb(var(--color-secondary--code));
   --color-light--code: 103, 103, 103;
   --color-light: rgb(var(--color-light--code));
   --color-error: #d42828;
@@ -50,6 +52,7 @@
   --nav-height: 80px;
   --nav-mobile-height: 60px;
   --container-width: 1500px;
+  --container-small-width: 540px;
 
   --button-light-color: #000;
 

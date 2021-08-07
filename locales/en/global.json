@@ -1,9 +1,12 @@
 {
+  "page_title_sign_in": "Sign In",
+  "page_desc_sign_in": "Don't have an account? <0>Sign Up</0>",
   "navigation_main_home": "Home",
   "navigation_main_recipes": "Recipes",
   "navigation_main_products": "Products",
   "navigation_main_calculators": "Calkulator",
   "userbar_button_register": "Sign Up",
   "userbar_button_login": "Existing user? Sign In",
-  "input_required": "Required"
+  "input_required": "Required",
+  "input_text_label_email": "Email Address"
 }

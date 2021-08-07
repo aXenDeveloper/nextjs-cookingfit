@@ -10,8 +10,8 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({
       error: {
         id: '2C102/5',
-        message: 'EMPTY_CSRF_KEY'
-      }
+        message: 'EMPTY_CSRF_KEY',
+      },
     });
   }
 
@@ -19,14 +19,14 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({
       error: {
         id: '3C102/2',
-        message: 'INVALID_METHOD'
-      }
+        message: 'INVALID_METHOD',
+      },
     });
   }
 
   const data = {
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
   };
   const { email, password } = data;
 
@@ -35,15 +35,16 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
       error: {
         id: '2C102/3',
         message: 'INVALID_DATA',
-        data: process.env.DEBUG_API ? data : null
-      }
+        data: process.env.DEBUG_API ? data : null,
+      },
     });
   }
 
   try {
-    const existUser = (await query('SELECT id, email, password FROM core_members WHERE email=?', [
-      email
-    ])) as {
+    const existUser = (await query(
+      'SELECT id, email, password FROM core_members WHERE email=?',
+      [email],
+    )) as {
       id: number;
       email: string;
       password: string;
@@ -54,8 +55,8 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
         error: {
           id: '2C102/4',
           message: 'INVALID_EMAIL_OR_PASSWORD',
-          data: process.env.DEBUG_API ? existUser : null
-        }
+          data: process.env.DEBUG_API ? existUser : null,
+        },
       });
     }
 
@@ -66,20 +67,26 @@ const signin = async (req: NextApiRequest, res: NextApiResponse) => {
         error: {
           id: '2C102/4',
           message: 'INVALID_EMAIL_OR_PASSWORD',
-          data: process.env.DEBUG_API ? existUser : null
-        }
+          data: process.env.DEBUG_API ? existUser : null,
+        },
       });
     }
 
-    const token = sign({ id: existUser[0].id, email: existUser[0].email }, process.env.CSRF_KEY);
+    const token = sign(
+      { id: existUser[0].id, email: existUser[0].email },
+      process.env.CSRF_KEY,
+      {
+        expiresIn: 604800, // 7 days
+      },
+    );
 
     return res.status(200).json({ email, csrf: token });
   } catch (e) {
     return res.status(500).json({
       error: {
         id: '5C102/1',
-        message: process.env.DEBUG_API ? e.message : null
-      }
+        message: process.env.DEBUG_API ? e.message : null,
+      },
     });
   }
 };

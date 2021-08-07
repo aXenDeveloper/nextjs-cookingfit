@@ -45,6 +45,47 @@ a {
   }
 }
 
+.box {
+  background-color: var(--container-background);
+  border-radius: var(--radius);
+}
+
+.padding {
+  padding: 20px;
+
+  &\:half {
+    padding: 10px;
+  }
+}
+
+.hr {
+  margin: 20px 0;
+  border: 1px solid var(--color-secondary);
+}
+
+.container {
+  max-width: var(--container-width);
+  padding: 0 20px;
+  margin: 0 auto;
+  position: relative;
+
+  &\:small {
+    max-width: var(--container-small-width);
+  }
+
+  &_title {
+    > h1 {
+      margin: 0;
+      font-size: 27px;
+      font-weight: 600;
+    }
+
+    > p {
+      margin: 4px 0 0 0;
+    }
+  }
+}
+
 @import './components/layout';
 @import './components/buttons';
 @import './components/inputs';

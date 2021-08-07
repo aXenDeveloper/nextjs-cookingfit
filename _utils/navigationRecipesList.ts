@@ -5,18 +5,11 @@ export const navigationRecipesList = [
     id: 1,
     title: 'home',
     path: '/',
-    icon: {
-      fontAwesome: true,
-      icon: faHome,
-    },
+    icon: faHome,
   },
   {
     id: 2,
     title: 'recipes',
     path: '/recipes',
-    icon: {
-      fontAwesome: true,
-      icon: faHome,
-    },
   },
 ];
