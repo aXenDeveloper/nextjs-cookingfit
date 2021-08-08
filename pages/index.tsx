@@ -1,11 +1,10 @@
-import Container from '../components/layouts/Container';
+import { Container } from '../components/layouts/Container';
 import { Menu } from '../components/Menu';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { signOut, useSession } from 'next-auth/client';
+import Link from 'next/link';
 
 const HomeView = () => {
   const [session, loading] = useSession();
-
-  console.log(session?.user);
 
   return (
     <Container small>
@@ -17,7 +16,7 @@ const HomeView = () => {
         {!session && (
           <>
             Not signed in <br />
-            <button onClick={() => signIn()}>Sign in</button>
+            <Link href='/login'>Sign in</Link>
           </>
         )}
         {session && (

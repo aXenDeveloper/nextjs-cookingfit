@@ -2,7 +2,7 @@ import { FC, ChangeEvent, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Path, UseFormRegister } from 'react-hook-form';
+import { Path, UseFormRegister, ValidationRule } from 'react-hook-form';
 
 import { FormValuesTypes } from '../../_utils/types/FormValuesTypes';
 
@@ -18,6 +18,7 @@ interface Props {
     text?: boolean;
   };
   requiredText?: boolean;
+  pattern?: ValidationRule<RegExp>;
 }
 
 export const TextInput: FC<Props> = ({
@@ -28,11 +29,15 @@ export const TextInput: FC<Props> = ({
   icon,
   disabled,
   required,
+  pattern,
   children,
 }) => {
   const { t } = useTranslation('global');
   const [value, setValue] = useState('');
-  const { ref, ...rest } = register(id, { required: required?.required });
+  const { ref, ...rest } = register(id, {
+    required: required?.required,
+    pattern,
+  });
 
   const handleInput = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setValue(target.value);

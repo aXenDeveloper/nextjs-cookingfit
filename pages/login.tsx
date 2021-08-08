@@ -1,16 +1,30 @@
+import { GetServerSideProps, NextPage } from 'next';
+import { useMutation } from 'react-query';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { faMailBulk } from '@fortawesome/free-solid-svg-icons';
+import { getCsrfToken } from 'next-auth/client';
 
-import Container from '../components/layouts/Container';
+import { Container } from '../components/layouts/Container';
 import { TextInput } from '../components/inputs/TextInput';
 import { Button } from '../components/Button';
 import { FormValuesTypes } from '../_utils/types/FormValuesTypes';
 import { Checkbox } from '../components/inputs/Checkbox';
+import { emailRegex } from '../_utils/regex';
+import { useState } from 'react';
 
-const LoginPage = () => {
+interface LoginProps {
+  email: string;
+  password: string;
+}
+
+interface Props {
+  csrfToken: string;
+}
+
+const LoginPage: NextPage<Props> = ({ csrfToken }) => {
   const { t } = useTranslation('global');
   const {
     register,
@@ -18,7 +32,36 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<FormValuesTypes>();
 
-  const onSubmit: SubmitHandler<FormValuesTypes> = (data) => console.log(data);
+  const [isError, setIsError] = useState(false);
+
+  const onSubmit: SubmitHandler<FormValuesTypes> = (data) => {
+    mutateAsync({ email: data.email, password: data.password });
+  };
+
+  const { mutateAsync, isLoading } = useMutation(
+    async ({ email, password }: LoginProps) => {
+      const res = await fetch('/api/auth/callback/credentials', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          csrfToken,
+          email,
+          password,
+        }),
+      });
+
+      if (res.status === 200 && !res.url.includes('signin?error=')) {
+        setIsError(false);
+        window.location.href = res.url;
+      } else {
+        setIsError(true);
+      }
+
+      return null;
+    },
+  );
 
   return (
     <Container small>
@@ -34,6 +77,8 @@ const LoginPage = () => {
 
           <hr className='hr' />
 
+          {isError && <div>Error!</div>}
+
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
             <ul>
               <li>
@@ -46,9 +91,8 @@ const LoginPage = () => {
                     required: true,
                     text: false,
                   }}
-                >
-                  sfasf
-                </TextInput>
+                  pattern={emailRegex}
+                />
               </li>
 
               <li>
@@ -86,5 +130,14 @@ const LoginPage = () => {
     </Container>
   );
 };
+
+export async function getServerSideProps(context: GetServerSideProps<Props>) {
+  return {
+    props: {
+      // @ts-ignore
+      csrfToken: await getCsrfToken(context),
+    },
+  };
+}
 
 export default LoginPage;

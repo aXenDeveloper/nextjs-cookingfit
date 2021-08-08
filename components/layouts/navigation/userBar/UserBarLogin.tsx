@@ -1,5 +1,4 @@
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 
 import { Button } from '../../../Button';
@@ -8,15 +7,15 @@ export const UserBarLogin = () => {
   const { t } = useTranslation('global');
 
   return (
-    <ul className="userBar">
+    <ul className='userBar'>
       <li>
-        <button className="link">
-          {t('userbar_button_login')} <FontAwesomeIcon icon={faCaretDown} />
-        </button>
+        <Link href='/login'>
+          <a className='link'>{t('userbar_button_login')}</a>
+        </Link>
       </li>
 
       <li>
-        <Button type="link" href="/register" color="primary">
+        <Button type='link' href='/register' color='primary'>
           {t('userbar_button_register')}
         </Button>
       </li>
