@@ -8,6 +8,7 @@ import Container from '../components/layouts/Container';
 import { TextInput } from '../components/inputs/TextInput';
 import { Button } from '../components/Button';
 import { FormValuesTypes } from '../_utils/types/FormValuesTypes';
+import { Checkbox } from '../components/inputs/Checkbox';
 
 const LoginPage = () => {
   const { t } = useTranslation('global');
@@ -33,32 +34,52 @@ const LoginPage = () => {
 
           <hr className='hr' />
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <TextInput
-              id='email'
-              icon={faMailBulk}
-              register={register}
-              error={!!errors.email}
-              required={{
-                required: true,
-                text: false,
-              }}
-            />
-            <TextInput
-              type='password'
-              id='password'
-              icon={faMailBulk}
-              register={register}
-              error={!!errors.password}
-              required={{
-                required: true,
-                text: false,
-              }}
-            />
+          <form onSubmit={handleSubmit(onSubmit)} className='form'>
+            <ul>
+              <li>
+                <TextInput
+                  id='email'
+                  icon={faMailBulk}
+                  register={register}
+                  error={!!errors.email}
+                  required={{
+                    required: true,
+                    text: false,
+                  }}
+                >
+                  sfasf
+                </TextInput>
+              </li>
 
-            <Button type='button' color='primary' typeButton='submit' fullWidth>
-              {t('button_text_sign_in')}
-            </Button>
+              <li>
+                <TextInput
+                  type='password'
+                  id='password'
+                  icon={faMailBulk}
+                  register={register}
+                  error={!!errors.password}
+                  required={{
+                    required: true,
+                    text: false,
+                  }}
+                />
+              </li>
+
+              <li>
+                <Checkbox id='remember' register={register} />
+              </li>
+
+              <li>
+                <Button
+                  type='button'
+                  color='primary'
+                  typeButton='submit'
+                  fullWidth
+                >
+                  {t('button_text_sign_in')}
+                </Button>
+              </li>
+            </ul>
           </form>
         </div>
       </div>

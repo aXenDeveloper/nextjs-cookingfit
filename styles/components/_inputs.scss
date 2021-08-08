@@ -2,8 +2,6 @@
   position: relative;
 
   &_text {
-    padding: 10px 0;
-
     &_content {
       position: relative;
       display: flex;
@@ -160,5 +158,17 @@
     text-transform: uppercase;
     color: var(--color-error);
     margin-left: 10px;
+  }
+}
+
+.form {
+  > ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li:not(:last-child) {
+      margin-bottom: 15px;
+    }
   }
 }

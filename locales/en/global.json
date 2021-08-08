@@ -10,5 +10,7 @@
   "input_required": "Required",
   "input_text_label_email": "Email Address",
   "input_text_label_password": "Password",
+  "input_text_desc_required": "This field is required!",
+  "input_checkbox_label_remember": "Remember me",
   "button_text_sign_in": "Sign In"
 }
