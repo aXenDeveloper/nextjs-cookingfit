@@ -44,6 +44,8 @@ MYSQL_PASSWORD=
 MYSQL_PORT=
 
 CSRF_KEY=
+
+NEXTAUTH_URL=http://localhost:3000
 ```
 
 You can generate **CSRF_KEY** by [GUID / UUID Generator](https://www.guidgenerator.com/online-guid-generator.aspx).
@@ -62,6 +64,7 @@ DEBUG_API=true
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | [nextjs](https://nextjs.org/)                                  | Core for Single Page Application _(SPA)_                                              |
 | [next-translate](https://github.com/vinissimus/next-translate) | Translate                                                                             |
+| [next-auth](https://next-auth.js.org/)                         | Authentication for Next.js                                                            |
 | [react](https://reactjs.org/)                                  | Library for Single Page Application _(SPA)_                                           |
 | [react-query](https://react-query.tanstack.com/)               | Fetch, cache and update data                                                          |
 | [typescript](https://www.typescriptlang.org/)                  | Types in JavaScript                                                                   |
