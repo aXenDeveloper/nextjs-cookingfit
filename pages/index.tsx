@@ -5,6 +5,8 @@ import { signIn, signOut, useSession } from 'next-auth/client';
 const HomeView = () => {
   const [session, loading] = useSession();
 
+  console.log(session?.user);
+
   return (
     <Container small>
       <Menu>

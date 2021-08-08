@@ -90,11 +90,6 @@ DEBUG_API=true
 | 3C101/2 | (Sign up) Invalid method API (400)                          |
 | 2C101/3 | (Sign up) Invalid data from body (403)                      |
 | 1C101/4 | (Sign up) Exist user (403)                                  |
-| 5C102/1 | (Sign in) Catch error function (500)                        |
-| 3C102/2 | (Sign in) Invalid method API (400)                          |
-| 2C102/3 | (Sign in) Invalid data from body (403)                      |
-| 2C102/4 | (Sign in) Invalid email or password (401)                   |
-| 2C102/5 | (Sign in) Empty CSRF key in **.env.local** file (400)       |
 
 ## 😀 Group ID
 

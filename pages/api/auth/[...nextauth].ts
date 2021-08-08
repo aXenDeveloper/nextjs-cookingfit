@@ -1,23 +1,53 @@
+import { compare } from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+import { query } from '../../../functions/database';
 
 const options = {
   providers: [
     Providers.Credentials({
       name: 'Custom Provider',
       credentials: {
-        username: { label: 'Email', type: 'text', placeholder: 'test@test.pl' },
+        email: { label: 'Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        const user = { name: 'Test', email: 'test@test.pl' };
-        return user;
+        const { email, password } = credentials;
+
+        try {
+          const existUser = (await query(
+            'SELECT id, email, password FROM core_members WHERE email=?',
+            [email],
+          )) as {
+            id: number;
+            email: string;
+            password: string;
+          }[];
+
+          if (!existUser[0]) {
+            return null;
+          }
+
+          const validPassword = await compare(password, existUser[0].password);
+          if (existUser.length === 0 || !validPassword) {
+            return null;
+          }
+
+          return {
+            email,
+          };
+        } catch {
+          return null;
+        }
       },
     }),
   ],
   session: {
     jwt: true,
+  },
+  jwt: {
+    secret: process.env.CSRF_KEY,
   },
 };
 
