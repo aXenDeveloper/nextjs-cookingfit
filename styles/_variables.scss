@@ -7,7 +7,7 @@
   --color-secondary: rgb(var(--color-secondary--code));
   --color-light--code: 103, 103, 103;
   --color-light: rgb(var(--color-light--code));
-  --color-error--code: 212, 40, 40;
+  --color-error--code: 188, 27, 27;
   --color-error: rgb(var(--color-error--code));
 
   --button-primary--code: 231, 144, 15;
@@ -42,6 +42,10 @@
   --menu-text-active: #fff;
   --menu-background-active--hover: var(--color-primary--dark);
   --menu-box-shadow-active--focus: 0 0 0 4px rgba(var(--color-primary--dark--code), 0.5);
+
+  --message-error: #a32a2a;
+  --message-error-background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    var(--message-error);
 
   --body-color-code: 44, 44, 44;
   --body-color: rgb(var(--body-color-code));

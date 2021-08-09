@@ -2,6 +2,8 @@
   position: relative;
 
   &_text {
+    padding: 10px 0;
+
     &_content {
       position: relative;
       display: flex;
@@ -92,6 +94,7 @@
   }
 
   &_checkbox {
+    padding: 5px 0;
     display: flex;
     align-items: center;
 
@@ -162,13 +165,7 @@
 }
 
 .form {
-  > ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-
-    > li:not(:last-child) {
-      margin-bottom: 15px;
-    }
+  > button[type='submit'] {
+    margin-top: 10px;
   }
 }

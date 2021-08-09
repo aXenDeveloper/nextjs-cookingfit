@@ -12,5 +12,6 @@
   "input_text_label_password": "Hasło",
   "input_text_desc_required": "To pole jest wymagane!",
   "input_checkbox_label_remember": "Zapamiętaj mnie",
-  "button_text_sign_in": "Zaloguj się"
+  "form_sign_in_submit": "Zaloguj się",
+  "form_sign_in_error": "Adres e-mail lub hasło były nieprawidłowe. Spróbuj ponownie (upewnij się, że Caps Lock jest wyłączony)."
 }

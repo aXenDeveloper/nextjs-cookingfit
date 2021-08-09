@@ -5,7 +5,7 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { faMailBulk } from '@fortawesome/free-solid-svg-icons';
+import { faAt, faLock } from '@fortawesome/free-solid-svg-icons';
 import { getCsrfToken } from 'next-auth/client';
 
 import { Container } from '../components/layouts/Container';
@@ -14,6 +14,7 @@ import { Button } from '../components/Button';
 import { FormValuesTypes } from '../_utils/types/FormValuesTypes';
 import { Checkbox } from '../components/inputs/Checkbox';
 import { emailRegex } from '../_utils/regex';
+import { Message } from '../components/Message';
 
 interface LoginProps {
   email: string;
@@ -77,48 +78,38 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
 
           <hr className="hr" />
 
-          {isError && <div>Error!</div>}
+          {isError && <Message type="error">{t('form_sign_in_error')}</Message>}
 
           <form onSubmit={handleSubmit(onSubmit)} className="form">
-            <ul>
-              <li>
-                <TextInput
-                  id="email"
-                  icon={faMailBulk}
-                  register={register}
-                  error={!!errors.email}
-                  required={{
-                    required: true,
-                    text: false
-                  }}
-                  pattern={emailRegex}
-                />
-              </li>
+            <TextInput
+              id="email"
+              icon={faAt}
+              register={register}
+              error={!!errors.email}
+              required={{
+                required: true,
+                text: false
+              }}
+              pattern={emailRegex}
+            />
 
-              <li>
-                <TextInput
-                  type="password"
-                  id="password"
-                  icon={faMailBulk}
-                  register={register}
-                  error={!!errors.password}
-                  required={{
-                    required: true,
-                    text: false
-                  }}
-                />
-              </li>
+            <TextInput
+              type="password"
+              id="password"
+              icon={faLock}
+              register={register}
+              error={!!errors.password}
+              required={{
+                required: true,
+                text: false
+              }}
+            />
 
-              <li>
-                <Checkbox id="remember" register={register} />
-              </li>
+            <Checkbox id="remember" register={register} />
 
-              <li>
-                <Button type="button" color="primary" typeButton="submit" fullWidth>
-                  {t('button_text_sign_in')}
-                </Button>
-              </li>
-            </ul>
+            <Button type="button" color="primary" typeButton="submit" fullWidth>
+              {t('form_sign_in_submit')}
+            </Button>
           </form>
         </div>
       </div>
