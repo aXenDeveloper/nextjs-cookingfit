@@ -19,15 +19,10 @@ interface Props123 {
 }
 
 const iconSVG: Props123 = {
-  breackfast: breackfastSVG,
+  breackfast: breackfastSVG
 };
 
-export const NavigationRecipesItem: FC<Props> = ({
-  title,
-  path,
-  icon,
-  active,
-}) => {
+export const NavigationRecipesItem: FC<Props> = ({ title, path, icon, active }) => {
   const { t } = useTranslation('global');
 
   return (

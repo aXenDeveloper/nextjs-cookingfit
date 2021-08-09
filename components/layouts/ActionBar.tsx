@@ -17,7 +17,7 @@ export const ActionBar = () => {
   };
 
   return (
-    <ul className='action_bar'>
+    <ul className="action_bar">
       <li>
         <button>
           <FontAwesomeIcon icon={faMoon} />
@@ -25,11 +25,11 @@ export const ActionBar = () => {
       </li>
 
       <li>
-        <Tippy content='English (USA)'>
+        <Tippy content="English (USA)">
           <div>
             <Link href={asPath} locale={'en'} scroll={false}>
               <a onClick={() => handleChangeLang('en')}>
-                <Image src={flagUSA} alt='English (USA)' unoptimized />
+                <Image src={flagUSA} alt="English (USA)" unoptimized />
               </a>
             </Link>
           </div>
@@ -37,11 +37,11 @@ export const ActionBar = () => {
       </li>
 
       <li>
-        <Tippy content='Polski (PL)'>
+        <Tippy content="Polski (PL)">
           <div>
             <Link href={asPath} locale={'pl'} scroll={false}>
               <a onClick={() => handleChangeLang('pl')}>
-                <Image src={flagPL} alt='Polski (PL)' unoptimized />
+                <Image src={flagPL} alt="Polski (PL)" unoptimized />
               </a>
             </Link>
           </div>

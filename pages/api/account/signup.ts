@@ -9,8 +9,8 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({
       error: {
         id: '3C101/2',
-        message: 'INVALID_METHOD',
-      },
+        message: 'INVALID_METHOD'
+      }
     });
   }
 
@@ -18,7 +18,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    confirmPassword: req.body.confirmPassword,
+    confirmPassword: req.body.confirmPassword
   };
   const { name, email, password, confirmPassword } = data;
 
@@ -34,24 +34,24 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       error: {
         id: '2C101/3',
         message: 'INVALID_DATA',
-        data: process.env.DEBUG_API ? data : null,
-      },
+        data: process.env.DEBUG_API ? data : null
+      }
     });
   }
 
   try {
-    const existUser = (await query(
-      'SELECT name, email FROM core_members WHERE email=? OR name=?',
-      [email, name],
-    )) as [];
+    const existUser = (await query('SELECT name, email FROM core_members WHERE email=? OR name=?', [
+      email,
+      name
+    ])) as [];
 
     if (existUser.length !== 0) {
       return res.status(403).json({
         error: {
           id: '1C101/4',
           message: 'EXIST_USER',
-          data: process.env.DEBUG_API ? existUser : null,
-        },
+          data: process.env.DEBUG_API ? existUser : null
+        }
       });
     }
 
@@ -59,7 +59,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const results = await query(
       'INSERT INTO core_members (name, email, password) VALUES (?, ?, ?)',
-      [name, email, hashedPassword],
+      [name, email, hashedPassword]
     );
 
     return res.status(200).json(results);
@@ -67,8 +67,8 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({
       error: {
         id: '5C101/1',
-        message: process.env.DEBUG_API ? e.message : null,
-      },
+        message: process.env.DEBUG_API ? e.message : null
+      }
     });
   }
 };

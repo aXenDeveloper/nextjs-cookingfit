@@ -33,15 +33,13 @@ export const Button: FC<Props> = ({
   external,
   onClick,
   typeButton,
-  fullWidth,
+  fullWidth
 }) => {
   if (type === 'button') {
     return (
       <button
         type={typeButton}
-        className={`button button_${color}${
-          fullWidth ? ' button:fullWidth' : ''
-        }`}
+        className={`button button_${color}${fullWidth ? ' button:fullWidth' : ''}`}
         onClick={onClick}
       >
         {children}
@@ -53,11 +51,9 @@ export const Button: FC<Props> = ({
     return (
       <a
         href={href}
-        className={`button button_${color}${
-          fullWidth ? ' button:fullWidth' : ''
-        }`}
-        target='_blank'
-        rel='nofollow noreferrer'
+        className={`button button_${color}${fullWidth ? ' button:fullWidth' : ''}`}
+        target="_blank"
+        rel="nofollow noreferrer"
       >
         {children}
       </a>
@@ -66,13 +62,7 @@ export const Button: FC<Props> = ({
 
   return (
     <Link href={type === 'link' && href ? href : '/'}>
-      <a
-        className={`button button_${color}${
-          fullWidth ? ' button:fullWidth' : ''
-        }`}
-      >
-        {children}
-      </a>
+      <a className={`button button_${color}${fullWidth ? ' button:fullWidth' : ''}`}>{children}</a>
     </Link>
   );
 };

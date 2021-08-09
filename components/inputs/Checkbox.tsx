@@ -17,15 +17,9 @@ export const Checkbox: FC<Props> = ({ id, register, required }) => {
   const { ref, ...rest } = register(id, { required });
 
   return (
-    <div className='input input_checkbox'>
-      <span className='input_checkbox_icon'>
-        <input
-          {...rest}
-          type='checkbox'
-          id={id}
-          name={id}
-          ref={(e) => ref(e)}
-        />
+    <div className="input input_checkbox">
+      <span className="input_checkbox_icon">
+        <input {...rest} type="checkbox" id={id} name={id} ref={e => ref(e)} />
         <span>
           <span>
             <FontAwesomeIcon icon={faCheck} />
@@ -35,9 +29,7 @@ export const Checkbox: FC<Props> = ({ id, register, required }) => {
 
       <label htmlFor={id}>
         {t(`input_checkbox_label_${id}`)}
-        {required && (
-          <span className='input:required'>{t('input_required')}</span>
-        )}
+        {required && <span className="input:required">{t('input_required')}</span>}
       </label>
     </div>
   );

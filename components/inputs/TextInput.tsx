@@ -30,13 +30,13 @@ export const TextInput: FC<Props> = ({
   disabled,
   required,
   pattern,
-  children,
+  children
 }) => {
   const { t } = useTranslation('global');
   const [value, setValue] = useState('');
   const { ref, ...rest } = register(id, {
     required: required?.required,
-    pattern,
+    pattern
   });
 
   const handleInput = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -44,8 +44,8 @@ export const TextInput: FC<Props> = ({
   };
 
   return (
-    <div className='input input_text'>
-      <div className='input_text_content'>
+    <div className="input input_text">
+      <div className="input_text_content">
         <input
           {...rest}
           id={id}
@@ -57,18 +57,18 @@ export const TextInput: FC<Props> = ({
           onChange={handleInput}
           value={value}
           disabled={disabled}
-          ref={(e) => ref(e)}
+          ref={e => ref(e)}
         />
 
         <label htmlFor={id}>
           {t(`input_text_label_${id}`)}
           {required?.required && required?.text && (
-            <span className='input:required'>{t('input_required')}</span>
+            <span className="input:required">{t('input_required')}</span>
           )}
         </label>
 
         {icon && (
-          <div className='input_text_content_icon'>
+          <div className="input_text_content_icon">
             <FontAwesomeIcon icon={icon} />
           </div>
         )}

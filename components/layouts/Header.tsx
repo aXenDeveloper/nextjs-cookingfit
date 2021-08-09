@@ -6,10 +6,10 @@ import logo from '../../assets/logo/logo-dark.svg';
 import { NavigationRecipes } from './navigation/recipes/NavigationRecipes';
 
 const Header = () => (
-  <header className='header'>
-    <Link href='/'>
+  <header className="header">
+    <Link href="/">
       <a>
-        <Image src={logo} alt='Logo CookingFit' />
+        <Image src={logo} alt="Logo CookingFit" />
       </a>
     </Link>
 

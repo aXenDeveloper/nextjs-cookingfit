@@ -10,7 +10,7 @@ const options = {
       name: 'Custom Provider',
       credentials: {
         email: { label: 'Email', type: 'text' },
-        password: { label: 'Password', type: 'password' },
+        password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials) {
         const { email, password } = credentials;
@@ -18,7 +18,7 @@ const options = {
         try {
           const existUser = (await query(
             'SELECT id, email, password FROM core_members WHERE email=?',
-            [email],
+            [email]
           )) as {
             id: number;
             email: string;
@@ -35,23 +35,22 @@ const options = {
           }
 
           return {
-            email,
+            email
           };
         } catch {
           return null;
         }
-      },
-    }),
+      }
+    })
   ],
   session: {
-    jwt: true,
+    jwt: true
   },
   jwt: {
-    secret: process.env.CSRF_KEY,
-  },
+    secret: process.env.CSRF_KEY
+  }
 };
 
-const NextAuthAPI = (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, options);
+const NextAuthAPI = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, options);
 
 export default NextAuthAPI;

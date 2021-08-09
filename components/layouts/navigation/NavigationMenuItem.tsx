@@ -11,19 +11,12 @@ interface Props {
   active: boolean;
 }
 
-export const NavigationMenuItem: FC<Props> = ({
-  title,
-  path,
-  icon,
-  active,
-}) => {
+export const NavigationMenuItem: FC<Props> = ({ title, path, icon, active }) => {
   const { t } = useTranslation('global');
 
   return (
     <li
-      className={`navigation_item navigation_menu_item${
-        active ? ' navigation_item:active' : ''
-      }`}
+      className={`navigation_item navigation_menu_item${active ? ' navigation_item:active' : ''}`}
     >
       <Link href={path}>
         <a>

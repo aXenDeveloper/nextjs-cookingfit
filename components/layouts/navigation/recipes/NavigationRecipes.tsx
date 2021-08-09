@@ -8,7 +8,7 @@ export const NavigationRecipes = () => {
   const currentPath = `/${pathname.split('/')[1].split('?')[0]}`;
 
   return (
-    <ul className='navigation navigation_recipes'>
+    <ul className="navigation navigation_recipes">
       {navigationRecipesList.map(({ id, title, icon, path }) => (
         <NavigationRecipesItem
           key={id}

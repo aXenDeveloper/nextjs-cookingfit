@@ -6,7 +6,7 @@ export const Menu: FC = ({ children }) => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Tippy content={children} interactive className='menu' visible={visible}>
+    <Tippy content={children} interactive className="menu" visible={visible}>
       <button onClick={() => setVisible(!visible)}>test</button>
     </Tippy>
   );

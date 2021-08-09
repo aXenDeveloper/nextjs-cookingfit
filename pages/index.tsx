@@ -16,7 +16,7 @@ const HomeView = () => {
         {!session && (
           <>
             Not signed in <br />
-            <Link href='/login'>Sign in</Link>
+            <Link href="/login">Sign in</Link>
           </>
         )}
         {session && (

@@ -3,7 +3,7 @@ import { NavigationMenu } from './NavigationMenu';
 import { UserBar } from './userBar/UserBar';
 
 const Navigation = () => (
-  <nav className='nav'>
+  <nav className="nav">
     <NavigationMenu />
     <UserBar />
 

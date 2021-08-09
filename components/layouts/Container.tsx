@@ -5,7 +5,5 @@ interface Props {
 }
 
 export const Container: FC<Props> = ({ children, small }) => (
-  <div className={`container${small ? ' container:small' : ''}`}>
-    {children}
-  </div>
+  <div className={`container${small ? ' container:small' : ''}`}>{children}</div>
 );
