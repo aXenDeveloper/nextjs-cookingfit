@@ -2,6 +2,7 @@ import { Container } from '../components/layouts/Container';
 import { Menu } from '../components/Menu';
 import { signOut, useSession } from 'next-auth/client';
 import Link from 'next/link';
+import { SpinnersLoading } from '../components/loading/SpinnersLoading';
 
 const HomeView = () => {
   const [session, loading] = useSession();
@@ -26,6 +27,13 @@ const HomeView = () => {
           </>
         )}
       </div>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <SpinnersLoading />
     </Container>
   );
 };

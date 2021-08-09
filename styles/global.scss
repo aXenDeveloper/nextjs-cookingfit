@@ -63,6 +63,12 @@ a {
   border: 1px solid var(--color-secondary);
 }
 
+.text {
+  &_center {
+    text-align: center;
+  }
+}
+
 .container {
   max-width: var(--container-width);
   padding: 0 20px;
@@ -92,6 +98,7 @@ a {
 @import './components/inputs';
 @import './components/manu';
 @import './components/messages';
+@import './components/loadings';
 
 @import './components/layouts/navigation/navigation';
 @import './components/layouts/navigation/userBar';

@@ -15,6 +15,7 @@ import { FormValuesTypes } from '../_utils/types/FormValuesTypes';
 import { Checkbox } from '../components/inputs/Checkbox';
 import { emailRegex } from '../_utils/regex';
 import { Message } from '../components/Message';
+import { SpinnersLoading } from '../components/loading/SpinnersLoading';
 
 interface LoginProps {
   email: string;
@@ -79,6 +80,12 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
           <hr className="hr" />
 
           {isError && <Message type="error">{t('form_sign_in_error')}</Message>}
+
+          {isLoading && (
+            <div className="padding text_center">
+              <SpinnersLoading />
+            </div>
+          )}
 
           <form onSubmit={handleSubmit(onSubmit)} className="form">
             <TextInput
