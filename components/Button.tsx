@@ -12,6 +12,7 @@ interface LinkProps {
   onClick?(): never;
   typeButton?: never;
   fullWidth?: boolean;
+  disable?: never;
 }
 
 interface ButtonProps {
@@ -21,6 +22,7 @@ interface ButtonProps {
   external?: never;
   typeButton?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
+  disable?: boolean;
 }
 
 type Props = (LinkProps | ButtonProps) & ColorButtonProps;
@@ -33,7 +35,8 @@ export const Button: FC<Props> = ({
   external,
   onClick,
   typeButton,
-  fullWidth
+  fullWidth,
+  disable
 }) => {
   if (type === 'button') {
     return (
@@ -41,6 +44,7 @@ export const Button: FC<Props> = ({
         type={typeButton}
         className={`button button_${color}${fullWidth ? ' button:fullWidth' : ''}`}
         onClick={onClick}
+        disabled={disable}
       >
         {children}
       </button>

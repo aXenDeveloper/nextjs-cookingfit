@@ -114,7 +114,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
 
             <Checkbox id="remember" register={register} />
 
-            <Button type="button" color="primary" typeButton="submit" fullWidth>
+            <Button type="button" color="primary" typeButton="submit" fullWidth disable={isLoading}>
               {t('form_sign_in_submit')}
             </Button>
           </form>
