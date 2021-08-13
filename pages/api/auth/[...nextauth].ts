@@ -1,7 +1,8 @@
 import { compare } from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
-import NextAuth from 'next-auth';
+import NextAuth, { Session, User } from 'next-auth';
 import Providers from 'next-auth/providers';
+
 import { query } from '../../../functions/database';
 
 const options = {
@@ -35,7 +36,8 @@ const options = {
           }
 
           return {
-            email
+            id: existUser[0].id,
+            email: existUser[0].email
           };
         } catch {
           return null;
@@ -48,17 +50,20 @@ const options = {
   },
   jwt: {
     secret: process.env.CSRF_KEY
-    // signingKey: process.env.CSRF_SIGNING_KEY
+    // signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
   },
-  database: {
-    type: 'mysql',
-    host: process.env.MYSQL_HOST,
-    port: parseInt(process.env.MYSQL_PORT as string),
-    username: process.env.MYSQL_USERNAME,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    synchronize: true
-  }
+  callbacks: {
+    async session(session: Session, token: User) {
+      session.accessToken = token.accessToken;
+      session.group = 3;
+
+      // console.log('session', session);
+      // console.log('token', token);
+
+      return session;
+    }
+  },
+  debug: true
 };
 
 const NextAuthAPI = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, options);

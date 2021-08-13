@@ -44,12 +44,12 @@ MYSQL_PASSWORD=
 MYSQL_PORT=
 
 CSRF_KEY=
-CSRF_SIGNING_KEY=
+JWT_SIGNING_PRIVATE_KEY=
 
 NEXTAUTH_URL=http://localhost:3000
 ```
 
-You can generate **CSRF_KEY** and **CSRF_SIGNING_KEY** by [GUID / UUID Generator](https://www.guidgenerator.com/online-guid-generator.aspx).
+You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Generator](https://www.guidgenerator.com/online-guid-generator.aspx).
 
 ## ⚒ Debugging API
 

@@ -6,7 +6,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { faAt, faLock } from '@fortawesome/free-solid-svg-icons';
-import { getCsrfToken } from 'next-auth/client';
+import { getCsrfToken, useSession } from 'next-auth/client';
 
 import { Container } from '../components/layouts/Container';
 import { TextInput } from '../components/inputs/TextInput';
@@ -27,12 +27,13 @@ interface Props {
 }
 
 const LoginPage: NextPage<Props> = ({ csrfToken }) => {
-  const { t } = useTranslation('global');
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<FormValuesTypes>();
+  const { t } = useTranslation('global');
+  const [session, loading] = useSession();
 
   const [isError, setIsError] = useState(false);
 
@@ -64,6 +65,16 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
 
     return null;
   });
+
+  if (loading) {
+    return (
+      <Container small>
+        <div className="padding text_center">
+          <SpinnersLoading />
+        </div>
+      </Container>
+    );
+  }
 
   return (
     <Container small>

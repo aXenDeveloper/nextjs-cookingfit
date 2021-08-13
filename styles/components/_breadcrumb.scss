@@ -1,0 +1,22 @@
+.breadcrumb {
+  padding: 20px;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  color: var(--color-light);
+
+  > li {
+    &:last-child > span {
+      opacity: 0.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    > svg {
+      margin: 0 6px;
+    }
+  }
+}
