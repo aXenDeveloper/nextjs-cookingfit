@@ -91,6 +91,8 @@ DEBUG_API=true
 | 3C101/2 | (Sign up) Invalid method API (400)                          |
 | 2C101/3 | (Sign up) Invalid data from body (403)                      |
 | 1C101/4 | (Sign up) Exist user (403)                                  |
+| 1C102/1 | (Sign in) Error with fetch                                  |
+| 1C102/2 | (Sign in) Error with fetch (403)                            |
 
 ## 😀 Group ID
 

@@ -28,7 +28,7 @@ export const Breadcrumb: FC = ({ children }) => {
   return (
     <ul className="breadcrumb">
       <li>
-        <Link href="/">{t('navigation_main_home')}</Link>
+        <Link href="/">{t('navigation_home')}</Link>
       </li>
       {breadcrumbs &&
         breadcrumbs.map((pageElement, index) => {
@@ -40,7 +40,7 @@ export const Breadcrumb: FC = ({ children }) => {
           return (
             <li key={`page_${pageElement}`}>
               <FontAwesomeIcon icon={faChevronRight} />
-              <Link href={`/${pageElement}`}>{t(`navigation_main_${pathNameLang}`)}</Link>
+              <Link href={`/${pageElement}`}>{t(`navigation_${pathNameLang}`)}</Link>
             </li>
           );
         })}

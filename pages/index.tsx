@@ -1,13 +1,9 @@
 import { Container } from '../components/layouts/Container';
 import { Menu } from '../components/Menu';
 import { signIn, signOut, useSession } from 'next-auth/client';
-import Link from 'next/link';
-import { Error } from '../components/Error';
 
 const HomeView = () => {
   const [session, loading] = useSession();
-
-  return <Error />;
 
   return (
     <Container small>

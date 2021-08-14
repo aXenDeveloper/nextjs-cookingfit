@@ -21,7 +21,7 @@ export const NavigationMenuItem: FC<Props> = ({ title, path, icon, active }) => 
       <Link href={path}>
         <a>
           <FontAwesomeIcon icon={icon} />
-          <span>{t(`navigation_main_${title}`)}</span>
+          <span>{t(`navigation_${title}`)}</span>
         </a>
       </Link>
     </li>

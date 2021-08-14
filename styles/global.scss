@@ -67,6 +67,10 @@ a {
   &_center {
     text-align: center;
   }
+
+  &\:bold {
+    font-weight: bold;
+  }
 }
 
 .container {
@@ -90,6 +94,30 @@ a {
     > p {
       margin: 4px 0 0 0;
     }
+  }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  > svg {
+    font-size: 64px;
+    margin-bottom: 10px;
+  }
+
+  > div {
+    font-size: 24px;
+    font-weight: 600;
+    max-width: 800px;
+  }
+
+  > p {
+    margin: 10px 0;
+    color: var(--color-light);
   }
 }
 

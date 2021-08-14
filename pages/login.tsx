@@ -16,6 +16,8 @@ import { Checkbox } from '../components/inputs/Checkbox';
 import { emailRegex } from '../_utils/regex';
 import { Message } from '../components/Message';
 import { SpinnersLoading } from '../components/loading/SpinnersLoading';
+import { Breadcrumb } from '../components/Breadcrumb';
+import { Error } from '../components/Error';
 
 interface LoginProps {
   email: string;
@@ -35,36 +37,40 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
   const { t } = useTranslation('global');
   const [session, loading] = useSession();
 
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(false);
 
   const onSubmit: SubmitHandler<FormValuesTypes> = data => {
     mutateAsync({ email: data.email, password: data.password });
   };
 
-  const { mutateAsync, isLoading } = useMutation(async ({ email, password }: LoginProps) => {
-    setIsError(false);
+  const { mutateAsync, isLoading, isError } = useMutation(
+    async ({ email, password }: LoginProps) => {
+      setError(false);
 
-    const res = await fetch('/api/auth/callback/credentials', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        csrfToken,
-        email,
-        password
-      })
-    });
+      const res = await fetch('/api/auth/callback/credentials', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          csrfToken,
+          email,
+          password
+        })
+      });
 
-    if (res.status === 200 && !res.url.includes('signin?error=')) {
-      setIsError(false);
-      window.location.href = res.url;
-    } else {
-      setIsError(true);
+      if (res.status === 200 && !res.url.includes('signin?error=')) {
+        setError(false);
+        window.location.href = res.url;
+      } else {
+        if (res.status !== 302) {
+          setError(true);
+        }
+      }
+
+      return null;
     }
-
-    return null;
-  });
+  );
 
   if (loading) {
     return (
@@ -73,6 +79,24 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
           <SpinnersLoading />
         </div>
       </Container>
+    );
+  }
+
+  if (session) {
+    return (
+      <>
+        <Breadcrumb>{t('navigation_login')}</Breadcrumb>
+        <Error code="1C102/2">{t('error_already_logged')}</Error>
+      </>
+    );
+  }
+
+  if (isError) {
+    return (
+      <>
+        <Breadcrumb>{t('navigation_login')}</Breadcrumb>
+        <Error code="1C102/1" />
+      </>
     );
   }
 
@@ -90,7 +114,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
 
           <hr className="hr" />
 
-          {isError && <Message type="error">{t('form_sign_in_error')}</Message>}
+          {error && <Message type="error">{t('form_sign_in_error')}</Message>}
 
           {isLoading && (
             <div className="padding text_center">

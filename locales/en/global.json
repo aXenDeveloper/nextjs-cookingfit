@@ -1,10 +1,12 @@
 {
   "page_title_sign_in": "Sign In",
   "page_desc_sign_in": "Don't have an account? <0>Sign Up</0>",
-  "navigation_main_home": "Home",
-  "navigation_main_recipes": "Recipes",
-  "navigation_main_products": "Products",
-  "navigation_main_calculators": "Calkulator",
+  "navigation_home": "Home",
+  "navigation_recipes": "Recipes",
+  "navigation_products": "Products",
+  "navigation_calculators": "Calkulator",
+  "navigation_login": "Login",
+  "navigation_error": "Error",
   "userbar_button_register": "Sign Up",
   "userbar_button_login": "Existing user? Sign In",
   "input_required": "Required",
@@ -13,5 +15,10 @@
   "input_text_desc_required": "This field is required!",
   "input_checkbox_label_remember": "Remember me",
   "form_sign_in_submit": "Sign In",
-  "form_sign_in_error": "The email address or password was incorrect. Please try again (make sure your caps lock is off)."
+  "form_sign_in_error": "The email address or password was incorrect. Please try again (make sure your caps lock is off).",
+  "error_title": "Oops, something went wrong (╯°□°）╯︵ ┻━┻",
+  "error_code": "Error code",
+  "error_internel": "Unexpected internal error. Please try again later",
+  "error_already_logged": "You are already logged in",
+  "error_404": "This page does not exist"
 }

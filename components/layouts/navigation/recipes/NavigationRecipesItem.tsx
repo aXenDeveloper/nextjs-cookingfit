@@ -36,10 +36,10 @@ export const NavigationRecipesItem: FC<Props> = ({ title, path, icon, active }) 
           {icon ? (
             <FontAwesomeIcon icon={icon} />
           ) : (
-            <Image src={breackfastSVG} alt={t(`navigation_main_${title}`)} />
+            <Image src={breackfastSVG} alt={t(`navigation_${title}`)} />
           )}
 
-          <span>{t(`navigation_main_${title}`)}</span>
+          <span>{t(`navigation_${title}`)}</span>
         </a>
       </Link>
     </li>

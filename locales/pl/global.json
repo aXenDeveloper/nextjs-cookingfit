@@ -1,10 +1,12 @@
 {
   "page_title_sign_in": "Zaloguj się",
   "page_desc_sign_in": "Nie masz konta? <0>Zarejestruj się</0>",
-  "navigation_main_home": "Strona główna",
-  "navigation_main_recipes": "Przepisy",
-  "navigation_main_products": "Produkty",
-  "navigation_main_calculators": "Kalkulator",
+  "navigation_home": "Strona główna",
+  "navigation_recipes": "Przepisy",
+  "navigation_products": "Produkty",
+  "navigation_calculators": "Kalkulator",
+  "navigation_login": "Logowanie",
+  "navigation_error": "Błąd",
   "userbar_button_register": "Zarejestruj się",
   "userbar_button_login": "Masz już konto? Zaloguj się",
   "input_required": "Wymagane",
@@ -13,5 +15,10 @@
   "input_text_desc_required": "To pole jest wymagane!",
   "input_checkbox_label_remember": "Zapamiętaj mnie",
   "form_sign_in_submit": "Zaloguj się",
-  "form_sign_in_error": "Adres e-mail lub hasło były nieprawidłowe. Spróbuj ponownie (upewnij się, że Caps Lock jest wyłączony)."
+  "form_sign_in_error": "Adres e-mail lub hasło były nieprawidłowe. Spróbuj ponownie (upewnij się, że Caps Lock jest wyłączony).",
+  "error_title": "Ups, coś poszło nie tak (╯°□°）╯︵ ┻━┻",
+  "error_code": "Kod błędu",
+  "error_internel": "Nieoczekiwany błąd wewnętrzny. Spróbuj ponownie później",
+  "error_already_logged": "Jesteś już zalogowany",
+  "error_404": "Ta strona nie istnieje"
 }
