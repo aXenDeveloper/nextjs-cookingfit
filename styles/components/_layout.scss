@@ -98,11 +98,7 @@
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
-    @media screen and (min-width: 768px) and (max-width: 980px) {
-      justify-content: center;
-    }
+    justify-content: center;
 
     > li {
       &:not(:last-child) {
@@ -117,6 +113,11 @@
         height: 60px;
         font-size: 36px;
         padding: 0 20px;
+        color: inherit;
+
+        &:hover {
+          text-decoration: none;
+        }
 
         @media screen and (max-width: 340px) {
           padding: 0 10px;

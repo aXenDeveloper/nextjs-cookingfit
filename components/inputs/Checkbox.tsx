@@ -12,7 +12,7 @@ interface Props {
   required?: boolean;
 }
 
-export const Checkbox: FC<Props> = ({ id, register, required }) => {
+export const Checkbox: FC<Props> = ({ id, register, required, children }) => {
   const { t } = useTranslation('global');
   const { ref, ...rest } = register(id, { required });
 
@@ -28,7 +28,7 @@ export const Checkbox: FC<Props> = ({ id, register, required }) => {
       </span>
 
       <label htmlFor={id}>
-        {t(`input_checkbox_label_${id}`)}
+        {children ? children : t(`input_checkbox_label_${id}`)}
         {required && <span className="input:required">{t('input_required')}</span>}
       </label>
     </div>

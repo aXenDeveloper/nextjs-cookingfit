@@ -51,14 +51,6 @@ NEXTAUTH_URL=http://localhost:3000
 
 You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Generator](https://www.guidgenerator.com/online-guid-generator.aspx).
 
-## ⚒ Debugging API
-
-In file **.env.local** change:
-
-```
-DEBUG_API=true
-```
-
 ## 📂 Packages
 
 | Packages                                                       | Description                                                                           |
@@ -90,9 +82,11 @@ DEBUG_API=true
 | 5C101/1 | (Sign up) Catch error function (500)                        |
 | 3C101/2 | (Sign up) Invalid method API (400)                          |
 | 2C101/3 | (Sign up) Invalid data from body (403)                      |
-| 1C101/4 | (Sign up) Exist user (403)                                  |
-| 1C102/1 | (Sign in) Error with fetch                                  |
-| 1C102/2 | (Sign in) Error with fetch (403)                            |
+| 1C101/4 | (Sign up) Exist user email (403)                            |
+| 1C101/5 | (Sign up) You are already logged in (403)                   |
+| 1C101/6 | (Sign up) Exist user name (403)                             |
+| 5C102/1 | (Sign in) Error with fetch (500)                            |
+| 1C102/2 | (Sign in) You are already logged in (403)                   |
 
 ## 😀 Group ID
 

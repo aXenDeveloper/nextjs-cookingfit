@@ -78,8 +78,7 @@ export const authenticated =
     } catch (err) {
       return res.status(500).json({
         error: {
-          id: '5C100/1',
-          message: process.env.DEBUG_API ? err : null
+          id: '5C100/1'
         }
       });
     }

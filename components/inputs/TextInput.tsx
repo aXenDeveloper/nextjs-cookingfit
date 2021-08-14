@@ -15,7 +15,7 @@ interface Props {
   disabled?: boolean;
   required?: {
     required: boolean;
-    text?: boolean;
+    showTextRequired?: boolean;
   };
   requiredText?: boolean;
   pattern?: ValidationRule<RegExp>;
@@ -62,7 +62,7 @@ export const TextInput: FC<Props> = ({
 
         <label htmlFor={id}>
           {t(`input_text_label_${id}`)}
-          {required?.required && required?.text && (
+          {required?.required && required?.showTextRequired && (
             <span className="input:required">{t('input_required')}</span>
           )}
         </label>

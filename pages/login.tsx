@@ -39,10 +39,6 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
 
   const [error, setError] = useState(false);
 
-  const onSubmit: SubmitHandler<FormValuesTypes> = data => {
-    mutateAsync({ email: data.email, password: data.password });
-  };
-
   const { mutateAsync, isLoading, isError } = useMutation(
     async ({ email, password }: LoginProps) => {
       setError(false);
@@ -72,6 +68,10 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
     }
   );
 
+  const onSubmit: SubmitHandler<FormValuesTypes> = data => {
+    mutateAsync({ email: data.email, password: data.password });
+  };
+
   if (loading) {
     return (
       <Container small>
@@ -95,7 +95,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
     return (
       <>
         <Breadcrumb>{t('navigation_login')}</Breadcrumb>
-        <Error code="1C102/1" />
+        <Error code="5C102/1" />
       </>
     );
   }
@@ -130,7 +130,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
               error={!!errors.email}
               required={{
                 required: true,
-                text: false
+                showTextRequired: false
               }}
               pattern={emailRegex}
             />
@@ -143,7 +143,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
               error={!!errors.password}
               required={{
                 required: true,
-                text: false
+                showTextRequired: false
               }}
             />
 

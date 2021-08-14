@@ -17,24 +17,15 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   const data = {
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
-    confirmPassword: req.body.confirmPassword
+    password: req.body.password
   };
-  const { name, email, password, confirmPassword } = data;
+  const { name, email, password } = data;
 
-  if (
-    !name ||
-    !email ||
-    !password ||
-    !confirmPassword ||
-    password !== confirmPassword ||
-    !emailRegex.test(email)
-  ) {
+  if (!name || !email || !password || !emailRegex.test(email)) {
     return res.status(403).json({
       error: {
         id: '2C101/3',
-        message: 'INVALID_DATA',
-        data: process.env.DEBUG_API ? data : null
+        message: 'INVALID_DATA'
       }
     });
   }
@@ -43,14 +34,25 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     const existUser = (await query('SELECT name, email FROM core_members WHERE email=? OR name=?', [
       email,
       name
-    ])) as [];
+    ])) as {
+      name: number;
+      email: string;
+    }[];
 
-    if (existUser.length !== 0) {
+    if (existUser[0].email === email) {
       return res.status(403).json({
         error: {
           id: '1C101/4',
-          message: 'EXIST_USER',
-          data: process.env.DEBUG_API ? existUser : null
+          message: 'EXIST_USER_EMAIL'
+        }
+      });
+    }
+
+    if (existUser[0].name === name) {
+      return res.status(403).json({
+        error: {
+          id: '1C101/6',
+          message: 'EXIST_USER_NAME'
         }
       });
     }
@@ -66,8 +68,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C101/1',
-        message: process.env.DEBUG_API ? e.message : null
+        id: '5C101/1'
       }
     });
   }
