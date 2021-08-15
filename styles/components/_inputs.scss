@@ -149,6 +149,17 @@
           pointer-events: none;
         }
       }
+
+      &.input\:error > input {
+        & + span {
+          border-color: var(--color-error);
+        }
+
+        &:focus + span {
+          box-shadow: var(--input-error-box-shadow--focus);
+          border-color: var(--color-error);
+        }
+      }
     }
 
     > label {

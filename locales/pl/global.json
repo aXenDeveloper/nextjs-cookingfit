@@ -17,6 +17,7 @@
   "input_text_label_email": "Adres email",
   "input_text_label_password": "Hasło",
   "input_text_label_repeatPassword": "Powtórz hasło",
+  "input_text_label_repeatPassword_error": "Hasło musi być takie same!",
   "input_text_desc_required": "To pole jest wymagane!",
   "input_checkbox_label_remember": "Zapamiętaj mnie",
   "input_checkbox_label_terms": "Zgadzam się z <0>Warunkami użytkowania</0> i <1>Polityką prywatności</1>",

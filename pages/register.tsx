@@ -28,6 +28,7 @@ export const RegisterPage = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors }
   } = useForm<FormValuesTypes>();
   const { t } = useTranslation('global');
@@ -36,6 +37,8 @@ export const RegisterPage = () => {
 
   const { mutateAsync, isLoading, isError } = useMutation(
     async ({ name, email, password }: RegisterProps) => {
+      setError('');
+
       const res = await fetch('/api/account/signup', {
         method: 'POST',
         headers: {
@@ -156,16 +159,28 @@ export const RegisterPage = () => {
             />
 
             <TextInput
+              type="password"
               id="repeatPassword"
               register={register}
               error={!!errors.repeatPassword}
               required={{
-                required: true,
+                required: false,
                 showTextRequired: false
               }}
-            />
+              validate={value => value === getValues('password')}
+            >
+              {!!errors.repeatPassword && t('input_text_label_repeatPassword_error')}
+            </TextInput>
 
-            <Checkbox id="terms" register={register}>
+            <Checkbox
+              id="terms"
+              register={register}
+              error={!!errors.terms}
+              required={{
+                required: true,
+                showTextRequired: true
+              }}
+            >
               <Trans
                 i18nKey="global:input_checkbox_label_terms"
                 components={[
