@@ -17,7 +17,7 @@ import { emailRegex } from '../_utils/regex';
 import { Message } from '../components/Message';
 import { SpinnersLoading } from '../components/loading/SpinnersLoading';
 import { Breadcrumb } from '../components/Breadcrumb';
-import { Error } from '../components/Error';
+import { MessageBox } from '../components/MessageBox';
 
 interface LoginProps {
   email: string;
@@ -86,7 +86,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
     return (
       <>
         <Breadcrumb>{t('navigation_login')}</Breadcrumb>
-        <Error code="1C102/2">{t('error_already_logged')}</Error>
+        <MessageBox code="1C102/2">{t('error_already_logged')}</MessageBox>
       </>
     );
   }
@@ -95,7 +95,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
     return (
       <>
         <Breadcrumb>{t('navigation_login')}</Breadcrumb>
-        <Error code="5C102/1" />
+        <MessageBox code="5C102/1" />
       </>
     );
   }
@@ -147,7 +147,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
               }}
             />
 
-            <Checkbox id="remember" register={register} />
+            <Checkbox id="remember" register={register} error={!!errors.remember} />
 
             <Button type="button" color="primary" typeButton="submit" fullWidth disable={isLoading}>
               {t('form_sign_in_submit')}

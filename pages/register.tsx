@@ -2,7 +2,7 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useMutation } from 'react-query';
-import { faAt, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faAt, faCheckCircle, faLock } from '@fortawesome/free-solid-svg-icons';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSession } from 'next-auth/client';
 
@@ -14,7 +14,7 @@ import { emailRegex } from '../_utils/regex';
 import { Checkbox } from '../components/inputs/Checkbox';
 import { Button } from '../components/Button';
 import { Breadcrumb } from '../components/Breadcrumb';
-import { Error } from '../components/Error';
+import { MessageBox } from '../components/MessageBox';
 import { useState } from 'react';
 import { Message } from '../components/Message';
 
@@ -35,7 +35,7 @@ export const RegisterPage = () => {
   const [session, loading] = useSession();
   const [error, setError] = useState('');
 
-  const { mutateAsync, isLoading, isError } = useMutation(
+  const { mutateAsync, isLoading, isError, isSuccess } = useMutation(
     async ({ name, email, password }: RegisterProps) => {
       setError('');
 
@@ -87,7 +87,7 @@ export const RegisterPage = () => {
     return (
       <>
         <Breadcrumb>{t('navigation_register')}</Breadcrumb>
-        <Error code="1C101/5">{t('error_already_logged')}</Error>
+        <MessageBox code="1C101/5">{t('error_already_logged')}</MessageBox>
       </>
     );
   }
@@ -96,8 +96,26 @@ export const RegisterPage = () => {
     return (
       <>
         <Breadcrumb>{t('navigation_register')}</Breadcrumb>
-        <Error code="5C101/1" />
+        <MessageBox code="5C101/1" />
       </>
+    );
+  }
+
+  if (isSuccess) {
+    return (
+      <MessageBox
+        small
+        titleShow={false}
+        icon={faCheckCircle}
+        description={t('form_sign_up_success_p')}
+        buttons={
+          <Button type="link" href="/login" color="primary">
+            {t('form_sign_in_submit')}
+          </Button>
+        }
+      >
+        {t('form_sign_up_success')}
+      </MessageBox>
     );
   }
 

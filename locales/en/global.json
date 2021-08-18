@@ -23,6 +23,8 @@
   "input_checkbox_label_terms": "I agree to the <0>Terms of Use</0> and <1>Privacy Policy</1>",
   "form_sign_in_submit": "Sign In",
   "form_sign_up_submit": "Sign Up",
+  "form_sign_up_success": "Account has been successfully created!",
+  "form_sign_up_success_p": "You can now login into your account",
   "form_sign_in_error": "The email address or password was incorrect. Please try again (make sure your caps lock is off).",
   "error_title": "Oops, something went wrong (╯°□°）╯︵ ┻━┻",
   "error_code": "Error code",

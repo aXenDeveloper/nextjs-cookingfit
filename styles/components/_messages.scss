@@ -34,4 +34,32 @@
   &_error {
     background: var(--message-error-background);
   }
+
+  &_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    > svg {
+      font-size: 64px;
+      margin-bottom: 10px;
+    }
+
+    > p {
+      margin: 10px 0;
+      color: var(--color-light);
+    }
+
+    > div {
+      font-size: 24px;
+      font-weight: 600;
+      max-width: 800px;
+
+      & + p {
+        margin: 10px 0 0 0;
+      }
+    }
+  }
 }
