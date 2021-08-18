@@ -1,20 +1,33 @@
-import { AppProps } from 'next/dist/next-server/lib/router/router';
+import { AppProps } from 'next/dist/shared/lib/router/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'next-auth/client';
-import Layout from '../components/layouts/Layout';
+import NextNprogress from 'nextjs-progressbar';
+
 import 'tippy.js/dist/tippy.css';
 import '../styles/global.scss';
+
+import Layout from '../components/layouts/Layout';
 
 const queryClient = new QueryClient();
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <Layout>
-    <Provider session={pageProps.session}>
-      <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
-      </QueryClientProvider>
-    </Provider>
-  </Layout>
+  <>
+    <NextNprogress
+      color="var(--color-primary)"
+      startPosition={0.3}
+      stopDelayMs={200}
+      height={4}
+      options={{ showSpinner: false }}
+    />
+
+    <Layout>
+      <Provider session={pageProps.session}>
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </Provider>
+    </Layout>
+  </>
 );
 
 export default MyApp;

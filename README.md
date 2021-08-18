@@ -53,21 +53,22 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 
 ## 📂 Packages
 
-| Packages                                                       | Description                                                                           |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| [nextjs](https://nextjs.org/)                                  | Core for Single Page Application _(SPA)_                                              |
-| [next-translate](https://github.com/vinissimus/next-translate) | Translate                                                                             |
-| [next-auth](https://next-auth.js.org/)                         | Authentication for Next.js                                                            |
-| [react](https://reactjs.org/)                                  | Library for Single Page Application _(SPA)_                                           |
-| [react-query](https://react-query.tanstack.com/)               | Fetch, cache and update data                                                          |
-| [typescript](https://www.typescriptlang.org/)                  | Types in JavaScript                                                                   |
-| [font-awesome](https://fontawesome.com/)                       | Icons SVG                                                                             |
-| [sass](https://www.npmjs.com/package/sass)                     | CSS Preprocessors                                                                     |
-| [eslint](https://eslint.org/)                                  | Identifying and reporting on patterns found in ECMAScript/JavaScript code             |
-| [bcrypt](https://www.npmjs.com/package/bcrypt)                 | Hash passwords                                                                        |
-| [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)     | An implementation of [JSON Web Tokens](https://datatracker.ietf.org/doc/html/rfc7519) |
-| [js-cookie](https://www.npmjs.com/package/js-cookie)           | Cookies                                                                               |
-| [tippyjs](https://atomiks.github.io/tippyjs/)                  | tooltip, popover, dropdown                                                            |
+| Packages                                                           | Description                                                                           |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [nextjs](https://nextjs.org/)                                      | Core for Single Page Application _(SPA)_                                              |
+| [next-translate](https://github.com/vinissimus/next-translate)     | Translate                                                                             |
+| [next-auth](https://next-auth.js.org/)                             | Authentication for Next.js                                                            |
+| [nextjs-progressbar](https://github.com/apal21/nextjs-progressbar) | Progressbar                                                                           |
+| [react](https://reactjs.org/)                                      | Library for Single Page Application _(SPA)_                                           |
+| [react-query](https://react-query.tanstack.com/)                   | Fetch, cache and update data                                                          |
+| [typescript](https://www.typescriptlang.org/)                      | Types in JavaScript                                                                   |
+| [font-awesome](https://fontawesome.com/)                           | Icons SVG                                                                             |
+| [sass](https://www.npmjs.com/package/sass)                         | CSS Preprocessors                                                                     |
+| [eslint](https://eslint.org/)                                      | Identifying and reporting on patterns found in ECMAScript/JavaScript code             |
+| [bcrypt](https://www.npmjs.com/package/bcrypt)                     | Hash passwords                                                                        |
+| [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)         | An implementation of [JSON Web Tokens](https://datatracker.ietf.org/doc/html/rfc7519) |
+| [js-cookie](https://www.npmjs.com/package/js-cookie)               | Cookies                                                                               |
+| [tippyjs](https://atomiks.github.io/tippyjs/)                      | tooltip, popover, dropdown                                                            |
 
 ## ‼ Errors
 
