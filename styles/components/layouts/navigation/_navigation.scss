@@ -13,6 +13,15 @@
       > a {
         padding: 10px;
 
+        > div {
+          font-size: 20px;
+          width: 26px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
         > span {
           margin-left: 10px;
         }

@@ -61,7 +61,7 @@ export const RegisterPage = () => {
       console.log('res', res);
       console.log('body', body);
 
-      return res;
+      return body;
     }
   );
 

@@ -5,22 +5,14 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 
+import { iconSVG } from '../../../../_utils/navigationRecipes/navigationRecipesIcons';
+
 interface Props {
   title: string;
   path: string;
   icon?: IconProp;
   active: boolean;
 }
-
-import breackfastSVG from '../../../../assets/icons/breakfast.svg';
-
-interface Props123 {
-  [key: string]: any;
-}
-
-const iconSVG: Props123 = {
-  breackfast: breackfastSVG
-};
 
 export const NavigationRecipesItem: FC<Props> = ({ title, path, icon, active }) => {
   const { t } = useTranslation('global');
@@ -33,11 +25,13 @@ export const NavigationRecipesItem: FC<Props> = ({ title, path, icon, active }) 
     >
       <Link href={path}>
         <a>
-          {icon ? (
-            <FontAwesomeIcon icon={icon} />
-          ) : (
-            <Image src={breackfastSVG} alt={t(`navigation_${title}`)} />
-          )}
+          <div>
+            {icon ? (
+              <FontAwesomeIcon icon={icon} />
+            ) : (
+              iconSVG[title] && <Image src={iconSVG[title]} alt={t(`navigation_${title}`)} />
+            )}
+          </div>
 
           <span>{t(`navigation_${title}`)}</span>
         </a>

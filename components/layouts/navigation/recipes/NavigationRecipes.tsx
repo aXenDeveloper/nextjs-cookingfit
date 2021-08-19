@@ -1,6 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 
-import { navigationRecipesList } from '../../../../_utils/navigationRecipesList';
+import { navigationRecipesList } from '../../../../_utils/navigationRecipes/navigationRecipesList';
 import { NavigationRecipesItem } from './NavigationRecipesItem';
 
 export const NavigationRecipes = () => {
