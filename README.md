@@ -57,7 +57,8 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
 | [nextjs](https://nextjs.org/)                                      | Core for Single Page Application _(SPA)_                                              |
 | [next-translate](https://github.com/vinissimus/next-translate)     | Translate                                                                             |
-| [next-auth](https://next-auth.js.org/)                             | Authentication for Next.js                                                            |
+| [next-auth](https://next-auth.js.org/)                             | Authentication                                                                        |
+| [next-seo](https://github.com/garmeeh/next-seo)                    | SEO                                                                                   |
 | [nextjs-progressbar](https://github.com/apal21/nextjs-progressbar) | Progressbar                                                                           |
 | [react](https://reactjs.org/)                                      | Library for Single Page Application _(SPA)_                                           |
 | [react-query](https://react-query.tanstack.com/)                   | Fetch, cache and update data                                                          |

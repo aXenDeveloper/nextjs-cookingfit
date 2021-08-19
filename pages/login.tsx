@@ -7,6 +7,7 @@ import Trans from 'next-translate/Trans';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { faAt, faLock } from '@fortawesome/free-solid-svg-icons';
 import { getCsrfToken, useSession } from 'next-auth/client';
+import { NextSeo } from 'next-seo';
 
 import { Container } from '../components/layouts/Container';
 import { TextInput } from '../components/inputs/TextInput';
@@ -36,8 +37,9 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
   } = useForm<FormValuesTypes>();
   const { t } = useTranslation('global');
   const [session, loading] = useSession();
-
   const [error, setError] = useState(false);
+
+  const SEO = () => <NextSeo title={t('title_seo_page', { title: t('navigation_login') })} />;
 
   const { mutateAsync, isLoading, isError } = useMutation(
     async ({ email, password }: LoginProps) => {
@@ -74,17 +76,22 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
 
   if (loading) {
     return (
-      <Container small>
-        <div className="padding text_center">
-          <SpinnersLoading />
-        </div>
-      </Container>
+      <>
+        <SEO />
+
+        <Container small>
+          <div className="padding text_center">
+            <SpinnersLoading />
+          </div>
+        </Container>
+      </>
     );
   }
 
   if (session) {
     return (
       <>
+        <SEO />
         <Breadcrumb>{t('navigation_login')}</Breadcrumb>
         <MessageBox code="1C102/2">{t('error_already_logged')}</MessageBox>
       </>
@@ -94,6 +101,7 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
   if (isError) {
     return (
       <>
+        <SEO />
         <Breadcrumb>{t('navigation_login')}</Breadcrumb>
         <MessageBox code="5C102/1" />
       </>
@@ -101,61 +109,71 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
   }
 
   return (
-    <Container small>
-      <div className="box padding">
-        <div className="container_title">
-          <h1 className="title title_h1">{t('page_title_sign_in')}</h1>
-          <p>
-            <Trans
-              i18nKey="global:page_desc_sign_in"
-              components={[<Link href="/register" key="page_desc_sign_in" />]}
-            />
-          </p>
+    <>
+      <SEO />
 
-          <hr className="hr" />
+      <Container small>
+        <div className="box padding">
+          <div className="container_title">
+            <h1 className="title title_h1">{t('page_title_sign_in')}</h1>
+            <p>
+              <Trans
+                i18nKey="global:page_desc_sign_in"
+                components={[<Link href="/register" key="page_desc_sign_in" />]}
+              />
+            </p>
 
-          {error && <Message type="error">{t('form_sign_in_error')}</Message>}
+            <hr className="hr" />
 
-          {isLoading && (
-            <div className="padding text_center">
-              <SpinnersLoading />
-            </div>
-          )}
+            {error && <Message type="error">{t('form_sign_in_error')}</Message>}
 
-          <form onSubmit={handleSubmit(onSubmit)} className="form">
-            <TextInput
-              id="email"
-              icon={faAt}
-              register={register}
-              error={!!errors.email}
-              required={{
-                required: true,
-                showTextRequired: false
-              }}
-              pattern={emailRegex}
-            />
+            {isLoading && (
+              <div className="padding text_center">
+                <SpinnersLoading />
+              </div>
+            )}
 
-            <TextInput
-              type="password"
-              id="password"
-              icon={faLock}
-              register={register}
-              error={!!errors.password}
-              required={{
-                required: true,
-                showTextRequired: false
-              }}
-            />
+            <form onSubmit={handleSubmit(onSubmit)} className="form">
+              <TextInput
+                id="email"
+                icon={faAt}
+                register={register}
+                error={!!errors.email}
+                required={{
+                  required: true,
+                  showTextRequired: false
+                }}
+                pattern={emailRegex}
+              />
 
-            <Checkbox id="remember" register={register} error={!!errors.remember} />
+              <TextInput
+                type="password"
+                id="password"
+                icon={faLock}
+                register={register}
+                error={!!errors.password}
+                required={{
+                  required: true,
+                  showTextRequired: false
+                }}
+              />
 
-            <Button type="button" color="primary" typeButton="submit" fullWidth disable={isLoading}>
-              {t('form_sign_in_submit')}
-            </Button>
-          </form>
+              <Checkbox id="remember" register={register} error={!!errors.remember} />
+
+              <Button
+                type="button"
+                color="primary"
+                typeButton="submit"
+                fullWidth
+                disable={isLoading}
+              >
+                {t('form_sign_in_submit')}
+              </Button>
+            </form>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 };
 

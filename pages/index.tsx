@@ -1,31 +1,39 @@
+import { NextSeo } from 'next-seo';
+import { signIn, signOut, useSession } from 'next-auth/client';
+import useTranslation from 'next-translate/useTranslation';
+
 import { Container } from '../components/layouts/Container';
 import { Menu } from '../components/Menu';
-import { signIn, signOut, useSession } from 'next-auth/client';
 
 const HomeView = () => {
+  const { t } = useTranslation('global');
   const [session, loading] = useSession();
 
   return (
-    <Container small>
-      <Menu>
-        <div>test</div>
-      </Menu>
+    <>
+      <NextSeo title={t('title_seo')} description="A short description goes here." />
 
-      <div>
-        {!session && (
-          <>
-            Not signed in <br />
-            <button onClick={() => signIn()}>signIn</button>
-          </>
-        )}
-        {session && (
-          <>
-            Signed in as {session.user?.email} <br />
-            <button onClick={() => signOut()}>Sign out</button>
-          </>
-        )}
-      </div>
-    </Container>
+      <Container small>
+        <Menu>
+          <div>test</div>
+        </Menu>
+
+        <div>
+          {!session && (
+            <>
+              Not signed in <br />
+              <button onClick={() => signIn()}>signIn</button>
+            </>
+          )}
+          {session && (
+            <>
+              Signed in as {session.user?.email} <br />
+              <button onClick={() => signOut()}>Sign out</button>
+            </>
+          )}
+        </div>
+      </Container>
+    </>
   );
 };
 

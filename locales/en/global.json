@@ -1,4 +1,6 @@
 {
+  "title_seo": "CookingFit",
+  "title_seo_page": "{{title}} - CookingFit",
   "page_title_sign_in": "Sign In",
   "page_title_sign_up": "Sign Up",
   "page_desc_sign_in": "Don't have an account? <0>Sign Up</0>",
