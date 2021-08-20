@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
-
 import { iconSVG } from '../../../../_utils/navigationRecipes/navigationRecipesIcons';
 
 interface Props {

@@ -1,8 +1,7 @@
 import { compare } from 'bcrypt';
 import { NextApiRequest, NextApiResponse } from 'next';
-import NextAuth, { Session, User } from 'next-auth';
+import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
-
 import { query } from '../../../functions/database';
 
 const options = {
@@ -51,17 +50,6 @@ const options = {
   jwt: {
     secret: process.env.CSRF_KEY
     // signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
-  },
-  callbacks: {
-    async session(session: Session, token: User) {
-      session.accessToken = token.accessToken;
-      session.group = 3;
-
-      // console.log('session', session);
-      // console.log('token', token);
-
-      return session;
-    }
   },
   debug: true
 };

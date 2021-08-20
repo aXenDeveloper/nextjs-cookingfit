@@ -1,8 +1,8 @@
 import { NavigationBottom } from './NavigationBottom';
 import { NavigationMenu } from './NavigationMenu';
-import { UserBar } from './userBar/UserBar';
+import { UserBar } from '../userBar/UserBar';
 
-const Navigation = () => (
+export const Navigation = () => (
   <nav className="nav">
     <NavigationMenu />
     <UserBar />
@@ -10,5 +10,3 @@ const Navigation = () => (
     <NavigationBottom />
   </nav>
 );
-
-export default Navigation;

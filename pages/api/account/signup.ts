@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { hash } from 'bcrypt';
-
 import { query } from '../../../functions/database';
 import { emailRegex } from '../../../_utils/regex';
 

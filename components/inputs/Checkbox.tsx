@@ -3,7 +3,6 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { Path, UseFormRegister } from 'react-hook-form';
-
 import { FormValuesTypes } from '../../_utils/types/FormValuesTypes';
 
 interface Props {

@@ -1,14 +1,17 @@
 import { FC } from 'react';
+import { Navigation } from './navigation/Navigation';
+import { Header } from './Header';
+import { AuthContext } from '../../context/useAuth';
+import { useSession } from 'next-auth/client';
 
-import Header from './navigation/Navigation';
-import Navigator from './Header';
+export const Layout: FC = ({ children }) => {
+  const [session, loading] = useSession();
 
-const Layout: FC = ({ children }) => (
-  <>
-    <Navigator />
-    <Header />
-    <main className="main">{children}</main>
-  </>
-);
-
-export default Layout;
+  return (
+    <AuthContext.Provider value={{ session, loading }}>
+      <Header />
+      <Navigation />
+      <main className="main">{children}</main>
+    </AuthContext.Provider>
+  );
+};

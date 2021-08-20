@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
-
-import { Button } from '../../../Button';
+import { Button } from '../../Button';
 
 export const UserBarLogin = () => {
   const { t } = useTranslation('global');

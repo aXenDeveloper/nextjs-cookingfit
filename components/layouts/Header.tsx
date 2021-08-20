@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { ActionBar } from './ActionBar';
-import logo from '../../assets/logo/logo-dark.svg';
 import { NavigationRecipes } from './navigation/recipes/NavigationRecipes';
+import logo from '../../assets/logo/logo-dark.svg';
 
-const Header = () => (
+export const Header = () => (
   <header className="header">
     <Link href="/">
       <a>
@@ -17,5 +16,3 @@ const Header = () => (
     <ActionBar />
   </header>
 );
-
-export default Header;

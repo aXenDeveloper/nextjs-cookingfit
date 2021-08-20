@@ -3,7 +3,6 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import useTranslation from 'next-translate/useTranslation';
-
 import { Container } from './layouts/Container';
 
 interface Props {

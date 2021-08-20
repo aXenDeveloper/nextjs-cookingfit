@@ -1,3 +1,5 @@
-const SearchPage = () => <div>SearchPage</div>;
+import { Layout } from '../components/layouts/Layout';
+
+const SearchPage = () => <Layout>SearchPage</Layout>;
 
 export default SearchPage;
