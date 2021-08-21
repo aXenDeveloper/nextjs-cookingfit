@@ -38,7 +38,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       email: string;
     }[];
 
-    if (existUser[0].email === email) {
+    if (existUser[0]?.email === email) {
       return res.status(403).json({
         error: {
           id: '1C101/4',
@@ -47,7 +47,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-    if (existUser[0].name === name) {
+    if (existUser[0]?.name === name) {
       return res.status(403).json({
         error: {
           id: '1C101/6',

@@ -28,15 +28,16 @@ export const RegisterView = () => {
     register,
     handleSubmit,
     getValues,
+    setError,
     formState: { errors }
   } = useForm<FormValuesTypes>();
   const { t } = useTranslation('global');
   const { session, loading } = useAuth();
-  const [error, setError] = useState('');
+  const [errorCode, setErrorCode] = useState('');
 
   const { mutateAsync, isLoading, isError, isSuccess } = useMutation(
     async ({ name, email, password }: RegisterProps) => {
-      setError('');
+      setErrorCode('');
 
       const res = await fetch('/api/account/signup', {
         method: 'POST',
@@ -53,8 +54,13 @@ export const RegisterView = () => {
       const body = await res.json();
 
       if (body?.error) {
-        setError(body.error.id);
-        console.log(error);
+        if (body.error.id === '1C101/4') {
+          setError('email', {});
+        } else if (body.error.id === '1C101/6') {
+          setError('name', {});
+        }
+
+        setErrorCode(body.error.id);
       }
 
       console.log('res', res);
@@ -100,7 +106,7 @@ export const RegisterView = () => {
     );
   }
 
-  if (isSuccess) {
+  if (isSuccess && !errorCode) {
     return (
       <MessageBox
         small
@@ -132,7 +138,7 @@ export const RegisterView = () => {
 
           <hr className="hr" />
 
-          {error && <Message type="error">{t(`form_sign_up_${error}`)}</Message>}
+          {errorCode && <Message type="error">{t(`form_sign_up_${errorCode}`)}</Message>}
 
           {isLoading && (
             <div className="padding text_center">
@@ -149,7 +155,9 @@ export const RegisterView = () => {
                 required: true,
                 showTextRequired: false
               }}
-            />
+            >
+              {!!errors.name && t('form_sign_up_1C101/6')}
+            </TextInput>
 
             <TextInput
               id="email"
@@ -161,7 +169,9 @@ export const RegisterView = () => {
                 showTextRequired: false
               }}
               pattern={emailRegex}
-            />
+            >
+              {!!errors.email && t('form_sign_up_1C101/4')}
+            </TextInput>
 
             <TextInput
               type="password"

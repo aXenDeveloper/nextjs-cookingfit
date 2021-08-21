@@ -18,6 +18,11 @@
     border-color: currentColor var(--spinner-loading-backgorund) var(--spinner-loading-backgorund)
       var(--spinner-loading-backgorund);
     animation: spinner-border 0.65s linear infinite;
+
+    &\:small {
+      width: 42px;
+      height: 42px;
+    }
   }
 
   &\:only {
