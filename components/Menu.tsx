@@ -1,6 +1,5 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Tippy from '@tippyjs/react';
-import { useState } from 'react';
 
 export const Menu: FC = ({ children }) => {
   const [visible, setVisible] = useState(false);
