@@ -1,3 +1,28 @@
 .menu {
-  background-color: red;
+  background-color: var(--container-background);
+  border: 1px solid var(--color-ultra-light);
+  box-shadow: var(--menu-box-shadow);
+  border-radius: var(--radius);
+  padding: 10px;
+  color: inherit;
+
+  &[data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: var(--container-background);
+  }
+
+  &[data-placement^='bottom'] > .tippy-arrow::before {
+    border-bottom-color: var(--container-background);
+  }
+
+  &[data-placement^='left'] > .tippy-arrow::before {
+    border-left-color: var(--container-background);
+  }
+
+  &[data-placement^='right'] > .tippy-arrow::before {
+    border-right-color: var(--container-background);
+  }
+
+  .tippy-content {
+    padding: 0;
+  }
 }

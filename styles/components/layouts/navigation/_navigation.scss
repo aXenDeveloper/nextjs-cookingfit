@@ -57,14 +57,14 @@
     > a {
       display: flex;
       align-items: center;
-      color: var(--menu-text);
+      color: var(--navigation-text);
       border-radius: var(--radius);
       @include font(15px, 20px);
       transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
 
       &:hover {
-        background-color: var(--menu-background--hover);
-        color: var(--menu-text--hover);
+        background-color: var(--navigation-background--hover);
+        color: var(--navigation-text--hover);
         text-decoration: none;
       }
 
@@ -73,22 +73,22 @@
       }
 
       &:focus-visible {
-        box-shadow: var(--menu-box-shadow--focus);
+        box-shadow: var(--navigation-box-shadow--focus);
       }
     }
 
     &\:active a {
-      background-color: var(--menu-background-active);
-      color: var(--menu-text-active);
+      background-color: var(--navigation-background-active);
+      color: var(--navigation-text-active);
       font-weight: bold;
 
       &:hover {
-        background-color: var(--menu-background-active--hover);
-        color: var(--menu-text-active);
+        background-color: var(--navigation-background-active--hover);
+        color: var(--navigation-text-active);
       }
 
       &:focus-visible {
-        box-shadow: var(--menu-box-shadow-active--focus);
+        box-shadow: var(--navigation-box-shadow-active--focus);
       }
     }
   }

@@ -3,12 +3,13 @@
   --color-primary: rgb(var(--color-primary--code));
   --color-primary--dark--code: 220, 138, 16;
   --color-primary--dark: rgb(var(--color-primary--dark--code));
-  --color-secondary--code: 240, 240, 240;
+  --color-secondary--code: 232, 232, 232;
   --color-secondary: rgb(var(--color-secondary--code));
   --color-light--code: 103, 103, 103;
   --color-light: rgb(var(--color-light--code));
   --color-error--code: 188, 27, 27;
   --color-error: rgb(var(--color-error--code));
+  --color-ultra-light: #ebebeb;
 
   --button-primary--code: 231, 144, 15;
   --button-primary: rgb(var(--button-primary--code));
@@ -34,18 +35,21 @@
   --input-error-box-shadow--focus: 0 0 0 4px rgba(var(--color-error--code), 0.5);
   --input-checkbox-text: #fff;
 
-  --menu-text: var(--color-light);
-  --menu-text--hover: var(--body-color);
-  --menu-background--hover: var(--body-background);
-  --menu-box-shadow--focus: 0 0 0 4px rgba(var(--color-light--code), 0.5);
-  --menu-background-active: var(--color-primary);
-  --menu-text-active: #fff;
-  --menu-background-active--hover: var(--color-primary--dark);
-  --menu-box-shadow-active--focus: 0 0 0 4px rgba(var(--color-primary--dark--code), 0.5);
+  --navigation-text: var(--color-light);
+  --navigation-text--hover: var(--body-color);
+  --navigation-background--hover: var(--body-background);
+  --navigation-box-shadow--focus: 0 0 0 4px rgba(var(--color-light--code), 0.5);
+  --navigation-background-active: var(--color-primary);
+  --navigation-text-active: #fff;
+  --navigation-background-active--hover: var(--color-primary--dark);
+  --navigation-box-shadow-active--focus: 0 0 0 4px rgba(var(--color-primary--dark--code), 0.5);
 
   --message-error: #a32a2a;
   --message-error-background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
     var(--message-error);
+
+  --menu-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+  --menu-background--hover: #f6f6f6;
 
   --body-color-code: 44, 44, 44;
   --body-color: rgb(var(--body-color-code));
