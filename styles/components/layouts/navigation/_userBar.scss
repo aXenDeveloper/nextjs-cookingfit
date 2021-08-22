@@ -11,52 +11,62 @@
   }
 
   &_menu {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    min-width: 300px;
+    background-color: transparent;
+    color: inherit;
+    border: 0;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
 
-    > li {
-      &:not(:last-child) {
-        margin-bottom: 10px;
-      }
+    &_list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      min-width: 300px;
 
-      > a,
-      > button {
-        display: flex;
-        align-items: center;
-        color: inherit;
-        border-radius: var(--radius);
-        padding: 10px;
-        width: 100%;
-        background-color: transparent;
-        border: 0;
-        transition: background-color 0.4s ease;
-        cursor: pointer;
-        font-size: inherit;
-        font-family: inherit;
-        font-weight: inherit;
-
-        &:hover {
-          background-color: var(--menu-background--hover);
-          text-decoration: none;
+      > li {
+        &:not(:last-child) {
+          margin-bottom: 10px;
         }
 
-        > div {
-          background-color: var(--color-secondary);
-          width: 36px;
-          height: 36px;
-          border-radius: 36px;
+        > a,
+        > button {
           display: flex;
           align-items: center;
-          justify-content: center;
-          font-size: 18px;
-          margin-right: 10px;
-        }
+          color: inherit;
+          border-radius: var(--radius);
+          padding: 10px;
+          width: 100%;
+          background-color: transparent;
+          border: 0;
+          transition: background-color 0.4s ease;
+          cursor: pointer;
+          font-size: inherit;
+          font-family: inherit;
+          font-weight: inherit;
 
-        > span {
-          font-size: 18px;
-          font-weight: 600;
+          &:hover {
+            background-color: var(--menu-background--hover);
+            text-decoration: none;
+          }
+
+          > div {
+            background-color: var(--color-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 10px;
+          }
+
+          > span {
+            font-size: 18px;
+            font-weight: 600;
+          }
         }
       }
     }

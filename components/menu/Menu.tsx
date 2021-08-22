@@ -2,12 +2,13 @@ import { FC } from 'react';
 import Tippy from '@tippyjs/react';
 
 interface Props {
-  title: string;
+  title: string | JSX.Element;
   visible: boolean;
   setVisible(val: boolean): void;
+  className?: string;
 }
 
-export const Menu: FC<Props> = ({ title, visible, setVisible, children }) => (
+export const Menu: FC<Props> = ({ title, visible, setVisible, className, children }) => (
   <div>
     <Tippy
       content={children}
@@ -16,7 +17,9 @@ export const Menu: FC<Props> = ({ title, visible, setVisible, children }) => (
       visible={visible}
       onClickOutside={() => setVisible(false)}
     >
-      <button onClick={() => setVisible(!visible)}>{title}</button>
+      <button onClick={() => setVisible(!visible)} className={className}>
+        {title}
+      </button>
     </Tippy>
   </div>
 );

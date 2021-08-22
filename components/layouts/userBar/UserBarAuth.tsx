@@ -1,13 +1,10 @@
-import { signOut } from 'next-auth/client';
-import { Button } from '../../Button';
+import { UserMenu } from '../../menu/UserMenu';
 
 export const UserBarAuth = () => {
   return (
     <ul className="userBar responsive_show:desktop">
       <li>
-        <Button type="button" onClick={() => signOut()} color="primary">
-          Sign out
-        </Button>
+        <UserMenu />
       </li>
     </ul>
   );

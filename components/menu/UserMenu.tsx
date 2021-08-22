@@ -1,18 +1,29 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { signOut } from 'next-auth/client';
-import { faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { Menu } from './Menu';
+import { useAuth } from '../../context/useAuth';
 
 export const UserMenu = () => {
   const { t } = useTranslation('usermenu');
+  const { session } = useAuth();
   const [visible, setVisible] = useState(false);
 
   return (
-    <Menu title="hello" visible={visible} setVisible={setVisible}>
-      <ul className="userBar_menu">
+    <Menu
+      title={
+        <>
+          <span>{session?.user?.email}</span> <FontAwesomeIcon icon={faCaretDown} />
+        </>
+      }
+      visible={visible}
+      setVisible={setVisible}
+      className="userBar_menu"
+    >
+      <ul className="userBar_menu_list">
         <li>
           <Link href="/">
             <a onClick={() => setVisible(false)}>
