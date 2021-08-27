@@ -16,7 +16,7 @@ export const UserMenu = () => {
     <Menu
       title={
         <>
-          <span>{session?.user?.email}</span> <FontAwesomeIcon icon={faCaretDown} />
+          <span>{session?.user?.name}</span> <FontAwesomeIcon icon={faCaretDown} />
         </>
       }
       visible={visible}

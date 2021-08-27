@@ -1,5 +1,5 @@
-import { Session } from 'next-auth';
 import { createContext, useContext } from 'react';
+import { Session } from 'next-auth';
 
 interface AuthContextProps {
   session: Session | null;

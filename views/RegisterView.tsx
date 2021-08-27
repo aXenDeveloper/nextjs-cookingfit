@@ -63,9 +63,6 @@ export const RegisterView = () => {
         setErrorCode(body.error.id);
       }
 
-      console.log('res', res);
-      console.log('body', body);
-
       return body;
     }
   );

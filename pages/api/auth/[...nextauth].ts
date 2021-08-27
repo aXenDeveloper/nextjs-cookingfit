@@ -1,6 +1,7 @@
 import { compare } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
-import NextAuth from 'next-auth';
+import NextAuth, { Session } from 'next-auth';
 import Providers from 'next-auth/providers';
 import { query } from '../../../functions/database';
 
@@ -25,7 +26,7 @@ const options = {
             password: string;
           }[];
 
-          if (!existUser[0]) {
+          if (existUser.length === 0) {
             return null;
           }
 
@@ -33,6 +34,17 @@ const options = {
           if (existUser.length === 0 || !validPassword) {
             return null;
           }
+
+          if (!process.env.CSRF_LOGIN_KEY) {
+            throw 'Empty process.env.CSRF_LOGIN_KEY!';
+          }
+
+          const token = sign({ id: existUser[0].id }, process.env.CSRF_LOGIN_KEY);
+
+          await query('INSERT INTO core_sessions (member_id, token) VALUES (?, ?)', [
+            existUser[0].id,
+            token
+          ]);
 
           return {
             id: existUser[0].id,
@@ -50,6 +62,30 @@ const options = {
   jwt: {
     secret: process.env.CSRF_KEY
     // signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
+  },
+  callbacks: {
+    async session(session: Session, token: { accessToken: string; sub: number }) {
+      const existUser = (await query(
+        'SELECT id, name, email, group_id FROM core_members WHERE id=?',
+        [token.sub]
+      )) as {
+        id: number;
+        name: string;
+        email: string;
+        group_id: number;
+      }[];
+
+      if (existUser.length === 0) {
+        return session;
+      }
+
+      session.accessToken = token.accessToken;
+      session.user.id = existUser[0].id;
+      session.user.name = existUser[0].name;
+      session.user.group_id = existUser[0].group_id;
+
+      return session;
+    }
   },
   debug: true
 };
