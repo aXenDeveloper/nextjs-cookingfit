@@ -35,17 +35,6 @@ const options = {
             return null;
           }
 
-          if (!process.env.CSRF_LOGIN_KEY) {
-            throw 'Empty process.env.CSRF_LOGIN_KEY!';
-          }
-
-          const token = sign({ id: existUser[0].id }, process.env.CSRF_LOGIN_KEY);
-
-          await query('INSERT INTO core_sessions (member_id, token) VALUES (?, ?)', [
-            existUser[0].id,
-            token
-          ]);
-
           return {
             id: existUser[0].id,
             email: existUser[0].email

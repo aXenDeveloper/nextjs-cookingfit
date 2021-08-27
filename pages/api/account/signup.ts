@@ -39,6 +39,8 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       email: string;
     }[];
 
+    const name_seo = name.toLowerCase().replace(/\s/g, '');
+
     if (existUser[0]?.email === email) {
       return res.status(403).json({
         error: {
@@ -48,7 +50,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-    if (existUser[0]?.name === name && existUser[0]?.name_seo === name.toLowerCase()) {
+    if (existUser[0]?.name === name && existUser[0]?.name_seo === name_seo) {
       return res.status(403).json({
         error: {
           id: '1C101/6',
@@ -61,7 +63,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const results = await query(
       'INSERT INTO core_members (name, name_seo, email, password) VALUES (?, ?, ?, ?)',
-      [name, name.toLowerCase(), email, hashedPassword]
+      [name, name_seo, email, hashedPassword]
     );
 
     return res.status(200).json(results);
