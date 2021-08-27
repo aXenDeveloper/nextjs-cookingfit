@@ -30,11 +30,12 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const existUser = (await query('SELECT name, email FROM core_members WHERE email=? OR name=?', [
-      email,
-      name
-    ])) as {
+    const existUser = (await query(
+      'SELECT name, name_seo, email FROM core_members WHERE email=? OR name=?',
+      [email, name]
+    )) as {
       name: number;
+      name_seo: string;
       email: string;
     }[];
 
@@ -47,7 +48,7 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-    if (existUser[0]?.name === name) {
+    if (existUser[0]?.name === name && existUser[0]?.name_seo === name.toLowerCase()) {
       return res.status(403).json({
         error: {
           id: '1C101/6',
@@ -59,8 +60,8 @@ const signup = async (req: NextApiRequest, res: NextApiResponse) => {
     const hashedPassword = await hash(password, 16);
 
     const results = await query(
-      'INSERT INTO core_members (name, email, password) VALUES (?, ?, ?)',
-      [name, email, hashedPassword]
+      'INSERT INTO core_members (name, name_seo, email, password) VALUES (?, ?, ?, ?)',
+      [name, name.toLowerCase(), email, hashedPassword]
     );
 
     return res.status(200).json(results);
