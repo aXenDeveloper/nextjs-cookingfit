@@ -89,6 +89,8 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 1C101/6 | (Sign up) Exist user name (403)                             |
 | 5C102/1 | (Sign in) Error with fetch (500)                            |
 | 1C102/2 | (Sign in) You are already logged in (403)                   |
+| 5C103/1 | (Recipes) Error with fetch (500)                            |
+| 3C103/2 | (Recipes) Invalid method API (400)                          |
 
 ## 😀 Group ID
 

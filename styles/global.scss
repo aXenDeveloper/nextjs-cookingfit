@@ -96,6 +96,28 @@ a {
       margin: 4px 0 0 0;
     }
   }
+
+  &_column {
+    display: flex;
+
+    @media screen and (max-width: 980px) {
+      flex-direction: column;
+    }
+
+    &\:main {
+      flex: 1;
+    }
+
+    &\:aside {
+      margin-left: 20px;
+      flex: 0 0 300px;
+
+      @media screen and (max-width: 980px) {
+        margin: 20px 0 0 0;
+        flex: 1;
+      }
+    }
+  }
 }
 
 @import './components/layout';

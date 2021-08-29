@@ -15,7 +15,7 @@ import { Message } from '../components/Message';
 import { MessageBox } from '../components/MessageBox';
 import { useAuth } from '../context/useAuth';
 import { emailRegex } from '../_utils/regex';
-import { FormValuesTypes } from '../_utils/types/FormValuesTypes';
+import { FormValuesTypes } from '../types/FormValuesTypes';
 
 interface LoginProps {
   email: string;
