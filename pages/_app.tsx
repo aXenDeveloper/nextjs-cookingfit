@@ -9,26 +9,24 @@ import '../styles/global.scss';
 
 const queryClient = new QueryClient();
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-  return (
-    <>
-      <NextNprogress
-        color="var(--color-primary)"
-        startPosition={0.3}
-        stopDelayMs={200}
-        height={4}
-        options={{ showSpinner: false }}
-      />
+const MyApp = ({ Component, pageProps }: AppProps) => (
+  <>
+    <NextNprogress
+      color="var(--color-primary)"
+      startPosition={0.3}
+      stopDelayMs={200}
+      height={4}
+      options={{ showSpinner: false }}
+    />
 
-      <DefaultSeo {...SEO} />
+    <DefaultSeo {...SEO} />
 
-      <Provider session={pageProps.session}>
-        <QueryClientProvider client={queryClient}>
-          <Component {...pageProps} />
-        </QueryClientProvider>
-      </Provider>
-    </>
-  );
-};
+    <Provider session={pageProps.session}>
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
+    </Provider>
+  </>
+);
 
 export default MyApp;

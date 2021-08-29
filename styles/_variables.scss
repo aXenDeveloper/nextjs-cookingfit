@@ -51,8 +51,6 @@
   --menu-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
   --menu-background--hover: #f6f6f6;
 
-  --body-color-code: 44, 44, 44;
-  --body-color: rgb(var(--body-color-code));
   --spinner-loading-backgorund: rgba(var(--color-light--code), 0.1);
 
   --radius--half: 4px;
@@ -68,7 +66,19 @@
   --button-light-color: #000;
 
   --body-background: #f5f5f5;
+  --body-color-code: 44, 44, 44;
+  --body-color: rgb(var(--body-color-code));
   --container-background: #fff;
+  --button-dark: var(--color-light);
 
   --font-h1: 26px;
+}
+
+[theme='dark']:root {
+  --color-light--code: 182, 182, 182;
+
+  --body-background: #121212;
+  --container-background: #1c1c1c;
+  --body-color-code: 239, 239, 239;
+  --button-dark: #ffe200;
 }

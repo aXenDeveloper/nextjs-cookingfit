@@ -7,18 +7,34 @@ import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import flagUSA from '../../assets/flags/usa.svg';
 import flagPL from '../../assets/flags/pl.svg';
+import { useDarkTheme } from '../../context/useDarkTheme';
 
 export const ActionBar = () => {
   const { asPath } = useRouter();
+  const { setDarkTheme } = useDarkTheme();
 
   const handleChangeLang = (lang: string) => {
     Cookies.set('NEXT_LOCALE', lang, { expires: 365 });
   };
 
+  const handleDarkButton = () => {
+    if (!localStorage.getItem('cookingFit_dark')) {
+      document.documentElement.setAttribute('theme', 'dark');
+      localStorage.setItem('cookingFit_dark', '1');
+      setDarkTheme(true);
+    } else {
+      document.documentElement.setAttribute('theme', '');
+      localStorage.removeItem('cookingFit_dark');
+      setDarkTheme(false);
+    }
+
+    localStorage.setItem('cookingFit_dark_manual', '1');
+  };
+
   return (
     <ul className="action_bar">
       <li>
-        <button>
+        <button onClick={handleDarkButton} className="action_bar:dark">
           <FontAwesomeIcon icon={faMoon} />
         </button>
       </li>
