@@ -48,5 +48,6 @@
   "error_code": "Kod błędu",
   "error_internel": "Nieoczekiwany błąd wewnętrzny. Spróbuj ponownie później",
   "error_already_logged": "Jesteś już zalogowany",
-  "error_404": "Ta strona nie istnieje"
+  "error_404": "Ta strona nie istnieje",
+  "tooltip_dark": "Przełącz ciemny motyw"
 }

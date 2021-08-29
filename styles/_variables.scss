@@ -28,7 +28,7 @@
   --button-important-dark--code: 197, 37, 37;
   --button-important-dark: rgb(var(--button-important-dark--code));
 
-  --input-background: #fff;
+  --input-background: var(--container-background);
   --input-light: #a8a8a8;
   --input-description-text: var(--color-light);
   --input-box-shadow--focus: 0 0 0 4px rgba(var(--color-primary--code), 0.5);
@@ -76,6 +76,7 @@
 
 [theme='dark']:root {
   --color-light--code: 182, 182, 182;
+  --color-secondary--code: 34, 34, 34;
 
   --body-background: #121212;
   --container-background: #1c1c1c;

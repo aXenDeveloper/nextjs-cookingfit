@@ -48,5 +48,6 @@
   "error_code": "Error code",
   "error_internel": "Unexpected internal error. Please try again later",
   "error_already_logged": "You are already logged in",
-  "error_404": "This page does not exist"
+  "error_404": "This page does not exist",
+  "tooltip_dark": "Toggle dark theme"
 }

@@ -8,10 +8,12 @@ import Tippy from '@tippyjs/react';
 import flagUSA from '../../assets/flags/usa.svg';
 import flagPL from '../../assets/flags/pl.svg';
 import { useDarkTheme } from '../../context/useDarkTheme';
+import useTranslation from 'next-translate/useTranslation';
 
 export const ActionBar = () => {
   const { asPath } = useRouter();
   const { setDarkTheme } = useDarkTheme();
+  const { t } = useTranslation('global');
 
   const handleChangeLang = (lang: string) => {
     Cookies.set('NEXT_LOCALE', lang, { expires: 365 });
@@ -34,9 +36,15 @@ export const ActionBar = () => {
   return (
     <ul className="action_bar">
       <li>
-        <button onClick={handleDarkButton} className="action_bar:dark">
-          <FontAwesomeIcon icon={faMoon} />
-        </button>
+        <Tippy content={t('tooltip_dark')}>
+          <button
+            onClick={handleDarkButton}
+            className="action_bar:dark"
+            aria-label={t('tooltip_dark')}
+          >
+            <FontAwesomeIcon icon={faMoon} />
+          </button>
+        </Tippy>
       </li>
 
       <li>
