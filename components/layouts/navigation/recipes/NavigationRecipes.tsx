@@ -3,8 +3,14 @@ import { navigationRecipesList } from '../../../../_utils/navigationRecipes/navi
 import { NavigationRecipesItem } from './NavigationRecipesItem';
 
 export const NavigationRecipes = () => {
-  const { pathname } = useRouter();
-  const currentPath = `/${pathname.split('/')[1].split('?')[0]}`;
+  const { asPath } = useRouter();
+
+  const currentPath = () => {
+    const pathMain = asPath.split('/')[1];
+    const pathRecipe = asPath.split('/')[2];
+
+    return `/${pathMain}/${pathRecipe}`;
+  };
 
   return (
     <ul className="navigation navigation_recipes responsive_show:desktop">
@@ -14,7 +20,7 @@ export const NavigationRecipes = () => {
           title={title}
           icon={icon}
           path={path}
-          active={currentPath === path}
+          active={currentPath() === path}
         />
       ))}
     </ul>

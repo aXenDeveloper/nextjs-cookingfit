@@ -3,8 +3,8 @@ import { navigationMenuList } from '../../../_utils/navigationMenuList';
 import { NavigationMenuItem } from './NavigationMenuItem';
 
 export const NavigationMenu = () => {
-  const { pathname } = useRouter();
-  const currentPath = `/${pathname.split('/')[1].split('?')[0]}`;
+  const { asPath } = useRouter();
+  const currentPath = `/${asPath.split('/')[1].split('?')[0]}`;
 
   return (
     <ul className="navigation navigation_menu responsive_show:desktop">
