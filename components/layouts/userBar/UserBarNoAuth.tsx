@@ -6,7 +6,7 @@ export const UserBarNoAuth = () => {
   const { t } = useTranslation('global');
 
   return (
-    <ul className="userBar responsive_show:desktop">
+    <>
       <li>
         <Link href="/login">
           <a className="link">{t('userbar_button_login')}</a>
@@ -18,6 +18,6 @@ export const UserBarNoAuth = () => {
           {t('userbar_button_register')}
         </Button>
       </li>
-    </ul>
+    </>
   );
 };

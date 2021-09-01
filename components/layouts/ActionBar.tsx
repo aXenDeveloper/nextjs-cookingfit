@@ -2,51 +2,21 @@ import { useRouter } from 'next/dist/client/router';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import useTranslation from 'next-translate/useTranslation';
 import Tippy from '@tippyjs/react';
 import flagUSA from '../../assets/flags/usa.svg';
 import flagPL from '../../assets/flags/pl.svg';
-import { useDarkTheme } from '../../context/useDarkTheme';
-import useTranslation from 'next-translate/useTranslation';
 
 export const ActionBar = () => {
   const { asPath } = useRouter();
-  const { setDarkTheme } = useDarkTheme();
   const { t } = useTranslation('global');
 
   const handleChangeLang = (lang: string) => {
     Cookies.set('NEXT_LOCALE', lang, { expires: 365 });
   };
 
-  const handleDarkButton = () => {
-    if (!localStorage.getItem('cookingFit_dark')) {
-      document.documentElement.setAttribute('theme', 'dark');
-      localStorage.setItem('cookingFit_dark', '1');
-      setDarkTheme(true);
-    } else {
-      document.documentElement.setAttribute('theme', '');
-      localStorage.removeItem('cookingFit_dark');
-      setDarkTheme(false);
-    }
-
-    localStorage.setItem('cookingFit_dark_manual', '1');
-  };
-
   return (
     <ul className="action_bar">
-      <li>
-        <Tippy content={t('tooltip_dark')}>
-          <button
-            onClick={handleDarkButton}
-            className="action_bar:dark"
-            aria-label={t('tooltip_dark')}
-          >
-            <FontAwesomeIcon icon={faMoon} />
-          </button>
-        </Tippy>
-      </li>
-
       <li>
         <Tippy content="English (USA)">
           <div>

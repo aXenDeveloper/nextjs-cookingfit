@@ -71,4 +71,24 @@
       }
     }
   }
+
+  &\:dark {
+    background-color: transparent;
+    border: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 30px;
+    color: var(--button-dark);
+  }
+
+  &\:hr {
+    background-color: var(--color-secondary);
+    width: 3px;
+    height: 30px;
+    border-radius: 10px;
+  }
 }

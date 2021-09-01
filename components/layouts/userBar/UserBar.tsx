@@ -1,4 +1,5 @@
 import { useAuth } from '../../../context/useAuth';
+import { ChangeDark } from '../../ChangeDark';
 import { SpinnersLoading } from '../../loading/SpinnersLoading';
 import { UserBarAuth } from './UserBarAuth';
 import { UserBarNoAuth } from './UserBarNoAuth';
@@ -10,9 +11,15 @@ export const UserBar = () => {
     return <SpinnersLoading small />;
   }
 
-  if (session) {
-    return <UserBarAuth />;
-  }
+  return (
+    <ul className="userBar responsive_show:desktop">
+      {session ? <UserBarAuth /> : <UserBarNoAuth />}
 
-  return <UserBarNoAuth />;
+      <li className="userBar:hr" />
+
+      <li>
+        <ChangeDark />
+      </li>
+    </ul>
+  );
 };
