@@ -1,15 +1,15 @@
-import breakfastsSVG from '../../assets/icons/breakfasts.svg';
-import dinnersSVG from '../../assets/icons/dinners.svg';
-import soupsSVG from '../../assets/icons/soups.svg';
-import dessertsSVG from '../../assets/icons/desserts.svg';
+import { BreakfastsIcon } from '../../assets/icons/BreakfastsIcon';
+import { DessertsIcon } from '../../assets/icons/DessertsIcon';
+import { DinnersIcon } from '../../assets/icons/DinnersIcon';
+import { SoupsIcon } from '../../assets/icons/SoupsIcon';
 
 interface Props {
   [key: string]: any;
 }
 
 export const iconSVG: Props = {
-  breakfasts: breakfastsSVG,
-  dinners: dinnersSVG,
-  soups: soupsSVG,
-  desserts: dessertsSVG
+  breakfasts: BreakfastsIcon,
+  dinners: DinnersIcon,
+  soups: SoupsIcon,
+  desserts: DessertsIcon
 };

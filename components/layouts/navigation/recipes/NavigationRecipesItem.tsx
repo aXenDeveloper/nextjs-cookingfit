@@ -24,13 +24,7 @@ export const NavigationRecipesItem: FC<Props> = ({ title, path, icon, active }) 
     >
       <Link href={path}>
         <a>
-          <div>
-            {icon ? (
-              <FontAwesomeIcon icon={icon} />
-            ) : (
-              iconSVG[title] && <Image src={iconSVG[title]} alt={t(`navigation_${title}`)} />
-            )}
-          </div>
+          <div>{icon ? <FontAwesomeIcon icon={icon} /> : iconSVG[title]()}</div>
 
           <span>{t(`navigation_${title}`)}</span>
         </a>
