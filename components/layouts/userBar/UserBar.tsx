@@ -1,5 +1,5 @@
 import { useAuth } from '../../../context/useAuth';
-import { ChangeDark } from '../../ChangeDark';
+import { ChangeDark } from './ChangeDark';
 import { SpinnersLoading } from '../../loading/SpinnersLoading';
 import { UserBarAuth } from './UserBarAuth';
 import { UserBarNoAuth } from './UserBarNoAuth';

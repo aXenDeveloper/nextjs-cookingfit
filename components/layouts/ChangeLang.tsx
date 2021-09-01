@@ -1,13 +1,18 @@
-import { useRouter } from 'next/dist/client/router';
-import Cookies from 'js-cookie';
-import Link from 'next/link';
-import Image from 'next/image';
-import useTranslation from 'next-translate/useTranslation';
+import { FC } from 'react';
 import Tippy from '@tippyjs/react';
+import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/dist/client/router';
+import Link from 'next/link';
+import Cookies from 'js-cookie';
+import Image from 'next/image';
 import flagUSA from '../../assets/flags/usa.svg';
 import flagPL from '../../assets/flags/pl.svg';
 
-export const ActionBar = () => {
+interface Props {
+  showMobile?: boolean;
+}
+
+export const ChangeLang: FC<Props> = ({ showMobile }) => {
   const { asPath } = useRouter();
   const { t } = useTranslation('global');
 
@@ -16,7 +21,9 @@ export const ActionBar = () => {
   };
 
   return (
-    <ul className="action_bar">
+    <ul
+      className={`changeLang${showMobile ? ' responsive_show:mobile' : ' responsive_show:desktop'}`}
+    >
       <li>
         <Tippy content="English (USA)">
           <div>

@@ -2,7 +2,7 @@ import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import useTranslation from 'next-translate/useTranslation';
-import { useDarkTheme } from '../context/useDarkTheme';
+import { useDarkTheme } from '../../../context/useDarkTheme';
 
 export const ChangeDark = () => {
   const { setDarkTheme } = useDarkTheme();
