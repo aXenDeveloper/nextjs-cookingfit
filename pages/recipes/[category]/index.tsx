@@ -1,9 +1,17 @@
+import { GetStaticPaths } from 'next';
 import { NextSeo } from 'next-seo';
 import useTranslation from 'next-translate/useTranslation';
+import { FC } from 'react';
 import { Layout } from '../../../components/layouts/Layout';
+import { navigationRecipesList } from '../../../_utils/navigationRecipes/navigationRecipesList';
 
-const RecipesCategoryPage = () => {
+interface Props {
+  category: string;
+}
+
+const RecipesCategoryPage: FC<Props> = ({ category }) => {
   const { t } = useTranslation('global');
+  console.log(category);
 
   return (
     <Layout>
@@ -11,6 +19,33 @@ const RecipesCategoryPage = () => {
       test
     </Layout>
   );
+};
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const pathsCategory = (lang: string) =>
+    navigationRecipesList.map(el => {
+      return {
+        params: { category: el.title },
+        locale: lang
+      };
+    });
+
+  return {
+    paths: [...pathsCategory('pl'), ...pathsCategory('en')],
+    fallback: false
+  };
+};
+
+interface GetStaticProps {
+  params: {
+    category: string;
+  };
+}
+
+export const getStaticProps = async ({ params }: GetStaticProps) => {
+  return {
+    props: { category: params.category }
+  };
 };
 
 export default RecipesCategoryPage;

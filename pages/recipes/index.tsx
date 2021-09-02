@@ -21,9 +21,10 @@ const RecipesPage: FC<Props> = ({ recipes }) => {
 };
 
 export async function getServerSideProps() {
-  const dev = process.env.NODE_ENV !== 'production';
   const res = await fetch(
-    `${dev ? 'http://localhost:3000' : process.env.NEXTAUTH_URL}/api/recipes`
+    `${
+      process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : process.env.NEXTAUTH_URL
+    }/api/recipes`
   );
   const data = await res.json();
 

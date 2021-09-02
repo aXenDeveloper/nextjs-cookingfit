@@ -1,5 +1,4 @@
 import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { Session } from 'next-auth';
 import Providers from 'next-auth/providers';
@@ -18,26 +17,26 @@ const options = {
 
         try {
           const existUser = (await query(
-            'SELECT id, email, password FROM core_members WHERE email=?',
+            'SELECT id, member_email, member_password FROM core_members WHERE member_email=?',
             [email]
           )) as {
             id: number;
-            email: string;
-            password: string;
+            member_email: string;
+            member_password: string;
           }[];
 
           if (existUser.length === 0) {
             return null;
           }
 
-          const validPassword = await compare(password, existUser[0].password);
+          const validPassword = await compare(password, existUser[0].member_password);
           if (existUser.length === 0 || !validPassword) {
             return null;
           }
 
           return {
             id: existUser[0].id,
-            email: existUser[0].email
+            email: existUser[0].member_email
           };
         } catch {
           return null;
@@ -55,13 +54,13 @@ const options = {
   callbacks: {
     async session(session: Session, token: { accessToken: string; sub: number }) {
       const existUser = (await query(
-        'SELECT id, name, email, group_id FROM core_members WHERE id=?',
+        'SELECT id, member_name, member_email, member_group_id FROM core_members WHERE id=?',
         [token.sub]
       )) as {
         id: number;
-        name: string;
-        email: string;
-        group_id: number;
+        member_name: string;
+        member_email: string;
+        member_group_id: number;
       }[];
 
       if (existUser.length === 0) {
@@ -70,8 +69,8 @@ const options = {
 
       session.accessToken = token.accessToken;
       session.user.id = existUser[0].id;
-      session.user.name = existUser[0].name;
-      session.user.group_id = existUser[0].group_id;
+      session.user.member_name = existUser[0].member_name;
+      session.user.member_group_id = existUser[0].member_group_id;
 
       return session;
     }

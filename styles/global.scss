@@ -99,6 +99,7 @@ a {
 
   &_column {
     display: flex;
+    flex-wrap: wrap;
 
     @media screen and (max-width: 980px) {
       flex-direction: column;
@@ -118,6 +119,20 @@ a {
       }
     }
   }
+
+  &_header {
+    flex: 0 0 100%;
+    margin-bottom: 20px;
+
+    > h1,
+    > h2 {
+      margin: 0;
+    }
+
+    > h1 {
+      font-size: 26px;
+    }
+  }
 }
 
 @import './components/layout';
@@ -127,6 +142,7 @@ a {
 @import './components/messages';
 @import './components/loadings';
 @import './components/breadcrumb';
+@import './components/recipes';
 
 @import './components/layouts/navigation/navigation';
 @import './components/layouts/navigation/userBar';
