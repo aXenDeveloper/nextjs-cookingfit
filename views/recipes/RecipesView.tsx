@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useQuery } from 'react-query';
 import { Breadcrumb } from '../../components/Breadcrumb';
@@ -5,21 +6,25 @@ import { Container } from '../../components/layouts/Container';
 import { SpinnersLoading } from '../../components/loading/SpinnersLoading';
 import { MessageBox } from '../../components/MessageBox';
 import { RecipesListItem } from '../../components/recipes/list/RecipesListItem';
-import { RecipeModel } from '../../types/database/RecipesType';
+import { RecipeModelAPI } from '../../types/database/RecipesType';
 
 export const RecipesView = () => {
   const { t } = useTranslation('global');
+  const [page, setPage] = useState(1);
 
-  const { isLoading, isError, data } = useQuery<RecipeModel[]>('recipeList', async () => {
-    const res = await fetch(
-      `${
-        process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : process.env.NEXTAUTH_URL
-      }/api/recipes`
-    );
-    const resData = await res.json();
+  const { isLoading, isError, data, isPreviousData, isFetching } = useQuery<RecipeModelAPI>(
+    ['recipeList', page],
+    async () => {
+      const res = await fetch(
+        `${
+          process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : process.env.NEXTAUTH_URL
+        }/api/recipes?page=${page}`
+      );
 
-    return resData.results;
-  });
+      return await res.json();
+    },
+    { keepPreviousData: true }
+  );
 
   if (isError) {
     return (
@@ -45,7 +50,28 @@ export const RecipesView = () => {
             </div>
           ) : (
             <ul className="box padding recipes_list">
-              {data && data.map(el => <RecipesListItem key={el.id} recipe={el} />)}
+              {data && (
+                <>
+                  <span>Current Page: {page}</span>
+                  <button
+                    onClick={() => setPage(old => Math.max(old - 1, 0))}
+                    disabled={isPreviousData || page <= 1}
+                  >
+                    Previous Page
+                  </button>{' '}
+                  <button
+                    onClick={() => {
+                      setPage(old => old + 1);
+                    }}
+                    disabled={!data.next}
+                  >
+                    Next Page
+                  </button>
+                  {data.results.map(el => (
+                    <RecipesListItem key={el.id} recipe={el} />
+                  ))}
+                </>
+              )}
             </ul>
           )}
         </main>

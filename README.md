@@ -111,18 +111,10 @@ api/account/signup
 
 #### Body
 
-- name: _varchar(101)_,
-- email: _varchar(255)_,
-- password: _varchar(255)_,
-- confirmPassword: _varchar(255)_
-
-#### Response
-
-```
-{
-
-}
-```
+- name: _string_,
+- email: _string_,
+- password: _string_,
+- confirmPassword: _string_
 
 ### (POST) Sign In
 
@@ -132,14 +124,40 @@ api/account/signin
 
 #### Body
 
-- email: _varchar(255)_,
-- password: _varchar(255)_
+- email: _string_,
+- password: _string_
 
 #### Response
 
 ```
 {
-  email: string,
-  csrf: string
+  email: string;
+  csrf: string;
+}
+```
+
+### (GET) Recipes
+
+```
+api/recipes
+```
+
+#### Query
+
+- page: _number_,
+- limit?: _number_
+
+#### Response
+
+```
+{
+  id: number;
+  title: string;
+  member_name: string;
+  member_name_seo: string;
+  publish_date: number;
+  difficulty: 1 | 2 | 3;
+  category_name: string;
+  image?: string;
 }
 ```

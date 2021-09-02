@@ -14,8 +14,10 @@ export const query = async (q: string, values: (string | number)[] | string | nu
   try {
     const results = await db.query(q, values);
     await db.end();
+
     return results;
   } catch (e) {
+    // @ts-ignore
     throw Error(e.message);
   }
 };

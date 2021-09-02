@@ -8,3 +8,8 @@ export interface RecipeModel {
   category_name: string;
   image?: string;
 }
+
+export interface RecipeModelAPI {
+  next: boolean;
+  results: RecipeModel[];
+}
