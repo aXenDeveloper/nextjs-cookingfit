@@ -7,6 +7,7 @@ type ColorButtonProps = {
 
 type LinkProps = {
   type: 'link';
+  ariaLabel: never;
   href: string;
   external?: boolean;
   onClick?(): never;
@@ -17,10 +18,11 @@ type LinkProps = {
 
 type ButtonProps = {
   type: 'button';
+  ariaLabel: string;
   onClick?(): void;
   href?: never;
   external?: never;
-  typeButton?: 'button' | 'submit' | 'reset';
+  typeButton?: 'button' | 'submit';
   fullWidth?: boolean;
   disable?: boolean;
 };
@@ -30,6 +32,7 @@ type Props = (LinkProps | ButtonProps) & ColorButtonProps;
 export const Button: FC<Props> = ({
   type,
   children,
+  ariaLabel,
   href,
   color,
   external,
@@ -45,6 +48,7 @@ export const Button: FC<Props> = ({
         className={`button button_${color}${fullWidth ? ' button:fullWidth' : ''}`}
         onClick={onClick}
         disabled={disable}
+        aria-label={ariaLabel}
       >
         {children}
       </button>

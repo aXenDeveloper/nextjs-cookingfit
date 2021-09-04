@@ -14,7 +14,12 @@ export const UserBarNoAuth = () => {
       </li>
 
       <li>
-        <Button type="link" href="/register" color="primary">
+        <Button
+          type="link"
+          href="/register"
+          color="primary"
+          ariaLabel={t('userbar_button_register')}
+        >
           {t('userbar_button_register')}
         </Button>
       </li>

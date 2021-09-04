@@ -158,6 +158,33 @@ api/recipes
 {
   id: number;
   title: string;
+  url: string;
+  member_name: string;
+  member_name_seo: string;
+  publish_date: number;
+  difficulty: 1 | 2 | 3;
+  category_name: string;
+  image?: string;
+}
+```
+
+### (GET) Recipe
+
+```
+api/recipe
+```
+
+#### Query
+
+- url: _string_,
+- category: _string_
+
+#### Response
+
+```
+{
+  id: number;
+  title: string;
   member_name: string;
   member_name_seo: string;
   publish_date: number;

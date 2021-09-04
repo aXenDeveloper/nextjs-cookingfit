@@ -146,7 +146,14 @@ export const LoginView: FC<Props> = ({ csrfToken }) => {
 
             <Checkbox id="remember" register={register} error={!!errors.remember} />
 
-            <Button type="button" color="primary" typeButton="submit" fullWidth disable={isLoading}>
+            <Button
+              type="button"
+              color="primary"
+              typeButton="submit"
+              fullWidth
+              disable={isLoading}
+              ariaLabel={t('form_sign_in_submit')}
+            >
               {t('form_sign_in_submit')}
             </Button>
           </form>

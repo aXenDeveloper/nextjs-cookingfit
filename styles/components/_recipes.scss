@@ -77,4 +77,48 @@
       }
     }
   }
+
+  &_item {
+    &_header {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-bottom: 100px;
+
+      &\:image {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+
+      &_content {
+        position: absolute;
+        bottom: -100px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        margin: 0 40px;
+
+        h1 {
+          margin: 0;
+          font-size: 26px;
+          font-weight: 600;
+        }
+
+        &_top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        &_bottom {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
 }

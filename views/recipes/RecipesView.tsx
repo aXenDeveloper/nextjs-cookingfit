@@ -8,9 +8,11 @@ import { MessageBox } from '../../components/MessageBox';
 import { RecipesListItem } from '../../components/recipes/list/RecipesListItem';
 import { RecipesModelAPI } from '../../types/database/RecipesType';
 import { apiURL } from '../../_utils/api';
+import { useRouter } from 'next/dist/client/router';
 
 export const RecipesView = () => {
   const { t } = useTranslation('global');
+  const { push } = useRouter();
   const [page, setPage] = useState(1);
 
   const { isLoading, isError, data, isPreviousData, isFetching } = useQuery<RecipesModelAPI>(
@@ -51,14 +53,33 @@ export const RecipesView = () => {
                 <>
                   <span>Current Page: {page}</span>
                   <button
-                    onClick={() => setPage(old => Math.max(old - 1, 0))}
+                    onClick={() => {
+                      setPage(Math.max(page - 1, 0));
+
+                      push(
+                        {
+                          pathname: '/recipes',
+                          query: { page: page - 1 }
+                        },
+                        undefined,
+                        { shallow: true }
+                      );
+                    }}
                     disabled={isPreviousData || page <= 1}
                   >
                     Previous Page
                   </button>{' '}
                   <button
                     onClick={() => {
-                      setPage(old => old + 1);
+                      setPage(page + 1);
+                      push(
+                        {
+                          pathname: '/recipes',
+                          query: { page: page + 1 }
+                        },
+                        undefined,
+                        { shallow: true }
+                      );
                     }}
                     disabled={!data.next}
                   >

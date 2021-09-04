@@ -25,7 +25,7 @@ export const Layout: FC = ({ children }) => {
       <AuthContext.Provider value={{ session, loading }}>
         <Header />
         <Navigation />
-        <main className="main">{children}</main>
+        <div className="main">{children}</div>
       </AuthContext.Provider>
     </DarkThemeContext.Provider>
   );

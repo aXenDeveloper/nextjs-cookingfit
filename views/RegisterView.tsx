@@ -111,7 +111,7 @@ export const RegisterView = () => {
         icon={faCheckCircle}
         description={t('form_sign_up_success_p')}
         buttons={
-          <Button type="link" href="/login" color="primary">
+          <Button type="link" href="/login" color="primary" ariaLabel={t('form_sign_in_submit')}>
             {t('form_sign_in_submit')}
           </Button>
         }
@@ -214,7 +214,14 @@ export const RegisterView = () => {
               />
             </Checkbox>
 
-            <Button type="button" color="primary" typeButton="submit" fullWidth disable={isLoading}>
+            <Button
+              type="button"
+              color="primary"
+              typeButton="submit"
+              fullWidth
+              disable={isLoading}
+              ariaLabel={t('form_sign_up_submit')}
+            >
               {t('form_sign_up_submit')}
             </Button>
           </form>
