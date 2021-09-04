@@ -80,7 +80,9 @@ export const Pagination: FC<Props> = ({ page, setPage, isPreviousData, data }) =
         <li
           key={el}
           className={`pagination_item${
-            query.page && +query.page === el ? ' pagination_item:active' : ''
+            (query.page && +query.page === el) || (el === 1 && !query.page)
+              ? ' pagination_item:active'
+              : ''
           }`}
         >
           <button onClick={() => handleButton(el)}>{el}</button>
