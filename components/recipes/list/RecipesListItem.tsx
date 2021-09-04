@@ -5,9 +5,9 @@ import { RecipeModel } from '../../../types/database/RecipesType';
 import useTranslation from 'next-translate/useTranslation';
 import { Button } from '../../Button';
 
-interface Props {
+type Props = {
   recipe: RecipeModel;
-}
+};
 
 export const RecipesListItem: FC<Props> = ({ recipe }) => {
   const { t } = useTranslation('global');

@@ -2,9 +2,9 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FC } from 'react';
 
-interface Props {
+type Props = {
   type: 'error' | 'warning' | 'success' | 'information';
-}
+};
 
 export const Message: FC<Props> = ({ children, type }) => {
   return (

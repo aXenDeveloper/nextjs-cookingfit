@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Path, UseFormRegister, Validate, ValidationRule } from 'react-hook-form';
 import { FormValuesTypes } from '../../types/FormValuesTypes';
 
-interface Props {
+type Props = {
   id: Path<FormValuesTypes>;
   register: UseFormRegister<FormValuesTypes>;
   error: boolean;
@@ -18,7 +18,7 @@ interface Props {
   };
   pattern?: ValidationRule<RegExp>;
   validate?: Validate<string | boolean> | Record<string, Validate<string | boolean>>;
-}
+};
 
 export const TextInput: FC<Props> = ({
   id,

@@ -4,12 +4,12 @@ import useTranslation from 'next-translate/useTranslation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-interface Props {
+type Props = {
   title: string;
   path: string;
   icon: IconProp;
   active: boolean;
-}
+};
 
 export const NavigationMenuItem: FC<Props> = ({ title, path, icon, active }) => {
   const { t } = useTranslation('global');

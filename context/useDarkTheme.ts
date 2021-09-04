@@ -1,9 +1,9 @@
 import { createContext, useContext } from 'react';
 
-interface DarkThemeProps {
+type DarkThemeProps = {
   getDarkTheme: boolean;
   setDarkTheme: (val: boolean) => void;
-}
+};
 
 const setDarkTheme = () => {};
 export const DarkThemeContext = createContext<DarkThemeProps>({

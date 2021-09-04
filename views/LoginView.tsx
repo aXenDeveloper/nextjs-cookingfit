@@ -17,14 +17,14 @@ import { useAuth } from '../context/useAuth';
 import { emailRegex } from '../_utils/regex';
 import { FormValuesTypes } from '../types/FormValuesTypes';
 
-interface LoginProps {
+type LoginProps = {
   email: string;
   password: string;
-}
+};
 
-interface Props {
+type Props = {
   csrfToken: string;
-}
+};
 
 export const LoginView: FC<Props> = ({ csrfToken }) => {
   const {

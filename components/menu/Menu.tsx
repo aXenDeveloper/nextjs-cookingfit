@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import Tippy from '@tippyjs/react';
 
-interface Props {
+type Props = {
   title: string | JSX.Element;
   visible: boolean;
   setVisible(val: boolean): void;
   className?: string;
-}
+};
 
 export const Menu: FC<Props> = ({ title, visible, setVisible, className, children }) => (
   <div>

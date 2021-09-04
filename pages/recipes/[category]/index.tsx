@@ -5,9 +5,9 @@ import { FC } from 'react';
 import { Layout } from '../../../components/layouts/Layout';
 import { navigationRecipesList } from '../../../_utils/navigationRecipes/navigationRecipesList';
 
-interface Props {
+type Props = {
   category: string;
-}
+};
 
 const RecipesCategoryPage: FC<Props> = ({ category }) => {
   const { t } = useTranslation('global');
@@ -36,11 +36,11 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-interface GetStaticProps {
+type GetStaticProps = {
   params: {
     category: string;
   };
-}
+};
 
 export const getStaticProps = async ({ params }: GetStaticProps) => {
   return {

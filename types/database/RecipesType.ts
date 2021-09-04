@@ -1,4 +1,4 @@
-export interface RecipeModel {
+export type RecipeModel = {
   id: number;
   title: string;
   member_name: string;
@@ -7,9 +7,9 @@ export interface RecipeModel {
   difficulty: 1 | 2 | 3;
   category_name: string;
   image?: string;
-}
+};
 
-export interface RecipeModelAPI {
+export type RecipeModelAPI = {
   next: boolean;
   results: RecipeModel[];
-}
+};

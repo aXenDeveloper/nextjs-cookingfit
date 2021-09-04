@@ -5,7 +5,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import useTranslation from 'next-translate/useTranslation';
 import { Container } from './layouts/Container';
 
-interface Props {
+type Props = {
   code?: string;
   small?: boolean;
   icon?: IconProp;
@@ -13,7 +13,7 @@ interface Props {
   titleShow?: boolean;
   description?: string;
   buttons?: JSX.Element;
-}
+};
 
 export const MessageBox: FC<Props> = ({
   code,

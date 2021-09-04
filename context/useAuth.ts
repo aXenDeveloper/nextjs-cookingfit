@@ -1,10 +1,10 @@
 import { createContext, useContext } from 'react';
 import { Session } from 'next-auth';
 
-interface AuthContextProps {
+type AuthContextProps = {
   session: Session | null;
   loading: boolean;
-}
+};
 
 export const AuthContext = createContext<AuthContextProps>({
   session: null,

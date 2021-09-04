@@ -144,8 +144,8 @@ api/recipes
 
 #### Query
 
-- page: _number_,
-- limit?: _number_
+- page?: _number_ | 0,
+- limit?: _number_ | 1
 
 #### Response
 

@@ -17,11 +17,11 @@ import { useAuth } from '../context/useAuth';
 import { emailRegex } from '../_utils/regex';
 import { FormValuesTypes } from '../types/FormValuesTypes';
 
-interface RegisterProps {
+type RegisterProps = {
   name: string;
   email: string;
   password: string;
-}
+};
 
 export const RegisterView = () => {
   const {

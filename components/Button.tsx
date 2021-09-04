@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
-interface ColorButtonProps {
+type ColorButtonProps = {
   color: 'primary' | 'secondary' | 'light' | 'important';
-}
+};
 
-interface LinkProps {
+type LinkProps = {
   type: 'link';
   href: string;
   external?: boolean;
@@ -13,9 +13,9 @@ interface LinkProps {
   typeButton?: never;
   fullWidth?: boolean;
   disable?: never;
-}
+};
 
-interface ButtonProps {
+type ButtonProps = {
   type: 'button';
   onClick?(): void;
   href?: never;
@@ -23,7 +23,7 @@ interface ButtonProps {
   typeButton?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
   disable?: boolean;
-}
+};
 
 type Props = (LinkProps | ButtonProps) & ColorButtonProps;
 

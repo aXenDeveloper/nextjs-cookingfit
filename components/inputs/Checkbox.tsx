@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { Path, UseFormRegister } from 'react-hook-form';
 import { FormValuesTypes } from '../../types/FormValuesTypes';
 
-interface Props {
+type Props = {
   id: Path<FormValuesTypes>;
   error: boolean;
   register: UseFormRegister<FormValuesTypes>;
@@ -13,7 +13,7 @@ interface Props {
     required: boolean;
     showTextRequired?: boolean;
   };
-}
+};
 
 export const Checkbox: FC<Props> = ({ id, error, register, required, children }) => {
   const { t } = useTranslation('global');

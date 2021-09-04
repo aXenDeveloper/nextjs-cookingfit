@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-interface Props {
+type Props = {
   small?: boolean;
   column?: boolean;
-}
+};
 
 export const Container: FC<Props> = ({ children, small, column }) => (
   <div
