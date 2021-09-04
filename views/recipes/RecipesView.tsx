@@ -6,20 +6,17 @@ import { Container } from '../../components/layouts/Container';
 import { SpinnersLoading } from '../../components/loading/SpinnersLoading';
 import { MessageBox } from '../../components/MessageBox';
 import { RecipesListItem } from '../../components/recipes/list/RecipesListItem';
-import { RecipeModelAPI } from '../../types/database/RecipesType';
+import { RecipesModelAPI } from '../../types/database/RecipesType';
+import { apiURL } from '../../_utils/api';
 
 export const RecipesView = () => {
   const { t } = useTranslation('global');
   const [page, setPage] = useState(1);
 
-  const { isLoading, isError, data, isPreviousData, isFetching } = useQuery<RecipeModelAPI>(
+  const { isLoading, isError, data, isPreviousData, isFetching } = useQuery<RecipesModelAPI>(
     ['recipeList', page],
     async () => {
-      const res = await fetch(
-        `${
-          process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : process.env.NEXTAUTH_URL
-        }/api/recipes?page=${page}`
-      );
+      const res = await fetch(`${apiURL}/recipes?page=${page}`);
 
       return await res.json();
     },

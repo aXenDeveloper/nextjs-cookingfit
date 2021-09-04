@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { query } from '../../../functions/database';
-import { RecipeModel } from '../../../types/database/RecipesType';
+import { RecipesModel } from '../../../types/database/RecipesType';
 
 const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
@@ -12,11 +12,11 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  try {
-    const page = +req.query.page | 0;
-    const limit = +req.query.limit || 1;
-    const offset = (page - 1) * limit;
+  const page = +req.query.page || 0;
+  const limit = +req.query.limit || 1;
+  const offset = (page - 1) * limit;
 
+  try {
     const countRecords = (await query(`SELECT COUNT(*) FROM recipes_recipes`)) as [{}];
     const lengthRecords = Object.values(countRecords[0])[0] as number;
 
@@ -25,6 +25,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
 
       recipes_recipes.id,
       recipes_recipes.title,
+      recipes_recipes.url,
       recipes_recipes.publish_date,
       recipes_recipes.difficulty,
       recipes_categories.category_name,
@@ -36,7 +37,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
       INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
       ORDER BY recipes_recipes.id ASC
       LIMIT ${limit} OFFSET ${offset}`
-    )) as RecipeModel[];
+    )) as RecipesModel[];
 
     return res.status(200).json({ next: page * limit < lengthRecords, results });
   } catch (e) {

@@ -20,13 +20,13 @@ const LoginPage: NextPage<Props> = ({ csrfToken }) => {
   );
 };
 
-export async function getServerSideProps(context: GetServerSideProps<Props>) {
+export const getServerSideProps = async (context: GetServerSideProps<Props>) => {
   return {
     props: {
       // @ts-ignore
       csrfToken: await getCsrfToken(context)
     }
   };
-}
+};
 
 export default LoginPage;

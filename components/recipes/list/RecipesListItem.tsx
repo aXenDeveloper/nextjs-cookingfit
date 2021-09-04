@@ -1,20 +1,26 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { RecipeModel } from '../../../types/database/RecipesType';
+import { RecipesModel } from '../../../types/database/RecipesType';
 import useTranslation from 'next-translate/useTranslation';
 import { Button } from '../../Button';
 
 type Props = {
-  recipe: RecipeModel;
+  recipe: RecipesModel;
 };
 
 export const RecipesListItem: FC<Props> = ({ recipe }) => {
   const { t } = useTranslation('global');
 
+  const urls = {
+    category: `/recipes/${recipe.category_name}`,
+    recipe: `/recipes/${recipe.category_name}/${recipe.url}`,
+    author: `/profile/${recipe.member_name_seo}`
+  };
+
   return (
     <li className="recipes_list_item">
-      <Link href="#">
+      <Link href={urls.recipe}>
         <a className="recipes_list_item_image">
           {recipe.image && <Image src={recipe.image} alt={recipe.title} layout="fill" />}
         </a>
@@ -22,7 +28,7 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
 
       <div className="recipes_list_item_main">
         <div className="recipes_list_item_main_header">
-          <Link href={`/recipes/${recipe.category_name}`}>
+          <Link href={urls.category}>
             <a>{t(`navigation_${recipe.category_name}`)}</a>
           </Link>
 
@@ -34,7 +40,7 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
 
           <span>
             {t('by')}{' '}
-            <Link href={`/profile/${recipe.member_name_seo}`}>
+            <Link href={urls.author}>
               <a>{recipe.member_name}</a>
             </Link>
           </span>
@@ -49,7 +55,7 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
           <ul className="recipes_list_item_main_footer_right">
             <li>{recipe.difficulty}</li>
             <li>
-              <Button href="#" type="link" color="light">
+              <Button href={urls.recipe} type="link" color="light">
                 {t('read_more')}
               </Button>
             </li>

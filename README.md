@@ -70,6 +70,7 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)         | An implementation of [JSON Web Tokens](https://datatracker.ietf.org/doc/html/rfc7519) |
 | [js-cookie](https://www.npmjs.com/package/js-cookie)               | Cookies                                                                               |
 | [tippyjs](https://atomiks.github.io/tippyjs/)                      | tooltip, popover, dropdown                                                            |
+| [slugify](https://www.npmjs.com/package/slugify)                   | Convert strings                                                                       |
 
 ## ‼ Errors
 
@@ -91,6 +92,10 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 1C102/2 | (Sign in) You are already logged in (403)                   |
 | 5C103/1 | (Recipes) Error with fetch (500)                            |
 | 3C103/2 | (Recipes) Invalid method API (400)                          |
+| 5C104/1 | (Recipe) Error with fetch (500)                             |
+| 3C104/2 | (Recipe) Invalid method API (400)                           |
+| 3C104/3 | (Recipe) Invalid query params (400)                         |
+| 1C104/4 | (Recipe) Not found (404)                                    |
 
 ## 😀 Group ID
 
