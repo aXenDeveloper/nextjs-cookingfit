@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { RecipesModel } from '../../../types/database/RecipesType';
 import useTranslation from 'next-translate/useTranslation';
 import { Button } from '../../Button';
+import { DifficultyBadges } from '../../badges/DifficultyBadges';
 
 type Props = {
   recipe: RecipesModel;
@@ -48,7 +49,9 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
 
         <div className="recipes_list_item_main_footer">
           <ul className="recipes_list_item_main_footer_left">
-            <li>{recipe.difficulty}</li>
+            <li>
+              <DifficultyBadges difficulty={recipe.difficulty} />
+            </li>
             <li>{recipe.publish_date}</li>
           </ul>
 

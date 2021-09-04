@@ -1,0 +1,24 @@
+.badges {
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 2px 10px;
+  font-weight: 600;
+
+  &_positive {
+    background-color: var(--badges-positive);
+    border-color: var(--badges-positive-text);
+    color: var(--badges-positive-text);
+  }
+
+  &_negative {
+    background-color: var(--badges-negative);
+    border-color: var(--badges-negative-text);
+    color: var(--badges-negative-text);
+  }
+
+  &_intermediary {
+    background-color: var(--badges-intermediary);
+    border-color: var(--badges-intermediary-text);
+    color: var(--badges-intermediary-text);
+  }
+}

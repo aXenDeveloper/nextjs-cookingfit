@@ -6,6 +6,7 @@ import { Breadcrumb } from '../../components/Breadcrumb';
 import { Container } from '../../components/layouts/Container';
 import { RecipeModel } from '../../types/database/RecipesType';
 import { ActionRecipeMenu } from '../../components/menu/ActionRecipeMenu';
+import { DifficultyBadges } from '../../components/badges/DifficultyBadges';
 
 type Props = {
   recipe: RecipeModel;
@@ -56,7 +57,9 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
               <hr className="hr" />
 
               <div className="recipes_item_header_content_bottom">
-                <div>test</div>
+                <div>
+                  <DifficultyBadges difficulty={recipe.difficulty} />
+                </div>
 
                 <div>test</div>
               </div>

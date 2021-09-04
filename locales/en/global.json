@@ -63,5 +63,8 @@
   "by": "By",
   "read_more": "Read More",
   "pagination_previous": "Prev",
-  "pagination_next": "Next"
+  "pagination_next": "Next",
+  "hard": "Hard",
+  "medium": "Medium",
+  "easy": "Easy"
 }

@@ -63,5 +63,8 @@
   "by": "Przez",
   "read_more": "Czytaj więcej",
   "pagination_previous": "Poprzedni",
-  "pagination_next": "Następny"
+  "pagination_next": "Następny",
+  "hard": "Trudny",
+  "medium": "Średni",
+  "easy": "Łatwy"
 }

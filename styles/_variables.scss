@@ -71,6 +71,16 @@
   --button-dark: var(--color-light);
 
   --font-h1: 26px;
+
+  --badges-positive--code: 29, 207, 92;
+  --badges-positive: rgba(var(--badges-positive--code), 0.2);
+  --badges-positive-text: rgb(var(--badges-positive--code));
+  --badges-negative--code: 207, 29, 29;
+  --badges-negative: rgba(var(--badges-negative--code), 0.2);
+  --badges-negative-text: rgb(var(--badges-negative--code));
+  --badges-intermediary--code: 207, 125, 29;
+  --badges-intermediary: rgba(var(--badges-intermediary--code), 0.2);
+  --badges-intermediary-text: rgb(var(--badges-intermediary--code));
 }
 
 [theme='dark']:root {

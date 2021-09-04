@@ -14,8 +14,6 @@ export const Pagination: FC<Props> = ({ page, setPage, isPreviousData, data }) =
   const { push, pathname, query } = useRouter();
   const { t } = useTranslation('global');
 
-  console.log(query);
-
   const handlePreviousButton = () => {
     setPage(Math.max(page - 1, 0));
 
