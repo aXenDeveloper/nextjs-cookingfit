@@ -1,0 +1,56 @@
+.pagination {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+
+  &_item {
+    display: block;
+
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+
+    button {
+      background-color: transparent;
+      cursor: pointer;
+      color: inherit;
+      border: none;
+      height: 25px;
+      border-radius: var(--radius);
+      padding: 0 10px;
+      transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+      font-family: inherit;
+      font-size: inherit;
+
+      &:hover {
+        background-color: var(--body-background);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        box-shadow: 0 0 0 2px rgba(var(--button-secondary--code), 0.5);
+      }
+    }
+
+    &\:active {
+      button {
+        background-color: var(--color-primary);
+        color: #fff;
+        font-weight: bold;
+
+        &:hover {
+          background-color: var(--color-primary);
+        }
+
+        &:focus-visible {
+          box-shadow: 0 0 0 2px rgba(var(--button-primary--code), 0.5);
+        }
+      }
+    }
+  }
+}

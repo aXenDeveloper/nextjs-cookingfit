@@ -12,7 +12,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const page = +req.query.page || 0;
+  const page = +req.query.page <= 0 ? 0 : +req.query.page;
   const limit = +req.query.limit || 1;
   const offset = (page - 1) * limit;
 
@@ -39,7 +39,13 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
       LIMIT ${limit} OFFSET ${offset}`
     )) as RecipesModel[];
 
-    return res.status(200).json({ next: page * limit < lengthRecords, results });
+    return res.status(200).json({
+      page: {
+        max: lengthRecords / limit,
+        next: page * limit < lengthRecords
+      },
+      results
+    });
   } catch (e) {
     return res.status(500).json({
       error: {

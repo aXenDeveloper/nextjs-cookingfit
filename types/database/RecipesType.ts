@@ -1,3 +1,5 @@
+import { PaginationType } from './PaginationType';
+
 export type RecipesModel = {
   id: number;
   title: string;
@@ -22,6 +24,6 @@ export type RecipeModel = {
 };
 
 export type RecipesModelAPI = {
-  next: boolean;
+  page: PaginationType;
   results: RecipesModel[];
 };

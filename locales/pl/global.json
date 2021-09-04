@@ -61,5 +61,7 @@
   "error_404": "Ta strona nie istnieje",
   "tooltip_dark": "Przełącz ciemny motyw",
   "by": "Przez",
-  "read_more": "Czytaj więcej"
+  "read_more": "Czytaj więcej",
+  "pagination_previous": "Poprzedni",
+  "pagination_next": "Następny"
 }

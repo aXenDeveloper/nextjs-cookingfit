@@ -9,6 +9,7 @@ import { RecipesListItem } from '../../components/recipes/list/RecipesListItem';
 import { RecipesModelAPI } from '../../types/database/RecipesType';
 import { apiURL } from '../../_utils/api';
 import { useRouter } from 'next/dist/client/router';
+import { Pagination } from '../../components/Pagination';
 
 export const RecipesView = () => {
   const { t } = useTranslation('global');
@@ -51,40 +52,8 @@ export const RecipesView = () => {
             <ul className="box padding recipes_list">
               {data && (
                 <>
-                  <span>Current Page: {page}</span>
-                  <button
-                    onClick={() => {
-                      setPage(Math.max(page - 1, 0));
+                  <Pagination page={page} setPage={setPage} data={data.page} />
 
-                      push(
-                        {
-                          pathname: '/recipes',
-                          query: { page: page - 1 }
-                        },
-                        undefined,
-                        { shallow: true }
-                      );
-                    }}
-                    disabled={isPreviousData || page <= 1}
-                  >
-                    Previous Page
-                  </button>{' '}
-                  <button
-                    onClick={() => {
-                      setPage(page + 1);
-                      push(
-                        {
-                          pathname: '/recipes',
-                          query: { page: page + 1 }
-                        },
-                        undefined,
-                        { shallow: true }
-                      );
-                    }}
-                    disabled={!data.next}
-                  >
-                    Next Page
-                  </button>
                   {data.results.map(el => (
                     <RecipesListItem key={el.id} recipe={el} />
                   ))}
