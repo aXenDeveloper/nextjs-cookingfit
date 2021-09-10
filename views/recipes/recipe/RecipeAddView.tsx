@@ -1,6 +1,8 @@
 import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/dist/client/router';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useMutation } from 'react-query';
 import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Button } from '../../../components/Button';
 import { Editor } from '../../../components/Editor';
@@ -12,6 +14,15 @@ import { PermissionMessageBox } from '../../../components/messageBox/PermissionM
 import { useAuth } from '../../../context/useAuth';
 import { FormValuesTypes } from '../../../types/FormValuesTypes';
 
+interface RecipeAddProps {
+  title: string;
+  text: string;
+  time: number;
+  category_id: number;
+  author_id: number;
+  date: number;
+}
+
 export const RecipeAddView = () => {
   const {
     register,
@@ -19,11 +30,54 @@ export const RecipeAddView = () => {
     formState: { errors }
   } = useForm<FormValuesTypes>();
   const [textCKEditor, setTextCKEDitor] = useState('<p>Hello from CKEditor 5!</p>');
+  const [error, setError] = useState(false);
   const { session, loading } = useAuth();
+  const { push } = useRouter();
   const { t } = useTranslation('global');
 
+  const { mutateAsync, isLoading, isError } = useMutation(
+    async ({ title, text, time, category_id, author_id, date }: RecipeAddProps) => {
+      setError(false);
+
+      const res = await fetch('/api/recipe/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title,
+          text,
+          time,
+          category_id,
+          author_id,
+          date
+        })
+      });
+
+      if (res.status === 200) {
+        const data = await res.json();
+        push(`/recipes/${data.url}`);
+
+        return null;
+      }
+
+      setError(true);
+
+      return null;
+    }
+  );
+
   const onSubmit: SubmitHandler<FormValuesTypes> = data => {
-    console.log(data);
+    if (session?.user) {
+      mutateAsync({
+        title: data.recipe_title,
+        text: textCKEditor,
+        time: data.recipe_time,
+        category_id: 1,
+        author_id: session?.user.id,
+        date: new Date().getTime()
+      });
+    }
   };
 
   if (loading) {

@@ -97,6 +97,13 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 3C104/2 | (Recipe) Invalid method API (400)                           |
 | 3C104/3 | (Recipe) Invalid query params (400)                         |
 | 1C104/4 | (Recipe) Not found (404)                                    |
+| 5C105/1 | (Add Recipe) Error with fetch (500)                         |
+| 3C105/2 | (Add Recipe) Invalid method API (400)                       |
+| 3C105/3 | (Add Recipe) Invalid query params (400)                     |
+| 2C105/4 | (Add Recipe) Invalid user (401)                             |
+| 2C105/5 | (Add Recipe) Banned user (401)                              |
+| 3C105/6 | (Add Recipe) Invalid category (400)                         |
+| 1C105/7 | (Add Recipe) Exist title (403)                              |
 
 ## 😀 Group ID
 
@@ -198,3 +205,18 @@ api/recipe
   image?: string;
 }
 ```
+
+### (POST) Add Recipe
+
+```
+api/recipe/add
+```
+
+#### Query
+
+- title: _string_,
+- text: _string_,
+- time: _number_,
+- category*id: \_number*,
+- author*id: \_number*,
+- date: _number_

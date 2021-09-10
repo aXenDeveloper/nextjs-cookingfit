@@ -8,7 +8,7 @@ export const authenticated =
       return res.status(400).json({
         error: {
           id: '2C100/5',
-          message: 'EMPTY_CSRF_KEY'
+          message: 'EMPTY_CSRF_ENV'
         }
       });
     }
@@ -41,7 +41,8 @@ export const authenticated =
           return res.status(401).json({
             error: {
               id: '2C100/4',
-              message: 'INVALID_CSRF'
+              message: 'INVALID_CSRF',
+              data
             }
           });
         }

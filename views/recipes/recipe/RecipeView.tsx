@@ -66,7 +66,9 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
             </div>
           </div>
 
-          <div className="box padding">{recipe.text}</div>
+          <div className="box padding">
+            <div dangerouslySetInnerHTML={{ __html: recipe.text }} />
+          </div>
         </main>
 
         <aside className="container_column:aside">

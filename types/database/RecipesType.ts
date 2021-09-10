@@ -9,7 +9,7 @@ export interface RecipesModel {
   publish_date: number;
   difficulty: 1 | 2 | 3;
   time: number;
-  text: number;
+  text: string;
   category_name: string;
   image?: string;
 }
@@ -22,7 +22,7 @@ export interface RecipeModel {
   publish_date: number;
   difficulty: 1 | 2 | 3;
   time: number;
-  text: number;
+  text: string;
   category_name: string;
   image?: string;
 }
