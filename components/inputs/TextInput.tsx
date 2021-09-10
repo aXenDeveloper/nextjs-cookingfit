@@ -5,7 +5,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Path, UseFormRegister, Validate, ValidationRule } from 'react-hook-form';
 import { FormValuesTypes } from '../../types/FormValuesTypes';
 
-interface Props {
+interface PropsNumber {
+  id: Path<FormValuesTypes>;
+  register: UseFormRegister<FormValuesTypes>;
+  error: boolean;
+  type?: 'number';
+  icon?: IconProp;
+  disabled?: boolean;
+  required?: {
+    required: boolean;
+    showTextRequired?: boolean;
+  };
+  pattern?: ValidationRule<RegExp>;
+  validate?:
+    | Validate<string | boolean | number>
+    | Record<string, Validate<string | boolean | number>>;
+  labelOutsideInput?: boolean;
+  min?: number;
+  max?: number;
+}
+
+interface PropsText {
   id: Path<FormValuesTypes>;
   register: UseFormRegister<FormValuesTypes>;
   error: boolean;
@@ -17,8 +37,15 @@ interface Props {
     showTextRequired?: boolean;
   };
   pattern?: ValidationRule<RegExp>;
-  validate?: Validate<string | boolean> | Record<string, Validate<string | boolean>>;
+  validate?:
+    | Validate<string | boolean | number>
+    | Record<string, Validate<string | boolean | number>>;
+  labelOutsideInput?: boolean;
+  min?: never;
+  max?: never;
 }
+
+type Props = PropsNumber | PropsText;
 
 export const TextInput: FC<Props> = ({
   id,
@@ -30,12 +57,17 @@ export const TextInput: FC<Props> = ({
   required,
   pattern,
   validate,
+  labelOutsideInput,
+  min,
+  max,
   children
 }) => {
   const { t } = useTranslation('global');
   const [value, setValue] = useState('');
   const { ref, ...rest } = register(id, {
     required: required?.required,
+    min,
+    max,
     pattern,
     validate
   });
@@ -46,7 +78,7 @@ export const TextInput: FC<Props> = ({
 
   return (
     <div className="input input_text">
-      <div className="input_text_content">
+      <div className={`input_text_content${labelOutsideInput ? ' input_text_content:text' : ''}`}>
         <input
           {...rest}
           id={id}
@@ -58,6 +90,8 @@ export const TextInput: FC<Props> = ({
           onChange={handleInput}
           value={value}
           disabled={disabled}
+          min={min}
+          max={max}
           ref={e => ref(e)}
         />
 

@@ -84,11 +84,42 @@
           }
         }
       }
+
+      &\:text {
+        > input {
+          order: 1;
+
+          &:focus-visible + label,
+          &.input\:fill + label {
+            font-size: inherit;
+            transform: none;
+          }
+
+          &:focus-visible + label,
+          &.input\:error + label,
+          &:focus-visible ~ .input_text_content_icon,
+          &.input\:error ~ .input_text_content_icon {
+            color: inherit;
+          }
+        }
+
+        > label {
+          position: relative;
+          top: auto;
+          left: auto;
+          transform: none;
+          padding: 0;
+          order: 0;
+          color: inherit;
+          margin-bottom: 6px;
+          pointer-events: all;
+        }
+      }
     }
 
     > p {
       font-weight: 300;
-      margin: 4px 0 0 0;
+      margin: 10px 0 0 0;
       color: var(--input-description-text);
     }
   }
