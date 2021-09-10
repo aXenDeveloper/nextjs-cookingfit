@@ -1,6 +1,6 @@
 import { PaginationType } from './PaginationType';
 
-export type RecipesModel = {
+export interface RecipesModel {
   id: number;
   title: string;
   url: string;
@@ -10,9 +10,9 @@ export type RecipesModel = {
   difficulty: 1 | 2 | 3;
   category_name: string;
   image?: string;
-};
+}
 
-export type RecipeModel = {
+export interface RecipeModel {
   id: number;
   title: string;
   member_name: string;
@@ -21,9 +21,9 @@ export type RecipeModel = {
   difficulty: 1 | 2 | 3;
   category_name: string;
   image?: string;
-};
+}
 
-export type RecipesModelAPI = {
+export interface RecipesModelAPI {
   page: PaginationType;
   results: RecipesModel[];
-};
+}

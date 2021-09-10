@@ -122,6 +122,9 @@ a {
 
   &_header {
     flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
 
     > h1,
@@ -131,6 +134,15 @@ a {
 
     > h1 {
       font-size: 26px;
+    }
+  }
+
+  &\:form {
+    display: block;
+
+    > form {
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 }

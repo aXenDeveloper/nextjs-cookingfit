@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import useTranslation from 'next-translate/useTranslation';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Layout } from '../components/layouts/Layout';
-import { MessageBox } from '../components/MessageBox';
+import { MessageBox } from '../components/messageBox/MessageBox';
 
 const Error404Page = () => {
   const { t } = useTranslation('global');

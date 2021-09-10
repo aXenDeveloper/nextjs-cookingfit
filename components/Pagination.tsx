@@ -3,12 +3,12 @@ import { useRouter } from 'next/dist/client/router';
 import { PaginationType } from '../types/database/PaginationType';
 import useTranslation from 'next-translate/useTranslation';
 
-type Props = {
+interface Props {
   page: number;
   setPage: (el: number) => void;
   isPreviousData?: boolean;
   data: PaginationType;
-};
+}
 
 export const Pagination: FC<Props> = ({ page, setPage, isPreviousData, data }) => {
   const { push, pathname, query } = useRouter();

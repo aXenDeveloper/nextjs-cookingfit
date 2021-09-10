@@ -2,9 +2,9 @@ import useTranslation from 'next-translate/useTranslation';
 import { FC } from 'react';
 import { Badges } from './Badges';
 
-type Props = {
+interface Props {
   difficulty: number;
-};
+}
 
 export const DifficultyBadges: FC<Props> = ({ difficulty }) => {
   const { t } = useTranslation('global');

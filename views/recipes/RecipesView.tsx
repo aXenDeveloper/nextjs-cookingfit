@@ -4,19 +4,20 @@ import { useQuery } from 'react-query';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { Container } from '../../components/layouts/Container';
 import { SpinnersLoading } from '../../components/loading/SpinnersLoading';
-import { MessageBox } from '../../components/MessageBox';
+import { MessageBox } from '../../components/messageBox/MessageBox';
 import { RecipesListItem } from '../../components/recipes/list/RecipesListItem';
 import { RecipesModelAPI } from '../../types/database/RecipesType';
 import { apiURL } from '../../_utils/api';
 import { useRouter } from 'next/dist/client/router';
 import { Pagination } from '../../components/Pagination';
+import { Button } from '../../components/Button';
 
 export const RecipesView = () => {
   const { t } = useTranslation('global');
   const { push } = useRouter();
   const [page, setPage] = useState(1);
 
-  const { isLoading, isError, data, isPreviousData, isFetching } = useQuery<RecipesModelAPI>(
+  const { isLoading, isError, data, isFetching } = useQuery<RecipesModelAPI>(
     ['recipeList', page],
     async () => {
       const res = await fetch(`${apiURL}/recipes?page=${page}`);
@@ -42,6 +43,14 @@ export const RecipesView = () => {
         <main className="container_column:main">
           <div className="container_header">
             <h1>{t('navigation_recipes')}</h1>
+            <Button
+              type="link"
+              href="/recipes/add"
+              color="primary"
+              ariaLabel={t('navigation_recipes_add')}
+            >
+              {t('navigation_recipes_add')}
+            </Button>
           </div>
 
           {isLoading ? (

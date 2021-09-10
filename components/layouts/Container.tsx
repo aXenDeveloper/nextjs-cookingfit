@@ -1,13 +1,16 @@
 import { FC } from 'react';
 
-type Props = {
+interface Props {
   small?: boolean;
   column?: boolean;
-};
+  form?: boolean;
+}
 
-export const Container: FC<Props> = ({ children, small, column }) => (
+export const Container: FC<Props> = ({ children, small, column, form }) => (
   <div
-    className={`container${small ? ' container:small' : ''}${column ? ' container_column' : ''}`}
+    className={`container${small ? ' container:small' : ''}${column ? ' container_column' : ''}${
+      form ? ' container:form' : ''
+    }`}
   >
     {children}
   </div>

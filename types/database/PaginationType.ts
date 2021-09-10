@@ -1,4 +1,4 @@
-export type PaginationType = {
+export interface PaginationType {
   max: number;
   next: boolean;
-};
+}

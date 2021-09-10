@@ -22,6 +22,8 @@
     "react-query": "^3.21.1"
   },
   "devDependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^29.2.0",
+    "@ckeditor/ckeditor5-react": "^3.0.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",

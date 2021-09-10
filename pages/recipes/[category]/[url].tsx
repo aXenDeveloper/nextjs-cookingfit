@@ -3,12 +3,12 @@ import { NextSeo } from 'next-seo';
 import useTranslation from 'next-translate/useTranslation';
 import { Layout } from '../../../components/layouts/Layout';
 import { RecipeModel } from '../../../types/database/RecipesType';
-import { RecipeView } from '../../../views/recipes/RecipeView';
+import { RecipeView } from '../../../views/recipes/recipe/RecipeView';
 import { apiURL } from '../../../_utils/api';
 
-type Props = {
+interface Props {
   recipe: RecipeModel;
-};
+}
 
 const RecipesItemPage: FC<Props> = ({ recipe }) => {
   const { t } = useTranslation('global');

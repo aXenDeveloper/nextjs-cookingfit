@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-type Props = {
+interface Props {
   small?: boolean;
-};
+}
 
 export const SpinnersLoading: FC<Props> = ({ small }) => (
   <div className={`loading_spinners${small ? ' loading_spinners:small' : ''}`} role="status">

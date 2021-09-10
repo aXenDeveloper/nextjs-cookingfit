@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { iconSVG } from '../../../../_utils/navigationRecipes/navigationRecipesIcons';
 
-type Props = {
+interface Props {
   title: string;
   path: string;
   icon?: IconProp;
   active: boolean;
-};
+}
 
 export const NavigationRecipesItem: FC<Props> = ({ title, path, icon, active }) => {
   const { t } = useTranslation('global');

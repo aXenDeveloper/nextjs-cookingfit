@@ -2,15 +2,15 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
-import { Breadcrumb } from '../../components/Breadcrumb';
-import { Container } from '../../components/layouts/Container';
-import { RecipeModel } from '../../types/database/RecipesType';
-import { ActionRecipeMenu } from '../../components/menu/ActionRecipeMenu';
-import { DifficultyBadges } from '../../components/badges/DifficultyBadges';
+import { Breadcrumb } from '../../../components/Breadcrumb';
+import { Container } from '../../../components/layouts/Container';
+import { RecipeModel } from '../../../types/database/RecipesType';
+import { ActionRecipeMenu } from '../../../components/menu/ActionRecipeMenu';
+import { DifficultyBadges } from '../../../components/badges/DifficultyBadges';
 
-type Props = {
+interface Props {
   recipe: RecipeModel;
-};
+}
 
 export const RecipeView: FC<Props> = ({ recipe }) => {
   const { t } = useTranslation('global');

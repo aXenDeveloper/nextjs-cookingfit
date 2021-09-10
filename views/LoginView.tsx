@@ -12,19 +12,19 @@ import { TextInput } from '../components/inputs/TextInput';
 import { Container } from '../components/layouts/Container';
 import { SpinnersLoading } from '../components/loading/SpinnersLoading';
 import { Message } from '../components/Message';
-import { MessageBox } from '../components/MessageBox';
+import { MessageBox } from '../components/messageBox/MessageBox';
 import { useAuth } from '../context/useAuth';
 import { emailRegex } from '../_utils/regex';
 import { FormValuesTypes } from '../types/FormValuesTypes';
 
-type LoginProps = {
+interface LoginProps {
   email: string;
   password: string;
-};
+}
 
-type Props = {
+interface Props {
   csrfToken: string;
-};
+}
 
 export const LoginView: FC<Props> = ({ csrfToken }) => {
   const {

@@ -5,9 +5,9 @@ import { NextSeo } from 'next-seo';
 import { Layout } from '../components/layouts/Layout';
 import { LoginView } from '../views/LoginView';
 
-type Props = {
+interface Props {
   csrfToken: string;
-};
+}
 
 const LoginPage: NextPage<Props> = ({ csrfToken }) => {
   const { t } = useTranslation('global');

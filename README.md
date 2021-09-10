@@ -71,6 +71,7 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | [js-cookie](https://www.npmjs.com/package/js-cookie)               | Cookies                                                                               |
 | [tippyjs](https://atomiks.github.io/tippyjs/)                      | tooltip, popover, dropdown                                                            |
 | [slugify](https://www.npmjs.com/package/slugify)                   | Convert strings                                                                       |
+| [CKEditor](https://ckeditor.com/)                                  | Wysiwyg editor                                                                        |
 
 ## ‼ Errors
 

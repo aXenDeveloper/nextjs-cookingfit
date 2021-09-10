@@ -6,9 +6,9 @@ import useTranslation from 'next-translate/useTranslation';
 import { Button } from '../../Button';
 import { DifficultyBadges } from '../../badges/DifficultyBadges';
 
-type Props = {
+interface Props {
   recipe: RecipesModel;
-};
+}
 
 export const RecipesListItem: FC<Props> = ({ recipe }) => {
   const { t } = useTranslation('global');

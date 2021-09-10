@@ -8,9 +8,9 @@ import Image from 'next/image';
 import flagUSA from '../../assets/flags/usa.svg';
 import flagPL from '../../assets/flags/pl.svg';
 
-type Props = {
+interface Props {
   showMobile?: boolean;
-};
+}
 
 export const ChangeLang: FC<Props> = ({ showMobile }) => {
   const { asPath } = useRouter();
