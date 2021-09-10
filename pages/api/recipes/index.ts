@@ -28,6 +28,8 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
       recipes_recipes.url,
       recipes_recipes.publish_date,
       recipes_recipes.difficulty,
+      recipes_recipes.time,
+      recipes_recipes.text,
       recipes_categories.category_name,
       recipes_recipes.image,
       core_members.member_name,

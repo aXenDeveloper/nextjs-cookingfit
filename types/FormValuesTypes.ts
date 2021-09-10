@@ -1,4 +1,4 @@
-export type FormValuesTypes = {
+export interface FormValuesTypes {
   name: string;
   email: string;
   password: string;
@@ -7,4 +7,5 @@ export type FormValuesTypes = {
   terms: boolean;
   recipe_title: string;
   recipe_time: number;
-};
+  recipe_file: FileList;
+}

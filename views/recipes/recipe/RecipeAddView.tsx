@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Button } from '../../../components/Button';
 import { Editor } from '../../../components/Editor';
+import { FileInput } from '../../../components/inputs/FileInput';
 import { TextInput } from '../../../components/inputs/TextInput';
 import { Container } from '../../../components/layouts/Container';
 import { SpinnersLoading } from '../../../components/loading/SpinnersLoading';
@@ -67,6 +68,10 @@ export const RecipeAddView = () => {
                     }}
                     labelOutsideInput
                   />
+                </li>
+
+                <li>
+                  <FileInput id="recipe_file" register={register} />
                 </li>
 
                 <li>

@@ -8,6 +8,8 @@ export interface RecipesModel {
   member_name_seo: string;
   publish_date: number;
   difficulty: 1 | 2 | 3;
+  time: number;
+  text: number;
   category_name: string;
   image?: string;
 }
@@ -19,6 +21,8 @@ export interface RecipeModel {
   member_name_seo: string;
   publish_date: number;
   difficulty: 1 | 2 | 3;
+  time: number;
+  text: number;
   category_name: string;
   image?: string;
 }

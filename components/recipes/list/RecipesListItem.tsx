@@ -56,7 +56,7 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
           </ul>
 
           <ul className="recipes_list_item_main_footer_right">
-            <li>{recipe.difficulty}</li>
+            <li>{recipe.time}</li>
             <li>
               <Button href={urls.recipe} type="link" color="light" ariaLabel={t('read_more')}>
                 {t('read_more')}

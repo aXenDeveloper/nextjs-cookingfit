@@ -18,8 +18,11 @@ interface PropsNumber {
   };
   pattern?: ValidationRule<RegExp>;
   validate?:
-    | Validate<string | boolean | number>
-    | Record<string, Validate<string | boolean | number>>;
+    | Validate<string | number | boolean | FileList | ((index: number) => File | null)>
+    | Record<
+        string,
+        Validate<string | number | boolean | FileList | ((index: number) => File | null)>
+      >;
   labelOutsideInput?: boolean;
   min?: number;
   max?: number;
@@ -38,8 +41,11 @@ interface PropsText {
   };
   pattern?: ValidationRule<RegExp>;
   validate?:
-    | Validate<string | boolean | number>
-    | Record<string, Validate<string | boolean | number>>;
+    | Validate<string | number | boolean | FileList | ((index: number) => File | null)>
+    | Record<
+        string,
+        Validate<string | number | boolean | FileList | ((index: number) => File | null)>
+      >;
   labelOutsideInput?: boolean;
   min?: never;
   max?: never;

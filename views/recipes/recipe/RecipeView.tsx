@@ -61,10 +61,12 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
                   <DifficultyBadges difficulty={recipe.difficulty} />
                 </div>
 
-                <div>test</div>
+                <div>{recipe.time}</div>
               </div>
             </div>
           </div>
+
+          <div className="box padding">{recipe.text}</div>
         </main>
 
         <aside className="container_column:aside">

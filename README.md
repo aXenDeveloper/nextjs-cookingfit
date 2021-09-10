@@ -164,6 +164,8 @@ api/recipes
   member_name_seo: string;
   publish_date: number;
   difficulty: 1 | 2 | 3;
+  time: number;
+  text: string;
   category_name: string;
   image?: string;
 }
@@ -190,6 +192,8 @@ api/recipe
   member_name_seo: string;
   publish_date: number;
   difficulty: 1 | 2 | 3;
+  time: number;
+  text: string;
   category_name: string;
   image?: string;
 }
