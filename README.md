@@ -59,6 +59,7 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | [next-translate](https://github.com/vinissimus/next-translate)     | Translate                                                                             |
 | [next-auth](https://next-auth.js.org/)                             | Authentication                                                                        |
 | [next-seo](https://github.com/garmeeh/next-seo)                    | SEO                                                                                   |
+| [next-connect](https://www.npmjs.com/package/next-connect)         | The smol method routing and middleware for Next.js                                    |
 | [nextjs-progressbar](https://github.com/apal21/nextjs-progressbar) | Progressbar                                                                           |
 | [react](https://reactjs.org/)                                      | Library for Single Page Application _(SPA)_                                           |
 | [react-query](https://react-query.tanstack.com/)                   | Fetch, cache and update data                                                          |
@@ -72,6 +73,8 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | [tippyjs](https://atomiks.github.io/tippyjs/)                      | tooltip, popover, dropdown                                                            |
 | [slugify](https://www.npmjs.com/package/slugify)                   | Convert strings                                                                       |
 | [CKEditor](https://ckeditor.com/)                                  | Wysiwyg editor                                                                        |
+| [multer](https://www.npmjs.com/package/multer)                     | Files upload                                                                          |
+| [http](https://www.npmjs.com/package/http)                         | Types for server response                                                             |
 
 ## ‼ Errors
 

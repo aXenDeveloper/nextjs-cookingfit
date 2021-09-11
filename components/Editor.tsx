@@ -31,6 +31,14 @@ export const Editor: FC<Props> = ({ textCKEditor, setTextCKEDitor }) => {
         const data = editor.getData();
         setTextCKEDitor(data);
       }}
+      config={{
+        ckfinder: {
+          uploadUrl: '/api/recipe/upload',
+          options: {
+            resourceType: 'Images'
+          }
+        }
+      }}
     />
   ) : (
     <div className="text_center">
