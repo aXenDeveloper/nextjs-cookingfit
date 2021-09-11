@@ -48,6 +48,7 @@
   "input_box_label_recipe_category": "Category",
   "input_box_desc_recipe_time": "In minutes",
   "input_box_desc_required": "This field is required!",
+  "input_box_label_recipe_difficulty": "Difficulty",
   "input_checkbox_label_remember": "Remember me",
   "input_checkbox_label_terms": "I agree to the <0>Terms of Use</0> and <1>Privacy Policy</1>",
   "form_sign_in_submit": "Sign In",

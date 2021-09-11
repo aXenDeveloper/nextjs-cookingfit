@@ -20,7 +20,9 @@ export const DifficultyRangeInput: FC<Props> = ({ id, register, min, max }) => {
   };
 
   return (
-    <div className={`input input_range input_range:${value}`}>
+    <div className={`input input_range input:labelOutside input_range:${value}`}>
+      <label htmlFor={id}>{t(`input_box_label_${id}`)}</label>
+
       <div className="input_range_content">
         <input
           {...rest}

@@ -162,7 +162,7 @@ export const RecipeAddView = () => {
                 error={!!errors.recipe_category}
                 required={{
                   required: true,
-                  showTextRequired: true
+                  showTextRequired: false
                 }}
                 options={
                   <>

@@ -1,6 +1,19 @@
 .input {
   position: relative;
 
+  label {
+    position: absolute;
+    top: 49%;
+    left: 14px;
+    transform: translateY(-49%);
+    color: var(--input-light);
+    background-color: var(--input-background);
+    border-radius: var(--radius);
+    padding: 2px 4px;
+    transition: transform 0.15s ease-in-out, font-size 0.15s ease-in-out, color 0.15s ease-in-out;
+    pointer-events: none;
+  }
+
   &_box {
     padding: 10px 0;
 
@@ -8,19 +21,6 @@
       position: relative;
       display: flex;
       flex-direction: column;
-
-      > label {
-        position: absolute;
-        top: 49%;
-        left: 14px;
-        transform: translateY(-49%);
-        color: var(--input-light);
-        background-color: var(--input-background);
-        border-radius: var(--radius);
-        padding: 2px 4px;
-        transition: transform 0.15s ease-in-out, font-size 0.15s ease-in-out, color 0.15s ease-in-out;
-        pointer-events: none;
-      }
 
       &_icon {
         width: 26px;
@@ -85,43 +85,43 @@
           }
         }
       }
+    }
+  }
 
-      &\:text {
-        > input {
-          order: 1;
+  p {
+    font-weight: 300;
+    margin: 10px 0 0 0;
+    color: var(--input-description-text);
+  }
 
-          &:focus-visible + label,
-          &.input\:fill + label {
-            font-size: inherit;
-            transform: none;
-          }
+  &\:labelOutside {
+    input {
+      order: 1;
 
-          &:focus-visible + label,
-          &.input\:error + label,
-          &:focus-visible ~ .input_box_content_icon,
-          &.input\:error ~ .input_box_content_icon {
-            color: inherit;
-          }
-        }
+      &:focus-visible + label,
+      &.input\:fill + label {
+        font-size: inherit;
+        transform: none;
+      }
 
-        > label {
-          position: relative;
-          top: auto;
-          left: auto;
-          transform: none;
-          padding: 0;
-          order: 0;
-          color: inherit;
-          margin-bottom: 6px;
-          pointer-events: all;
-        }
+      &:focus-visible + label,
+      &.input\:error + label,
+      &:focus-visible ~ .input_box_content_icon,
+      &.input\:error ~ .input_box_content_icon {
+        color: inherit;
       }
     }
 
-    > p {
-      font-weight: 300;
-      margin: 10px 0 0 0;
-      color: var(--input-description-text);
+    label {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      padding: 0;
+      order: 0;
+      color: inherit;
+      margin-bottom: 6px;
+      pointer-events: all;
     }
   }
 
@@ -225,7 +225,7 @@
   &_range {
     &_content {
       position: relative;
-      height: 16px;
+      height: 22px;
 
       > input {
         position: absolute;

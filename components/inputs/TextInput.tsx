@@ -83,8 +83,8 @@ export const TextInput: FC<Props> = ({
   };
 
   return (
-    <div className="input input_box">
-      <div className={`input_box_content${labelOutsideInput ? ' input_box_content:text' : ''}`}>
+    <div className={`input${labelOutsideInput ? ' input:labelOutside' : ' input_box'}`}>
+      <div className="input_box_content">
         <input
           {...rest}
           id={id}
