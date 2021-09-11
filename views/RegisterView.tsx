@@ -193,7 +193,7 @@ export const RegisterView = () => {
               }}
               validate={value => value === getValues('password')}
             >
-              {!!errors.repeatPassword && t('input_text_label_repeatPassword_error')}
+              {!!errors.repeatPassword && t('input_box_label_repeatPassword_error')}
             </TextInput>
 
             <Checkbox

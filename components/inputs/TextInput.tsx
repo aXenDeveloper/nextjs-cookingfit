@@ -83,8 +83,8 @@ export const TextInput: FC<Props> = ({
   };
 
   return (
-    <div className="input input_text">
-      <div className={`input_text_content${labelOutsideInput ? ' input_text_content:text' : ''}`}>
+    <div className="input input_box">
+      <div className={`input_box_content${labelOutsideInput ? ' input_box_content:text' : ''}`}>
         <input
           {...rest}
           id={id}
@@ -102,14 +102,14 @@ export const TextInput: FC<Props> = ({
         />
 
         <label htmlFor={id}>
-          {t(`input_text_label_${id}`)}
+          {t(`input_box_label_${id}`)}
           {required?.required && required?.showTextRequired && (
             <span className="input:required">{t('input_required')}</span>
           )}
         </label>
 
         {icon && (
-          <div className="input_text_content_icon">
+          <div className="input_box_content_icon">
             <FontAwesomeIcon icon={icon} />
           </div>
         )}

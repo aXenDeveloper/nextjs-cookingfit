@@ -11,8 +11,8 @@ export const FileInput: FC<Props> = ({ id, register }) => {
   const { ref, ...rest } = register(id);
 
   return (
-    <div className="input input_text">
-      <div className={'input_text_content'}>
+    <div className="input input_box">
+      <div className={'input_box_content'}>
         <input {...rest} type="file" id={id} ref={e => ref(e)} />
       </div>
     </div>

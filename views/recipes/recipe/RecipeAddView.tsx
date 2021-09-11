@@ -7,12 +7,15 @@ import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Button } from '../../../components/Button';
 import { Editor } from '../../../components/Editor';
 import { FileInput } from '../../../components/inputs/FileInput';
+import { RangeInput } from '../../../components/inputs/RangeInput';
+import { SelectInput } from '../../../components/inputs/SelectInput';
 import { TextInput } from '../../../components/inputs/TextInput';
 import { Container } from '../../../components/layouts/Container';
 import { SpinnersLoading } from '../../../components/loading/SpinnersLoading';
 import { PermissionMessageBox } from '../../../components/messageBox/PermissionMessageBox';
 import { useAuth } from '../../../context/useAuth';
 import { FormValuesTypes } from '../../../types/FormValuesTypes';
+import { navigationRecipesList } from '../../../_utils/navigationRecipes/navigationRecipesList';
 
 interface RecipeAddProps {
   title: string;
@@ -150,6 +153,27 @@ export const RecipeAddView = () => {
 
           <aside className="container_column:aside">
             <div className="box padding">
+              <SelectInput
+                id="recipes_category"
+                register={register}
+                error={!!errors.recipes_category}
+                required={{
+                  required: true,
+                  showTextRequired: true
+                }}
+                options={
+                  <>
+                    {navigationRecipesList.map(({ id, title }) => (
+                      <option key={id} value={title}>
+                        {t(`navigation_${title}`)}
+                      </option>
+                    ))}
+                  </>
+                }
+              />
+            </div>
+
+            <div className="box padding">
               <TextInput
                 id="recipe_time"
                 type="number"
@@ -163,8 +187,12 @@ export const RecipeAddView = () => {
                 min={1}
                 max={10080}
               >
-                {t('input_text_desc_recipe_time')}
+                {t('input_box_desc_recipe_time')}
               </TextInput>
+            </div>
+
+            <div className="box padding">
+              <RangeInput />
             </div>
           </aside>
         </form>

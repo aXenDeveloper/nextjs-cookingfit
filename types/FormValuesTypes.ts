@@ -8,4 +8,5 @@ export interface FormValuesTypes {
   recipe_title: string;
   recipe_time: number;
   recipe_file: FileList;
+  recipes_category: string;
 }
