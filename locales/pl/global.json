@@ -45,7 +45,7 @@
   "input_box_label_repeatPassword_error": "Hasło musi być takie same!",
   "input_box_label_recipe_title": "Tytuł",
   "input_box_label_recipe_time": "Czas",
-  "input_box_label_recipes_category": "Kategoria",
+  "input_box_label_recipe_category": "Kategoria",
   "input_box_desc_recipe_time": "W minutach",
   "input_box_desc_required": "To pole jest wymagane!",
   "input_checkbox_label_remember": "Zapamiętaj mnie",

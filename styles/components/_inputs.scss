@@ -223,10 +223,125 @@
   }
 
   &_range {
-    > input {
-      width: 100%;
-      padding: 0;
+    &_content {
+      position: relative;
+      height: 16px;
+
+      > input {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: var(--input-light);
+        border-radius: var(--radius);
+        padding: 0;
+        margin: 0;
+        appearance: none;
+        z-index: 10;
+
+        &::-webkit-slider-thumb {
+          position: relative;
+          appearance: none;
+          width: 26px;
+          height: 26px;
+          border-radius: 26px;
+          background-color: var(--input-light);
+          cursor: pointer;
+          z-index: 12;
+        }
+      }
+
+      &\:fill {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        border-radius: var(--radius);
+        background-color: var(--color-primary);
+        pointer-events: none;
+        z-index: 15;
+      }
+    }
+
+    &_desc {
+      padding: 14px 0 0 0;
       margin: 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      color: var(--color-light);
+
+      > li {
+        position: relative;
+        text-align: center;
+        flex: 1;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: -27px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 16px;
+          height: 16px;
+          border-radius: 16px;
+          background-color: var(--input-background);
+          z-index: 11;
+          cursor: pointer;
+          pointer-events: none;
+          border: 4px solid var(--input-light);
+        }
+
+        &:first-child {
+          text-align: left;
+
+          &::before {
+            left: 0;
+            transform: none;
+          }
+        }
+
+        &:last-child {
+          text-align: right;
+
+          &::before {
+            left: auto;
+            right: 0;
+            transform: none;
+          }
+        }
+      }
+
+      &\:active {
+        font-weight: bold;
+        color: var(--body-color);
+
+        &::before {
+          opacity: 0;
+        }
+      }
+    }
+
+    &\:1 input {
+      &::-webkit-slider-thumb,
+      & + div {
+        background-color: var(--badges-positive-text);
+      }
+    }
+
+    &\:2 input {
+      &::-webkit-slider-thumb,
+      & + div {
+        background-color: var(--badges-intermediary-text);
+      }
+    }
+
+    &\:3 input {
+      &::-webkit-slider-thumb,
+      & + div {
+        background-color: var(--badges-negative-text);
+      }
     }
   }
 }

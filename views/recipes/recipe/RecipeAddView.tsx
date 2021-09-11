@@ -7,7 +7,7 @@ import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Button } from '../../../components/Button';
 import { Editor } from '../../../components/Editor';
 import { FileInput } from '../../../components/inputs/FileInput';
-import { RangeInput } from '../../../components/inputs/RangeInput';
+import { DifficultyRangeInput } from '../../../components/inputs/DifficultyRangeInput';
 import { SelectInput } from '../../../components/inputs/SelectInput';
 import { TextInput } from '../../../components/inputs/TextInput';
 import { Container } from '../../../components/layouts/Container';
@@ -24,6 +24,7 @@ interface RecipeAddProps {
   category_id: number;
   author_id: number;
   date: number;
+  difficulty: number;
 }
 
 export const RecipeAddView = () => {
@@ -31,15 +32,15 @@ export const RecipeAddView = () => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<FormValuesTypes>();
-  const [textCKEditor, setTextCKEDitor] = useState('<p>Hello from CKEditor 5!</p>');
+  } = useForm<FormValuesTypes>({ defaultValues: { recipe_difficulty: 1 } });
+  const [textCKEditor, setTextCKEDitor] = useState('');
   const [error, setError] = useState(false);
   const { session, loading } = useAuth();
   const { push } = useRouter();
   const { t } = useTranslation('global');
 
   const { mutateAsync, isLoading, isError } = useMutation(
-    async ({ title, text, time, category_id, author_id, date }: RecipeAddProps) => {
+    async ({ title, text, time, category_id, author_id, date, difficulty }: RecipeAddProps) => {
       setError(false);
 
       const res = await fetch('/api/recipe/add', {
@@ -53,7 +54,8 @@ export const RecipeAddView = () => {
           time,
           category_id,
           author_id,
-          date
+          date,
+          difficulty
         })
       });
 
@@ -76,9 +78,10 @@ export const RecipeAddView = () => {
         title: data.recipe_title,
         text: textCKEditor,
         time: data.recipe_time,
-        category_id: 1,
+        category_id: +data.recipe_category,
         author_id: session?.user.id,
-        date: new Date().getTime()
+        date: new Date().getTime(),
+        difficulty: +data.recipe_difficulty
       });
     }
   };
@@ -154,9 +157,9 @@ export const RecipeAddView = () => {
           <aside className="container_column:aside">
             <div className="box padding">
               <SelectInput
-                id="recipes_category"
+                id="recipe_category"
                 register={register}
-                error={!!errors.recipes_category}
+                error={!!errors.recipe_category}
                 required={{
                   required: true,
                   showTextRequired: true
@@ -164,7 +167,7 @@ export const RecipeAddView = () => {
                 options={
                   <>
                     {navigationRecipesList.map(({ id, title }) => (
-                      <option key={id} value={title}>
+                      <option key={id} value={id}>
                         {t(`navigation_${title}`)}
                       </option>
                     ))}
@@ -192,7 +195,7 @@ export const RecipeAddView = () => {
             </div>
 
             <div className="box padding">
-              <RangeInput />
+              <DifficultyRangeInput id="recipe_difficulty" register={register} min={1} max={3} />
             </div>
           </aside>
         </form>

@@ -12,9 +12,9 @@ const recipeAdd = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const { title, text, time, category_id, author_id, date } = req.body;
+  const { title, text, time, category_id, author_id, date, difficulty } = req.body;
 
-  if (!title || !text || !time || !category_id || !author_id || !date) {
+  if (!title || !text || !time || !category_id || !author_id || !date || !difficulty) {
     return res.status(400).json({
       error: {
         id: '3C105/3',
@@ -80,16 +80,15 @@ const recipeAdd = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const result = await query(
-      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [title as string, url, text as string, +time, +category_id, +author_id, +date]
+      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+      [title as string, url, text as string, +time, +category_id, +author_id, +date, +difficulty]
     );
 
     return res.status(200).json({ result, url: `${existCategory[0].category_name}/${url}` });
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C105/1',
-        e: e.message
+        id: '5C105/1'
       }
     });
   }
