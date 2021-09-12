@@ -5,7 +5,7 @@ import { emailRegex } from '../../../_utils/regex';
 
 const signup = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
-    return res.status(400).json({
+    return res.status(405).json({
       error: {
         id: '3C101/2',
         message: 'INVALID_METHOD'

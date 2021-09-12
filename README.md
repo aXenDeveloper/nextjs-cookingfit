@@ -81,13 +81,13 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | Code    | Description                                                 |
 | ------- | ----------------------------------------------------------- |
 | 5C100/1 | (Authenticated) Catch error function (500)                  |
-| 3C100/2 | (Authenticated) Invalid method API (400)                    |
+| 3C100/2 | (Authenticated) Invalid method API (405)                    |
 | 3C100/3 | (Authenticated) Invalid CSRF (401)                          |
 | 2C100/4 | (Authenticated) Empty CSRF (400)                            |
 | 2C100/5 | (Authenticated) Empty CSRF key in **.env.local** file (400) |
 | 2C100/6 | (Authenticated) Banned user (401)                           |
 | 5C101/1 | (Sign up) Catch error function (500)                        |
-| 3C101/2 | (Sign up) Invalid method API (400)                          |
+| 3C101/2 | (Sign up) Invalid method API (405)                          |
 | 2C101/3 | (Sign up) Invalid data from body (403)                      |
 | 1C101/4 | (Sign up) Exist user email (403)                            |
 | 1C101/5 | (Sign up) You are already logged in (403)                   |
@@ -95,18 +95,20 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 5C102/1 | (Sign in) Error with fetch (500)                            |
 | 1C102/2 | (Sign in) You are already logged in (403)                   |
 | 5C103/1 | (Recipes) Error with fetch (500)                            |
-| 3C103/2 | (Recipes) Invalid method API (400)                          |
+| 3C103/2 | (Recipes) Invalid method API (405)                          |
 | 5C104/1 | (Recipe) Error with fetch (500)                             |
-| 3C104/2 | (Recipe) Invalid method API (400)                           |
+| 3C104/2 | (Recipe) Invalid method API (405)                           |
 | 3C104/3 | (Recipe) Invalid query params (400)                         |
 | 1C104/4 | (Recipe) Not found (404)                                    |
 | 5C105/1 | (Add Recipe) Error with fetch (500)                         |
-| 3C105/2 | (Add Recipe) Invalid method API (400)                       |
+| 3C105/2 | (Add Recipe) Invalid method API (405)                       |
 | 3C105/3 | (Add Recipe) Invalid query params (400)                     |
 | 2C105/4 | (Add Recipe) Invalid user (401)                             |
 | 2C105/5 | (Add Recipe) Banned user (401)                              |
 | 3C105/6 | (Add Recipe) Invalid category (400)                         |
 | 1C105/7 | (Add Recipe) Exist title (403)                              |
+| 5C106/1 | (Upload File Recipe) Invalid method API (500)               |
+| 3C106/2 | (Upload File Recipe) Invalid method API (405)               |
 
 ## 😀 Group ID
 

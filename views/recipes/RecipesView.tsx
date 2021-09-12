@@ -51,6 +51,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
         { shallow: true }
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.page.max]);
 
   if (isError) {

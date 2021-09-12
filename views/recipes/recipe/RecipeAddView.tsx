@@ -35,33 +35,34 @@ export const RecipeAddView = () => {
   } = useForm<FormValuesTypes>({ defaultValues: { recipe_difficulty: 1 } });
   const [textCKEditor, setTextCKEDitor] = useState('');
   const [error, setError] = useState(false);
+  const [inputImage, setInputImage] = useState({});
   const { session, loading } = useAuth();
   const { push } = useRouter();
   const { t } = useTranslation('global');
 
   const { mutateAsync, isLoading, isError } = useMutation(
     async ({ title, text, time, category_id, author_id, date, difficulty }: RecipeAddProps) => {
+      const formData = new FormData();
+      // @ts-ignore
+      formData.append('image', inputImage);
+      formData.append('title', title);
+      formData.append('text', text);
+      formData.append('time', `${time}`);
+      formData.append('category_id', `${category_id}`);
+      formData.append('author_id', `${author_id}`);
+      formData.append('date', `${date}`);
+      formData.append('difficulty', `${difficulty}`);
       setError(false);
 
       const res = await fetch('/api/recipe/add', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          title,
-          text,
-          time,
-          category_id,
-          author_id,
-          date,
-          difficulty
-        })
+
+        body: formData
       });
 
       if (res.status === 200) {
         const data = await res.json();
-        push(`/recipes/${data.url}`);
+        push(`/recipes/${data.recordURL}`);
 
         return null;
       }
@@ -73,6 +74,8 @@ export const RecipeAddView = () => {
   );
 
   const onSubmit: SubmitHandler<FormValuesTypes> = data => {
+    setInputImage(data.recipe_file[0]);
+
     if (session?.user) {
       mutateAsync({
         title: data.recipe_title,

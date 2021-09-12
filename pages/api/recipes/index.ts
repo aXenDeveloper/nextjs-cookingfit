@@ -4,7 +4,7 @@ import { RecipesModel } from '../../../types/database/RecipesType';
 
 const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
-    return res.status(400).json({
+    return res.status(405).json({
       error: {
         id: '3C103/2',
         message: 'INVALID_METHOD'

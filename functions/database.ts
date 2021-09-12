@@ -10,7 +10,10 @@ export const db = mysql({
   }
 });
 
-export const query = async (q: string, values: (string | number)[] | string | number = []) => {
+export const query = async (
+  q: string,
+  values: (string | number | null)[] | string | number | null = []
+) => {
   try {
     const results = await db.query(q, values);
     await db.end();

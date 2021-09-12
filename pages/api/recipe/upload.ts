@@ -24,10 +24,19 @@ const upload = multer({
 
 const apiRoute = nextConnect<IncomingMessageProps, ServerResponseProps>({
   onError(error, req, res) {
-    res.status(501).json({ error: `Sorry something Happened! ${error.message}` });
+    return res.status(500).json({
+      error: {
+        id: '3C106/1'
+      }
+    });
   },
   onNoMatch(req, res) {
-    res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
+    return res.status(405).json({
+      error: {
+        id: '3C106/2',
+        message: 'INVALID_QUERY'
+      }
+    });
   }
 });
 

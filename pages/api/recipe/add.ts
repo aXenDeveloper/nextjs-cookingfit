@@ -1,8 +1,58 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import nextConnect from 'next-connect';
+import multer from 'multer';
 import slugify from 'slugify';
+import { IncomingMessage, ServerResponse } from 'http';
 import { query } from '../../../functions/database';
 
-const recipeAdd = async (req: NextApiRequest, res: NextApiResponse) => {
+interface ServerResponseProps extends ServerResponse {
+  status: (statusCode: number) => NextApiResponse<any>;
+}
+
+interface IncomingMessageProps extends IncomingMessage {
+  files: {
+    filename: string;
+  }[];
+  body: {
+    title: string;
+    text: string;
+    time: number;
+    category_id: number;
+    author_id: number;
+    date: number;
+    difficulty: number;
+    image: {
+      filename: string;
+    }[];
+  };
+}
+
+const currentDate = new Date();
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: `./public/uploads/monthly_${currentDate.getMonth()}_${currentDate.getFullYear()}`,
+    filename: (req, file, cb) => cb(null, `${currentDate.getTime()}_${file.originalname}`)
+  })
+});
+
+const recipeAdd = nextConnect<IncomingMessageProps, ServerResponseProps>({
+  onError(error, req, res) {
+    return res.status(501).json({ error: `Sorry something Happened! ${error.message}` });
+  },
+  onNoMatch(req, res) {
+    return res.status(405).json({
+      error: {
+        id: '3C105/2',
+        message: 'INVALID_QUERY'
+      }
+    });
+  }
+});
+
+recipeAdd.use(upload.array('image'));
+
+recipeAdd.post(async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(400).json({
       error: {
@@ -12,9 +62,9 @@ const recipeAdd = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const { title, text, time, category_id, author_id, date, difficulty } = req.body;
+  const { title, text, time, category_id, author_id, difficulty } = req.body;
 
-  if (!title || !text || !time || !category_id || !author_id || !date || !difficulty) {
+  if (!title || !text || !time || !category_id || !author_id || !difficulty) {
     return res.status(400).json({
       error: {
         id: '3C105/3',
@@ -80,11 +130,33 @@ const recipeAdd = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const result = await query(
-      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-      [title as string, url, text as string, +time, +category_id, +author_id, +date, +difficulty]
+      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [
+        title as string,
+        url,
+        text as string,
+        +time,
+        +category_id,
+        +author_id,
+        currentDate.getTime(),
+        +difficulty,
+        req.files[0]
+          ? `/uploads/monthly_${currentDate.getMonth()}_${currentDate.getFullYear()}/${
+              req.files[0].filename
+            }`
+          : null
+      ]
     );
 
-    return res.status(200).json({ result, url: `${existCategory[0].category_name}/${url}` });
+    return res.status(200).json({
+      result,
+      recordURL: `${existCategory[0].category_name}/${url}`,
+      url: req.files[0]
+        ? `/uploads/monthly_${currentDate.getMonth()}_${currentDate.getFullYear()}/${
+            req.files[0].filename
+          }`
+        : null
+    });
   } catch (e) {
     return res.status(500).json({
       error: {
@@ -92,6 +164,12 @@ const recipeAdd = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     });
   }
-};
+});
 
 export default recipeAdd;
+
+export const config = {
+  api: {
+    bodyParser: false
+  }
+};
