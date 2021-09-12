@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';

@@ -1,16 +1,16 @@
 import { FC, useCallback } from 'react';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import { PaginationType } from '../types/database/PaginationType';
 import useTranslation from 'next-translate/useTranslation';
 
 interface Props {
   page: number;
   setPage: (el: number) => void;
-  isPreviousData?: boolean;
   data: PaginationType;
+  isPreviousData?: boolean;
 }
 
-export const Pagination: FC<Props> = ({ page, setPage, isPreviousData, data }) => {
+export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData }) => {
   const { push, pathname, query } = useRouter();
   const { t } = useTranslation('global');
 

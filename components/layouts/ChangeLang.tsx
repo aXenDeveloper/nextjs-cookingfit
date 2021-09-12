@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Tippy from '@tippyjs/react';
 import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import Image from 'next/image';

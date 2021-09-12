@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useQuery } from 'react-query';
+import { useRouter } from 'next/router';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { Container } from '../../components/layouts/Container';
 import { SpinnersLoading } from '../../components/loading/SpinnersLoading';
@@ -8,14 +9,22 @@ import { MessageBox } from '../../components/messageBox/MessageBox';
 import { RecipesListItem } from '../../components/recipes/list/RecipesListItem';
 import { RecipesModelAPI } from '../../types/database/RecipesType';
 import { apiURL } from '../../_utils/api';
-import { useRouter } from 'next/dist/client/router';
 import { Pagination } from '../../components/Pagination';
 import { Button } from '../../components/Button';
 
-export const RecipesView = () => {
+interface Props {
+  defaultPage?: number;
+}
+
+export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
   const { t } = useTranslation('global');
-  const { push } = useRouter();
-  const [page, setPage] = useState(1);
+  const { query, push, pathname } = useRouter();
+  const [page, setPage] = useState(defaultPage);
+
+  useEffect(() => {
+    setPage(query.page ? +query.page : defaultPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query.page]);
 
   const { isLoading, isError, data, isFetching } = useQuery<RecipesModelAPI>(
     ['recipeList', page],
@@ -26,6 +35,23 @@ export const RecipesView = () => {
     },
     { keepPreviousData: true }
   );
+
+  useEffect(() => {
+    const maxPage = data?.page.max;
+
+    if (query.page && maxPage && maxPage < +query.page) {
+      setPage(maxPage);
+
+      push(
+        {
+          pathname,
+          query: { page: maxPage }
+        },
+        undefined,
+        { shallow: true }
+      );
+    }
+  }, [data?.page.max]);
 
   if (isError) {
     return (

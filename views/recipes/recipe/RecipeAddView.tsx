@@ -1,6 +1,6 @@
-import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from 'next/dist/client/router';
 import { useState } from 'react';
+import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { Breadcrumb } from '../../../components/Breadcrumb';
