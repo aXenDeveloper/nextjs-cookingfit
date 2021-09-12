@@ -4,6 +4,7 @@ import multer from 'multer';
 import slugify from 'slugify';
 import { IncomingMessage, ServerResponse } from 'http';
 import { query } from '../../../functions/database';
+import { authenticated } from '../../../functions/authenticated';
 
 interface ServerResponseProps extends ServerResponse {
   status: (statusCode: number) => NextApiResponse<any>;
@@ -36,7 +37,7 @@ const upload = multer({
   })
 });
 
-const recipeAdd = nextConnect<IncomingMessageProps, ServerResponseProps>({
+const recipeAdd = nextConnect<NextApiRequest, ServerResponseProps>({
   onError(error, req, res) {
     return res.status(501).json({ error: `Sorry something Happened! ${error.message}` });
   },
@@ -140,8 +141,10 @@ recipeAdd.post(async (req, res) => {
         +author_id,
         currentDate.getTime(),
         +difficulty,
+        // @ts-ignore
         req.files[0]
           ? `/uploads/monthly_${currentDate.getMonth()}_${currentDate.getFullYear()}/${
+              // @ts-ignore
               req.files[0].filename
             }`
           : null
@@ -151,8 +154,10 @@ recipeAdd.post(async (req, res) => {
     return res.status(200).json({
       result,
       recordURL: `${existCategory[0].category_name}/${url}`,
+      // @ts-ignore
       url: req.files[0]
         ? `/uploads/monthly_${currentDate.getMonth()}_${currentDate.getFullYear()}/${
+            // @ts-ignore
             req.files[0].filename
           }`
         : null
@@ -166,7 +171,7 @@ recipeAdd.post(async (req, res) => {
   }
 });
 
-export default recipeAdd;
+export default authenticated(recipeAdd);
 
 export const config = {
   api: {

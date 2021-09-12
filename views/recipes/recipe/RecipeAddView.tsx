@@ -23,7 +23,6 @@ interface RecipeAddProps {
   time: number;
   category_id: number;
   author_id: number;
-  date: number;
   difficulty: number;
 }
 
@@ -41,7 +40,7 @@ export const RecipeAddView = () => {
   const { t } = useTranslation('global');
 
   const { mutateAsync, isLoading, isError } = useMutation(
-    async ({ title, text, time, category_id, author_id, date, difficulty }: RecipeAddProps) => {
+    async ({ title, text, time, category_id, author_id, difficulty }: RecipeAddProps) => {
       const formData = new FormData();
       // @ts-ignore
       formData.append('image', inputImage);
@@ -50,7 +49,6 @@ export const RecipeAddView = () => {
       formData.append('time', `${time}`);
       formData.append('category_id', `${category_id}`);
       formData.append('author_id', `${author_id}`);
-      formData.append('date', `${date}`);
       formData.append('difficulty', `${difficulty}`);
       setError(false);
 
@@ -83,7 +81,6 @@ export const RecipeAddView = () => {
         time: data.recipe_time,
         category_id: +data.recipe_category,
         author_id: session?.user.id,
-        date: new Date().getTime(),
         difficulty: +data.recipe_difficulty
       });
     }
