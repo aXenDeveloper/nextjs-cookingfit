@@ -30,11 +30,12 @@ export const RecipeAddView = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors }
   } = useForm<FormValuesTypes>({ defaultValues: { recipe_difficulty: 1 } });
   const [textCKEditor, setTextCKEDitor] = useState('');
   const [error, setError] = useState(false);
-  const [inputImage, setInputImage] = useState({});
+  const [inputImage, setInputImage] = useState<File | null>();
   const { session, loading } = useAuth();
   const { push } = useRouter();
   const { t } = useTranslation('global');
@@ -72,8 +73,6 @@ export const RecipeAddView = () => {
   );
 
   const onSubmit: SubmitHandler<FormValuesTypes> = data => {
-    setInputImage(data.recipe_file[0]);
-
     if (session?.user) {
       mutateAsync({
         title: data.recipe_title,
@@ -131,7 +130,13 @@ export const RecipeAddView = () => {
                 </li>
 
                 <li>
-                  <FileInput id="recipe_file" register={register} />
+                  <FileInput
+                    id="recipe_file"
+                    register={register}
+                    setValue={setValue}
+                    file={inputImage}
+                    setFile={setInputImage}
+                  />
                 </li>
 
                 <li>

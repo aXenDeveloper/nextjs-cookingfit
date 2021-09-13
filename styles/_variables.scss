@@ -3,7 +3,7 @@
   --color-primary: rgb(var(--color-primary--code));
   --color-primary--dark--code: 220, 138, 16;
   --color-primary--dark: rgb(var(--color-primary--dark--code));
-  --color-secondary--code: 232, 232, 232;
+  --color-secondary--code: 244, 244, 244;
   --color-secondary: rgb(var(--color-secondary--code));
   --color-light--code: 103, 103, 103;
   --color-light: rgb(var(--color-light--code));
@@ -85,7 +85,7 @@
 
 [theme='dark']:root {
   --color-light--code: 163, 163, 163;
-  --color-secondary--code: 34, 34, 34;
+  --color-secondary--code: 37, 37, 37;
   --button-light--code: 44, 44, 44;
   --button-light-color: #fff;
 
@@ -95,6 +95,8 @@
   --container-background: #1c1c1c;
   --body-color-code: 239, 239, 239;
   --button-dark: #ffe200;
+
+  --input-light: #727272;
 
   --ck-color-base-background: var(--container-background);
 }

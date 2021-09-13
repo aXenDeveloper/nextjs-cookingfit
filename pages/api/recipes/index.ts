@@ -43,7 +43,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return res.status(200).json({
       page: {
-        max: lengthRecords / limit,
+        max: Math.round(lengthRecords / limit),
         next: page * limit < lengthRecords
       },
       results

@@ -29,7 +29,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
   const { isLoading, isError, data, isFetching } = useQuery<RecipesModelAPI>(
     ['recipeList', page],
     async () => {
-      const res = await fetch(`${apiURL}/recipes?page=${page}`);
+      const res = await fetch(`${apiURL}/recipes?page=${page}&limit=10`);
 
       return await res.json();
     },

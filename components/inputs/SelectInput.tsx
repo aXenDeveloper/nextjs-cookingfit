@@ -21,7 +21,7 @@ export const SelectInput: FC<Props> = ({ id, register, options, error, required,
   const { t } = useTranslation('global');
 
   return (
-    <div className="input input_box input_select input:labelOutside">
+    <div className="input input_select input:labelOutside">
       <div className="input_box_content">
         <label htmlFor={id}>
           {t(`input_box_label_${id}`)}

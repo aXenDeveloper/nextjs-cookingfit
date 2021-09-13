@@ -344,6 +344,83 @@
       }
     }
   }
+
+  &_file {
+    &_content {
+      position: relative;
+      padding: 16px;
+      background-color: var(--color-secondary);
+      border-radius: var(--radius);
+      border: 4px dashed transparent;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+      &\:drag {
+        border-color: var(--color-primary);
+      }
+
+      > input {
+        display: none;
+      }
+
+      > button {
+        margin-right: 20px;
+      }
+
+      &_desc {
+        > p {
+          font-size: 12px;
+          margin: 0;
+        }
+      }
+
+      &_preview {
+        position: relative;
+        margin-top: 16px;
+        flex: 0 1 100%;
+        background-color: var(--container-background);
+        padding: 10px;
+        display: flex;
+        align-items: center;
+
+        &\:image {
+          position: relative;
+          width: 100px;
+          height: 72px;
+          border-radius: var(--radius);
+          overflow: hidden;
+        }
+
+        &\:delete {
+          position: absolute;
+          top: -4px;
+          right: -4px;
+          background-color: var(--body-color);
+          color: var(--body-background);
+          width: 20px;
+          height: 20px;
+          padding: 0;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 20px;
+          cursor: pointer;
+        }
+
+        &_desc {
+          margin-left: 20px;
+
+          > p {
+            margin: 0;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
 }
 
 .form {
