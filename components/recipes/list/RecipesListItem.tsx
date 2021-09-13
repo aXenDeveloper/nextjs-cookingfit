@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RecipesModel } from '../../../types/database/RecipesType';
@@ -11,7 +11,14 @@ interface Props {
 }
 
 export const RecipesListItem: FC<Props> = ({ recipe }) => {
+  const [renderedImage, setRenderedImage] = useState(false);
   const { t } = useTranslation('global');
+
+  useEffect(() => {
+    if (!recipe.image) {
+      setRenderedImage(true);
+    }
+  }, [recipe.image]);
 
   const urls = {
     category: `/recipes/${recipe.category_name}`,
@@ -22,8 +29,19 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
   return (
     <li className="recipes_list_item">
       <Link href={urls.recipe}>
-        <a className="recipes_list_item_image">
-          {recipe.image && <Image src={recipe.image} alt={recipe.title} layout="fill" />}
+        <a
+          className={`recipes_list_item_image${
+            !renderedImage ? ' recipes_list_item_image:loading' : ''
+          }`}
+        >
+          {recipe.image && (
+            <Image
+              src={recipe.image}
+              alt={recipe.title}
+              layout="fill"
+              onLoadingComplete={() => setRenderedImage(true)}
+            />
+          )}
         </a>
       </Link>
 

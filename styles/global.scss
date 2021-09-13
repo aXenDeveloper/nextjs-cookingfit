@@ -151,6 +151,18 @@ a {
   }
 }
 
+@keyframes image-loading {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
 @import './components/layout';
 @import './components/buttons';
 @import './components/inputs';
