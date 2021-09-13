@@ -160,8 +160,9 @@ api/recipes
 
 #### Query
 
-- page?: _number_ | 0,
-- limit?: _number_ | 1
+- page?: _number_,
+- limit?: _number_,
+- category?: _string_
 
 #### Response
 

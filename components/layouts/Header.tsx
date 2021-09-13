@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ActionBar } from './actionBar/ActionBar';
 import { NavigationRecipes } from './navigation/recipes/NavigationRecipes';
 import { useDarkTheme } from '../../context/useDarkTheme';
 import logoDark from '../../assets/logo/logo-dark.svg';

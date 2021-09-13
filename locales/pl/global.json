@@ -78,5 +78,6 @@
   "pagination_next": "Następny",
   "hard": "Trudny",
   "medium": "Średni",
-  "easy": "Łatwy"
+  "easy": "Łatwy",
+  "recipes_no_found": "Nie znaleziono przepisów"
 }

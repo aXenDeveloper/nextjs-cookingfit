@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo';
 import useTranslation from 'next-translate/useTranslation';
 import { FC } from 'react';
 import { Layout } from '../../../components/layouts/Layout';
+import { RecipesView } from '../../../views/recipes/RecipesView';
 import { navigationRecipesList } from '../../../_utils/navigationRecipes/navigationRecipesList';
 
 interface Props {
@@ -11,12 +12,11 @@ interface Props {
 
 const RecipesCategoryPage: FC<Props> = ({ category }) => {
   const { t } = useTranslation('global');
-  console.log(category);
 
   return (
     <Layout>
       <NextSeo title={t('title_seo_page', { title: t('navigation_recipes') })} />
-      test
+      <RecipesView category={category} />
     </Layout>
   );
 };

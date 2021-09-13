@@ -7,9 +7,9 @@ export const NavigationRecipes = () => {
 
   const currentPath = () => {
     const pathMain = asPath.split('/')[1];
-    const pathRecipe = asPath.split('/')[2];
+    const pathRecipe = asPath.split('/')[2] ? asPath.split('/')[2].split('?')[0] : null;
 
-    return `/${pathMain}/${pathRecipe}`;
+    return `/${pathMain}${pathRecipe ? `/${pathRecipe}` : ''}`;
   };
 
   return (

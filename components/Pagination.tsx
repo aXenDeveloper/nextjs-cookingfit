@@ -12,8 +12,9 @@ interface Props {
 }
 
 export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bottom }) => {
-  const { push, pathname, query } = useRouter();
+  const { push, query, asPath } = useRouter();
   const { t } = useTranslation('global');
+  const pathname = asPath.split('?')[0];
 
   const handlePreviousButton = () => {
     setPage(Math.max(page - 1, 0));
@@ -66,6 +67,10 @@ export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bot
     return current;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, data.max]);
+
+  if (!data.max) {
+    return <></>;
+  }
 
   return (
     <>

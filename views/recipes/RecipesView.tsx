@@ -14,12 +14,14 @@ import { Button } from '../../components/Button';
 
 interface Props {
   defaultPage?: number;
+  category?: string;
 }
 
-export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
+export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
   const { t } = useTranslation('global');
-  const { query, push, pathname } = useRouter();
+  const { query, push, asPath } = useRouter();
   const [page, setPage] = useState(defaultPage);
+  const pathname = asPath.split('?')[0];
 
   useEffect(() => {
     setPage(query.page ? +query.page : defaultPage);
@@ -27,9 +29,11 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
   }, [query.page]);
 
   const { isLoading, isError, data, isFetching } = useQuery<RecipesModelAPI>(
-    ['recipeList', page],
+    ['recipeList', page, category],
     async () => {
-      const res = await fetch(`${apiURL}/recipes?page=${page}&limit=10`);
+      const res = await fetch(
+        `${apiURL}/recipes?page=${page}&limit=10${category ? `&category=${category}` : ''}`
+      );
 
       return await res.json();
     },
@@ -69,7 +73,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
       <Container column>
         <main className="container_column:main">
           <div className="container_header">
-            <h1>{t('navigation_recipes')}</h1>
+            <h1>{t(category ? `navigation_recipes_${category}` : 'navigation_recipes')}</h1>
             <Button
               type="link"
               href="/recipes/add"
@@ -86,7 +90,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
             </div>
           ) : (
             <ul className="box padding recipes_list">
-              {data && (
+              {data?.results.length ? (
                 <>
                   <Pagination page={page} setPage={setPage} data={data.page} />
 
@@ -96,6 +100,8 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
 
                   <Pagination page={page} setPage={setPage} data={data.page} bottom />
                 </>
+              ) : (
+                <div className="text_center">{t('recipes_no_found')}</div>
               )}
             </ul>
           )}
