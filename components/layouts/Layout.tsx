@@ -4,6 +4,7 @@ import { Header } from './Header';
 import { AuthContext } from '../../context/useAuth';
 import { useSession } from 'next-auth/client';
 import { DarkThemeContext } from '../../context/useDarkTheme';
+import { Footer } from './Footer';
 
 export const Layout: FC = ({ children }) => {
   const [session, loading] = useSession();
@@ -26,6 +27,7 @@ export const Layout: FC = ({ children }) => {
         <Header />
         <Navigation />
         <div className="main">{children}</div>
+        <Footer />
       </AuthContext.Provider>
     </DarkThemeContext.Provider>
   );

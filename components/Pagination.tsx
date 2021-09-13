@@ -27,6 +27,8 @@ export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bot
       undefined,
       { shallow: true }
     );
+
+    document.body.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleNextButton = () => {
@@ -40,6 +42,8 @@ export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bot
       undefined,
       { shallow: true }
     );
+
+    document.body.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleButton = (number: number) => {
@@ -68,7 +72,7 @@ export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bot
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, data.max]);
 
-  if (!data.max) {
+  if (data.max <= 1) {
     return <></>;
   }
 

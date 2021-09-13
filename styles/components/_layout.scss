@@ -142,3 +142,17 @@
     }
   }
 }
+
+.footer {
+  height: 56px;
+  margin-left: var(--header-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+
+  a {
+    font-weight: bold;
+    color: inherit;
+  }
+}

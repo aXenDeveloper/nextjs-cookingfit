@@ -22,6 +22,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
   const { query, push, asPath } = useRouter();
   const [page, setPage] = useState(defaultPage);
   const pathname = asPath.split('?')[0];
+  const titleView = t(category ? `navigation_recipes_${category}` : 'navigation_recipes');
 
   useEffect(() => {
     setPage(query.page ? +query.page : defaultPage);
@@ -61,7 +62,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
   if (isError) {
     return (
       <>
-        <Breadcrumb>{t('navigation_recipes')}</Breadcrumb>
+        <Breadcrumb>{titleView}</Breadcrumb>
         <MessageBox code="5C103/1" />
       </>
     );
@@ -69,11 +70,11 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
 
   return (
     <>
-      <Breadcrumb>{t('navigation_recipes')}</Breadcrumb>
+      <Breadcrumb>{titleView}</Breadcrumb>
       <Container column>
         <main className="container_column:main">
           <div className="container_header">
-            <h1>{t(category ? `navigation_recipes_${category}` : 'navigation_recipes')}</h1>
+            <h1>{titleView}</h1>
             <Button
               type="link"
               href="/recipes/add"
