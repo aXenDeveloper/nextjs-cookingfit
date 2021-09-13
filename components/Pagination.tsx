@@ -8,9 +8,10 @@ interface Props {
   setPage: (el: number) => void;
   data: PaginationType;
   isPreviousData?: boolean;
+  bottom?: boolean;
 }
 
-export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData }) => {
+export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bottom }) => {
   const { push, pathname, query } = useRouter();
   const { t } = useTranslation('global');
 
@@ -67,31 +68,37 @@ export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData }) =
   }, [page, data.max]);
 
   return (
-    <ul className="pagination">
-      {!(isPreviousData || page <= 1) && (
-        <li className="pagination_item">
-          <button onClick={handlePreviousButton}>{t('pagination_previous')}</button>
-        </li>
-      )}
+    <>
+      {bottom && <hr className="hr" />}
 
-      {generateNumberButton().map(el => (
-        <li
-          key={el}
-          className={`pagination_item${
-            (query.page && +query.page === el) || (el === 1 && !query.page)
-              ? ' pagination_item:active'
-              : ''
-          }`}
-        >
-          <button onClick={() => handleButton(el)}>{el}</button>
-        </li>
-      ))}
+      <ul className="pagination">
+        {!(isPreviousData || page <= 1) && (
+          <li className="pagination_item">
+            <button onClick={handlePreviousButton}>{t('pagination_previous')}</button>
+          </li>
+        )}
 
-      {data.next && (
-        <li className="pagination_item">
-          <button onClick={handleNextButton}>{t('pagination_next')}</button>
-        </li>
-      )}
-    </ul>
+        {generateNumberButton().map(el => (
+          <li
+            key={el}
+            className={`pagination_item${
+              (query.page && +query.page === el) || (el === 1 && !query.page)
+                ? ' pagination_item:active'
+                : ''
+            }`}
+          >
+            <button onClick={() => handleButton(el)}>{el}</button>
+          </li>
+        ))}
+
+        {data.max > page && (
+          <li className="pagination_item">
+            <button onClick={handleNextButton}>{t('pagination_next')}</button>
+          </li>
+        )}
+      </ul>
+
+      {!bottom && <hr className="hr" />}
+    </>
   );
 };

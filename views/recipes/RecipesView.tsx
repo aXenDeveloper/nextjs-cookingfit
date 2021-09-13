@@ -93,6 +93,8 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1 }) => {
                   {data.results.map(el => (
                     <RecipesListItem key={el.id} recipe={el} />
                   ))}
+
+                  <Pagination page={page} setPage={setPage} data={data.page} bottom />
                 </>
               )}
             </ul>
