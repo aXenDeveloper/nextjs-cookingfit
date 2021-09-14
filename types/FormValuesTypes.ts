@@ -10,4 +10,8 @@ export interface FormValuesTypes {
   recipe_file: FileList;
   recipe_category: number;
   recipe_difficulty: number;
+  recipe_calories: number;
+  recipe_proteins: number;
+  recipe_fats: number;
+  recipe_carbohydrates: number;
 }

@@ -1,0 +1,15 @@
+.recipes {
+  @import './_listRecipes';
+  @import './_itemRecipes';
+  @import './_nutritionalRecipes';
+
+  &_add {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}

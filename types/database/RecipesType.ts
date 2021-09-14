@@ -25,6 +25,10 @@ export interface RecipeModel {
   text: string;
   category_name: string;
   image?: string;
+  calories: number;
+  proteins: number;
+  fats: number;
+  carbohydrates: number;
 }
 
 export interface RecipesModelAPI {

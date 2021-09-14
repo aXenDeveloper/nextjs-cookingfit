@@ -34,8 +34,8 @@ export const SelectInput: FC<Props> = ({ id, register, options, error, required,
           {...rest}
           name={id}
           id={id}
-          className={error ? 'input:error' : ''}
-          ref={e => ref(e)}
+          className={`input_input${error ? ' input:error' : ''}`}
+          ref={ref}
         >
           {options}
         </select>

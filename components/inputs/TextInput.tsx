@@ -90,7 +90,7 @@ export const TextInput: FC<Props> = ({
           id={id}
           type={type}
           name={id}
-          className={`${value ? 'input:fill' : ''}${icon ? ' input:icon' : ''}${
+          className={`input_input${value ? ' input:fill' : ''}${icon ? ' input:icon' : ''}${
             error ? ' input:error' : ''
           }`}
           onChange={handleInput}
@@ -98,7 +98,7 @@ export const TextInput: FC<Props> = ({
           disabled={disabled}
           min={min}
           max={max}
-          ref={e => ref(e)}
+          ref={ref}
         />
 
         <label htmlFor={id}>

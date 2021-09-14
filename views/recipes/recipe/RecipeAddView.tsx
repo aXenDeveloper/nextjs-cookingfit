@@ -16,6 +16,7 @@ import { PermissionMessageBox } from '../../../components/messageBox/PermissionM
 import { useAuth } from '../../../context/useAuth';
 import { FormValuesTypes } from '../../../types/FormValuesTypes';
 import { navigationRecipesList } from '../../../_utils/navigationRecipes/navigationRecipesList';
+import { NutritionalValuesEdit } from '../../../components/recipes/nutritionalValues/nutritionalValuesEdit/NutritionalValuesEdit';
 
 interface RecipeAddProps {
   title: string;
@@ -24,6 +25,10 @@ interface RecipeAddProps {
   category_id: number;
   author_id: number;
   difficulty: number;
+  calories: number;
+  proteins: number;
+  fats: number;
+  carbohydrates: number;
 }
 
 export const RecipeAddView = () => {
@@ -32,7 +37,15 @@ export const RecipeAddView = () => {
     handleSubmit,
     setValue,
     formState: { errors }
-  } = useForm<FormValuesTypes>({ defaultValues: { recipe_difficulty: 1 } });
+  } = useForm<FormValuesTypes>({
+    defaultValues: {
+      recipe_difficulty: 1,
+      recipe_calories: 0,
+      recipe_fats: 0,
+      recipe_proteins: 0,
+      recipe_carbohydrates: 0
+    }
+  });
   const [textCKEditor, setTextCKEDitor] = useState('');
   const [error, setError] = useState(false);
   const [inputImage, setInputImage] = useState<File | null>();
@@ -41,7 +54,18 @@ export const RecipeAddView = () => {
   const { t } = useTranslation('global');
 
   const { mutateAsync, isLoading, isError } = useMutation(
-    async ({ title, text, time, category_id, author_id, difficulty }: RecipeAddProps) => {
+    async ({
+      title,
+      text,
+      time,
+      category_id,
+      author_id,
+      difficulty,
+      calories,
+      proteins,
+      fats,
+      carbohydrates
+    }: RecipeAddProps) => {
       const formData = new FormData();
       // @ts-ignore
       formData.append('image', inputImage);
@@ -51,6 +75,11 @@ export const RecipeAddView = () => {
       formData.append('category_id', `${category_id}`);
       formData.append('author_id', `${author_id}`);
       formData.append('difficulty', `${difficulty}`);
+      formData.append('calories', `${calories}`);
+      formData.append('proteins', `${proteins}`);
+      formData.append('fats', `${fats}`);
+      formData.append('carbohydrates', `${carbohydrates}`);
+
       setError(false);
 
       const res = await fetch('/api/recipe/add', {
@@ -80,7 +109,11 @@ export const RecipeAddView = () => {
         time: data.recipe_time,
         category_id: +data.recipe_category,
         author_id: session?.user.id,
-        difficulty: +data.recipe_difficulty
+        difficulty: +data.recipe_difficulty,
+        calories: +data.recipe_calories,
+        proteins: +data.recipe_proteins,
+        fats: +data.recipe_fats,
+        carbohydrates: +data.recipe_carbohydrates
       });
     }
   };
@@ -201,6 +234,10 @@ export const RecipeAddView = () => {
 
             <div className="box padding">
               <DifficultyRangeInput id="recipe_difficulty" register={register} min={1} max={3} />
+            </div>
+
+            <div className="box padding">
+              <NutritionalValuesEdit register={register} />
             </div>
           </aside>
         </form>

@@ -79,5 +79,9 @@
   "hard": "Hard",
   "medium": "Medium",
   "easy": "Easy",
-  "recipes_no_found": "No recipes found"
+  "recipes_no_found": "No recipes found",
+  "recipes_nutritional_recipe_calories": "Calories",
+  "recipes_nutritional_recipe_proteins": "Proteins",
+  "recipes_nutritional_recipe_fats": "Fats",
+  "recipes_nutritional_recipe_carbohydrates": "Carbohydrates"
 }

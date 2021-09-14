@@ -7,6 +7,7 @@ import { Container } from '../../../components/layouts/Container';
 import { RecipeModel } from '../../../types/database/RecipesType';
 import { ActionRecipeMenu } from '../../../components/menu/ActionRecipeMenu';
 import { DifficultyBadges } from '../../../components/badges/DifficultyBadges';
+import { NutritionalValues } from '../../../components/recipes/nutritionalValues/NutritionalValues';
 
 interface Props {
   recipe: RecipeModel;
@@ -72,7 +73,16 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
         </main>
 
         <aside className="container_column:aside">
-          <div className="box padding">box padding</div>
+          <div className="box padding">
+            <NutritionalValues
+              data={{
+                calories: recipe.calories,
+                proteins: recipe.proteins,
+                fats: recipe.fats,
+                carbohydrates: recipe.carbohydrates
+              }}
+            />
+          </div>
         </aside>
       </Container>
     </>

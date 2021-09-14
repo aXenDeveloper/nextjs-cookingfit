@@ -43,7 +43,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
       FROM recipes_recipes
       INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
       ${where ? `WHERE recipes_categories.category_name='${where}'` : ''}
-      ORDER BY recipes_recipes.id ASC
+      ORDER BY recipes_recipes.id DESC
       LIMIT ${limit} OFFSET ${offset}`
     )) as RecipesModel[];
 

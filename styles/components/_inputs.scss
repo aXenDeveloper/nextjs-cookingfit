@@ -1,6 +1,52 @@
 .input {
   position: relative;
 
+  &_input {
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    background-color: var(--input-background);
+    border: 1px solid var(--input-light);
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible + label,
+    &.input\:fill + label {
+      font-size: 13px;
+      transform: translate(5px, -36px);
+    }
+
+    &:focus-visible {
+      box-shadow: var(--input-box-shadow--focus);
+      border-color: var(--color-primary);
+
+      & + label,
+      & ~ .input_box_content_icon {
+        color: var(--color-primary);
+      }
+    }
+
+    &.input\:error {
+      border-color: var(--color-error);
+
+      & + label,
+      & ~ .input_box_content_icon {
+        color: var(--color-error);
+      }
+
+      &:focus-visible {
+        box-shadow: var(--input-error-box-shadow--focus);
+        border-color: var(--color-error);
+      }
+    }
+  }
+
   label {
     position: absolute;
     top: 49%;
@@ -37,53 +83,6 @@
         color: var(--input-light);
         transition: color 0.15s ease-in-out;
         font-size: 14px;
-      }
-
-      > input,
-      > select {
-        padding: 12px 16px;
-        border-radius: var(--radius);
-        background-color: var(--input-background);
-        border: 1px solid var(--input-light);
-        color: inherit;
-        font-size: inherit;
-        font-weight: inherit;
-        font-family: inherit;
-        transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
-
-        &:focus {
-          outline: none;
-        }
-
-        &:focus-visible + label,
-        &.input\:fill + label {
-          font-size: 13px;
-          transform: translate(5px, -36px);
-        }
-
-        &:focus-visible {
-          box-shadow: var(--input-box-shadow--focus);
-          border-color: var(--color-primary);
-
-          & + label,
-          & ~ .input_box_content_icon {
-            color: var(--color-primary);
-          }
-        }
-
-        &.input\:error {
-          border-color: var(--color-error);
-
-          & + label,
-          & ~ .input_box_content_icon {
-            color: var(--color-error);
-          }
-
-          &:focus-visible {
-            box-shadow: var(--input-error-box-shadow--focus);
-            border-color: var(--color-error);
-          }
-        }
       }
     }
   }

@@ -79,5 +79,9 @@
   "hard": "Trudny",
   "medium": "Średni",
   "easy": "Łatwy",
-  "recipes_no_found": "Nie znaleziono przepisów"
+  "recipes_no_found": "Nie znaleziono przepisów",
+  "recipes_nutritional_recipe_calories": "Kalorie",
+  "recipes_nutritional_recipe_proteins": "Proteiny",
+  "recipes_nutritional_recipe_fats": "Tłuszcze",
+  "recipes_nutritional_recipe_carbohydrates": "Węglowodany"
 }

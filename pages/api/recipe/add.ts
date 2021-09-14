@@ -63,9 +63,31 @@ recipeAdd.post(async (req, res) => {
     });
   }
 
-  const { title, text, time, category_id, author_id, difficulty } = req.body;
+  const {
+    title,
+    text,
+    time,
+    category_id,
+    author_id,
+    difficulty,
+    calories,
+    proteins,
+    fats,
+    carbohydrates
+  } = req.body;
 
-  if (!title || !text || !time || !category_id || !author_id || !difficulty) {
+  if (
+    !title ||
+    !text ||
+    !time ||
+    !category_id ||
+    !author_id ||
+    !difficulty ||
+    !calories ||
+    !proteins ||
+    !fats ||
+    !carbohydrates
+  ) {
     return res.status(400).json({
       error: {
         id: '3C105/3',
@@ -131,7 +153,7 @@ recipeAdd.post(async (req, res) => {
     }
 
     const result = await query(
-      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image, calories, proteins, fats, carbohydrates) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         title as string,
         url,
@@ -147,7 +169,11 @@ recipeAdd.post(async (req, res) => {
               // @ts-ignore
               req.files[0].filename
             }`
-          : null
+          : null,
+        +calories,
+        +proteins,
+        +fats,
+        +carbohydrates
       ]
     );
 
