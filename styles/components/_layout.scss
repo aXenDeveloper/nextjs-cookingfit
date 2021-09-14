@@ -80,6 +80,7 @@
   width: 100%;
   height: var(--nav-height);
   padding: 10px 20px 10px calc(var(--header-width) + 20px);
+  box-shadow: var(--nav-height-shadow);
   z-index: 999;
   display: flex;
   align-items: center;
