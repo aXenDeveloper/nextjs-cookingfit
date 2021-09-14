@@ -49,7 +49,7 @@
   --message-error-background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
     var(--message-error);
 
-  --menu-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+  --menu-box-shadow: 0 8px 50px rgba(0, 0, 0, 0.1), 0px 4px 15px rgba(0, 0, 0, 0.05);
   --menu-background--hover: #f6f6f6;
 
   --spinner-loading-backgorund: rgba(var(--color-light--code), 0.1);
@@ -68,6 +68,7 @@
   --body-color-code: 44, 44, 44;
   --body-color: rgb(var(--body-color-code));
   --container-background: #fff;
+  --container-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
   --button-dark: var(--color-light);
 
   --font-h1: 26px;

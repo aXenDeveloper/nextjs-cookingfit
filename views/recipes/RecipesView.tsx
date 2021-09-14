@@ -11,6 +11,7 @@ import { RecipesModelAPI } from '../../types/database/RecipesType';
 import { apiURL } from '../../_utils/api';
 import { Pagination } from '../../components/Pagination';
 import { Button } from '../../components/Button';
+import { useAuth } from '../../context/useAuth';
 
 interface Props {
   defaultPage?: number;
@@ -23,6 +24,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
   const [page, setPage] = useState(defaultPage);
   const pathname = asPath.split('?')[0];
   const titleView = t(category ? `navigation_recipes_${category}` : 'navigation_recipes');
+  const { session } = useAuth();
 
   useEffect(() => {
     setPage(query.page ? +query.page : defaultPage);
@@ -75,14 +77,16 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
         <main className="container_column:main">
           <div className="container_header">
             <h1>{titleView}</h1>
-            <Button
-              type="link"
-              href="/recipes/add"
-              color="primary"
-              ariaLabel={t('navigation_recipes_add')}
-            >
-              {t('navigation_recipes_add')}
-            </Button>
+            {session && (
+              <Button
+                type="link"
+                href="/recipes/add"
+                color="primary"
+                ariaLabel={t('navigation_recipes_add')}
+              >
+                {t('navigation_recipes_add')}
+              </Button>
+            )}
           </div>
 
           {isLoading ? (

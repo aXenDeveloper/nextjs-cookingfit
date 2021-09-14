@@ -83,7 +83,9 @@ export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bot
       <ul className="pagination">
         {!(isPreviousData || page <= 1) && (
           <li className="pagination_item">
-            <button onClick={handlePreviousButton}>{t('pagination_previous')}</button>
+            <button onClick={handlePreviousButton} className="pagination_item:bold">
+              {t('pagination_previous')}
+            </button>
           </li>
         )}
 
@@ -102,7 +104,9 @@ export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bot
 
         {data.max > page && (
           <li className="pagination_item">
-            <button onClick={handleNextButton}>{t('pagination_next')}</button>
+            <button onClick={handleNextButton} className="pagination_item:bold">
+              {t('pagination_next')}
+            </button>
           </li>
         )}
       </ul>
