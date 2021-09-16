@@ -2,14 +2,21 @@
   @import './_listRecipes';
   @import './_itemRecipes';
   @import './_nutritionalRecipes';
+  @import './_ingredientsRecipes';
 
-  &_add {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  &_form {
+    label {
+      font-size: 16px;
+    }
 
-    > li:not(:last-child) {
-      margin-bottom: 20px;
+    &_list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      > li:not(:last-child) {
+        margin-bottom: 20px;
+      }
     }
   }
 }

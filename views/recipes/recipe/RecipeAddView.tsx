@@ -17,6 +17,10 @@ import { useAuth } from '../../../context/useAuth';
 import { FormValuesTypes } from '../../../types/FormValuesTypes';
 import { navigationRecipesList } from '../../../_utils/navigationRecipes/navigationRecipesList';
 import { NutritionalValuesEdit } from '../../../components/recipes/nutritionalValues/nutritionalValuesEdit/NutritionalValuesEdit';
+import {
+  IngredientsEdit,
+  IngredientsProps
+} from '../../../components/recipes/ingredients/IngredientsEdit/IngredientsEdit';
 
 interface RecipeAddProps {
   title: string;
@@ -49,6 +53,7 @@ export const RecipeAddView = () => {
   const [textCKEditor, setTextCKEDitor] = useState('');
   const [error, setError] = useState(false);
   const [inputImage, setInputImage] = useState<File | null>();
+  const [ingredients, setIngredients] = useState<IngredientsProps[]>([]);
   const { session, loading } = useAuth();
   const { push } = useRouter();
   const { t } = useTranslation('global');
@@ -141,14 +146,14 @@ export const RecipeAddView = () => {
     <>
       <Breadcrumb>{t('navigation_recipes_add')}</Breadcrumb>
       <Container column form>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="recipes_form">
           <main className="container_column:main">
             <div className="container_header">
               <h1>{t('navigation_recipes_add')}</h1>
             </div>
 
             <div className="box padding">
-              <ul className="recipes_add">
+              <ul className="recipes_form_list">
                 <li>
                   <TextInput
                     id="recipe_title"
@@ -170,6 +175,10 @@ export const RecipeAddView = () => {
                     file={inputImage}
                     setFile={setInputImage}
                   />
+                </li>
+
+                <li>
+                  <IngredientsEdit ingredients={ingredients} setIngredients={setIngredients} />
                 </li>
 
                 <li>

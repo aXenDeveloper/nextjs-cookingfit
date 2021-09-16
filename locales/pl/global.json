@@ -85,5 +85,9 @@
   "recipes_nutritional_recipe_proteins": "Proteiny",
   "recipes_nutritional_recipe_fats": "Tłuszcze",
   "recipes_nutritional_recipe_carbohydrates": "Węglowodany",
-  "recipes_nutritional_desc": "Za 1 porcję"
+  "recipes_nutritional_desc": "Za 1 porcję",
+  "recipe_ingredients": "Składniki",
+  "recipe_ingredients_unit": "Jednostka",
+  "recipe_ingredients_name": "Nazwa składnika",
+  "recipe_ingredients_submit": "Dodaj składnik"
 }

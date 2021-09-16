@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import Link from 'next/link';
 
 interface ColorButtonProps {
@@ -10,7 +10,7 @@ interface LinkProps {
   ariaLabel: never;
   href: string;
   external?: boolean;
-  onClick?(): never;
+  onClick?: never;
   typeButton?: never;
   fullWidth?: boolean;
   disable?: never;
@@ -19,7 +19,7 @@ interface LinkProps {
 interface ButtonProps {
   type: 'button';
   ariaLabel: string;
-  onClick?(): void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   href?: never;
   external?: never;
   typeButton?: 'button' | 'submit';

@@ -85,5 +85,9 @@
   "recipes_nutritional_recipe_proteins": "Proteins",
   "recipes_nutritional_recipe_fats": "Fats",
   "recipes_nutritional_recipe_carbohydrates": "Carbohydrates",
-  "recipes_nutritional_desc": "For 1 serve"
+  "recipes_nutritional_desc": "For 1 serve",
+  "recipe_ingredients": "Ingredients",
+  "recipe_ingredients_unit": "Unit",
+  "recipe_ingredients_name": "Ingredient Name",
+  "recipe_ingredients_submit": "Add Ingredient"
 }

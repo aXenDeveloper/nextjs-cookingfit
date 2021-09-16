@@ -75,6 +75,7 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | [CKEditor](https://ckeditor.com/)                                  | Wysiwyg editor                                                                        |
 | [multer](https://www.npmjs.com/package/multer)                     | Files upload                                                                          |
 | [http](https://www.npmjs.com/package/http)                         | Types for server response                                                             |
+| [uuid](https://www.npmjs.com/package/uuid)                         | Generate random UUID                                                                  |
 
 ## ‼ Errors
 
