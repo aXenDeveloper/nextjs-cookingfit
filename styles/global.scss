@@ -148,6 +148,19 @@ a {
     > form {
       display: flex;
       flex-wrap: wrap;
+
+      > ul {
+        margin: 20px 0 0 0;
+        flex: 0 1 100%;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > li:not(:last-child) {
+          margin-right: 20px;
+        }
+      }
     }
   }
 }
@@ -162,6 +175,15 @@ a {
   100% {
     opacity: 0.2;
   }
+}
+
+.ck.ck-editor__main .ck.ck-content {
+  min-height: 240px;
+  max-height: 80vh;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping > .ck-toolbar__items {
+  flex-wrap: wrap !important;
 }
 
 @import './components/layout';

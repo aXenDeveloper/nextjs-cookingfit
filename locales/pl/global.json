@@ -64,6 +64,7 @@
   "form_sign_up_2C101/3": "Wprowadzono nieprawidłowe dane!",
   "form_sign_up_1C101/4": "Ten email już istnieje!",
   "form_sign_up_1C101/6": "Ta nazwa użytkownika już ustnieje!",
+  "form_cancel": "Anuluj",
   "error_title": "Ups, coś poszło nie tak (╯°□°）╯︵ ┻━┻",
   "error_code": "Kod błędu",
   "error_internel": "Nieoczekiwany błąd wewnętrzny. Spróbuj ponownie później",

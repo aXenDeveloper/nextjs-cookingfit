@@ -64,6 +64,7 @@
   "form_sign_up_2C101/3": "Invalid data entered!",
   "form_sign_up_1C101/4": "This email address is already exist!",
   "form_sign_up_1C101/6": "This user name is already exist!",
+  "form_cancel": "Cancel",
   "error_title": "Oops, something went wrong (╯°□°）╯︵ ┻━┻",
   "error_code": "Error code",
   "error_internel": "Unexpected internal error. Please try again later",

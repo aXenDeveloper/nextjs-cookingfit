@@ -176,19 +176,6 @@ export const RecipeAddView = () => {
                   <Editor textCKEditor={textCKEditor} setTextCKEDitor={setTextCKEDitor} />
                 </li>
               </ul>
-
-              <hr className="hr" />
-
-              <div className="text_center">
-                <Button
-                  type="button"
-                  color="primary"
-                  ariaLabel={t('form_recipe_add_submit')}
-                  typeButton="submit"
-                >
-                  {t('form_recipe_add_submit')}
-                </Button>
-              </div>
             </div>
           </main>
 
@@ -240,6 +227,32 @@ export const RecipeAddView = () => {
               <NutritionalValuesEdit register={register} />
             </div>
           </aside>
+
+          <ul className="box padding">
+            <li>
+              <Button
+                type="button"
+                onClick={() => {
+                  push('/recipes');
+                }}
+                color="light"
+                ariaLabel={t('form_cancel')}
+                typeButton="button"
+              >
+                {t('form_cancel')}
+              </Button>
+            </li>
+            <li>
+              <Button
+                type="button"
+                color="primary"
+                ariaLabel={t('form_recipe_add_submit')}
+                typeButton="submit"
+              >
+                {t('form_recipe_add_submit')}
+              </Button>
+            </li>
+          </ul>
         </form>
       </Container>
     </>
