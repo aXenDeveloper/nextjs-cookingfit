@@ -83,5 +83,6 @@
   "recipes_nutritional_recipe_calories": "Kalorie",
   "recipes_nutritional_recipe_proteins": "Proteiny",
   "recipes_nutritional_recipe_fats": "Tłuszcze",
-  "recipes_nutritional_recipe_carbohydrates": "Węglowodany"
+  "recipes_nutritional_recipe_carbohydrates": "Węglowodany",
+  "recipes_nutritional_desc": "Za 1 porcję"
 }

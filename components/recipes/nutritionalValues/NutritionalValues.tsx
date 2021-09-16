@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation';
 import { FC } from 'react';
 import { nutritionalValuesList } from '../../../_utils/nutritionalValuesList';
 import { NutritionalValuesItem } from './NutritionalValuesItem';
@@ -8,10 +9,20 @@ interface Props {
   };
 }
 
-export const NutritionalValues: FC<Props> = ({ data }) => (
-  <ul className="recipes_nutritional">
-    {nutritionalValuesList.map(({ id, value }) => (
-      <NutritionalValuesItem key={id} id={`recipe_${id}`} data={data[id]} value={value} />
-    ))}
-  </ul>
-);
+export const NutritionalValues: FC<Props> = ({ data }) => {
+  const { t } = useTranslation('global');
+
+  return (
+    <div className="recipes_nutritional">
+      <ul>
+        {nutritionalValuesList.map(({ id, value }) => (
+          <NutritionalValuesItem key={id} id={`recipe_${id}`} data={data[id]} value={value} />
+        ))}
+      </ul>
+
+      <div>
+        <span>{t('recipes_nutritional_desc')}</span>
+      </div>
+    </div>
+  );
+};

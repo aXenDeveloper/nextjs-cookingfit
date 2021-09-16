@@ -1,31 +1,40 @@
 &_nutritional {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  > ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
-  > li {
-    display: flex;
-    align-items: center;
+    > li {
+      display: flex;
+      align-items: center;
 
-    > input {
-      flex: 1;
-      margin: 0 10px;
-      width: 100px;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-
-    > span {
-      &:first-child {
-        margin-right: auto;
+      > input {
+        flex: 1;
+        margin: 0 10px;
+        width: 100px;
       }
 
-      &:last-child {
-        font-size: 16px;
-        font-weight: bold;
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      > span {
+        &:first-child {
+          margin-right: auto;
+        }
+
+        &:last-child {
+          font-size: 16px;
+          font-weight: bold;
+        }
       }
     }
+  }
+
+  > div {
+    text-align: center;
+    font-style: italic;
+    font-weight: 300;
+    margin-top: 10px;
   }
 }
