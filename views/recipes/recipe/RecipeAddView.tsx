@@ -17,10 +17,8 @@ import { useAuth } from '../../../context/useAuth';
 import { FormValuesTypes } from '../../../types/FormValuesTypes';
 import { navigationRecipesList } from '../../../_utils/navigationRecipes/navigationRecipesList';
 import { NutritionalValuesEdit } from '../../../components/recipes/nutritionalValues/nutritionalValuesEdit/NutritionalValuesEdit';
-import {
-  IngredientsEdit,
-  IngredientsProps
-} from '../../../components/recipes/ingredients/IngredientsEdit/IngredientsEdit';
+import { IngredientsEdit } from '../../../components/recipes/ingredients/IngredientsEdit/IngredientsEdit';
+import { IngredientsProps } from '../../../types/database/RecipesType';
 
 interface RecipeAddProps {
   title: string;
@@ -33,6 +31,7 @@ interface RecipeAddProps {
   proteins: number;
   fats: number;
   carbohydrates: number;
+  ingredients: IngredientsProps[];
 }
 
 export const RecipeAddView = () => {
@@ -84,6 +83,7 @@ export const RecipeAddView = () => {
       formData.append('proteins', `${proteins}`);
       formData.append('fats', `${fats}`);
       formData.append('carbohydrates', `${carbohydrates}`);
+      formData.append('ingredients', JSON.stringify(ingredients));
 
       setError(false);
 
@@ -118,7 +118,8 @@ export const RecipeAddView = () => {
         calories: +data.recipe_calories,
         proteins: +data.recipe_proteins,
         fats: +data.recipe_fats,
-        carbohydrates: +data.recipe_carbohydrates
+        carbohydrates: +data.recipe_carbohydrates,
+        ingredients: ingredients
       });
     }
   };

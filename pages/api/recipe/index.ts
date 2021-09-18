@@ -40,7 +40,8 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
       recipes_recipes.calories,
       recipes_recipes.proteins,
       recipes_recipes.fats,
-      recipes_recipes.carbohydrates
+      recipes_recipes.carbohydrates,
+      recipes_recipes.ingredients
 
       FROM recipes_recipes
       INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id

@@ -73,7 +73,8 @@ recipeAdd.post(async (req, res) => {
     calories,
     proteins,
     fats,
-    carbohydrates
+    carbohydrates,
+    ingredients
   } = req.body;
 
   if (
@@ -153,7 +154,7 @@ recipeAdd.post(async (req, res) => {
     }
 
     const result = await query(
-      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image, calories, proteins, fats, carbohydrates) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image, calories, proteins, fats, carbohydrates, ingredients) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         title as string,
         url,
@@ -173,7 +174,8 @@ recipeAdd.post(async (req, res) => {
         +calories,
         +proteins,
         +fats,
-        +carbohydrates
+        +carbohydrates,
+        ingredients ?? null
       ]
     );
 

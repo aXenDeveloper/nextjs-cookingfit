@@ -1,5 +1,12 @@
 import { PaginationType } from './PaginationType';
 
+export interface IngredientsProps {
+  id: string;
+  quantity: number;
+  unit: string;
+  name: string;
+}
+
 export interface RecipesModel {
   id: number;
   title: string;
@@ -29,6 +36,7 @@ export interface RecipeModel {
   proteins: number;
   fats: number;
   carbohydrates: number;
+  ingredients?: string;
 }
 
 export interface RecipesModelAPI {

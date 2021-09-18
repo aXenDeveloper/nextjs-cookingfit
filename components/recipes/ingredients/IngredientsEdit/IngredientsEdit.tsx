@@ -5,13 +5,7 @@ import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Button } from '../../../Button';
 import { IngredientsEditIterm } from './IngredientsEditIterm';
 import { arrayMove } from '../../../../_utils/arrayMove';
-
-export interface IngredientsProps {
-  id: string;
-  quantity: number;
-  unit: string;
-  name: string;
-}
+import { IngredientsProps } from '../../../../types/database/RecipesType';
 
 interface Props {
   ingredients: IngredientsProps[];

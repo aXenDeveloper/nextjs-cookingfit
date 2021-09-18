@@ -4,7 +4,7 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Container } from '../../../components/layouts/Container';
-import { RecipeModel } from '../../../types/database/RecipesType';
+import { IngredientsProps, RecipeModel } from '../../../types/database/RecipesType';
 import { ActionRecipeMenu } from '../../../components/menu/ActionRecipeMenu';
 import { DifficultyBadges } from '../../../components/badges/DifficultyBadges';
 import { NutritionalValues } from '../../../components/recipes/nutritionalValues/NutritionalValues';
@@ -15,6 +15,10 @@ interface Props {
 
 export const RecipeView: FC<Props> = ({ recipe }) => {
   const { t } = useTranslation('global');
+
+  const ingridients: IngredientsProps[] = recipe.ingredients
+    ? JSON.parse(recipe.ingredients)
+    : null;
 
   const urls = {
     category: `/recipes/${recipe.category_name}`,
