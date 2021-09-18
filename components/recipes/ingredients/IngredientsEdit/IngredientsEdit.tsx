@@ -1,8 +1,10 @@
 import useTranslation from 'next-translate/useTranslation';
 import { FC, MouseEventHandler, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Button } from '../../../Button';
 import { IngredientsEditIterm } from './IngredientsEditIterm';
+import { arrayMove } from '../../../../_utils/arrayMove';
 
 export interface IngredientsProps {
   id: string;
@@ -47,21 +49,48 @@ export const IngredientsEdit: FC<Props> = ({ ingredients, setIngredients }) => {
     setIngredients(filterIngredients);
   };
 
+  const onDragEnd = (result: DropResult) => {
+    const { destination, source, draggableId } = result;
+
+    if (
+      !destination ||
+      (destination.droppableId === source.droppableId && destination.index === source.index)
+    ) {
+      return;
+    }
+
+    setIngredients(arrayMove(ingredients, source.index, destination.index));
+  };
+
   return (
     <div className="input input:labelOutside">
       <div className="input_box_content">
         <label>{t('recipe_ingredients')}</label>
 
         {ingredients.length > 0 && (
-          <ul className="recipes_ingredients_list">
-            {ingredients.map(el => (
-              <IngredientsEditIterm
-                key={el.id}
-                ingredient={el}
-                removeItem={() => removeItem(el.id)}
-              />
-            ))}
-          </ul>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="recipes_ingredients_list">
+              {provided => (
+                <ul
+                  className="recipes_ingredients_list"
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
+                  <>
+                    {ingredients.map((el, index) => (
+                      <IngredientsEditIterm
+                        key={el.id}
+                        ingredient={el}
+                        removeItem={() => removeItem(el.id)}
+                        index={index}
+                      />
+                    ))}
+                    {provided.placeholder}
+                  </>
+                </ul>
+              )}
+            </Droppable>
+          </DragDropContext>
         )}
 
         <ul className="recipes_ingredients_form">
