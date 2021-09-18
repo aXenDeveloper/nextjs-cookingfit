@@ -5,6 +5,7 @@ import slugify from 'slugify';
 import { IncomingMessage, ServerResponse } from 'http';
 import { query } from '../../../functions/database';
 import { authenticated } from '../../../functions/authenticated';
+import { IngredientsProps } from '../../../types/database/RecipesType';
 
 interface ServerResponseProps extends ServerResponse {
   status: (statusCode: number) => NextApiResponse<any>;
@@ -74,7 +75,8 @@ recipeAdd.post(async (req, res) => {
     proteins,
     fats,
     carbohydrates,
-    ingredients
+    ingredients,
+    serveCount
   } = req.body;
 
   if (
@@ -153,6 +155,8 @@ recipeAdd.post(async (req, res) => {
       });
     }
 
+    const currentIngredients: IngredientsProps[] = ingredients ? JSON.parse(ingredients) : null;
+
     const result = await query(
       'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image, calories, proteins, fats, carbohydrates, ingredients) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
@@ -175,7 +179,11 @@ recipeAdd.post(async (req, res) => {
         +proteins,
         +fats,
         +carbohydrates,
-        ingredients ?? null
+        currentIngredients
+          ? JSON.stringify(
+              currentIngredients.filter(el => (el.quantity = el.quantity / serveCount))
+            )
+          : null
       ]
     );
 

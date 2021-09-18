@@ -219,7 +219,7 @@ export const RegisterView = () => {
               color="primary"
               typeButton="submit"
               fullWidth
-              disable={isLoading}
+              disabled={isLoading}
               ariaLabel={t('form_sign_up_submit')}
             >
               {t('form_sign_up_submit')}

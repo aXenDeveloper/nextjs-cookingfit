@@ -6,13 +6,21 @@ import { Button } from '../../../Button';
 import { IngredientsEditIterm } from './IngredientsEditIterm';
 import { arrayMove } from '../../../../_utils/arrayMove';
 import { IngredientsProps } from '../../../../types/database/RecipesType';
+import { IngredientsServe } from '../IngredientsServe';
 
 interface Props {
   ingredients: IngredientsProps[];
   setIngredients: (el: IngredientsProps[]) => void;
+  serveCount: number;
+  setServeCount: (el: number) => void;
 }
 
-export const IngredientsEdit: FC<Props> = ({ ingredients, setIngredients }) => {
+export const IngredientsEdit: FC<Props> = ({
+  ingredients,
+  setIngredients,
+  serveCount,
+  setServeCount
+}) => {
   const { t } = useTranslation('global');
 
   const [quantityInput, setQuantityInput] = useState(0);
@@ -44,7 +52,7 @@ export const IngredientsEdit: FC<Props> = ({ ingredients, setIngredients }) => {
   };
 
   const onDragEnd = (result: DropResult) => {
-    const { destination, source, draggableId } = result;
+    const { destination, source } = result;
 
     if (
       !destination ||
@@ -58,8 +66,12 @@ export const IngredientsEdit: FC<Props> = ({ ingredients, setIngredients }) => {
 
   return (
     <div className="input input:labelOutside">
-      <div className="input_box_content">
-        <label>{t('recipe_ingredients')}</label>
+      <div className="input_box_content recipes_ingredients">
+        <label>
+          <span>{t('recipe_ingredients')}</span>
+
+          <IngredientsServe serveCount={serveCount} setServeCount={setServeCount} />
+        </label>
 
         {ingredients.length > 0 && (
           <DragDropContext onDragEnd={onDragEnd}>
@@ -76,6 +88,7 @@ export const IngredientsEdit: FC<Props> = ({ ingredients, setIngredients }) => {
                         key={el.id}
                         ingredient={el}
                         removeItem={() => removeItem(el.id)}
+                        serveCount={serveCount}
                         index={index}
                       />
                     ))}
@@ -130,6 +143,7 @@ export const IngredientsEdit: FC<Props> = ({ ingredients, setIngredients }) => {
               typeButton="button"
               onClick={handleSubmit}
               ariaLabel={t('recipe_ingredients_submit')}
+              disabled={!nameInput || !unitInput || !quantityInput}
             >
               {t('recipe_ingredients_submit')}
             </Button>

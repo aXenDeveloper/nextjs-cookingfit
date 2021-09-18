@@ -32,6 +32,7 @@ interface RecipeAddProps {
   fats: number;
   carbohydrates: number;
   ingredients: IngredientsProps[];
+  serveCount: number;
 }
 
 export const RecipeAddView = () => {
@@ -53,6 +54,7 @@ export const RecipeAddView = () => {
   const [error, setError] = useState(false);
   const [inputImage, setInputImage] = useState<File | null>();
   const [ingredients, setIngredients] = useState<IngredientsProps[]>([]);
+  const [serveCount, setServeCount] = useState(1);
   const { session, loading } = useAuth();
   const { push } = useRouter();
   const { t } = useTranslation('global');
@@ -84,6 +86,7 @@ export const RecipeAddView = () => {
       formData.append('fats', `${fats}`);
       formData.append('carbohydrates', `${carbohydrates}`);
       formData.append('ingredients', JSON.stringify(ingredients));
+      formData.append('serveCount', `${serveCount}`);
 
       setError(false);
 
@@ -119,7 +122,8 @@ export const RecipeAddView = () => {
         proteins: +data.recipe_proteins,
         fats: +data.recipe_fats,
         carbohydrates: +data.recipe_carbohydrates,
-        ingredients: ingredients
+        ingredients: ingredients,
+        serveCount
       });
     }
   };
@@ -179,7 +183,12 @@ export const RecipeAddView = () => {
                 </li>
 
                 <li>
-                  <IngredientsEdit ingredients={ingredients} setIngredients={setIngredients} />
+                  <IngredientsEdit
+                    ingredients={ingredients}
+                    setIngredients={setIngredients}
+                    serveCount={serveCount}
+                    setServeCount={setServeCount}
+                  />
                 </li>
 
                 <li>

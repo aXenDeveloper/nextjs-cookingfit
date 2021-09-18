@@ -89,5 +89,7 @@
   "recipe_ingredients": "Ingredients",
   "recipe_ingredients_unit": "Unit",
   "recipe_ingredients_name": "Ingredient Name",
-  "recipe_ingredients_submit": "Add Ingredient"
+  "recipe_ingredients_submit": "Add Ingredient",
+  "recipes_ingredients_serve_number_one": "{{count}} serve",
+  "recipes_ingredients_serve_number_other": "{{count}} serves"
 }

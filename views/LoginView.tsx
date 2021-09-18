@@ -151,7 +151,7 @@ export const LoginView: FC<Props> = ({ csrfToken }) => {
               color="primary"
               typeButton="submit"
               fullWidth
-              disable={isLoading}
+              disabled={isLoading}
               ariaLabel={t('form_sign_in_submit')}
             >
               {t('form_sign_in_submit')}

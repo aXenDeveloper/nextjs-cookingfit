@@ -89,5 +89,10 @@
   "recipe_ingredients": "Składniki",
   "recipe_ingredients_unit": "Jednostka",
   "recipe_ingredients_name": "Nazwa składnika",
-  "recipe_ingredients_submit": "Dodaj składnik"
+  "recipe_ingredients_submit": "Dodaj składnik",
+  "recipes_ingredients_serve_number_1": "{{count}} porcja",
+  "recipes_ingredients_serve_number_2": "{{count}} porcje",
+  "recipes_ingredients_serve_number_3": "{{count}} porcje",
+  "recipes_ingredients_serve_number_4": "{{count}} porcje",
+  "recipes_ingredients_serve_number": "{{count}} porcji"
 }

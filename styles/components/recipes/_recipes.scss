@@ -5,7 +5,9 @@
   @import './_ingredientsRecipes';
 
   &_form {
-    label {
+    label,
+    .input\:labelOutside input:focus-visible + label,
+    .input\:labelOutside input.input\:fill + label {
       font-size: 16px;
     }
 

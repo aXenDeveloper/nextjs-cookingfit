@@ -1,4 +1,53 @@
 &_ingredients {
+  > label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_serve {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+
+    > li {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      > svg {
+        margin-right: 6px;
+      }
+
+      > button {
+        width: 26px;
+        height: 26px;
+        border-radius: var(--radius);
+        background-color: var(--button-secondary);
+        color: #fff;
+        border: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, opacity 0.15s ease-in-out;
+        cursor: pointer;
+
+        &:disabled {
+          cursor: default;
+          opacity: 0.5;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 4px rgba(var(--button-secondary--code), 0.5);
+        }
+      }
+    }
+  }
+
   &_form {
     padding: 0;
     margin: 0;
@@ -76,16 +125,12 @@
             border: 0;
             background-color: transparent;
             border-radius: var(--radius);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
             cursor: pointer;
 
             > svg {
               font-size: 15px;
               color: inherit;
-            }
-
-            &:active {
-              background-color: var(--button-secondary-light);
-              box-shadow: 0 0 0 4px rgba(var(--button-secondary-light--code), 0.5);
             }
 
             &:focus {
