@@ -2,31 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
 import multer from 'multer';
 import slugify from 'slugify';
-import { IncomingMessage, ServerResponse } from 'http';
+import { ServerResponse } from 'http';
 import { query } from '../../../functions/database';
 import { authenticated } from '../../../functions/authenticated';
 import { IngredientsProps } from '../../../types/database/RecipesType';
 
 interface ServerResponseProps extends ServerResponse {
   status: (statusCode: number) => NextApiResponse<any>;
-}
-
-interface IncomingMessageProps extends IncomingMessage {
-  files: {
-    filename: string;
-  }[];
-  body: {
-    title: string;
-    text: string;
-    time: number;
-    category_id: number;
-    author_id: number;
-    date: number;
-    difficulty: number;
-    image: {
-      filename: string;
-    }[];
-  };
 }
 
 const currentDate = new Date();
@@ -127,19 +109,6 @@ recipeAdd.post(async (req, res) => {
       });
     }
 
-    const existUrl = (await query('SELECT url FROM recipes_recipes WHERE url=?', [url])) as {
-      url: string;
-    }[];
-
-    if (existUrl.length !== 0) {
-      return res.status(401).json({
-        error: {
-          id: '1C105/7',
-          message: 'EXIST_TITLE'
-        }
-      });
-    }
-
     const existCategory = (await query('SELECT category_name FROM recipes_categories WHERE id=?', [
       +category_id
     ])) as {
@@ -157,7 +126,7 @@ recipeAdd.post(async (req, res) => {
 
     const currentIngredients: IngredientsProps[] = ingredients ? JSON.parse(ingredients) : null;
 
-    const result = await query(
+    const result = (await query(
       'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image, calories, proteins, fats, carbohydrates, ingredients) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [
         title as string,
@@ -185,11 +154,13 @@ recipeAdd.post(async (req, res) => {
             )
           : null
       ]
-    );
+    )) as {
+      insertId: number;
+    };
 
     return res.status(200).json({
       result,
-      recordURL: `${existCategory[0].category_name}/${url}`,
+      recordURL: `${existCategory[0].category_name}/${url}-${result.insertId}`,
       // @ts-ignore
       url: req.files[0]
         ? `/uploads/monthly_${currentDate.getMonth()}_${currentDate.getFullYear()}/${

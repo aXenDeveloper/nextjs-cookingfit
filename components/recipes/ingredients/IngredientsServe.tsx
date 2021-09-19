@@ -29,6 +29,17 @@ export const IngredientsServe: FC<Props> = ({ serveCount, setServeCount }) => {
 
       <li>
         <button
+          type="button"
+          onClick={() => handleClick('increase')}
+          disabled={serveCount >= 100}
+          aria-label="test2"
+        >
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
+      </li>
+
+      <li>
+        <button
           id="1"
           type="button"
           onClick={() => handleClick('reduce')}
@@ -36,17 +47,6 @@ export const IngredientsServe: FC<Props> = ({ serveCount, setServeCount }) => {
           aria-label="test"
         >
           <FontAwesomeIcon icon={faMinus} />
-        </button>
-      </li>
-
-      <li>
-        <button
-          type="button"
-          onClick={() => handleClick('increase')}
-          disabled={serveCount >= 100}
-          aria-label="test2"
-        >
-          <FontAwesomeIcon icon={faPlus} />
         </button>
       </li>
     </ul>

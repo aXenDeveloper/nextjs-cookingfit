@@ -251,6 +251,16 @@ export const RecipeAddView = () => {
             <li>
               <Button
                 type="button"
+                color="primary"
+                ariaLabel={t('form_recipe_add_submit')}
+                typeButton="submit"
+              >
+                {t('form_recipe_add_submit')}
+              </Button>
+            </li>
+            <li>
+              <Button
+                type="button"
                 onClick={() => {
                   push('/recipes');
                 }}
@@ -259,16 +269,6 @@ export const RecipeAddView = () => {
                 typeButton="button"
               >
                 {t('form_cancel')}
-              </Button>
-            </li>
-            <li>
-              <Button
-                type="button"
-                color="primary"
-                ariaLabel={t('form_recipe_add_submit')}
-                typeButton="submit"
-              >
-                {t('form_recipe_add_submit')}
               </Button>
             </li>
           </ul>

@@ -106,7 +106,6 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 2C105/4 | (Add Recipe) Invalid user (401)                           |
 | 2C105/5 | (Add Recipe) Banned user (401)                            |
 | 3C105/6 | (Add Recipe) Invalid category (400)                       |
-| 1C105/7 | (Add Recipe) Exist title (403)                            |
 | 5C106/1 | (Upload File Recipe) Invalid method API (500)             |
 | 3C106/2 | (Upload File Recipe) Invalid method API (405)             |
 
@@ -193,6 +192,7 @@ api/recipe
 #### Query
 
 - url: _string_,
+- id: _number_,
 - category: _string_
 
 #### Response
@@ -213,6 +213,12 @@ api/recipe
   proteins?: number;
   fats?: number;
   carbohydrates?: number;
+  ingredients?: {
+    id: string;
+    quantity: number;
+    unit: string;
+    name: string;
+  }[]
 }
 ```
 
@@ -235,3 +241,4 @@ api/recipe/add
 - proteins: \_number\*,
 - fats: \_number\*,
 - carbohydrates: \_number\*,
+- ingredients?: \_string\*

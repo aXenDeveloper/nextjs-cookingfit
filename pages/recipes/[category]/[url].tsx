@@ -26,9 +26,18 @@ const RecipesItemPage: FC<Props> = ({ recipe }) => {
 };
 
 export const getServerSideProps = async (context: any) => {
-  const { category, url } = context.params;
+  const { category, url }: { category: string; url: string } = context.params;
 
-  const res = await fetch(`${apiURL}/recipe?category=${category}&url=${url}`);
+  const currentIDfromArray = url.split('-');
+  const currentID = currentIDfromArray[currentIDfromArray.length - 1];
+
+  const currentURLformArray = currentIDfromArray.slice(0, currentIDfromArray.length - 1).join('-');
+
+  console.log(currentURLformArray);
+
+  const res = await fetch(
+    `${apiURL}/recipe?category=${category}&id=${currentID}&url=${currentURLformArray}`
+  );
   const body = await res.json();
 
   return {

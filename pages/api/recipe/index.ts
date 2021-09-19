@@ -12,9 +12,9 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const { category, url } = req.query;
+  const { category, id, url } = req.query;
 
-  if (!category || !url) {
+  if (!category || !id) {
     return res.status(400).json({
       error: {
         id: '3C104/3',
@@ -45,9 +45,9 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
 
       FROM recipes_recipes
       INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
-      WHERE recipes_recipes.url=? AND recipes_categories.category_name=?
+      WHERE recipes_recipes.id=? AND recipes_categories.category_name=? AND recipes_recipes.url=?
       `,
-      [url as string, category as string]
+      [+id as number, category as string, url as string]
     )) as RecipeModel[];
 
     if (result.length === 0) {

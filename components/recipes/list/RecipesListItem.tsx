@@ -22,7 +22,7 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
 
   const urls = {
     category: `/recipes/${recipe.category_name}`,
-    recipe: `/recipes/${recipe.category_name}/${recipe.url}`,
+    recipe: `/recipes/${recipe.category_name}/${recipe.url}-${recipe.id}`,
     author: `/profile/${recipe.member_name_seo}`
   };
 
