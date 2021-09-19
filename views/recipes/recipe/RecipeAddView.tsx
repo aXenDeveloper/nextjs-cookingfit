@@ -8,7 +8,7 @@ import { Button } from '../../../components/Button';
 import { Editor } from '../../../components/Editor';
 import { FileInput } from '../../../components/inputs/FileInput';
 import { DifficultyRangeInput } from '../../../components/inputs/DifficultyRangeInput';
-import { SelectInput } from '../../../components/inputs/SelectInput';
+import { SelectInput } from '../../../components/inputs/select/SelectInput';
 import { TextInput } from '../../../components/inputs/TextInput';
 import { Container } from '../../../components/layouts/Container';
 import { SpinnersLoading } from '../../../components/loading/SpinnersLoading';

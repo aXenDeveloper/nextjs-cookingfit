@@ -8,6 +8,7 @@ import { IngredientsProps, RecipeModel } from '../../../types/database/RecipesTy
 import { ActionRecipeMenu } from '../../../components/menu/ActionRecipeMenu';
 import { DifficultyBadges } from '../../../components/badges/DifficultyBadges';
 import { NutritionalValues } from '../../../components/recipes/nutritionalValues/NutritionalValues';
+import { Ingredients } from '../../../components/recipes/ingredients/Ingredients';
 
 interface Props {
   recipe: RecipeModel;
@@ -71,22 +72,22 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
             </div>
           </div>
 
+          {ingridients && <Ingredients ingridientsList={ingridients} />}
+
           <div className="box padding recipes_item_text">
             <div dangerouslySetInnerHTML={{ __html: recipe.text }} />
           </div>
         </main>
 
         <aside className="container_column:aside">
-          <div className="box padding">
-            <NutritionalValues
-              data={{
-                calories: recipe.calories,
-                proteins: recipe.proteins,
-                fats: recipe.fats,
-                carbohydrates: recipe.carbohydrates
-              }}
-            />
-          </div>
+          <NutritionalValues
+            data={{
+              calories: recipe.calories,
+              proteins: recipe.proteins,
+              fats: recipe.fats,
+              carbohydrates: recipe.carbohydrates
+            }}
+          />
         </aside>
       </Container>
     </>

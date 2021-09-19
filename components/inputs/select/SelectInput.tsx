@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { FC } from 'react';
 import { Path, UseFormRegister } from 'react-hook-form';
-import { FormValuesTypes } from '../../types/FormValuesTypes';
+import { FormValuesTypes } from '../../../types/FormValuesTypes';
 
 interface Props {
   id: Path<FormValuesTypes>;

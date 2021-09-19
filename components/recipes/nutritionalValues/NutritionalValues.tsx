@@ -13,7 +13,7 @@ export const NutritionalValues: FC<Props> = ({ data }) => {
   const { t } = useTranslation('global');
 
   return (
-    <div className="recipes_nutritional">
+    <div className="box padding recipes_nutritional">
       <ul>
         {nutritionalValuesList.map(({ id, value }) => (
           <NutritionalValuesItem key={id} id={`recipe_${id}`} data={data[id]} value={value} />
