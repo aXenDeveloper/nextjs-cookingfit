@@ -70,7 +70,7 @@ export const IngredientsEdit: FC<Props> = ({
   return (
     <div className="input input:labelOutside">
       <div className="input_box_content recipes_ingredients">
-        <label>
+        <label htmlFor="recipe_ingredients">
           <span>{t('recipe_ingredients')}</span>
 
           <IngredientsServe serveCount={serveCount} setServeCount={setServeCount} />
@@ -91,7 +91,6 @@ export const IngredientsEdit: FC<Props> = ({
                         key={el.id}
                         ingredient={el}
                         removeItem={() => removeItem(el.id)}
-                        serveCount={serveCount}
                         index={index}
                       />
                     ))}
@@ -112,6 +111,7 @@ export const IngredientsEdit: FC<Props> = ({
               className="input_input"
               value={quantityInput}
               onChange={e => setQuantityInput(+e.target.value)}
+              min={0}
             />
           </li>
 

@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Button } from '../components/Button';
-import { Checkbox } from '../components/inputs/Checkbox';
+import { CheckBox } from '../components/inputs/checkBox/Checkbox';
 import { TextInput } from '../components/inputs/TextInput';
 import { Container } from '../components/layouts/Container';
 import { SpinnersLoading } from '../components/loading/SpinnersLoading';
@@ -144,7 +144,7 @@ export const LoginView: FC<Props> = ({ csrfToken }) => {
               }}
             />
 
-            <Checkbox id="remember" register={register} error={!!errors.remember} />
+            <CheckBox id="remember" register={register} error={!!errors.remember} />
 
             <Button
               type="button"

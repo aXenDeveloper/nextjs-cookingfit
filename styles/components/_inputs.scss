@@ -47,21 +47,21 @@
     }
   }
 
-  label {
-    position: absolute;
-    top: 49%;
-    left: 14px;
-    transform: translateY(-49%);
-    color: var(--input-light);
-    background-color: var(--input-background);
-    border-radius: var(--radius);
-    padding: 2px 4px;
-    transition: transform 0.15s ease-in-out, font-size 0.15s ease-in-out, color 0.15s ease-in-out;
-    pointer-events: none;
-  }
-
   &_box {
     padding: 10px 0;
+
+    & label {
+      position: absolute;
+      top: 49%;
+      left: 14px;
+      transform: translateY(-49%);
+      color: var(--input-light);
+      background-color: var(--input-background);
+      border-radius: var(--radius);
+      padding: 2px 4px;
+      transition: transform 0.15s ease-in-out, font-size 0.15s ease-in-out, color 0.15s ease-in-out;
+      pointer-events: none;
+    }
 
     &_content {
       position: relative;

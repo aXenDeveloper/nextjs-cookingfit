@@ -1,5 +1,6 @@
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useTranslation from 'next-translate/useTranslation';
 import { FC } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { IngredientsProps } from '../../../../types/database/RecipesType';
@@ -8,10 +9,11 @@ interface Props {
   ingredient: IngredientsProps;
   removeItem: () => void;
   index: number;
-  serveCount: number;
 }
 
-export const IngredientsEditIterm: FC<Props> = ({ ingredient, removeItem, index, serveCount }) => {
+export const IngredientsEditIterm: FC<Props> = ({ ingredient, removeItem, index }) => {
+  const { t } = useTranslation('global');
+
   return (
     <>
       <Draggable draggableId={ingredient.id} index={index}>
@@ -22,7 +24,8 @@ export const IngredientsEditIterm: FC<Props> = ({ ingredient, removeItem, index,
                 <FontAwesomeIcon icon={faBars} />
               </li>
               <li>
-                {ingredient.quantity} {ingredient.unit}
+                {ingredient.quantity}{' '}
+                {t(`recipe_ingredients_unit_${ingredient.unit}`, { count: ingredient.quantity })}
               </li>
               <li>{ingredient.name}</li>
               <li>

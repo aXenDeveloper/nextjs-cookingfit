@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Button } from '../components/Button';
-import { Checkbox } from '../components/inputs/Checkbox';
+import { CheckBox } from '../components/inputs/checkBox/Checkbox';
 import { TextInput } from '../components/inputs/TextInput';
 import { Container } from '../components/layouts/Container';
 import { SpinnersLoading } from '../components/loading/SpinnersLoading';
@@ -196,7 +196,7 @@ export const RegisterView = () => {
               {!!errors.repeatPassword && t('input_box_label_repeatPassword_error')}
             </TextInput>
 
-            <Checkbox
+            <CheckBox
               id="terms"
               register={register}
               error={!!errors.terms}
@@ -212,7 +212,7 @@ export const RegisterView = () => {
                   <Link href="/privacy" key="input_checkbox_label_terms_2" />
                 ]}
               />
-            </Checkbox>
+            </CheckBox>
 
             <Button
               type="button"

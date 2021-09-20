@@ -40,7 +40,7 @@
       background-color: var(--button-primary-dark);
     }
 
-    &:active {
+    &:not(:disabled):active {
       background-color: var(--button-primary-dark);
       box-shadow: 0 0 0 4px rgba(var(--button-primary-dark--code), 0.5);
     }
@@ -58,7 +58,7 @@
       background-color: var(--button-secondary-light);
     }
 
-    &:active {
+    &:not(:disabled):active {
       background-color: var(--button-secondary-light);
       box-shadow: 0 0 0 4px rgba(var(--button-secondary-light--code), 0.5);
     }
@@ -76,7 +76,7 @@
       background-color: var(--button-light-dark);
     }
 
-    &:active {
+    &:not(:disabled):active {
       background-color: var(--button-light-dark);
       box-shadow: 0 0 0 4px rgba(var(--body-color-code), 0.3);
     }
@@ -94,12 +94,12 @@
       background-color: var(--button-important-dark);
     }
 
-    &:active {
+    &:not(:disabled):active {
       background-color: var(--button-important-dark);
       box-shadow: 0 0 0 4px rgba(var(--button-important-dark--code), 0.5);
     }
 
-    &:focus {
+    &:not(:disabled):focus {
       box-shadow: 0 0 0 4px rgba(var(--button-important--code), 0.5);
     }
   }

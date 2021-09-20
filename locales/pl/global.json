@@ -127,5 +127,11 @@
   "recipe_ingredients_unit_glass": "szklanek",
   "recipe_ingredients_unit_mm": "mm",
   "recipe_ingredients_unit_cm": "cm",
-  "recipe_ingredients_unit_m": "m"
+  "recipe_ingredients_unit_m": "m",
+  "recipe_ingredients_unit_pieces_0": "sztuka",
+  "recipe_ingredients_unit_pieces_1": "sztuka",
+  "recipe_ingredients_unit_pieces_2": "sztuki",
+  "recipe_ingredients_unit_pieces_3": "sztuki",
+  "recipe_ingredients_unit_pieces_4": "sztuki",
+  "recipe_ingredients_unit_pieces": "sztuk"
 }

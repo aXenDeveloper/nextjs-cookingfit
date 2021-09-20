@@ -40,6 +40,11 @@
           opacity: 0.5;
         }
 
+        &:not(:disabled):active {
+          background-color: var(--button-secondary-light);
+          box-shadow: 0 0 0 4px rgba(var(--button-secondary-light--code), 0.5);
+        }
+
         &:focus {
           outline: none;
           box-shadow: 0 0 0 4px rgba(var(--button-secondary--code), 0.5);
@@ -145,5 +150,19 @@
 
   &_view {
     margin-bottom: 20px;
+
+    &_list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      grid-column-gap: 20px;
+      grid-row-gap: 10px;
+
+      > li label > span:first-child {
+        font-weight: 600;
+      }
+    }
   }
 }
