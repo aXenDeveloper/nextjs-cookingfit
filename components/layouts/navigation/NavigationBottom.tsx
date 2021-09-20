@@ -3,7 +3,8 @@ import {
   faCalculator,
   faSearch,
   faShoppingBasket,
-  faUser
+  faUser,
+  faUtensils
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
@@ -15,6 +16,15 @@ export const NavigationBottom = () => {
 
   return (
     <ul className="nav_bottom responsive_hide:desktop">
+      <li>
+        <Link href="/recipes">
+          <a>
+            <FontAwesomeIcon icon={faUtensils} />
+            <span>{t('navigation_recipes')}</span>
+          </a>
+        </Link>
+      </li>
+
       <li>
         <Link href="/calculators">
           <a>
