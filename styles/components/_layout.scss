@@ -2,7 +2,7 @@
   margin: var(--nav-height) 0 0 var(--header-width);
 
   @media screen and (max-width: 980px) {
-    margin: var(--header-mobile-height) 0 var(--nav-mobile-height) 0;
+    margin: var(--header-mobile-height) 0 0 0;
   }
 }
 
@@ -26,6 +26,7 @@
     padding: 8px 20px;
     flex-direction: row;
     justify-content: space-between;
+    box-shadow: var(--nav-height-shadow);
 
     > a {
       width: 63px;
@@ -100,6 +101,7 @@
     list-style: none;
     display: flex;
     align-items: center;
+    box-shadow: var(--nav-height-shadow);
 
     > li {
       display: flex;
@@ -150,7 +152,7 @@
   color: var(--color-light);
 
   @media screen and (max-width: 980px) {
-    margin-left: 0;
+    margin: 0 0 var(--nav-mobile-height) 0;
   }
 
   a {

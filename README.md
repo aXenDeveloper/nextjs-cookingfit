@@ -218,7 +218,8 @@ api/recipe
     quantity: number;
     unit: string;
     name: string;
-  }[]
+  }[],
+  serve_count?: number;
 }
 ```
 
@@ -241,4 +242,5 @@ api/recipe/add
 - proteins: \_number\*,
 - fats: \_number\*,
 - carbohydrates: \_number\*,
-- ingredients?: \_string\*
+- ingredients?: \_string\*,
+- serve_count?: \_number\*

@@ -37,6 +37,7 @@ export interface RecipeModel {
   fats: number;
   carbohydrates: number;
   ingredients?: string;
+  serve_count?: number;
 }
 
 export interface RecipesModelAPI {

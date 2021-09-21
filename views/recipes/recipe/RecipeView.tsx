@@ -72,7 +72,9 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
             </div>
           </div>
 
-          {ingridients && <Ingredients ingridientsList={ingridients} />}
+          {ingridients && (
+            <Ingredients ingridientsList={ingridients} serveCount={recipe.serve_count} />
+          )}
 
           <div className="box padding recipes_item_text">
             <div dangerouslySetInnerHTML={{ __html: recipe.text }} />

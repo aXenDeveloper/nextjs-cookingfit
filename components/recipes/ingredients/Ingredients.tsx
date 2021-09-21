@@ -6,14 +6,15 @@ import { CheckBoxWithoutRegister } from '../../inputs/checkBox/CheckBoxWithoutRe
 
 interface Props {
   ingridientsList: IngredientsProps[];
+  serveCount?: number;
 }
 
-export const Ingredients: FC<Props> = ({ ingridientsList }) => {
-  const [serveCount, setServeCount] = useState(1);
+export const Ingredients: FC<Props> = ({ ingridientsList, serveCount }) => {
+  const [currentServeCount, setCurrentServeCount] = useState(serveCount ?? 1);
   const { t } = useTranslation('global');
 
   const calcServeIngridients = (quantity: number) => {
-    return Math.round(quantity * serveCount * 100) / 100;
+    return Math.round(quantity * currentServeCount * 100) / 100;
   };
 
   return (
@@ -21,7 +22,7 @@ export const Ingredients: FC<Props> = ({ ingridientsList }) => {
       <div className="box_header">
         <h2>{t('recipe_ingredients')}</h2>
 
-        <IngredientsServe serveCount={serveCount} setServeCount={setServeCount} />
+        <IngredientsServe serveCount={currentServeCount} setServeCount={setCurrentServeCount} />
       </div>
 
       <ul className="recipes_ingredients_view_list">
