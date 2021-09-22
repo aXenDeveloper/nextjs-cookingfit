@@ -76,6 +76,12 @@
           }
         }
 
+        &_left {
+          &\:calendar {
+            color: var(--color-light);
+          }
+        }
+
         &_right {
           text-align: right;
         }

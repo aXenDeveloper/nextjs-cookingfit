@@ -5,6 +5,9 @@ import { RecipesModel } from '../../../types/database/RecipesType';
 import useTranslation from 'next-translate/useTranslation';
 import { Button } from '../../Button';
 import { DifficultyBadges } from '../../badges/DifficultyBadges';
+import { DateFormat } from '../../DateFormat';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   recipe: RecipesModel;
@@ -70,7 +73,9 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
             <li>
               <DifficultyBadges difficulty={recipe.difficulty} />
             </li>
-            <li>{recipe.publish_date}</li>
+            <li className="recipes_list_item_main_footer_left:calendar">
+              <FontAwesomeIcon icon={faCalendarAlt} /> <DateFormat date={recipe.publish_date} />
+            </li>
           </ul>
 
           <ul className="recipes_list_item_main_footer_right">

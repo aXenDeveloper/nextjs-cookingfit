@@ -9,6 +9,9 @@ import { ActionRecipeMenu } from '../../../components/menu/ActionRecipeMenu';
 import { DifficultyBadges } from '../../../components/badges/DifficultyBadges';
 import { NutritionalValues } from '../../../components/recipes/nutritionalValues/NutritionalValues';
 import { Ingredients } from '../../../components/recipes/ingredients/Ingredients';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { DateFormat } from '../../../components/DateFormat';
 
 interface Props {
   recipe: RecipeModel;
@@ -67,7 +70,9 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
                   <DifficultyBadges difficulty={recipe.difficulty} />
                 </div>
 
-                <div>{recipe.time}</div>
+                <div>
+                  <FontAwesomeIcon icon={faCalendarAlt} /> <DateFormat date={recipe.publish_date} />
+                </div>
               </div>
             </div>
           </div>

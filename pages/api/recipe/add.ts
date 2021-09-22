@@ -135,7 +135,7 @@ recipeAdd.post(async (req, res) => {
         +time,
         +category_id,
         +author_id,
-        currentDate.getTime(),
+        currentDate.getTime() / 1000,
         +difficulty,
         // @ts-ignore
         req.files[0]

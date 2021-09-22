@@ -30,10 +30,7 @@ export const getServerSideProps = async (context: any) => {
 
   const currentIDfromArray = url.split('-');
   const currentID = currentIDfromArray[currentIDfromArray.length - 1];
-
   const currentURLformArray = currentIDfromArray.slice(0, currentIDfromArray.length - 1).join('-');
-
-  console.log(currentURLformArray);
 
   const res = await fetch(
     `${apiURL}/recipe?category=${category}&id=${currentID}&url=${currentURLformArray}`

@@ -1,13 +1,12 @@
-import { faAt, faCheckCircle, faLock } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import Link from 'next/link';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
-import Link from 'next/link';
-import { useState } from 'react';
+import { faAt, faCheckCircle, faLock } from '@fortawesome/free-solid-svg-icons';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Button } from '../components/Button';
-import { CheckBox } from '../components/inputs/checkBox/Checkbox';
 import { TextInput } from '../components/inputs/TextInput';
 import { Container } from '../components/layouts/Container';
 import { SpinnersLoading } from '../components/loading/SpinnersLoading';
@@ -16,6 +15,7 @@ import { MessageBox } from '../components/messageBox/MessageBox';
 import { useAuth } from '../context/useAuth';
 import { emailRegex } from '../_utils/regex';
 import { FormValuesTypes } from '../types/FormValuesTypes';
+import { CheckBox } from '../components/inputs/checkBox/CheckBox';
 
 type RegisterProps = {
   name: string;

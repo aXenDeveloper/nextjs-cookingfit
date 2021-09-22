@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import Tippy from '@tippyjs/react';
-import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
@@ -14,7 +13,6 @@ interface Props {
 
 export const ChangeLang: FC<Props> = ({ showMobile }) => {
   const { asPath } = useRouter();
-  const { t } = useTranslation('global');
 
   const handleChangeLang = (lang: string) => {
     Cookies.set('NEXT_LOCALE', lang, { expires: 365 });
