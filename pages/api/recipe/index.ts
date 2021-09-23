@@ -33,6 +33,7 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
       recipes_recipes.difficulty,
       recipes_recipes.time,
       recipes_recipes.text,
+      recipes_categories.category_id,
       recipes_categories.category_name,
       recipes_recipes.image,
       core_members.member_name,
@@ -45,7 +46,7 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
       recipes_recipes.serve_count
 
       FROM recipes_recipes
-      INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
+      INNER JOIN recipes_categories ON recipes_categories.category_id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
       WHERE recipes_recipes.id=? AND recipes_categories.category_name=? AND recipes_recipes.url=?
       `,
       [+id as number, category as string, url as string]

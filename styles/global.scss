@@ -155,16 +155,21 @@ a {
     }
   }
 
-  &\:form {
+  &_form {
     display: block;
 
     > form {
       display: flex;
       flex-wrap: wrap;
+    }
+
+    &_submit {
+      margin: 20px 0 0 0;
+      flex: 0 1 100%;
 
       > ul {
-        margin: 20px 0 0 0;
-        flex: 0 1 100%;
+        padding: 0;
+        margin: 0;
         list-style: none;
         display: flex;
         align-items: center;
@@ -173,6 +178,10 @@ a {
         > li:not(:last-child) {
           margin-right: 20px;
         }
+      }
+
+      > .text_center {
+        margin-bottom: 20px;
       }
     }
   }

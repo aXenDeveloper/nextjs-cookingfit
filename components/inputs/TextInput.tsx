@@ -26,6 +26,7 @@ interface PropsNumber {
   labelOutsideInput?: boolean;
   min?: number;
   max?: number;
+  defaultValue?: number;
 }
 
 interface PropsText {
@@ -49,6 +50,7 @@ interface PropsText {
   labelOutsideInput?: boolean;
   min?: never;
   max?: never;
+  defaultValue?: string;
 }
 
 type Props = PropsNumber | PropsText;
@@ -66,10 +68,11 @@ export const TextInput: FC<Props> = ({
   labelOutsideInput,
   min,
   max,
+  defaultValue,
   children
 }) => {
   const { t } = useTranslation('global');
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(defaultValue ?? '');
   const { ref, ...rest } = register(id, {
     required: required?.required,
     min,

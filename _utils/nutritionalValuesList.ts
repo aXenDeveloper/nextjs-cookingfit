@@ -1,21 +1,21 @@
 export const nutritionalValuesList: {
   id: 'calories' | 'proteins' | 'fats' | 'carbohydrates';
-  value: string;
+  unit: string;
 }[] = [
   {
     id: 'calories',
-    value: 'kcal'
+    unit: 'kcal'
   },
   {
     id: 'proteins',
-    value: 'g'
+    unit: 'g'
   },
   {
     id: 'fats',
-    value: 'g'
+    unit: 'g'
   },
   {
     id: 'carbohydrates',
-    value: 'g'
+    unit: 'g'
   }
 ];

@@ -19,7 +19,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const countRecords = (await query(
-      `SELECT COUNT(*) FROM recipes_recipes INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id${
+      `SELECT COUNT(*) FROM recipes_recipes INNER JOIN recipes_categories ON recipes_categories.category_id=recipes_recipes.category_id${
         where ? ` WHERE recipes_categories.category_name='${where}'` : ''
       }`
     )) as [{}];
@@ -41,9 +41,9 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
       core_members.member_name_seo
 
       FROM recipes_recipes
-      INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
+      INNER JOIN recipes_categories ON recipes_categories.category_id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
       ${where ? `WHERE recipes_categories.category_name='${where}'` : ''}
-      ORDER BY recipes_recipes.id DESC
+      ORDER BY recipes_recipes.publish_date DESC
       LIMIT ${limit} OFFSET ${offset}`
     )) as RecipesModel[];
 

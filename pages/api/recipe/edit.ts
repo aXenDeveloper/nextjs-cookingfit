@@ -6,6 +6,7 @@ import { ServerResponse } from 'http';
 import { query } from '../../../functions/database';
 import { authenticated } from '../../../functions/authenticated';
 import { IngredientsProps } from '../../../types/database/RecipesType';
+import image from 'next/image';
 
 interface ServerResponseProps extends ServerResponse {
   status: (statusCode: number) => NextApiResponse<any>;
@@ -20,27 +21,27 @@ const upload = multer({
   })
 });
 
-const recipeAdd = nextConnect<NextApiRequest, ServerResponseProps>({
+const recipeEdit = nextConnect<NextApiRequest, ServerResponseProps>({
   onError(error, req, res) {
     return res.status(501).json({ error: `Sorry something Happened! ${error.message}` });
   },
   onNoMatch(req, res) {
     return res.status(405).json({
       error: {
-        id: '3C105/2',
+        id: '3C107/2',
         message: 'INVALID_QUERY'
       }
     });
   }
 });
 
-recipeAdd.use(upload.array('image'));
+recipeEdit.use(upload.array('image'));
 
-recipeAdd.post(async (req, res) => {
+recipeEdit.post(async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({
       error: {
-        id: '3C105/2',
+        id: '3C107/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -58,7 +59,9 @@ recipeAdd.post(async (req, res) => {
     fats,
     carbohydrates,
     ingredients,
-    serveCount
+    serveCount,
+    id,
+    image_URL
   } = req.body;
 
   if (
@@ -71,11 +74,12 @@ recipeAdd.post(async (req, res) => {
     !calories ||
     !proteins ||
     !fats ||
-    !carbohydrates
+    !carbohydrates ||
+    !id
   ) {
     return res.status(400).json({
       error: {
-        id: '3C105/3',
+        id: '3C107/3',
         message: 'INVALID_QUERY'
       }
     });
@@ -94,7 +98,7 @@ recipeAdd.post(async (req, res) => {
     if (existCategory.length === 0) {
       return res.status(400).json({
         error: {
-          id: '3C105/6',
+          id: '3C107/6',
           message: 'INVALID_CATEGORY'
         }
       });
@@ -102,8 +106,8 @@ recipeAdd.post(async (req, res) => {
 
     const currentIngredients: IngredientsProps[] = ingredients ? JSON.parse(ingredients) : null;
 
-    const result = (await query(
-      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image, calories, proteins, fats, carbohydrates, ingredients, serve_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    const result = await query(
+      'UPDATE recipes_recipes SET title=?, url=?, text=?, time=?, category_id=?, author_id=?, publish_date=?, difficulty=?, image=?, calories=?, proteins=?, fats=?, carbohydrates=?, ingredients=?, serve_count=? WHERE id=?',
       [
         title as string,
         url,
@@ -119,7 +123,7 @@ recipeAdd.post(async (req, res) => {
               // @ts-ignore
               req.files[0].filename
             }`
-          : null,
+          : image_URL,
         +calories,
         +proteins,
         +fats,
@@ -129,15 +133,14 @@ recipeAdd.post(async (req, res) => {
               currentIngredients.filter(el => (el.quantity = el.quantity / serveCount))
             )
           : null,
-        +serveCount
+        +serveCount,
+        +id
       ]
-    )) as {
-      insertId: number;
-    };
+    );
 
     return res.status(200).json({
       result,
-      recordURL: `${existCategory[0].category_name}/${url}-${result.insertId}`,
+      recordURL: `${existCategory[0].category_name}/${url}-${id}`,
       // @ts-ignore
       url: req.files[0]
         ? `/uploads/monthly_${currentDate.getMonth()}_${currentDate.getFullYear()}/${
@@ -149,13 +152,13 @@ recipeAdd.post(async (req, res) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C105/1'
+        id: '5C107/1'
       }
     });
   }
 });
 
-export default authenticated(recipeAdd);
+export default authenticated(recipeEdit);
 
 export const config = {
   api: {

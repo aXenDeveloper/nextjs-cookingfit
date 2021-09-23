@@ -30,6 +30,7 @@ export interface RecipeModel {
   difficulty: 1 | 2 | 3;
   time: number;
   text: string;
+  category_id: number;
   category_name: string;
   image?: string;
   calories: number;

@@ -1,26 +1,27 @@
-import { FC } from 'react';
 import { NextSeo } from 'next-seo';
 import useTranslation from 'next-translate/useTranslation';
-import { Layout } from '../../../components/layouts/Layout';
-import { RecipeModel } from '../../../types/database/RecipesType';
-import { RecipeView } from '../../../views/recipes/recipe/RecipeView';
-import { apiURL } from '../../../_utils/api';
+import { FC } from 'react';
+import { Layout } from '../../../../components/layouts/Layout';
+import { RecipeModel } from '../../../../types/database/RecipesType';
+import { RecipeAddEditView } from '../../../../views/recipes/recipe/RecipeAddEditView';
+import { apiURL } from '../../../../_utils/api';
 
 interface Props {
   recipe: RecipeModel;
 }
 
-const RecipesItemPage: FC<Props> = ({ recipe }) => {
+const RecipesItemEditPage: FC<Props> = ({ recipe }) => {
   const { t } = useTranslation('global');
 
   return (
     <Layout>
       <NextSeo
-        title={`${recipe.title} - ${t('title_seo_page', {
+        title={`${t('navigation_recipes_edit')} - ${recipe.title} - ${t('title_seo_page', {
           title: t('navigation_recipes')
         })}`}
       />
-      <RecipeView recipe={recipe} />
+
+      <RecipeAddEditView recipe={recipe} />
     </Layout>
   );
 };
@@ -45,4 +46,4 @@ export const getServerSideProps = async (context: any) => {
   };
 };
 
-export default RecipesItemPage;
+export default RecipesItemEditPage;

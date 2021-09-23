@@ -8,10 +8,11 @@ interface Props {
   register: UseFormRegister<FormValuesTypes>;
   min: number;
   max: number;
+  defaultValue?: number;
 }
 
-export const DifficultyRangeInput: FC<Props> = ({ id, register, min, max }) => {
-  const [value, setValue] = useState(1);
+export const DifficultyRangeInput: FC<Props> = ({ id, register, min, max, defaultValue }) => {
+  const [value, setValue] = useState(defaultValue ?? 1);
   const { ref, ...rest } = register(id);
   const { t } = useTranslation('global');
 

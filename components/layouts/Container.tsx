@@ -9,7 +9,7 @@ interface Props {
 export const Container: FC<Props> = ({ children, small, column, form }) => (
   <div
     className={`container${small ? ' container:small' : ''}${column ? ' container_column' : ''}${
-      form ? ' container:form' : ''
+      form ? ' container_form' : ''
     }`}
   >
     {children}

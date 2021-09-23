@@ -103,11 +103,13 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 5C105/1 | (Add Recipe) Error with fetch (500)                       |
 | 3C105/2 | (Add Recipe) Invalid method API (405)                     |
 | 3C105/3 | (Add Recipe) Invalid query params (400)                   |
-| 2C105/4 | (Add Recipe) Invalid user (401)                           |
-| 2C105/5 | (Add Recipe) Banned user (401)                            |
 | 3C105/6 | (Add Recipe) Invalid category (400)                       |
 | 5C106/1 | (Upload File Recipe) Invalid method API (500)             |
 | 3C106/2 | (Upload File Recipe) Invalid method API (405)             |
+| 5C107/1 | (Edit recipe) Error with fetch (500)                      |
+| 3C107/2 | (Edit recipe) Invalid method API (405)                    |
+| 3C107/3 | (Edit recipe) Invalid query params (400)                  |
+| 3C107/6 | (Edit recipe) Invalid category (400)                      |
 
 ## 😀 Group ID
 
@@ -207,6 +209,7 @@ api/recipe
   difficulty: 1 | 2 | 3;
   time: number;
   text: string;
+  category_id: number;
   category_name: string;
   image?: string;
   calories?: number;

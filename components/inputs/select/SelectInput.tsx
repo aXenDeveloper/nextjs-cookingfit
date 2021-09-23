@@ -1,7 +1,7 @@
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
-import { FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import { Path, UseFormRegister } from 'react-hook-form';
 import { FormValuesTypes } from '../../../types/FormValuesTypes';
 
@@ -14,11 +14,25 @@ interface Props {
     required: boolean;
     showTextRequired?: boolean;
   };
+  defaultValue?: number;
 }
 
-export const SelectInput: FC<Props> = ({ id, register, options, error, required, children }) => {
+export const SelectInput: FC<Props> = ({
+  id,
+  register,
+  options,
+  error,
+  required,
+  defaultValue,
+  children
+}) => {
+  const [value, setValue] = useState(defaultValue ?? 0);
   const { ref, ...rest } = register(id, { required: required?.required });
   const { t } = useTranslation('global');
+
+  const handleSelect = ({ target }: ChangeEvent<HTMLSelectElement>) => {
+    setValue(+target.value);
+  };
 
   return (
     <div className="input input_select input:labelOutside">
@@ -34,7 +48,9 @@ export const SelectInput: FC<Props> = ({ id, register, options, error, required,
           {...rest}
           name={id}
           id={id}
+          value={value}
           className={`input_input${error ? ' input:error' : ''}`}
+          onChange={handleSelect}
           ref={ref}
         >
           {options}

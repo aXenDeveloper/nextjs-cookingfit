@@ -15,8 +15,8 @@ export const NutritionalValues: FC<Props> = ({ data }) => {
   return (
     <div className="box padding recipes_nutritional">
       <ul>
-        {nutritionalValuesList.map(({ id, value }) => (
-          <NutritionalValuesItem key={id} id={`recipe_${id}`} data={data[id]} value={value} />
+        {nutritionalValuesList.map(({ id, unit }) => (
+          <NutritionalValuesItem key={id} id={`recipe_${id}`} data={data[id]} unit={unit} />
         ))}
       </ul>
 

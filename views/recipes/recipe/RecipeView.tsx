@@ -77,7 +77,7 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
             </div>
           </div>
 
-          {ingridients && (
+          {ingridients.length > 0 && (
             <Ingredients ingridientsList={ingridients} serveCount={recipe.serve_count} />
           )}
 

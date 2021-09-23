@@ -15,13 +15,22 @@ interface Props {
   setValue: UseFormSetValue<FormValuesTypes>;
   file?: File | null;
   setFile: (el: File | null) => void;
+  preview: string;
+  setPreview: (el: string) => void;
 }
 
-export const FileInput: FC<Props> = ({ id, register, setValue, file, setFile }) => {
+export const FileInput: FC<Props> = ({
+  id,
+  register,
+  setValue,
+  file,
+  setFile,
+  preview,
+  setPreview
+}) => {
   const { ref, onChange, ...rest } = register(id);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isDrag, setDrag] = useState(false);
-  const [preview, setPreview] = useState('');
   const { t } = useTranslation('global');
 
   return (
@@ -84,15 +93,15 @@ export const FileInput: FC<Props> = ({ id, register, setValue, file, setFile }) 
           <p>{t('input_file_desc_accepted')}</p>
         </div>
 
-        {file && (
+        {preview && (
           <div className="input_file_content_preview">
             <div className="input_file_content_preview:image">
-              <Image src={preview} alt={file.name} layout="fill" />
+              <Image src={preview} alt={file?.name ?? preview} layout="fill" />
             </div>
 
             <div className="input_file_content_preview_desc">
-              <span>{file.name}</span>
-              <p>{bytesToSize(file.size)}</p>
+              <span>{file?.name ?? preview}</span>
+              <p>{bytesToSize(file?.size ?? 1)}</p>
             </div>
 
             <Tippy content={t('tooltip_delete_file')}>
