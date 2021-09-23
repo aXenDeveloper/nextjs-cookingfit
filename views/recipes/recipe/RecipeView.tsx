@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
@@ -18,7 +18,14 @@ interface Props {
 }
 
 export const RecipeView: FC<Props> = ({ recipe }) => {
+  const [renderedImage, setRenderedImage] = useState(false);
   const { t } = useTranslation('global');
+
+  useEffect(() => {
+    if (!recipe.image) {
+      setRenderedImage(true);
+    }
+  }, [recipe.image]);
 
   const ingridients: IngredientsProps[] = recipe.ingredients
     ? JSON.parse(recipe.ingredients)
@@ -35,9 +42,19 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
       <Container column>
         <main className="container_column:main recipes_item">
           <div className="recipes_item_header">
-            <div className="recipes_item_header:image">
+            <div
+              className={`recipes_item_header:image${
+                !renderedImage ? ' recipes_item_header:loading' : ''
+              }`}
+            >
               {recipe.image && (
-                <Image src={recipe.image} alt={recipe.title} objectFit="cover" layout="fill" />
+                <Image
+                  src={recipe.image}
+                  alt={recipe.title}
+                  objectFit="cover"
+                  layout="fill"
+                  onLoadingComplete={() => setRenderedImage(true)}
+                />
               )}
             </div>
 

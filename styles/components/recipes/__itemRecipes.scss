@@ -12,6 +12,12 @@
       border-radius: var(--radius);
       overflow: hidden;
       background-color: var(--button-light-dark);
+
+      &.recipes_item_header\:loading {
+        background-color: var(--color-light);
+        opacity: 0.2;
+        animation: image-loading 1s linear infinite;
+      }
     }
 
     &_content {
