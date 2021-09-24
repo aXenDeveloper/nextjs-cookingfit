@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { faEllipsisH, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { Menu } from './Menu';
@@ -27,6 +27,15 @@ export const ActionRecipeMenu = () => {
               <span>{t('action_edit')}</span>
             </a>
           </Link>
+        </li>
+
+        <li>
+          <button aria-label={t('action_delete')}>
+            <div>
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </div>
+            <span>{t('action_delete')}</span>
+          </button>
         </li>
       </ul>
     </Menu>

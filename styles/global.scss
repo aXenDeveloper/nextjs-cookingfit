@@ -187,7 +187,7 @@ a {
   }
 }
 
-@keyframes image-loading {
+@keyframes imageLoading {
   0% {
     opacity: 0.15;
   }
@@ -196,6 +196,45 @@ a {
   }
   100% {
     opacity: 0.15;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInPopup {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutPopup {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
   }
 }
 
@@ -218,6 +257,7 @@ a {
 @import './components/recipes/recipes';
 @import './components/pagination';
 @import './components/badges';
+@import './components/popup';
 
 @import './components/layouts/navigation/navigation';
 @import './components/layouts/navigation/userBar';

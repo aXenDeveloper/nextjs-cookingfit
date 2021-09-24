@@ -2,12 +2,12 @@ import { FC, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { faTimes, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Tippy from '@tippyjs/react';
 import useTranslation from 'next-translate/useTranslation';
 import { Path, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { FormValuesTypes } from '../../types/FormValuesTypes';
 import { Button } from '../Button';
 import { bytesToSize } from '../../functions/bytesToSize';
-import Tippy from '@tippyjs/react';
 
 interface Props {
   id: Path<FormValuesTypes>;

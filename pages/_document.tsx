@@ -27,6 +27,7 @@ class MyDocument extends Document {
           <script src="/initialTheme.js" />
           <Main />
           <NextScript />
+          <section id="nextjs_popups" />
         </body>
       </Html>
     );

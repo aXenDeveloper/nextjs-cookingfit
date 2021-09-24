@@ -83,6 +83,8 @@
   --badges-intermediary--code: 207, 125, 29;
   --badges-intermediary: rgba(var(--badges-intermediary--code), 0.2);
   --badges-intermediary-text: rgb(var(--badges-intermediary--code));
+
+  --popup-background: rgba(0, 0, 0, 0.5);
 }
 
 [theme='dark']:root {
@@ -97,6 +99,9 @@
   --container-background: #1c1c1c;
   --body-color-code: 239, 239, 239;
   --button-dark: #ffe200;
+
+  --menu-background--hover: #272727;
+  --color-ultra-light: #292929;
 
   --input-light: #727272;
 

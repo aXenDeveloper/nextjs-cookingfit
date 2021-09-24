@@ -1,0 +1,39 @@
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5100;
+  animation: fadeInPopup 0.4s ease-out;
+
+  &_fadeOut {
+    opacity: 0;
+    animation: fadeOutPopup 0.25s ease-out;
+  }
+
+  &_content {
+    width: 90%;
+    max-width: 480px;
+    margin: 3% auto 0 auto;
+    background-color: var(--container-background);
+    padding: 20px;
+    border-radius: var(--radius);
+  }
+
+  &_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--popup-background);
+    z-index: 5000;
+    animation: fadeIn 0.25s linear;
+
+    &_fadeOut {
+      opacity: 0;
+      animation: fadeOut 0.25s linear;
+    }
+  }
+}

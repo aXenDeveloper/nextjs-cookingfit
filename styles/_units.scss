@@ -16,5 +16,5 @@
 @mixin lazyLoad {
   background-color: var(--color-light);
   opacity: 0.2;
-  animation: image-loading 1s linear infinite;
+  animation: imageLoading 1s linear infinite;
 }

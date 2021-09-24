@@ -64,7 +64,6 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | [react](https://reactjs.org/)                                           | Library for Single Page Application _(SPA)_                                           |
 | [react-query](https://react-query.tanstack.com/)                        | Fetch, cache and update data                                                          |
 | [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) | Drag & Drop with Animation                                                            |
-| [react-spring](https://github.com/pmndrs/react-spring)                  | Animation in React                                                                    |
 | [typescript](https://www.typescriptlang.org/)                           | Types in JavaScript                                                                   |
 | [font-awesome](https://fontawesome.com/)                                | Icons SVG                                                                             |
 | [sass](https://www.npmjs.com/package/sass)                              | CSS Preprocessors                                                                     |
