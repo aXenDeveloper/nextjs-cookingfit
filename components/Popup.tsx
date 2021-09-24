@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface Props {
@@ -8,6 +8,9 @@ interface Props {
 
 const Popup: FC<Props> = ({ visible, setVisible, children }) => {
   const [animated, setAnimated] = useState(false);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const scrollTop = useMemo(() => document.documentElement.scrollTop, [visible]);
 
   const handleClose = () => {
     setAnimated(true);
@@ -22,7 +25,7 @@ const Popup: FC<Props> = ({ visible, setVisible, children }) => {
     <>
       <div
         className={`popup${animated ? ' popup_fadeOut' : ''}`}
-        style={{ top: `${document.documentElement.scrollTop}px` }}
+        style={{ top: `${scrollTop}px` }}
         onClick={handleClose}
       >
         <div
