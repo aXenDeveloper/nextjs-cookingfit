@@ -25,4 +25,34 @@
   .tippy-content {
     padding: 0;
   }
+
+  > .tippy-content > div > ul:not(.userBar_menu_list) {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    min-width: 150px;
+
+    a {
+      display: block;
+      padding: 10px;
+      border-radius: var(--radius);
+      color: var(--body-color);
+      display: flex;
+      align-items: center;
+
+      > div {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+      }
+
+      &:hover {
+        background-color: var(--menu-background--hover);
+        text-decoration: none;
+      }
+    }
+  }
 }

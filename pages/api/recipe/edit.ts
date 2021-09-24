@@ -118,7 +118,7 @@ recipeEdit.post(async (req, res) => {
     const currentIngredients: IngredientsProps[] = ingredients ? JSON.parse(ingredients) : null;
 
     const result = await query(
-      'UPDATE recipes_recipes SET title=?, url=?, text=?, time=?, category_id=?, author_id=?, publish_date=?, difficulty=?, image=?, calories=?, proteins=?, fats=?, carbohydrates=?, ingredients=?, serve_count=? WHERE id=?',
+      'UPDATE recipes_recipes SET title=?, url=?, text=?, time=?, category_id=?, author_id=?, difficulty=?, image=?, calories=?, proteins=?, fats=?, carbohydrates=?, ingredients=?, serve_count=? WHERE id=?',
       [
         title as string,
         url,
@@ -126,7 +126,6 @@ recipeEdit.post(async (req, res) => {
         +time,
         +category_id,
         +author_id,
-        currentDate.getTime() / 1000,
         +difficulty,
         // @ts-ignore
         req.files[0]

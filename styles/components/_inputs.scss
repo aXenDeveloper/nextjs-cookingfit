@@ -409,6 +409,10 @@
           cursor: pointer;
         }
 
+        &\:loading {
+          @include lazyLoad;
+        }
+
         &_desc {
           margin-left: 20px;
 

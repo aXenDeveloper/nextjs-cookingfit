@@ -12,6 +12,7 @@ import { Ingredients } from '../../../components/recipes/ingredients/Ingredients
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { DateFormat } from '../../../components/DateFormat';
+import { useAuth } from '../../../context/useAuth';
 
 interface Props {
   recipe: RecipeModel;
@@ -19,6 +20,7 @@ interface Props {
 
 export const RecipeView: FC<Props> = ({ recipe }) => {
   const [renderedImage, setRenderedImage] = useState(false);
+  const { session } = useAuth();
   const { t } = useTranslation('global');
 
   useEffect(() => {
@@ -79,9 +81,12 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
                   </span>
                 </div>
 
-                <div>
-                  <ActionRecipeMenu />
-                </div>
+                {session &&
+                  (session.user.id === recipe?.member_id || session?.user.group_id === 4) && (
+                    <div className="recipes_item_header_content_top:action">
+                      <ActionRecipeMenu />
+                    </div>
+                  )}
               </div>
 
               <hr className="hr" />

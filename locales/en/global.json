@@ -140,5 +140,7 @@
   "date_format_ago_months_9": "September {{day}}",
   "date_format_ago_months_10": "October {{day}}",
   "date_format_ago_months_11": "November {{day}}",
-  "date_format_ago_months_12": "December {{day}}"
+  "date_format_ago_months_12": "December {{day}}",
+  "action_edit": "Edit",
+  "action_delete": "Delete"
 }

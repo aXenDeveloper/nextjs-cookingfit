@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { faTimes, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,10 +28,18 @@ export const FileInput: FC<Props> = ({
   preview,
   setPreview
 }) => {
+  const [renderedImage, setRenderedImage] = useState(false);
   const { ref, onChange, ...rest } = register(id);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isDrag, setDrag] = useState(false);
   const { t } = useTranslation('global');
+
+  useEffect(
+    () => () => {
+      setRenderedImage(false);
+    },
+    []
+  );
 
   return (
     <div className="input input_file">
@@ -95,8 +103,17 @@ export const FileInput: FC<Props> = ({
 
         {preview && (
           <div className="input_file_content_preview">
-            <div className="input_file_content_preview:image">
-              <Image src={preview} alt={file?.name ?? preview} layout="fill" />
+            <div
+              className={`input_file_content_preview:image${
+                !renderedImage ? ' input_file_content_preview:loading' : ''
+              }`}
+            >
+              <Image
+                src={preview}
+                alt={file?.name ?? preview}
+                layout="fill"
+                onLoadingComplete={() => setRenderedImage(true)}
+              />
             </div>
 
             <div className="input_file_content_preview_desc">

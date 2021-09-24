@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -55,7 +55,7 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
   );
   const [serveCount, setServeCount] = useState(1);
   const { session, loading } = useAuth();
-  const { push } = useRouter();
+  const { push, back } = useRouter();
   const { t } = useTranslation('global');
 
   const { mutateAsync, isLoading, isError } = useMutation(
@@ -145,20 +145,11 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
     );
   }
 
-  if (session && session.user.id !== recipe?.member_id && session?.user.group_id !== 4) {
+  if (!session || (session.user.id !== recipe?.member_id && session?.user.group_id !== 4)) {
     return (
       <>
         <Breadcrumb>{t(recipe ? 'navigation_recipes_edit' : 'navigation_recipes_add')}</Breadcrumb>
         <PermissionMessageBox code="1R105/7" />
-      </>
-    );
-  }
-
-  if (!session) {
-    return (
-      <>
-        <Breadcrumb>{t(recipe ? 'navigation_recipes_edit' : 'navigation_recipes_add')}</Breadcrumb>
-        <PermissionMessageBox code="XXX" />
       </>
     );
   }
@@ -316,9 +307,7 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
               <li>
                 <Button
                   type="button"
-                  onClick={() => {
-                    push('/recipes');
-                  }}
+                  onClick={back}
                   color="light"
                   ariaLabel={t('form_cancel')}
                   typeButton="button"
