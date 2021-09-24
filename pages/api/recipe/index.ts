@@ -6,7 +6,7 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
     return res.status(405).json({
       error: {
-        id: '3C104/2',
+        id: '3R102/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -17,7 +17,7 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!category || !id) {
     return res.status(400).json({
       error: {
-        id: '3C104/3',
+        id: '3R102/3',
         message: 'INVALID_QUERY'
       }
     });
@@ -56,7 +56,7 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
     if (result.length === 0) {
       return res.status(404).json({
         error: {
-          id: '1C104/4',
+          id: '1R102/4',
           message: 'NOT_FOUND'
         }
       });
@@ -66,7 +66,7 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C104/1'
+        id: '5R102/1'
       }
     });
   }

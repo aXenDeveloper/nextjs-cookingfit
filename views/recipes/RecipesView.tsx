@@ -65,7 +65,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
     return (
       <>
         <Breadcrumb>{titleView}</Breadcrumb>
-        <MessageBox code="5C103/1" />
+        <MessageBox code="5R101/1" />
       </>
     );
   }

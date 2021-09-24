@@ -27,14 +27,14 @@ const apiRoute = nextConnect<IncomingMessageProps, ServerResponseProps>({
   onError(error, req, res) {
     return res.status(500).json({
       error: {
-        id: '3C106/1'
+        id: '5R104/1'
       }
     });
   },
   onNoMatch(req, res) {
     return res.status(405).json({
       error: {
-        id: '3C106/2',
+        id: '3R104/2',
         message: 'INVALID_QUERY'
       }
     });

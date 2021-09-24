@@ -95,23 +95,24 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 1C101/6 | (Sign up) Exist user name (403)                           |
 | 5C102/1 | (Sign in) Error with fetch (500)                          |
 | 1C102/2 | (Sign in) You are already logged in (403)                 |
-| 5C103/1 | (Recipes) Error with fetch (500)                          |
-| 3C103/2 | (Recipes) Invalid method API (405)                        |
-| 5C104/1 | (Recipe) Error with fetch (500)                           |
-| 3C104/2 | (Recipe) Invalid method API (405)                         |
-| 3C104/3 | (Recipe) Invalid query params (400)                       |
-| 1C104/4 | (Recipe) Not found (404)                                  |
-| 5C105/1 | (Add Recipe) Error with fetch (500)                       |
-| 3C105/2 | (Add Recipe) Invalid method API (405)                     |
-| 3C105/3 | (Add Recipe) Invalid query params (400)                   |
-| 3C105/6 | (Add Recipe) Invalid category (400)                       |
-| 5C106/1 | (Upload File Recipe) Invalid method API (500)             |
-| 3C106/2 | (Upload File Recipe) Invalid method API (405)             |
-| 5C107/1 | (Edit recipe) Error with fetch (500)                      |
-| 3C107/2 | (Edit recipe) Invalid method API (405)                    |
-| 3C107/3 | (Edit recipe) Invalid query params (400)                  |
-| 3C107/6 | (Edit recipe) Invalid category (400)                      |
-| 1C107/7 | (Edit recipe) Access denied (403)                         |
+| ------- | --------------------------------------------------------- |
+| 5R101/1 | (Recipes) Error with fetch (500)                          |
+| 3R101/2 | (Recipes) Invalid method API (405)                        |
+| 5R102/1 | (Recipe) Error with fetch (500)                           |
+| 3R102/2 | (Recipe) Invalid method API (405)                         |
+| 3R102/3 | (Recipe) Invalid query params (400)                       |
+| 1R102/4 | (Recipe) Not found (404)                                  |
+| 5R103/1 | (Add Recipe) Error with fetch (500)                       |
+| 3R103/2 | (Add Recipe) Invalid method API (405)                     |
+| 3R103/3 | (Add Recipe) Invalid query params (400)                   |
+| 3R103/6 | (Add Recipe) Invalid category (400)                       |
+| 5R104/1 | (Upload File Recipe) Error with fetch (500)               |
+| 3R104/2 | (Upload File Recipe) Invalid method API (405)             |
+| 5R105/1 | (Edit recipe) Error with fetch (500)                      |
+| 3R105/2 | (Edit recipe) Invalid method API (405)                    |
+| 3R105/3 | (Edit recipe) Invalid query params (400)                  |
+| 3R105/6 | (Edit recipe) Invalid category (400)                      |
+| 1R105/7 | (Edit recipe) Access denied (403)                         |
 
 ## 😀 Group ID
 

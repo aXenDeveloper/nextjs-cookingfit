@@ -29,7 +29,7 @@ const recipeEdit = nextConnect<NextApiRequest, ServerResponseProps>({
   onNoMatch(req, res) {
     return res.status(405).json({
       error: {
-        id: '3C107/2',
+        id: '3R105/2',
         message: 'INVALID_QUERY'
       }
     });
@@ -42,7 +42,7 @@ recipeEdit.post(async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({
       error: {
-        id: '3C107/2',
+        id: '3R105/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -80,7 +80,7 @@ recipeEdit.post(async (req, res) => {
   ) {
     return res.status(400).json({
       error: {
-        id: '3C107/3',
+        id: '3R105/3',
         message: 'INVALID_QUERY'
       }
     });
@@ -90,7 +90,7 @@ recipeEdit.post(async (req, res) => {
   if (session?.user.id !== +author_id && session?.user.group_id !== 4) {
     return res.status(403).json({
       error: {
-        id: '1C107/7',
+        id: '1R105/7',
         message: 'ACCESS_DENIED'
       }
     });
@@ -109,7 +109,7 @@ recipeEdit.post(async (req, res) => {
     if (existCategory.length === 0) {
       return res.status(400).json({
         error: {
-          id: '3C107/6',
+          id: '3R105/6',
           message: 'INVALID_CATEGORY'
         }
       });
@@ -163,7 +163,7 @@ recipeEdit.post(async (req, res) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C107/1'
+        id: '5R105/1'
       }
     });
   }

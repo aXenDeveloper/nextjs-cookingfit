@@ -6,7 +6,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
     return res.status(405).json({
       error: {
-        id: '3C103/2',
+        id: '3R101/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -56,7 +56,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C103/1'
+        id: '5R101/1'
       }
     });
   }

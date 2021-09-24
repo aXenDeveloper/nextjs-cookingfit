@@ -149,7 +149,7 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
     return (
       <>
         <Breadcrumb>{t(recipe ? 'navigation_recipes_edit' : 'navigation_recipes_add')}</Breadcrumb>
-        <PermissionMessageBox code="1C107/7" />
+        <PermissionMessageBox code="1R105/7" />
       </>
     );
   }

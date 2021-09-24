@@ -27,7 +27,7 @@ const recipeAdd = nextConnect<NextApiRequest, ServerResponseProps>({
   onNoMatch(req, res) {
     return res.status(405).json({
       error: {
-        id: '3C105/2',
+        id: '3R103/2',
         message: 'INVALID_QUERY'
       }
     });
@@ -40,7 +40,7 @@ recipeAdd.post(async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({
       error: {
-        id: '3C105/2',
+        id: '3R103/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -75,7 +75,7 @@ recipeAdd.post(async (req, res) => {
   ) {
     return res.status(400).json({
       error: {
-        id: '3C105/3',
+        id: '3R103/3',
         message: 'INVALID_QUERY'
       }
     });
@@ -94,7 +94,7 @@ recipeAdd.post(async (req, res) => {
     if (existCategory.length === 0) {
       return res.status(400).json({
         error: {
-          id: '3C105/6',
+          id: '3R103/6',
           message: 'INVALID_CATEGORY'
         }
       });
@@ -149,7 +149,7 @@ recipeAdd.post(async (req, res) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5C105/1'
+        id: '5R103/1'
       }
     });
   }
