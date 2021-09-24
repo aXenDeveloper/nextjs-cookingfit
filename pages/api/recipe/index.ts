@@ -33,11 +33,12 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
       recipes_recipes.difficulty,
       recipes_recipes.time,
       recipes_recipes.text,
-      recipes_categories.category_id,
-      recipes_categories.category_name,
+      recipes_categories.id AS category_id,
+      recipes_categories.name AS category_name,
       recipes_recipes.image,
-      core_members.member_name,
-      core_members.member_name_seo,
+      core_members.id AS member_id,
+      core_members.name AS member_name,
+      core_members.name_seo AS member_name_seo,
       recipes_recipes.calories,
       recipes_recipes.proteins,
       recipes_recipes.fats,
@@ -46,8 +47,8 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
       recipes_recipes.serve_count
 
       FROM recipes_recipes
-      INNER JOIN recipes_categories ON recipes_categories.category_id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
-      WHERE recipes_recipes.id=? AND recipes_categories.category_name=? AND recipes_recipes.url=?
+      INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
+      WHERE recipes_recipes.id=? AND recipes_categories.name=? AND recipes_recipes.url=?
       `,
       [+id as number, category as string, url as string]
     )) as RecipeModel[];

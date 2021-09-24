@@ -7,6 +7,7 @@ import { query } from '../../../functions/database';
 import { authenticated } from '../../../functions/authenticated';
 import { IngredientsProps } from '../../../types/database/RecipesType';
 import image from 'next/image';
+import { getSession } from 'next-auth/client';
 
 interface ServerResponseProps extends ServerResponse {
   status: (statusCode: number) => NextApiResponse<any>;
@@ -85,11 +86,21 @@ recipeEdit.post(async (req, res) => {
     });
   }
 
+  const session = await getSession({ req });
+  if (session?.user.id !== +author_id && session?.user.group_id !== 4) {
+    return res.status(403).json({
+      error: {
+        id: '1C107/7',
+        message: 'ACCESS_DENIED'
+      }
+    });
+  }
+
   const url = slugify(title as string).toLowerCase();
 
   try {
     const existCategory = (await query(
-      'SELECT category_name FROM recipes_categories WHERE category_id=?',
+      'SELECT name AS category_name FROM recipes_categories WHERE id=?',
       [+category_id]
     )) as {
       category_name: string;

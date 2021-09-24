@@ -21,6 +21,10 @@ export const RecipesListItem: FC<Props> = ({ recipe }) => {
     if (!recipe.image) {
       setRenderedImage(true);
     }
+
+    return () => {
+      setRenderedImage(false);
+    };
   }, [recipe.image]);
 
   const urls = {

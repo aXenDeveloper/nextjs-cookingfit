@@ -2,6 +2,7 @@ import { NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
 import multer from 'multer';
 import { IncomingMessage, ServerResponse } from 'http';
+import { authenticated } from '../../../functions/authenticated';
 
 interface ServerResponseProps extends ServerResponse {
   status: (statusCode: number) => NextApiResponse<any>;
@@ -49,7 +50,8 @@ apiRoute.post((req, res) => {
   });
 });
 
-export default apiRoute;
+// @ts-ignore
+export default authenticated(apiRoute);
 
 export const config = {
   api: {

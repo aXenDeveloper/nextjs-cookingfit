@@ -85,7 +85,7 @@ recipeAdd.post(async (req, res) => {
 
   try {
     const existCategory = (await query(
-      'SELECT category_name FROM recipes_categories WHERE category_id=?',
+      'SELECT name as category_name FROM recipes_categories WHERE id=?',
       [+category_id]
     )) as {
       category_name: string;

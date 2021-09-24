@@ -25,6 +25,10 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
     if (!recipe.image) {
       setRenderedImage(true);
     }
+
+    return () => {
+      setRenderedImage(false);
+    };
   }, [recipe.image]);
 
   const ingridients: IngredientsProps[] = recipe.ingredients

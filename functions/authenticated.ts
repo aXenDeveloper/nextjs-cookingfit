@@ -24,7 +24,7 @@ export const authenticated =
         });
       }
 
-      if (session.user.member_group_id === 2) {
+      if (session.user.group_id === 2) {
         return res.status(401).json({
           error: {
             id: '2C100/4',

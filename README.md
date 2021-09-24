@@ -64,6 +64,7 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | [react](https://reactjs.org/)                                           | Library for Single Page Application _(SPA)_                                           |
 | [react-query](https://react-query.tanstack.com/)                        | Fetch, cache and update data                                                          |
 | [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) | Drag & Drop with Animation                                                            |
+| [react-spring](https://github.com/pmndrs/react-spring)                  | Animation in React                                                                    |
 | [typescript](https://www.typescriptlang.org/)                           | Types in JavaScript                                                                   |
 | [font-awesome](https://fontawesome.com/)                                | Icons SVG                                                                             |
 | [sass](https://www.npmjs.com/package/sass)                              | CSS Preprocessors                                                                     |
@@ -110,6 +111,7 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 3C107/2 | (Edit recipe) Invalid method API (405)                    |
 | 3C107/3 | (Edit recipe) Invalid query params (400)                  |
 | 3C107/6 | (Edit recipe) Invalid category (400)                      |
+| 1C107/7 | (Edit recipe) Access denied (403)                         |
 
 ## 😀 Group ID
 
@@ -174,8 +176,8 @@ api/recipes
   id: number;
   title: string;
   url: string;
-  member_name: string;
-  member_name_seo: string;
+  name: string;
+  name_seo: string;
   publish_date: number;
   difficulty: 1 | 2 | 3;
   time: number;
@@ -203,8 +205,9 @@ api/recipe
 {
   id: number;
   title: string;
-  member_name: string;
-  member_name_seo: string;
+  member_id: number;
+  name: string;
+  name_seo: string;
   publish_date: number;
   difficulty: 1 | 2 | 3;
   time: number;

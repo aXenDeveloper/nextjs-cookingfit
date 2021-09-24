@@ -24,6 +24,7 @@ export interface RecipesModel {
 export interface RecipeModel {
   id: number;
   title: string;
+  member_id: number;
   member_name: string;
   member_name_seo: string;
   publish_date: number;

@@ -123,7 +123,7 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
         text: textCKEditor,
         time: data.recipe_time,
         category_id: +data.recipe_category,
-        author_id: session?.user.id,
+        author_id: recipe?.member_id ?? session?.user.id,
         difficulty: +data.recipe_difficulty,
         calories: +data.recipe_calories,
         proteins: +data.recipe_proteins,
@@ -142,6 +142,15 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
           <SpinnersLoading />
         </div>
       </Container>
+    );
+  }
+
+  if (session && session.user.id !== recipe?.member_id && session?.user.group_id !== 4) {
+    return (
+      <>
+        <Breadcrumb>{t(recipe ? 'navigation_recipes_edit' : 'navigation_recipes_add')}</Breadcrumb>
+        <PermissionMessageBox code="1C107/7" />
+      </>
     );
   }
 
