@@ -7,7 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Button } from '../components/Button';
-import { CheckBox } from '../components/inputs/checkBox/Checkbox';
 import { TextInput } from '../components/inputs/TextInput';
 import { Container } from '../components/layouts/Container';
 import { SpinnersLoading } from '../components/loading/SpinnersLoading';
@@ -16,6 +15,7 @@ import { MessageBox } from '../components/messageBox/MessageBox';
 import { useAuth } from '../context/useAuth';
 import { emailRegex } from '../_utils/regex';
 import { FormValuesTypes } from '../types/FormValuesTypes';
+import { CheckBox } from '../components/inputs/checkBox/CheckBox';
 
 interface LoginProps {
   email: string;

@@ -18,9 +18,7 @@ export const Breadcrumb: FC = ({ children }) => {
   useEffect(() => {
     const linkPath = asPath.split('/').filter(x => x);
 
-    const pathArray = linkPath.map((path, i) => {
-      return linkPath.slice(0, i + 1).join('/');
-    });
+    const pathArray = linkPath.map((path, i) => linkPath.slice(0, i + 1).join('/'));
 
     setBreadcrumbs(pathArray.slice(0, pathArray.length - 1));
   }, [asPath]);

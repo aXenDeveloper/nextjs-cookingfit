@@ -142,5 +142,6 @@
   "date_format_ago_months_11": "November {{day}}",
   "date_format_ago_months_12": "December {{day}}",
   "action_edit": "Edit",
-  "action_delete": "Delete"
+  "action_delete": "Delete",
+  "action_cancel": "Cancel"
 }

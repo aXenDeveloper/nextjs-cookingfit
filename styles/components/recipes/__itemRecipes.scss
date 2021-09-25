@@ -69,10 +69,9 @@
 
           &:active {
             background-color: var(--button-light-dark);
-            box-shadow: 0 0 0 4px rgba(var(--body-color-code), 0.3);
           }
 
-          &:focus {
+          &:focus-visible {
             box-shadow: 0 0 0 4px rgba(var(--body-color-code), 0.3);
           }
         }

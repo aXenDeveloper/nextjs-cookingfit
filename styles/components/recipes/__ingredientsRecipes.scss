@@ -40,13 +40,15 @@
           opacity: 0.5;
         }
 
-        &:not(:disabled):active {
-          background-color: var(--button-secondary-light);
-          box-shadow: 0 0 0 4px rgba(var(--button-secondary-light--code), 0.5);
-        }
-
         &:focus {
           outline: none;
+        }
+
+        &:not(:disabled):active {
+          background-color: var(--button-secondary-light);
+        }
+
+        &:focus-visible {
           box-shadow: 0 0 0 4px rgba(var(--button-secondary--code), 0.5);
         }
       }
