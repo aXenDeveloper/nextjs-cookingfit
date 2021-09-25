@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -6,15 +6,19 @@ import { faEllipsisH, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { Menu } from './Menu';
-import { Button } from '../Button';
 import { apiURL } from '../../_utils/api';
 const Popup = dynamic(() => import('../Popup'), { ssr: false });
 
-export const ActionRecipeMenu = () => {
+interface Props {
+  id: number;
+  category: string;
+}
+
+export const ActionRecipeMenu: FC<Props> = ({ id, category }) => {
   const [visible, setVisible] = useState(false);
   const [visiblePopup, setVisiblePopup] = useState(false);
   const { t } = useTranslation('global');
-  const { asPath } = useRouter();
+  const { asPath, push } = useRouter();
 
   return (
     <Menu
@@ -53,7 +57,10 @@ export const ActionRecipeMenu = () => {
               buttonText={t('action_delete')}
               cancalButton
               api={{
-                url: `${apiURL}/recipes?page=1&limit=10`
+                url: `${apiURL}/recipe/delete?id=${id}`,
+                afterSuccess: () => {
+                  push(`/recipes/${category}`);
+                }
               }}
             >
               test

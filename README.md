@@ -112,6 +112,9 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 3R105/3 | (Edit recipe) Invalid query params (400)                  |
 | 3R105/6 | (Edit recipe) Invalid category (400)                      |
 | 1R105/7 | (Edit recipe) Access denied (403)                         |
+| 5R106/1 | (Delete recipe) Error with fetch (500)                    |
+| 3R106/2 | (Delete recipe) Invalid method API (405)                  |
+| 3R106/3 | (Delete recipe) Invalid query params (400)                |
 
 ## 😀 Group ID
 
@@ -250,3 +253,13 @@ api/recipe/add
 - carbohydrates: \_number\*,
 - ingredients?: \_string\*,
 - serve_count?: \_number\*
+
+### (POST) Delete Recipe
+
+```
+api/recipe/delete
+```
+
+#### Query
+
+- id: _number_

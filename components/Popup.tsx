@@ -15,6 +15,7 @@ interface Props {
   api?: {
     url: string;
     body?: {};
+    afterSuccess?: () => void;
   };
 }
 
@@ -46,6 +47,7 @@ const Popup: FC<Props> = ({ visible, setVisible, buttonText, cancalButton, api, 
 
       if (res.status === 200) {
         handleClose();
+        api.afterSuccess && api.afterSuccess();
       }
 
       return null;

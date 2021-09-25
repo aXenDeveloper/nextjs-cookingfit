@@ -145,7 +145,10 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
     );
   }
 
-  if (!session || (session.user.id !== recipe?.member_id && session?.user.group_id !== 4)) {
+  if (
+    !session ||
+    (recipe && session.user.id !== recipe?.member_id && session?.user.group_id !== 4)
+  ) {
     return (
       <>
         <Breadcrumb>{t(recipe ? 'navigation_recipes_edit' : 'navigation_recipes_add')}</Breadcrumb>

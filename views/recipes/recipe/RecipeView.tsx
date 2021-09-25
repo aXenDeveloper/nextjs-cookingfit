@@ -84,7 +84,7 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
                 {session &&
                   (session.user.id === recipe?.member_id || session?.user.group_id === 4) && (
                     <div className="recipes_item_header_content_top:action">
-                      <ActionRecipeMenu />
+                      <ActionRecipeMenu id={recipe.id} category={recipe.category_name} />
                     </div>
                   )}
               </div>
@@ -103,7 +103,7 @@ export const RecipeView: FC<Props> = ({ recipe }) => {
             </div>
           </div>
 
-          {ingridients.length > 0 && (
+          {ingridients && ingridients.length > 0 && (
             <Ingredients ingridientsList={ingridients} serveCount={recipe.serve_count} />
           )}
 
