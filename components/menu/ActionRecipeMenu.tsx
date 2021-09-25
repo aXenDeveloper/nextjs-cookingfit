@@ -63,7 +63,7 @@ export const ActionRecipeMenu: FC<Props> = ({ id, category }) => {
                 }
               }}
             >
-              test
+              <p>{t('recipe_delete')}</p>
             </Popup>
           </button>
         </li>

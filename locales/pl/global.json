@@ -134,6 +134,7 @@
   "recipe_ingredients_unit_pieces_3": "sztuki",
   "recipe_ingredients_unit_pieces_4": "sztuki",
   "recipe_ingredients_unit_pieces": "sztuk",
+  "recipe_delete": "Czy na pewno chcesz usunąć ten przepis?",
   "date_format_ago_seconds": "kilka sekund temu",
   "date_format_ago_minutes_1": "{{count}} minutę temu",
   "date_format_ago_minutes": "{{count}} minut temu",
