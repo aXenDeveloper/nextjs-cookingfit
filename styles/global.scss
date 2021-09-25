@@ -219,6 +219,17 @@ a {
   }
 }
 
+@keyframes fadeInSnackbar {
+  0% {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
 @keyframes fadeOut {
   0% {
     opacity: 1;
@@ -234,6 +245,16 @@ a {
   }
   100% {
     transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutSnackbar {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 20px);
     opacity: 0;
   }
 }
@@ -258,6 +279,7 @@ a {
 @import './components/pagination';
 @import './components/badges';
 @import './components/popup';
+@import './components/snackbar';
 
 @import './components/layouts/navigation/navigation';
 @import './components/layouts/navigation/userBar';

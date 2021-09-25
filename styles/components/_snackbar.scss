@@ -1,0 +1,21 @@
+.snackbar {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--snackbar-background);
+  color: var(--snackbar-color);
+  padding: 15px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 100px;
+  z-index: 6000;
+  box-shadow: var(--popup-box-shadow);
+  text-align: center;
+  animation: fadeInSnackbar 0.4s ease-out;
+
+  &_fadeOut {
+    opacity: 0;
+    animation: fadeOutSnackbar 0.25s ease-out;
+  }
+}
