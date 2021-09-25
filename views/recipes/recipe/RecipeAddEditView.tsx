@@ -53,7 +53,7 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
   const [ingredients, setIngredients] = useState<IngredientsProps[]>(
     recipe?.ingredients ? JSON.parse(recipe?.ingredients) : []
   );
-  const [serveCount, setServeCount] = useState(1);
+  const [serveCount, setServeCount] = useState(recipe?.serve_count ?? 1);
   const { session, loading } = useAuth();
   const { push, back } = useRouter();
   const { t } = useTranslation('global');
@@ -201,6 +201,7 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
                     setIngredients={setIngredients}
                     serveCount={serveCount}
                     setServeCount={setServeCount}
+                    serveCountFromDB={recipe?.serve_count}
                   />
                 </li>
 

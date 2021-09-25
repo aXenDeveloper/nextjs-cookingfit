@@ -32,7 +32,7 @@ export const IngredientsServe: FC<Props> = ({ serveCount, setServeCount }) => {
           type="button"
           onClick={() => handleClick('increase')}
           disabled={serveCount >= 100}
-          aria-label="test2"
+          aria-label={t('recipe_serve_increase')}
         >
           <FontAwesomeIcon icon={faPlus} />
         </button>
@@ -44,7 +44,7 @@ export const IngredientsServe: FC<Props> = ({ serveCount, setServeCount }) => {
           type="button"
           onClick={() => handleClick('reduce')}
           disabled={serveCount <= 1}
-          aria-label="test"
+          aria-label={t('recipe_serve_reduce')}
         >
           <FontAwesomeIcon icon={faMinus} />
         </button>

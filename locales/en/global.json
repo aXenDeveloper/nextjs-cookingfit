@@ -116,6 +116,8 @@
   "recipe_ingredients_unit_pieces_0": "piece",
   "recipe_ingredients_unit_pieces_1": "piece",
   "recipe_ingredients_unit_pieces": "pieces",
+  "recipe_serve_increase": "Increase",
+  "recipe_serve_reduce": "Reduce",
   "recipe_delete": "Are you sure you want to delete this recipe?",
   "date_format_ago_seconds": "a few seconds ago",
   "date_format_ago_minutes_1": "{{count}} minute ago",

@@ -7,7 +7,6 @@ import { IngredientsEditIterm } from './IngredientsEditIterm';
 import { arrayMove } from '../../../../_utils/arrayMove';
 import { IngredientsProps } from '../../../../types/database/RecipesType';
 import { IngredientsServe } from '../IngredientsServe';
-import { SelectInput } from '../../../inputs/select/SelectInput';
 import { SelectInputWithoutRegister } from '../../../inputs/select/SelectInputWithoutRegister';
 import { ingredientsUnitList } from '../../../../_utils/ingredientsUnitList';
 
@@ -16,13 +15,15 @@ interface Props {
   setIngredients: (el: IngredientsProps[]) => void;
   serveCount: number;
   setServeCount: (el: number) => void;
+  serveCountFromDB?: number;
 }
 
 export const IngredientsEdit: FC<Props> = ({
   ingredients,
   setIngredients,
   serveCount,
-  setServeCount
+  setServeCount,
+  serveCountFromDB
 }) => {
   const { t } = useTranslation('global');
 
@@ -92,6 +93,7 @@ export const IngredientsEdit: FC<Props> = ({
                         ingredient={el}
                         removeItem={() => removeItem(el.id)}
                         index={index}
+                        serveCountFromDB={serveCountFromDB}
                       />
                     ))}
                     {provided.placeholder}
