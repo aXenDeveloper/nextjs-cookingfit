@@ -29,10 +29,12 @@ const Popup: FC<Props> = ({ visible, setVisible, buttonText, cancalButton, api, 
   const handleClose = () => {
     setAnimated(true);
 
-    setTimeout(() => {
+    const setCloseTimeout = setTimeout(() => {
       setVisible(false);
       setAnimated(false);
     }, 260);
+
+    () => clearTimeout(setCloseTimeout);
   };
 
   const { mutateAsync, isLoading } = useMutation(async () => {

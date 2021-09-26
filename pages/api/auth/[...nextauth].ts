@@ -55,11 +55,12 @@ const options = {
   callbacks: {
     async session(session: Session, token: { accessToken: string; sub: number }) {
       const existUser = (await query(
-        'SELECT id, name, email, group_id FROM core_members WHERE id=?',
+        'SELECT id, name, name_seo, email, group_id FROM core_members WHERE id=?',
         [token.sub]
       )) as {
         id: number;
         name: string;
+        name_seo: string;
         email: string;
         group_id: number;
       }[];
@@ -75,6 +76,7 @@ const options = {
       session.user.id = existUser[0].id;
       session.user.name = existUser[0].name;
       session.user.group_id = existUser[0].group_id;
+      session.user.name_seo = existUser[0].name_seo;
 
       return session;
     }

@@ -11,14 +11,19 @@ const Snackbar: FC<Props> = ({ visible, setVisible, children }) => {
 
   useEffect(() => {
     if (visible) {
-      setTimeout(() => {
+      const setAnimatedTimeout = setTimeout(() => {
         setAnimated(true);
       }, 3000);
 
-      setTimeout(() => {
+      const setCloseTimeout = setTimeout(() => {
         setVisible(false);
         setAnimated(false);
       }, 3260);
+
+      () => {
+        clearTimeout(setAnimatedTimeout);
+        clearTimeout(setCloseTimeout);
+      };
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

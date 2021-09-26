@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { signOut } from 'next-auth/client';
-import { faCaretDown, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCog, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { Menu } from './Menu';
@@ -25,12 +25,23 @@ export const UserMenu = () => {
     >
       <ul className="userBar_menu_list">
         <li>
-          <Link href="/">
+          <Link href={`/profile/${session?.user.name_seo}-${session?.user.id}`}>
             <a onClick={() => setVisible(false)}>
               <div>
                 <FontAwesomeIcon icon={faUser} />
               </div>
               <span>{t('profile')}</span>
+            </a>
+          </Link>
+        </li>
+
+        <li>
+          <Link href={`/profile/${session?.user.name_seo}-${session?.user.id}/settings`}>
+            <a onClick={() => setVisible(false)}>
+              <div>
+                <FontAwesomeIcon icon={faCog} />
+              </div>
+              <span>{t('settings')}</span>
             </a>
           </Link>
         </li>
