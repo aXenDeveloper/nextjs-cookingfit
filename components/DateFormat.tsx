@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
+import Tippy from '@tippyjs/react';
 import { convertDate, convertTimeTo12H } from '../functions/convertDate';
 
 interface Props {
@@ -17,8 +18,8 @@ export const DateFormat: FC<Props> = ({ date }) => {
     convertDateFromUNIX.minutes ?? 0
   );
 
-  const getDataFromUNIX = () => {
-    const currentDate = new Date(date * 1000);
+  const getDateFromUNIX = (unix: number) => {
+    const currentDate = new Date(unix * 1000);
 
     if (locale === 'pl') {
       return (
@@ -38,18 +39,20 @@ export const DateFormat: FC<Props> = ({ date }) => {
   };
 
   if (convertDateFromUNIX.type === 'unix') {
-    return <span>{getDataFromUNIX()}</span>;
+    return <span>{getDateFromUNIX(date)}</span>;
   }
 
   return (
-    <span>
-      {t(`date_format_ago_${convertDateFromUNIX.type}`, {
-        count: convertDateFromUNIX.value,
-        minutes: currentTime12H.minutes,
-        hours: (locale === 'pl' ? convertDateFromUNIX.hours : currentTime12H.hours) ?? 0,
-        ampm: convertDateFromUNIX.ampm ?? 0,
-        day: convertDateFromUNIX.day ?? 0
-      })}
-    </span>
+    <Tippy content={getDateFromUNIX(date)}>
+      <span>
+        {t(`date_format_ago_${convertDateFromUNIX.type}`, {
+          count: convertDateFromUNIX.value,
+          minutes: currentTime12H.minutes,
+          hours: (locale === 'pl' ? convertDateFromUNIX.hours : currentTime12H.hours) ?? 0,
+          ampm: convertDateFromUNIX.ampm ?? 0,
+          day: convertDateFromUNIX.day ?? 0
+        })}
+      </span>
+    </Tippy>
   );
 };
