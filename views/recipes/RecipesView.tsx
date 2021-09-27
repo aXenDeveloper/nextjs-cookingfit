@@ -113,7 +113,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
         </main>
 
         <aside className="container_column:aside">
-          <div className="box padding">box padding</div>
+          <div className="box padding recipes_filter">box padding</div>
         </aside>
       </Container>
     </>
