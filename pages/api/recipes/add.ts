@@ -103,7 +103,25 @@ recipeAdd.post(async (req, res) => {
     const currentIngredients: IngredientsProps[] = ingredients ? JSON.parse(ingredients) : null;
 
     const result = (await query(
-      'INSERT INTO recipes_recipes (title, url, text, time, category_id, author_id, publish_date, difficulty, image, calories, proteins, fats, carbohydrates, ingredients, serve_count) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      `INSERT INTO recipes_recipes
+      
+      (title,
+      url,
+      text,
+      time,
+      category_id,
+      author_id,
+      publish_date,
+      difficulty,
+      image,
+      calories,
+      proteins,
+      fats,
+      carbohydrates,
+      ingredients,
+      serve_count)
+
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         title as string,
         url,

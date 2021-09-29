@@ -8,7 +8,8 @@ import { useAuth } from '../../context/useAuth';
 
 interface ShoppingListProps {
   member_id: number;
-  list: string;
+  name: string;
+  unit?: string;
 }
 
 export const ShoppingAdd = () => {
@@ -18,20 +19,23 @@ export const ShoppingAdd = () => {
   const { t } = useTranslation('global');
   const { session } = useAuth();
 
-  const { mutateAsync, isLoading } = useMutation(async ({ member_id, list }: ShoppingListProps) => {
-    const res = await fetch('/api/recipes/shopping/add', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        member_id,
-        list
-      })
-    });
+  const { mutateAsync, isLoading } = useMutation(
+    async ({ member_id, name, unit }: ShoppingListProps) => {
+      const res = await fetch('/api/recipes/shopping/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          member_id,
+          name,
+          unit
+        })
+      });
 
-    return null;
-  });
+      return null;
+    }
+  );
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault();
@@ -39,7 +43,8 @@ export const ShoppingAdd = () => {
     if (session?.user) {
       mutateAsync({
         member_id: session?.user.id,
-        list: ''
+        name: nameInput,
+        unit: unitInput
       });
     }
 

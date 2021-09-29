@@ -266,3 +266,15 @@ api/recipes/delete
 #### Query
 
 - id: _number_
+
+### (POST) Shopping List - Add
+
+```
+api/shopping/add
+```
+
+#### Body
+
+- member*id: \_number*,
+- name: _string_,
+- unit?: _string_,
