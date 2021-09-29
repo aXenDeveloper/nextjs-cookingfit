@@ -34,7 +34,7 @@ export const getServerSideProps = async (context: any) => {
   const currentURLformArray = currentIDfromArray.slice(0, currentIDfromArray.length - 1).join('-');
 
   const res = await fetch(
-    `${apiURL}/recipe?category=${category}&id=${currentID}&url=${currentURLformArray}`
+    `${apiURL}/recipes/item?category=${category}&id=${currentID}&url=${currentURLformArray}`
   );
   const body = await res.json();
 

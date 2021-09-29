@@ -3,15 +3,45 @@ import useTranslation from 'next-translate/useTranslation';
 import { SelectInputWithoutRegister } from '../inputs/select/SelectInputWithoutRegister';
 import { unitList } from '../../_utils/unitList';
 import { Button } from '../Button';
+import { useMutation } from 'react-query';
+import { useAuth } from '../../context/useAuth';
+
+interface ShoppingListProps {
+  member_id: number;
+  list: string;
+}
 
 export const ShoppingAdd = () => {
-  const { t } = useTranslation('global');
   const [quantityInput, setQuantityInput] = useState(0);
   const [unitInput, setUnitInput] = useState('');
   const [nameInput, setNameInput] = useState('');
+  const { t } = useTranslation('global');
+  const { session } = useAuth();
+
+  const { mutateAsync, isLoading } = useMutation(async ({ member_id, list }: ShoppingListProps) => {
+    const res = await fetch('/api/recipes/shopping/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        member_id,
+        list
+      })
+    });
+
+    return null;
+  });
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault();
+
+    if (session?.user) {
+      mutateAsync({
+        member_id: session?.user.id,
+        list: ''
+      });
+    }
 
     setQuantityInput(0);
     setUnitInput('');

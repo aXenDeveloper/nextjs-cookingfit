@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { query } from '../../../functions/database';
 import { RecipeModel } from '../../../types/database/RecipesType';
 
-const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
+const recipeItem = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
     return res.status(405).json({
       error: {
@@ -72,4 +72,4 @@ const recipe = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default recipe;
+export default recipeItem;

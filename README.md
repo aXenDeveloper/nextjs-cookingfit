@@ -97,24 +97,27 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | ------- | --------------------------------------------------------- |
 | 5R101/1 | (Recipes) Error with fetch (500)                          |
 | 3R101/2 | (Recipes) Invalid method API (405)                        |
-| 5R102/1 | (Recipe) Error with fetch (500)                           |
-| 3R102/2 | (Recipe) Invalid method API (405)                         |
-| 3R102/3 | (Recipe) Invalid query params (400)                       |
-| 1R102/4 | (Recipe) Not found (404)                                  |
+| 5R102/1 | (Recipe Item) Error with fetch (500)                      |
+| 3R102/2 | (Recipe Item) Invalid method API (405)                    |
+| 3R102/3 | (Recipe Item) Invalid query params (400)                  |
+| 1R102/4 | (Recipe Item) Not found (404)                             |
 | 5R103/1 | (Add Recipe) Error with fetch (500)                       |
 | 3R103/2 | (Add Recipe) Invalid method API (405)                     |
 | 3R103/3 | (Add Recipe) Invalid query params (400)                   |
 | 3R103/6 | (Add Recipe) Invalid category (400)                       |
 | 5R104/1 | (Upload File Recipe) Error with fetch (500)               |
 | 3R104/2 | (Upload File Recipe) Invalid method API (405)             |
-| 5R105/1 | (Edit recipe) Error with fetch (500)                      |
-| 3R105/2 | (Edit recipe) Invalid method API (405)                    |
-| 3R105/3 | (Edit recipe) Invalid query params (400)                  |
-| 3R105/6 | (Edit recipe) Invalid category (400)                      |
-| 1R105/7 | (Edit recipe) Access denied (403)                         |
-| 5R106/1 | (Delete recipe) Error with fetch (500)                    |
-| 3R106/2 | (Delete recipe) Invalid method API (405)                  |
-| 3R106/3 | (Delete recipe) Invalid query params (400)                |
+| 5R105/1 | (Edit Recipe) Error with fetch (500)                      |
+| 3R105/2 | (Edit Recipe) Invalid method API (405)                    |
+| 3R105/3 | (Edit Recipe) Invalid query params (400)                  |
+| 3R105/6 | (Edit Recipe) Invalid category (400)                      |
+| 1R105/7 | (Edit Recipe) Access denied (403)                         |
+| 5R106/1 | (Delete Recipe) Error with fetch (500)                    |
+| 3R106/2 | (Delete Recipe) Invalid method API (405)                  |
+| 3R106/3 | (Delete Recipe) Invalid query params (400)                |
+| 5R107/1 | (Shopping Add) Error with fetch (500)                     |
+| 3R107/2 | (Shopping Add) Invalid method API (405)                   |
+| 3R107/3 | (Shopping Add) Invalid query params (400)                 |
 
 ## 😀 Group ID
 
@@ -235,7 +238,7 @@ api/recipe
 ### (POST) Add Recipe
 
 ```
-api/recipe/add
+api/recipes/add
 ```
 
 #### Query
@@ -257,7 +260,7 @@ api/recipe/add
 ### (POST) Delete Recipe
 
 ```
-api/recipe/delete
+api/recipes/delete
 ```
 
 #### Query

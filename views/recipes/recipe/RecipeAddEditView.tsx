@@ -97,7 +97,7 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
 
       setError(false);
 
-      const res = await fetch(recipe ? '/api/recipe/edit' : '/api/recipe/add', {
+      const res = await fetch(recipe ? '/api/recipes/edit' : '/api/recipes/add', {
         method: 'POST',
 
         body: formData

@@ -17,7 +17,7 @@ export const ShoppingView = () => {
             <ShoppingAdd />
           </div>
 
-          <div className="box padding">dgdg</div>
+          <div className="box padding">fdh</div>
         </main>
 
         <aside className="container_column:aside">

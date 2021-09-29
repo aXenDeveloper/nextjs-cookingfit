@@ -57,7 +57,7 @@ export const ActionRecipeMenu: FC<Props> = ({ id, category }) => {
               buttonText={t('action_delete')}
               cancalButton
               api={{
-                url: `${apiURL}/recipe/delete?id=${id}`,
+                url: `${apiURL}/recipes/delete?id=${id}`,
                 afterSuccess: () => {
                   push(`/recipes/${category}`);
                 }

@@ -33,7 +33,7 @@ export const Editor: FC<Props> = ({ textCKEditor, setTextCKEDitor }) => {
       }}
       config={{
         ckfinder: {
-          uploadUrl: '/api/recipe/upload',
+          uploadUrl: '/api/recipes/upload',
           options: {
             resourceType: 'Images'
           }
