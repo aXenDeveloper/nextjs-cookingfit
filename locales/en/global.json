@@ -10,7 +10,8 @@
   "navigation_products": "Products",
   "navigation_calculators": "Calculators",
   "navigation_search": "Search",
-  "navigation_shopping": "Shopping",
+  "navigation_shopping": "Shopping List",
+  "navigation_profile": "Profile",
   "navigation_login": "Login",
   "navigation_register": "Register",
   "navigation_breakfasts": "Breakfasts",
@@ -146,5 +147,7 @@
   "date_format_ago_months_12": "December {{day}}",
   "action_edit": "Edit",
   "action_delete": "Delete",
-  "action_cancel": "Cancel"
+  "action_cancel": "Cancel",
+  "shopping_add": "Add Product",
+  "shopping_name": "Name Product"
 }

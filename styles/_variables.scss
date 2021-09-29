@@ -89,6 +89,9 @@
 
   --snackbar-background: #0a0a0a;
   --snackbar-color: #f5f5f5;
+
+  --shopping-icon: var(--message-error);
+  --shopping-icon-text: #fff;
 }
 
 [theme='dark']:root {

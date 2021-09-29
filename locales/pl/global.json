@@ -10,7 +10,8 @@
   "navigation_products": "Produkty",
   "navigation_calculators": "Kalkulator",
   "navigation_search": "Szukaj",
-  "navigation_shopping": "Zakupy",
+  "navigation_shopping": "Lista zakupów",
+  "navigation_profile": "Profil",
   "navigation_login": "Logowanie",
   "navigation_register": "Rejestracja",
   "navigation_breakfasts": "Śniadania",
@@ -33,7 +34,7 @@
   "navigation_recipes_snacks": "Przekąski",
   "navigation_drinks": "Drinki",
   "navigation_recipes_drinks": "Drinki",
-  "navigation_errors": "Błąd",
+  "navigation_error": "Błąd",
   "navigation_recipes_add": "Dodaj przepis",
   "navigation_recipes_edit": "Edytuj przepis",
   "userbar_button_register": "Zarejestruj się",
@@ -164,5 +165,7 @@
   "date_format_ago_months_12": "{{day}} Grudzień",
   "action_edit": "Edytuj",
   "action_delete": "Usuń",
-  "action_cancel": "Anuluj"
+  "action_cancel": "Anuluj",
+  "shopping_add": "Dodaj produkt",
+  "shopping_name": "Nazwa produktu"
 }

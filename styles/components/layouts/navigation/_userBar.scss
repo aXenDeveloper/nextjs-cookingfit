@@ -85,4 +85,28 @@
     height: 30px;
     border-radius: 10px;
   }
+
+  &\:shopping {
+    position: relative;
+    font-size: 30px;
+    color: inherit;
+
+    > span {
+      position: absolute;
+      top: -6px;
+      right: -12px;
+      background-color: var(--message-error);
+      color: #fff;
+      font-size: 12px;
+      border: 2px solid var(--container-background);
+      padding: 4px 6px;
+      border-radius: 50px;
+      font-weight: 600;
+      min-width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }

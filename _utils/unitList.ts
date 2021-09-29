@@ -1,4 +1,4 @@
-export const ingredientsUnitList = [
+export const unitList = [
   {
     id: 1,
     value: 'pieces'

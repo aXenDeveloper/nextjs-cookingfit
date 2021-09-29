@@ -8,7 +8,7 @@ import { arrayMove } from '../../../../_utils/arrayMove';
 import { IngredientsProps } from '../../../../types/database/RecipesType';
 import { IngredientsServe } from '../IngredientsServe';
 import { SelectInputWithoutRegister } from '../../../inputs/select/SelectInputWithoutRegister';
-import { ingredientsUnitList } from '../../../../_utils/ingredientsUnitList';
+import { unitList } from '../../../../_utils/unitList';
 
 interface Props {
   ingredients: IngredientsProps[];
@@ -127,7 +127,7 @@ export const IngredientsEdit: FC<Props> = ({
                   <option value="" disabled>
                     {t('recipe_ingredients_unit')}
                   </option>
-                  {ingredientsUnitList.map(el => (
+                  {unitList.map(el => (
                     <option key={el.id} value={el.value}>
                       {t(`recipe_ingredients_unit_${el.value}`, { count: quantityInput })}
                     </option>
