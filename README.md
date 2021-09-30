@@ -123,6 +123,7 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 3R107/2 | (Shopping Add) Invalid method API (405)                   |
 | 3R107/3 | (Shopping Add) Invalid query params (400)                 |
 | 1R107/4 | (Shopping Add) Access denied (403)                        |
+| 1R108/1 | (Shopping) Access denied (403)                            |
 
 ## 😀 Group ID
 

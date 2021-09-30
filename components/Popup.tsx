@@ -17,9 +17,20 @@ interface Props {
     body?: {};
     afterSuccess?: () => void;
   };
+  onClick?: () => void;
+  closeOnPrimaryButton?: boolean;
 }
 
-const Popup: FC<Props> = ({ visible, setVisible, buttonText, cancalButton, api, children }) => {
+const Popup: FC<Props> = ({
+  visible,
+  setVisible,
+  buttonText,
+  cancalButton,
+  api,
+  onClick,
+  closeOnPrimaryButton,
+  children
+}) => {
   const [animated, setAnimated] = useState(false);
   const { t } = useTranslation('global');
 
@@ -93,6 +104,9 @@ const Popup: FC<Props> = ({ visible, setVisible, buttonText, cancalButton, api, 
                         mutateAsync();
                         return;
                       }
+
+                      onClick && onClick();
+                      closeOnPrimaryButton && handleClose();
                     }}
                   >
                     {buttonText}
