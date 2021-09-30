@@ -19,6 +19,7 @@ import { navigationRecipesList } from '../../../_utils/navigationRecipes/navigat
 import { NutritionalValuesEdit } from '../../../components/recipes/nutritionalValues/nutritionalValuesEdit/NutritionalValuesEdit';
 import { IngredientsEdit } from '../../../components/recipes/ingredients/IngredientsEdit/IngredientsEdit';
 import { IngredientsProps, RecipeModel } from '../../../types/database/RecipesType';
+import { MessageBox } from '../../../components/messageBox/MessageBox';
 
 interface RecipeAddProps {
   title: string;
@@ -152,7 +153,16 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
     return (
       <>
         <Breadcrumb>{t(recipe ? 'navigation_recipes_edit' : 'navigation_recipes_add')}</Breadcrumb>
-        <PermissionMessageBox code="1R105/7" />
+        <PermissionMessageBox code={recipe ? '1R105/7' : '1R103/7'} />
+      </>
+    );
+  }
+
+  if (isError) {
+    return (
+      <>
+        <Breadcrumb>{t(recipe ? 'navigation_recipes_edit' : 'navigation_recipes_add')}</Breadcrumb>
+        <MessageBox code={recipe ? '5R103/1' : '5R105/1'} />
       </>
     );
   }

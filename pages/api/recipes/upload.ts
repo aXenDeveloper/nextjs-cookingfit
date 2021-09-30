@@ -51,7 +51,7 @@ apiRoute.post((req, res) => {
 });
 
 // @ts-ignore
-export default authenticated(apiRoute);
+export default authenticated(apiRoute, '1R104/3');
 
 export const config = {
   api: {

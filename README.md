@@ -105,19 +105,24 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 3R103/2 | (Add Recipe) Invalid method API (405)                     |
 | 3R103/3 | (Add Recipe) Invalid query params (400)                   |
 | 3R103/6 | (Add Recipe) Invalid category (400)                       |
+| 1R103/7 | (Add Recipe) Access denied (403)                          |
 | 5R104/1 | (Upload File Recipe) Error with fetch (500)               |
 | 3R104/2 | (Upload File Recipe) Invalid method API (405)             |
+| 1R104/3 | (Upload File Recipe) Access denied (403)                  |
 | 5R105/1 | (Edit Recipe) Error with fetch (500)                      |
 | 3R105/2 | (Edit Recipe) Invalid method API (405)                    |
 | 3R105/3 | (Edit Recipe) Invalid query params (400)                  |
 | 3R105/6 | (Edit Recipe) Invalid category (400)                      |
 | 1R105/7 | (Edit Recipe) Access denied (403)                         |
+| 1R105/8 | (Edit Recipe) Access denied - invalid member ID (403)     |
 | 5R106/1 | (Delete Recipe) Error with fetch (500)                    |
 | 3R106/2 | (Delete Recipe) Invalid method API (405)                  |
 | 3R106/3 | (Delete Recipe) Invalid query params (400)                |
+| 1R106/4 | (Delete Recipe) Access denied (403)                       |
 | 5R107/1 | (Shopping Add) Error with fetch (500)                     |
 | 3R107/2 | (Shopping Add) Invalid method API (405)                   |
 | 3R107/3 | (Shopping Add) Invalid query params (400)                 |
+| 1R107/4 | (Shopping Add) Access denied (403)                        |
 
 ## 😀 Group ID
 

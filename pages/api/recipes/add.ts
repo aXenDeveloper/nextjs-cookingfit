@@ -173,7 +173,7 @@ recipeAdd.post(async (req, res) => {
   }
 });
 
-export default authenticated(recipeAdd);
+export default authenticated(recipeAdd, '1R103/7');
 
 export const config = {
   api: {

@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { authenticated } from '../../../functions/authenticated';
 import { query } from '../../../functions/database';
 
 const recipeDelete = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -35,4 +36,4 @@ const recipeDelete = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default recipeDelete;
+export default authenticated(recipeDelete, '1R106/4');

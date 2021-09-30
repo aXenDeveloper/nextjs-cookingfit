@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { authenticated } from '../../../../functions/authenticated';
 import { query } from '../../../../functions/database';
 
 const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -26,15 +27,9 @@ const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
     const addList = await query(
       `INSERT INTO recipes_shopping
 
-      (member_id,
-      name
-      ${unit ? ', unit' : ''}
-      )
+      (member_id, name ${unit ? ', unit' : ''})
 
-      VALUES
-      (?,
-      ?
-      ${unit ? ', ?' : ''})`,
+      VALUES (?, ?${unit ? ', ?' : ''})`,
       [+member_id, name, unit]
     );
 
@@ -48,4 +43,4 @@ const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default shoppingAdd;
+export default authenticated(shoppingAdd, '1R107/4');

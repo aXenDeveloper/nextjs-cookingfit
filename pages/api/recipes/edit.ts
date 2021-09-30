@@ -90,7 +90,7 @@ recipeEdit.post(async (req, res) => {
   if (session?.user.id !== +author_id && session?.user.group_id !== 4) {
     return res.status(403).json({
       error: {
-        id: '1R105/7',
+        id: '1R105/8',
         message: 'ACCESS_DENIED'
       }
     });
@@ -168,7 +168,7 @@ recipeEdit.post(async (req, res) => {
   }
 });
 
-export default authenticated(recipeEdit);
+export default authenticated(recipeEdit, '1R105/7');
 
 export const config = {
   api: {
