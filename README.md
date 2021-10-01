@@ -123,7 +123,10 @@ You can generate **CSRF_KEY** and **JWT_SIGNING_PRIVATE_KEY** by [GUID / UUID Ge
 | 3R107/2 | (Shopping Add) Invalid method API (405)                   |
 | 3R107/3 | (Shopping Add) Invalid query params (400)                 |
 | 1R107/4 | (Shopping Add) Access denied (403)                        |
-| 1R108/1 | (Shopping) Access denied (403)                            |
+| 5R108/1 | (Shopping Item) Error with fetch (500)                    |
+| 3R108/2 | (Shopping Item) Invalid method API (405)                  |
+| 3R108/3 | (Shopping Item) Invalid query params (400)                |
+| 1R108/4 | (Shopping Item) Access denied (403)                       |
 
 ## 😀 Group ID
 
@@ -273,6 +276,28 @@ api/recipes/delete
 
 - id: _number_
 
+### (GET) Shopping List
+
+```
+api/shopping
+```
+
+#### Query
+
+- member\_\_id: _number_
+
+#### Response
+
+```
+{
+  id: number;
+  member_id: number;
+  name: string;
+  quantity: number;
+  unit?: string;
+}
+```
+
 ### (POST) Shopping List - Add
 
 ```
@@ -281,6 +306,6 @@ api/shopping/add
 
 #### Body
 
-- member*id: \_number*,
+- member\_\_id: _number_,
 - name: _string_,
 - unit?: _string_,

@@ -12,7 +12,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const page = +req.query.page <= 0 ? 0 : +req.query.page;
+  const page = +req.query.page <= 0 ? 1 : +req.query.page;
   const limit = +req.query.limit || 10;
   const offset = (page - 1) * limit;
   const where = req.query.category;

@@ -86,19 +86,19 @@ recipeEdit.post(async (req, res) => {
     });
   }
 
-  const session = await getSession({ req });
-  if (session?.user.id !== +author_id && session?.user.group_id !== 4) {
-    return res.status(403).json({
-      error: {
-        id: '1R105/8',
-        message: 'ACCESS_DENIED'
-      }
-    });
-  }
-
   const url = slugify(title as string).toLowerCase();
 
   try {
+    const session = await getSession({ req });
+    if (session?.user.id !== +author_id && session?.user.group_id !== 4) {
+      return res.status(403).json({
+        error: {
+          id: '1R105/8',
+          message: 'ACCESS_DENIED'
+        }
+      });
+    }
+
     const existCategory = (await query(
       'SELECT name AS category_name FROM recipes_categories WHERE id=?',
       [+category_id]

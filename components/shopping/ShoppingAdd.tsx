@@ -13,6 +13,7 @@ const Popup = dynamic(() => import('../Popup'), { ssr: false });
 interface ShoppingListProps {
   member_id: number;
   name: string;
+  quantity: number;
   unit?: string;
 }
 
@@ -26,7 +27,7 @@ export const ShoppingAdd = () => {
   const { session } = useAuth();
 
   const { mutateAsync, isLoading } = useMutation(
-    async ({ member_id, name, unit }: ShoppingListProps) => {
+    async ({ member_id, name, quantity, unit }: ShoppingListProps) => {
       const res = await fetch('/api/recipes/shopping/add', {
         method: 'POST',
         headers: {
@@ -35,6 +36,7 @@ export const ShoppingAdd = () => {
         body: JSON.stringify({
           member_id,
           name,
+          quantity,
           unit
         })
       });
@@ -57,6 +59,7 @@ export const ShoppingAdd = () => {
       mutateAsync({
         member_id: session?.user.id,
         name: nameInput,
+        quantity: quantityInput,
         unit: unitInput
       });
     }

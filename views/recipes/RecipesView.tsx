@@ -28,10 +28,11 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
 
   useEffect(() => {
     setPage(query.page ? +query.page : defaultPage);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query.page]);
 
-  const { isLoading, isError, data, isFetching } = useQuery<RecipesModelAPI>(
+  const { isLoading, isError, data } = useQuery<RecipesModelAPI>(
     ['recipeList', page, category],
     async () => {
       const res = await fetch(
@@ -58,6 +59,7 @@ export const RecipesView: FC<Props> = ({ defaultPage = 1, category }) => {
         { shallow: true }
       );
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.page.max]);
 
