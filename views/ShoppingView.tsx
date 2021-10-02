@@ -6,6 +6,7 @@ import { SpinnersLoading } from '../components/loading/SpinnersLoading';
 import { MessageBox } from '../components/messageBox/MessageBox';
 import { PermissionMessageBox } from '../components/messageBox/PermissionMessageBox';
 import { ShoppingAdd } from '../components/shopping/ShoppingAdd';
+import { ShoppingItem } from '../components/shopping/ShoppingItem';
 import { useAuth } from '../context/useAuth';
 import { ShoppingListModelAPI } from '../types/database/ShoppingType';
 import { apiURL } from '../_utils/api';
@@ -14,13 +15,16 @@ export const ShoppingView = () => {
   const { t } = useTranslation('global');
   const { session, loading } = useAuth();
 
-  const { isLoading, isError, data } = useQuery<ShoppingListModelAPI>([session], async () => {
-    if (session?.user.id) {
-      const res = await fetch(`${apiURL}/recipes/shopping?member_id=${session?.user.id}`);
+  const { isLoading, isError, data, refetch } = useQuery<ShoppingListModelAPI>(
+    [session],
+    async () => {
+      if (session?.user.id) {
+        const res = await fetch(`${apiURL}/recipes/shopping?member_id=${session?.user.id}`);
 
-      return await res.json();
+        return await res.json();
+      }
     }
-  });
+  );
 
   if (isLoading || loading) {
     return (
@@ -62,13 +66,13 @@ export const ShoppingView = () => {
           <h1>{t('navigation_shopping')}</h1>
 
           <div className="box padding">
-            <ShoppingAdd />
+            <ShoppingAdd refetch={refetch} />
           </div>
 
           <div className="box padding">
-            <ul>
+            <ul className="shopping_list">
               {data?.results.map(el => (
-                <li key={el.id}>{el.name}</li>
+                <ShoppingItem key={el.id} item={el} />
               ))}
             </ul>
           </div>

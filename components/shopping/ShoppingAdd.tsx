@@ -1,7 +1,7 @@
-import { MouseEventHandler, useState } from 'react';
+import { FC, MouseEventHandler, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
-import { useMutation } from 'react-query';
+import { QueryObserverResult, useMutation } from 'react-query';
 import { SelectInputWithoutRegister } from '../inputs/select/SelectInputWithoutRegister';
 import { unitList } from '../../_utils/unitList';
 import { Button } from '../Button';
@@ -17,7 +17,11 @@ interface ShoppingListProps {
   unit?: string;
 }
 
-export const ShoppingAdd = () => {
+interface Props {
+  refetch: () => Promise<QueryObserverResult>;
+}
+
+export const ShoppingAdd: FC<Props> = ({ refetch }) => {
   const [quantityInput, setQuantityInput] = useState(0);
   const [unitInput, setUnitInput] = useState('');
   const [nameInput, setNameInput] = useState('');
@@ -42,6 +46,7 @@ export const ShoppingAdd = () => {
       });
 
       if (res.status === 200) {
+        refetch();
         setVisibleSnackbar(true);
         return null;
       }

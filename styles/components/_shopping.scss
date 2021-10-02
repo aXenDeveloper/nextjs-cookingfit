@@ -33,4 +33,12 @@
       margin-bottom: 20px;
     }
   }
+
+  &_list {
+    padding: 10px;
+    margin: 0;
+    list-style: none;
+    background-color: var(--body-background);
+    border-radius: var(--radius);
+  }
 }
