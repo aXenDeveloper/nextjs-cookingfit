@@ -1,6 +1,7 @@
 import { FC, MouseEventHandler, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
+import { v4 as uuidv4 } from 'uuid';
 import { QueryObserverResult, useMutation } from 'react-query';
 import { SelectInputWithoutRegister } from '../inputs/select/SelectInputWithoutRegister';
 import { unitList } from '../../_utils/unitList';
@@ -8,20 +9,20 @@ import { Button } from '../Button';
 import { useAuth } from '../../context/useAuth';
 import { SpinnersLoading } from '../loading/SpinnersLoading';
 import Snackbar from '../Snackbar';
+import { ShopingListPropsArray } from '../../types/database/ShoppingType';
 const Popup = dynamic(() => import('../Popup'), { ssr: false });
 
 interface ShoppingListProps {
   member_id: number;
-  name: string;
-  quantity: number;
-  unit?: string;
+  list: string;
 }
 
 interface Props {
   refetch: () => Promise<QueryObserverResult>;
+  shoppingList: ShopingListPropsArray[];
 }
 
-export const ShoppingAdd: FC<Props> = ({ refetch }) => {
+export const ShoppingAdd: FC<Props> = ({ refetch, shoppingList }) => {
   const [quantityInput, setQuantityInput] = useState(0);
   const [unitInput, setUnitInput] = useState('');
   const [nameInput, setNameInput] = useState('');
@@ -30,32 +31,28 @@ export const ShoppingAdd: FC<Props> = ({ refetch }) => {
   const { t } = useTranslation('global');
   const { session } = useAuth();
 
-  const { mutateAsync, isLoading } = useMutation(
-    async ({ member_id, name, quantity, unit }: ShoppingListProps) => {
-      const res = await fetch('/api/recipes/shopping/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          member_id,
-          name,
-          quantity,
-          unit
-        })
-      });
+  const { mutateAsync, isLoading } = useMutation(async ({ member_id, list }: ShoppingListProps) => {
+    const res = await fetch('/api/recipes/shopping/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        member_id,
+        list
+      })
+    });
 
-      if (res.status === 200) {
-        refetch();
-        setVisibleSnackbar(true);
-        return null;
-      }
-
-      setVisiblePopup(true);
-
+    if (res.status === 200) {
+      refetch();
+      setVisibleSnackbar(true);
       return null;
     }
-  );
+
+    setVisiblePopup(true);
+
+    return null;
+  });
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault();
@@ -63,9 +60,16 @@ export const ShoppingAdd: FC<Props> = ({ refetch }) => {
     if (session?.user) {
       mutateAsync({
         member_id: session?.user.id,
-        name: nameInput,
-        quantity: quantityInput,
-        unit: unitInput
+        list: JSON.stringify([
+          {
+            id: uuidv4(),
+            quantity: quantityInput,
+            unit: unitInput,
+            name: nameInput,
+            checked: 0
+          },
+          ...shoppingList
+        ])
       });
     }
 

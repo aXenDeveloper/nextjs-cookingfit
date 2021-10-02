@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { useQuery } from 'react-query';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Container } from '../components/layouts/Container';
@@ -8,7 +10,7 @@ import { PermissionMessageBox } from '../components/messageBox/PermissionMessage
 import { ShoppingAdd } from '../components/shopping/ShoppingAdd';
 import { ShoppingItem } from '../components/shopping/ShoppingItem';
 import { useAuth } from '../context/useAuth';
-import { ShoppingListModelAPI } from '../types/database/ShoppingType';
+import { ShopingListPropsArray, ShoppingListModelAPI } from '../types/database/ShoppingType';
 import { apiURL } from '../_utils/api';
 
 export const ShoppingView = () => {
@@ -25,6 +27,8 @@ export const ShoppingView = () => {
       }
     }
   );
+
+  const onDragEnd = (result: DropResult) => {};
 
   if (isLoading || loading) {
     return (
@@ -66,15 +70,33 @@ export const ShoppingView = () => {
           <h1>{t('navigation_shopping')}</h1>
 
           <div className="box padding">
-            <ShoppingAdd refetch={refetch} />
+            <ShoppingAdd
+              refetch={refetch}
+              shoppingList={JSON.parse(data?.results.list ?? '') as ShopingListPropsArray[]}
+            />
           </div>
 
           <div className="box padding">
-            <ul className="shopping_list">
-              {data?.results.map(el => (
-                <ShoppingItem key={el.id} item={el} />
-              ))}
-            </ul>
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Droppable droppableId="shopping_list">
+                {provided => (
+                  <ul
+                    className="shopping_list"
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                  >
+                    <>
+                      {JSON.parse(data?.results.list ?? '').map(
+                        (el: ShopingListPropsArray, index: number) => (
+                          <ShoppingItem key={el.id} item={el} index={index} />
+                        )
+                      )}
+                      {provided.placeholder}
+                    </>
+                  </ul>
+                )}
+              </Droppable>
+            </DragDropContext>
           </div>
         </main>
 

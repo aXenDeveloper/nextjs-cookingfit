@@ -1,11 +1,17 @@
 export interface ShoppingListProps {
   id: number;
   member_id: number;
-  name: string;
-  quantity: number;
-  unit?: string;
+  list: string;
 }
 
 export interface ShoppingListModelAPI {
-  results: ShoppingListProps[];
+  results: ShoppingListProps;
+}
+
+export interface ShopingListPropsArray {
+  id: string;
+  name: string;
+  quantity: number;
+  checked: number;
+  unit?: string;
 }

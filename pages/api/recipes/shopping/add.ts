@@ -12,9 +12,9 @@ const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  const { member_id, unit, name, quantity } = req.body;
+  const { member_id, list } = req.body;
 
-  if (!member_id || !name || !quantity) {
+  if (!member_id || !list) {
     return res.status(400).json({
       error: {
         id: '3R107/3',
@@ -24,14 +24,10 @@ const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const addList = await query(
-      `INSERT INTO recipes_shopping
-
-      (member_id, name, quantity ${unit ? ', unit' : ''})
-
-      VALUES (?, ?, ?${unit ? ', ?' : ''})`,
-      [+member_id, name, quantity, unit]
-    );
+    const addList = await query(`INSERT INTO recipes_shopping (member_id, list) VALUES (?, ?)`, [
+      +member_id,
+      list
+    ]);
 
     return res.status(200).json(addList);
   } catch (e) {

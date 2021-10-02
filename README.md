@@ -294,6 +294,7 @@ api/shopping
   member_id: number;
   name: string;
   quantity: number;
+  checked: number;
   unit?: string;
 }
 ```

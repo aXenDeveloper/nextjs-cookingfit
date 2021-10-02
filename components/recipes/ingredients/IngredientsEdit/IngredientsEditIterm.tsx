@@ -23,30 +23,28 @@ export const IngredientsEditIterm: FC<Props> = ({
   const count = serveCountFromDB ? ingredient.quantity * serveCountFromDB : ingredient.quantity;
 
   return (
-    <>
-      <Draggable draggableId={ingredient.id} index={index}>
-        {provided => (
-          <li {...provided.draggableProps} ref={provided.innerRef}>
-            <ul>
-              <li {...provided.dragHandleProps}>
-                <FontAwesomeIcon icon={faBars} />
-              </li>
-              <li>
-                {count}{' '}
-                {t(`recipe_ingredients_unit_${ingredient.unit}`, {
-                  count
-                })}
-              </li>
-              <li>{ingredient.name}</li>
-              <li>
-                <button type="button" onClick={removeItem}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-              </li>
-            </ul>
-          </li>
-        )}
-      </Draggable>
-    </>
+    <Draggable draggableId={ingredient.id} index={index}>
+      {provided => (
+        <li {...provided.draggableProps} ref={provided.innerRef}>
+          <ul>
+            <li {...provided.dragHandleProps}>
+              <FontAwesomeIcon icon={faBars} />
+            </li>
+            <li>
+              {count}{' '}
+              {t(`recipe_ingredients_unit_${ingredient.unit}`, {
+                count
+              })}
+            </li>
+            <li>{ingredient.name}</li>
+            <li>
+              <button type="button" onClick={removeItem}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </li>
+          </ul>
+        </li>
+      )}
+    </Draggable>
   );
 };

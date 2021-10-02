@@ -40,9 +40,7 @@ const shoppingIndex = async (req: NextApiRequest, res: NextApiResponse) => {
 
       id,
       member_id,
-      quantity,
-      unit,
-      name
+      list
 
       FROM recipes_shopping
       WHERE member_id=${+member_id}
@@ -50,7 +48,7 @@ const shoppingIndex = async (req: NextApiRequest, res: NextApiResponse) => {
     )) as ShoppingListProps[];
 
     return res.status(200).json({
-      results
+      results: results[0]
     });
   } catch (e) {
     return res.status(500).json({

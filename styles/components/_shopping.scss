@@ -40,5 +40,21 @@
     list-style: none;
     background-color: var(--body-background);
     border-radius: var(--radius);
+
+    > li {
+      display: flex;
+      align-items: center;
+      background-color: var(--container-background);
+      border-radius: var(--radius);
+      padding: 10px;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      > .input_checkbox {
+        margin-right: 10px;
+      }
+    }
   }
 }
