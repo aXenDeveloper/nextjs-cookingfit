@@ -1,14 +1,14 @@
 import { FC, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { ShopingListPropsArray } from '../../types/database/ShoppingType';
-import { CheckBoxWithoutRegister } from '../inputs/checkBox/CheckBoxWithoutRegister';
+import { ShopingListPropsArray } from '../../../types/database/ShoppingType';
+import { CheckBoxWithoutRegister } from '../../inputs/checkBox/CheckBoxWithoutRegister';
 
 interface Props {
   item: ShopingListPropsArray;
   index: number;
 }
 
-export const ShoppingItem: FC<Props> = ({ item, index }) => {
+export const ShoppingListItem: FC<Props> = ({ item, index }) => {
   const [checked, setChecked] = useState(!!item.checked || false);
   const [id] = useState(`shopping_item_${item.id}`);
 

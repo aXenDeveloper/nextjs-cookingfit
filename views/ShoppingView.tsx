@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { useQuery } from 'react-query';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Container } from '../components/layouts/Container';
@@ -8,10 +6,10 @@ import { SpinnersLoading } from '../components/loading/SpinnersLoading';
 import { MessageBox } from '../components/messageBox/MessageBox';
 import { PermissionMessageBox } from '../components/messageBox/PermissionMessageBox';
 import { ShoppingAdd } from '../components/shopping/ShoppingAdd';
-import { ShoppingItem } from '../components/shopping/ShoppingItem';
 import { useAuth } from '../context/useAuth';
 import { ShopingListPropsArray, ShoppingListModelAPI } from '../types/database/ShoppingType';
 import { apiURL } from '../_utils/api';
+import { ShoppingList } from '../components/shopping/list/ShoppingList';
 
 export const ShoppingView = () => {
   const { t } = useTranslation('global');
@@ -27,8 +25,6 @@ export const ShoppingView = () => {
       }
     }
   );
-
-  const onDragEnd = (result: DropResult) => {};
 
   if (isLoading || loading) {
     return (
@@ -77,26 +73,11 @@ export const ShoppingView = () => {
           </div>
 
           <div className="box padding">
-            <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId="shopping_list">
-                {provided => (
-                  <ul
-                    className="shopping_list"
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                  >
-                    <>
-                      {JSON.parse(data?.results.list ?? '').map(
-                        (el: ShopingListPropsArray, index: number) => (
-                          <ShoppingItem key={el.id} item={el} index={index} />
-                        )
-                      )}
-                      {provided.placeholder}
-                    </>
-                  </ul>
-                )}
-              </Droppable>
-            </DragDropContext>
+            {data?.results.list ? (
+              <ShoppingList list={JSON.parse(data?.results.list ?? '')} />
+            ) : (
+              <div>test</div>
+            )}
           </div>
         </main>
 

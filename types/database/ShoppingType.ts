@@ -1,5 +1,4 @@
 export interface ShoppingListProps {
-  id: number;
   member_id: number;
   list: string;
 }
