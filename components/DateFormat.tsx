@@ -13,8 +13,6 @@ export const DateFormat: FC<Props> = ({ date }) => {
   const { locale } = useRouter();
   const convertDateFromUNIX = convertDate(date);
 
-  console.log(convertDateFromUNIX);
-
   const currentTime12H = convertTimeTo12H(
     convertDateFromUNIX.hours ?? 0,
     convertDateFromUNIX.minutes ?? 0

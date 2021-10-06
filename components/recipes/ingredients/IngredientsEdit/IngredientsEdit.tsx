@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Button } from '../../../Button';
 import { IngredientsEditIterm } from './IngredientsEditIterm';
-import { arrayMove } from '../../../../_utils/arrayMove';
+import { arrayMove } from '../../../../functions/arrayMove';
 import { IngredientsProps } from '../../../../types/database/RecipesType';
 import { IngredientsServe } from '../IngredientsServe';
 import { SelectInputWithoutRegister } from '../../../inputs/select/SelectInputWithoutRegister';

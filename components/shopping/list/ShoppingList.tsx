@@ -3,7 +3,7 @@ import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { useMutation } from 'react-query';
 import { useAuth } from '../../../context/useAuth';
 import { ShopingListPropsArray, ShoppingListProps } from '../../../types/database/ShoppingType';
-import { arrayMove } from '../../../_utils/arrayMove';
+import { arrayMove } from '../../../functions/arrayMove';
 import { ShoppingListItem } from './ShoppingListItem';
 
 interface Props {
@@ -49,6 +49,27 @@ export const ShoppingList: FC<Props> = ({ list }) => {
     }
   };
 
+  const handleChange = (item: ShopingListPropsArray) => {
+    const currentIndex = currentList.findIndex(el => el.id === item.id);
+
+    const updateList = currentList.map((el, index) => {
+      if (currentIndex === index) {
+        return item;
+      }
+
+      return el;
+    });
+
+    setCurrentList(updateList);
+
+    if (session) {
+      mutateAsync({
+        member_id: session.user.id,
+        list: JSON.stringify(updateList)
+      });
+    }
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="shopping_list">
@@ -56,7 +77,7 @@ export const ShoppingList: FC<Props> = ({ list }) => {
           <ul className="shopping_list" ref={provided.innerRef} {...provided.droppableProps}>
             <>
               {currentList.map((el: ShopingListPropsArray, index: number) => (
-                <ShoppingListItem key={el.id} item={el} index={index} />
+                <ShoppingListItem key={el.id} item={el} index={index} handleChange={handleChange} />
               ))}
               {provided.placeholder}
             </>

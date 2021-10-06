@@ -5,10 +5,11 @@ import { CheckBoxWithoutRegister } from '../../inputs/checkBox/CheckBoxWithoutRe
 
 interface Props {
   item: ShopingListPropsArray;
+  handleChange: (el: ShopingListPropsArray) => void;
   index: number;
 }
 
-export const ShoppingListItem: FC<Props> = ({ item, index }) => {
+export const ShoppingListItem: FC<Props> = ({ item, handleChange, index }) => {
   const [checked, setChecked] = useState(!!item.checked || false);
   const [id] = useState(`shopping_item_${item.id}`);
 
@@ -16,7 +17,15 @@ export const ShoppingListItem: FC<Props> = ({ item, index }) => {
     <Draggable draggableId={id} index={index}>
       {provided => (
         <li {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
-          <CheckBoxWithoutRegister id={id} withoutLabel value={checked} setValue={setChecked} />
+          <CheckBoxWithoutRegister
+            id={id}
+            withoutLabel
+            value={checked}
+            setValue={el => {
+              setChecked(el);
+              handleChange({ ...item, checked: el ? 1 : 0 });
+            }}
+          />
           <span>{item.name}</span>
         </li>
       )}

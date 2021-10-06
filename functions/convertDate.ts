@@ -87,6 +87,7 @@ export const convertDate = (date: number) => {
       day: dateFromUNIX.getDate(),
       hours: dateFromUNIX.getHours(),
       minutes: dateFromUNIX.getMinutes(),
+      ampm: checkAMOrPM(dateFromUNIX),
       type: 'months'
     };
   }
