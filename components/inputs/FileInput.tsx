@@ -4,7 +4,7 @@ import { faTimes, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import useTranslation from 'next-translate/useTranslation';
-import { Path, UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { Path, UseFormRegister } from 'react-hook-form';
 import { FormValuesTypes } from '../../types/FormValuesTypes';
 import { Button } from '../Button';
 import { bytesToSize } from '../../functions/bytesToSize';
@@ -12,22 +12,13 @@ import { bytesToSize } from '../../functions/bytesToSize';
 interface Props {
   id: Path<FormValuesTypes>;
   register: UseFormRegister<FormValuesTypes>;
-  setValue: UseFormSetValue<FormValuesTypes>;
   file?: File | null;
   setFile: (el: File | null) => void;
   preview: string;
   setPreview: (el: string) => void;
 }
 
-export const FileInput: FC<Props> = ({
-  id,
-  register,
-  setValue,
-  file,
-  setFile,
-  preview,
-  setPreview
-}) => {
+export const FileInput: FC<Props> = ({ id, register, file, setFile, preview, setPreview }) => {
   const [renderedImage, setRenderedImage] = useState(false);
   const { ref, onChange, ...rest } = register(id);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -58,7 +49,8 @@ export const FileInput: FC<Props> = ({
           setDrag(false);
 
           if (e.dataTransfer.files.length === 1) {
-            setValue(id, e.dataTransfer.files);
+            console.log(e.dataTransfer.files);
+
             setFile(e.dataTransfer.files[0]);
             setPreview(URL.createObjectURL(e.dataTransfer.files[0]));
           }
@@ -72,11 +64,12 @@ export const FileInput: FC<Props> = ({
             if (e.target.files?.length && e.target.files) {
               setFile(e.target.files[0]);
               setPreview(URL.createObjectURL(e.target.files[0]));
-            } else {
-              setFile(null);
-              setValue(id, '');
-              setPreview('');
+
+              return;
             }
+
+            setFile(null);
+            setPreview('');
           }}
           ref={e => {
             ref(e);
@@ -127,7 +120,6 @@ export const FileInput: FC<Props> = ({
                 type="button"
                 onClick={() => {
                   setFile(null);
-                  setValue(id, '');
                   setPreview('');
                 }}
                 aria-label={t('tooltip_delete_file')}

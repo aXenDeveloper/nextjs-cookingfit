@@ -10,12 +10,14 @@ import { useAuth } from '../context/useAuth';
 import { ShopingListPropsArray, ShoppingListModelAPI } from '../types/database/ShoppingType';
 import { apiURL } from '../_utils/api';
 import { ShoppingList } from '../components/shopping/list/ShoppingList';
+import { useEffect, useState } from 'react';
 
 export const ShoppingView = () => {
+  const [currentList, setCurrentList] = useState<ShopingListPropsArray[]>([]);
   const { t } = useTranslation('global');
   const { session, loading } = useAuth();
 
-  const { isLoading, isError, data, refetch } = useQuery<ShoppingListModelAPI>(
+  const { isLoading, isError, data, refetch, isSuccess } = useQuery<ShoppingListModelAPI>(
     [session],
     async () => {
       if (session?.user.id) {
@@ -25,6 +27,12 @@ export const ShoppingView = () => {
       }
     }
   );
+
+  useEffect(() => {
+    if (data?.results.list) {
+      setCurrentList(JSON.parse(data?.results.list ?? '') as ShopingListPropsArray[]);
+    }
+  }, [data?.results.list]);
 
   if (isLoading || loading) {
     return (
@@ -66,15 +74,12 @@ export const ShoppingView = () => {
           <h1>{t('navigation_shopping')}</h1>
 
           <div className="box padding">
-            <ShoppingAdd
-              refetch={refetch}
-              shoppingList={JSON.parse(data?.results.list ?? '') as ShopingListPropsArray[]}
-            />
+            <ShoppingAdd refetch={refetch} list={currentList} setList={setCurrentList} />
           </div>
 
           <div className="box padding">
-            {data?.results.list ? (
-              <ShoppingList list={JSON.parse(data?.results.list ?? '')} />
+            {currentList.length > 0 ? (
+              <ShoppingList list={currentList} setList={setCurrentList} />
             ) : (
               <div>test</div>
             )}

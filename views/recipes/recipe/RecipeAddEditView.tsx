@@ -197,7 +197,6 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
                   <FileInput
                     id="recipe_file"
                     register={register}
-                    setValue={setValue}
                     file={inputImage}
                     setFile={setInputImage}
                     preview={preview}

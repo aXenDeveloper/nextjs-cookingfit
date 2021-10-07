@@ -19,10 +19,11 @@ interface ShoppingListProps {
 
 interface Props {
   refetch: () => Promise<QueryObserverResult>;
-  shoppingList: ShopingListPropsArray[];
+  list: ShopingListPropsArray[];
+  setList: (list: ShopingListPropsArray[]) => void;
 }
 
-export const ShoppingAdd: FC<Props> = ({ refetch, shoppingList }) => {
+export const ShoppingAdd: FC<Props> = ({ refetch, list, setList }) => {
   const [quantityInput, setQuantityInput] = useState(0);
   const [unitInput, setUnitInput] = useState('');
   const [nameInput, setNameInput] = useState('');
@@ -57,19 +58,20 @@ export const ShoppingAdd: FC<Props> = ({ refetch, shoppingList }) => {
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault();
 
+    const newItem = {
+      id: uuidv4(),
+      quantity: quantityInput,
+      unit: unitInput,
+      name: nameInput,
+      checked: 0
+    };
+
+    setList([newItem, ...list]);
+
     if (session?.user) {
       mutateAsync({
         member_id: session?.user.id,
-        list: JSON.stringify([
-          {
-            id: uuidv4(),
-            quantity: quantityInput,
-            unit: unitInput,
-            name: nameInput,
-            checked: 0
-          },
-          ...shoppingList
-        ])
+        list: JSON.stringify([newItem, ...list])
       });
     }
 

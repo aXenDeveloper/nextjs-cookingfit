@@ -43,6 +43,9 @@ export const convertDate = (date: number) => {
   if (seconds < 60) {
     return {
       value: 0,
+      hours: dateFromUNIX.getHours(),
+      minutes: dateFromUNIX.getMinutes(),
+      ampm: checkAMOrPM(dateFromUNIX),
       type: 'seconds'
     };
   }
@@ -50,6 +53,9 @@ export const convertDate = (date: number) => {
   if (seconds < 3600) {
     return {
       value: convertTime(seconds, 'minutes'),
+      hours: dateFromUNIX.getHours(),
+      minutes: dateFromUNIX.getMinutes(),
+      ampm: checkAMOrPM(dateFromUNIX),
       type: 'minutes'
     };
   }
@@ -57,6 +63,9 @@ export const convertDate = (date: number) => {
   if (seconds < 86400) {
     return {
       value: convertTime(seconds, 'hours'),
+      hours: dateFromUNIX.getHours(),
+      minutes: dateFromUNIX.getMinutes(),
+      ampm: checkAMOrPM(dateFromUNIX),
       type: 'hours'
     };
   }

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { useMutation } from 'react-query';
 import { useAuth } from '../../../context/useAuth';
@@ -8,10 +8,10 @@ import { ShoppingListItem } from './ShoppingListItem';
 
 interface Props {
   list: ShopingListPropsArray[];
+  setList: (list: ShopingListPropsArray[]) => void;
 }
 
-export const ShoppingList: FC<Props> = ({ list }) => {
-  const [currentList, setCurrentList] = useState(list);
+export const ShoppingList: FC<Props> = ({ list, setList }) => {
   const { session } = useAuth();
 
   const { mutateAsync } = useMutation(async ({ member_id, list }: ShoppingListProps) => {
@@ -39,20 +39,20 @@ export const ShoppingList: FC<Props> = ({ list }) => {
       return;
     }
 
-    setCurrentList(arrayMove(list, source.index, destination.index));
+    setList(arrayMove(list, source.index, destination.index));
 
     if (session) {
       mutateAsync({
         member_id: session.user.id,
-        list: JSON.stringify(currentList)
+        list: JSON.stringify(list)
       });
     }
   };
 
   const handleChange = (item: ShopingListPropsArray) => {
-    const currentIndex = currentList.findIndex(el => el.id === item.id);
+    const currentIndex = list.findIndex(el => el.id === item.id);
 
-    const updateList = currentList.map((el, index) => {
+    const updateList = list.map((el, index) => {
       if (currentIndex === index) {
         return item;
       }
@@ -60,7 +60,7 @@ export const ShoppingList: FC<Props> = ({ list }) => {
       return el;
     });
 
-    setCurrentList(updateList);
+    setList(updateList);
 
     if (session) {
       mutateAsync({
@@ -76,7 +76,7 @@ export const ShoppingList: FC<Props> = ({ list }) => {
         {provided => (
           <ul className="shopping_list" ref={provided.innerRef} {...provided.droppableProps}>
             <>
-              {currentList.map((el: ShopingListPropsArray, index: number) => (
+              {list.map((el: ShopingListPropsArray, index: number) => (
                 <ShoppingListItem key={el.id} item={el} index={index} handleChange={handleChange} />
               ))}
               {provided.placeholder}
