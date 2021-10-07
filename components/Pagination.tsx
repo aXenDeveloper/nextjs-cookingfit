@@ -57,6 +57,8 @@ export const Pagination: FC<Props> = ({ page, setPage, data, isPreviousData, bot
       undefined,
       { shallow: true }
     );
+
+    document.body.scrollIntoView({ behavior: 'smooth' });
   };
 
   const generateNumberButton = useCallback(() => {

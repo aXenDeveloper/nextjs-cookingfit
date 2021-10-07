@@ -70,6 +70,19 @@ export const ShoppingList: FC<Props> = ({ list, setList }) => {
     }
   };
 
+  const handleDelete = (item: ShopingListPropsArray) => {
+    const updateList = list.filter(el => el.id !== item.id);
+
+    setList(updateList);
+
+    if (session) {
+      mutateAsync({
+        member_id: session.user.id,
+        list: JSON.stringify(updateList)
+      });
+    }
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="shopping_list">
@@ -77,7 +90,13 @@ export const ShoppingList: FC<Props> = ({ list, setList }) => {
           <ul className="shopping_list" ref={provided.innerRef} {...provided.droppableProps}>
             <>
               {list.map((el: ShopingListPropsArray, index: number) => (
-                <ShoppingListItem key={el.id} item={el} index={index} handleChange={handleChange} />
+                <ShoppingListItem
+                  key={el.id}
+                  item={el}
+                  index={index}
+                  handleChange={handleChange}
+                  handleDelete={handleDelete}
+                />
               ))}
               {provided.placeholder}
             </>
