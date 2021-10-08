@@ -8,12 +8,12 @@ interface Props {
   className?: string;
 }
 
-export const Menu: FC<Props> = ({ title, visible, setVisible, className, children }) => (
+export const DropDown: FC<Props> = ({ title, visible, setVisible, className, children }) => (
   <div>
     <Tippy
       content={children}
       interactive
-      className="menu"
+      className="dropDown"
       visible={visible}
       onClickOutside={() => setVisible(false)}
     >

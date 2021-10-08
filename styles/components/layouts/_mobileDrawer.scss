@@ -1,0 +1,44 @@
+.mobileDrawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--mobile-drawer-background);
+  animation: fadeIn 0.2s linear;
+  z-index: 5000;
+
+  &_fadeOut {
+    animation: fadeOut 0.2s linear;
+  }
+
+  &_content {
+    position: fixed;
+    width: 290px;
+    max-width: calc(100% - 50px);
+    background-color: var(--container-background);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5100;
+    animation: fadeInMobileDrawer 0.2s linear;
+
+    &_fadeOut {
+      animation: fadeOutMobileDrawer 0.2s linear;
+    }
+  }
+
+  &_button {
+    background-color: var(--body-background);
+    border-radius: var(--radius);
+    width: 56px;
+    height: 36px;
+    border: 0;
+    color: inherit;
+
+    > svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}

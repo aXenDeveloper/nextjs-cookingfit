@@ -81,7 +81,7 @@ export const ShoppingView = () => {
             {currentList.length > 0 ? (
               <ShoppingList list={currentList} setList={setCurrentList} />
             ) : (
-              <div>test</div>
+              <div className="text_center">{t('shopping_nofound')}</div>
             )}
           </div>
         </main>

@@ -71,7 +71,7 @@
   "error_internel": "Nieoczekiwany błąd wewnętrzny. Spróbuj ponownie później",
   "error_already_logged": "Jesteś już zalogowany",
   "error_404": "Ta strona nie istnieje",
-  "error_permission": "Nie masz uprawnień!",
+  "error_permission": "Nie masz uprawnień, aby zobaczyć tą stronę",
   "tooltip_dark": "Przełącz ciemny motyw",
   "tooltip_delete_file": "Usuń ten plik",
   "by": "Przez",
@@ -168,6 +168,8 @@
   "action_cancel": "Anuluj",
   "shopping_add": "Dodaj produkt",
   "shopping_name": "Nazwa produktu",
+  "shopping_nofound": "Nie masz jeszcze produktów",
   "popup_recipe_delete": "Czy na pewno chcesz usunąć ten przepis?",
-  "snackbar_shopping_add_success": "Produkt został dodany do listy zakupów"
+  "snackbar_shopping_add_success": "Produkt został dodany do listy zakupów",
+  "drawer_mobile_button_open": "Otwórz menu"
 }

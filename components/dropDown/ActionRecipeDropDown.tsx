@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { faEllipsisH, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
-import { Menu } from './Menu';
+import { DropDown } from './DropDown';
 import { apiURL } from '../../_utils/api';
 const Popup = dynamic(() => import('../Popup'), { ssr: false });
 
@@ -21,7 +21,7 @@ export const ActionRecipeMenu: FC<Props> = ({ id, category }) => {
   const { asPath, push } = useRouter();
 
   return (
-    <Menu
+    <DropDown
       title={<FontAwesomeIcon icon={faEllipsisH} />}
       visible={visible}
       setVisible={() => setVisible(!visible)}
@@ -68,6 +68,6 @@ export const ActionRecipeMenu: FC<Props> = ({ id, category }) => {
           </button>
         </li>
       </ul>
-    </Menu>
+    </DropDown>
   );
 };

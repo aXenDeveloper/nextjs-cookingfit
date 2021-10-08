@@ -1,7 +1,7 @@
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { UserMenu } from '../../menu/UserMenu';
+import { UserMenuDropDown } from '../../dropDown/UserMenuDropDown';
 
 export const UserBarAuth = () => {
   return (
@@ -18,7 +18,7 @@ export const UserBarAuth = () => {
       <li className="userBar:hr" />
 
       <li>
-        <UserMenu />
+        <UserMenuDropDown />
       </li>
     </>
   );

@@ -191,6 +191,10 @@ a {
   }
 }
 
+.lockScreen {
+  overflow: hidden;
+}
+
 .ck.ck-editor__main .ck.ck-content {
   min-height: 240px;
   max-height: 80vh;
@@ -204,7 +208,7 @@ a {
 @import './components/layout';
 @import './components/buttons';
 @import './components/inputs';
-@import './components/manu';
+@import './components/dropDown';
 @import './components/messages';
 @import './components/loadings';
 @import './components/breadcrumb';
@@ -217,5 +221,6 @@ a {
 
 @import './components/layouts/navigation/navigation';
 @import './components/layouts/navigation/userBar';
+@import './components/layouts/mobileDrawer';
 
 @import './responsives';

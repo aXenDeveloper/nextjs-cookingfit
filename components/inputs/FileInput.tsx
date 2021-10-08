@@ -80,7 +80,7 @@ export const FileInput: FC<Props> = ({ id, register, file, setFile, preview, set
         <Button
           color="primary"
           type="button"
-          ariaLabel="Test"
+          ariaLabel={t('input_file_label')}
           onClick={() => {
             inputRef.current?.click();
           }}

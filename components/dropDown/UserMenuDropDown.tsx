@@ -4,16 +4,16 @@ import { signOut } from 'next-auth/client';
 import { faCaretDown, faCog, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
-import { Menu } from './Menu';
+import { DropDown } from './DropDown';
 import { useAuth } from '../../context/useAuth';
 
-export const UserMenu = () => {
+export const UserMenuDropDown = () => {
   const { t } = useTranslation('usermenu');
   const { session } = useAuth();
   const [visible, setVisible] = useState(false);
 
   return (
-    <Menu
+    <DropDown
       title={
         <>
           <span>{session?.user?.name}</span> <FontAwesomeIcon icon={faCaretDown} />
@@ -60,6 +60,6 @@ export const UserMenu = () => {
           </button>
         </li>
       </ul>
-    </Menu>
+    </DropDown>
   );
 };

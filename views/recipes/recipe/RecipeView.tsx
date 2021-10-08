@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { Breadcrumb } from '../../../components/Breadcrumb';
 import { Container } from '../../../components/layouts/Container';
 import { IngredientsProps, RecipeModel } from '../../../types/database/RecipesType';
-import { ActionRecipeMenu } from '../../../components/menu/ActionRecipeMenu';
+import { ActionRecipeMenu } from '../../../components/dropDown/ActionRecipeDropDown';
 import { DifficultyBadges } from '../../../components/badges/DifficultyBadges';
 import { NutritionalValues } from '../../../components/recipes/nutritionalValues/NutritionalValues';
 import { Ingredients } from '../../../components/recipes/ingredients/Ingredients';

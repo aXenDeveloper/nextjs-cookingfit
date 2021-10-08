@@ -5,7 +5,7 @@ import { useDarkTheme } from '../../context/useDarkTheme';
 import logoDark from '../../assets/logo/logo-dark.svg';
 import logoLight from '../../assets/logo/logo-light.svg';
 import { ChangeLang } from './ChangeLang';
-import { ActionBarMobile } from './ActionBarMobile';
+import { MobileDrawer } from './MobileDrawer';
 
 export const Header = () => {
   const { getDarkTheme } = useDarkTheme();
@@ -21,7 +21,7 @@ export const Header = () => {
       <NavigationRecipes />
       <ChangeLang />
 
-      <ActionBarMobile />
+      <MobileDrawer />
     </header>
   );
 };

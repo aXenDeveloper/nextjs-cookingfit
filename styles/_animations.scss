@@ -19,6 +19,15 @@
   }
 }
 
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes fadeInPopup {
   0% {
     transform: translateY(-20px);
@@ -41,15 +50,6 @@
   }
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 @keyframes fadeOutPopup {
   0% {
     opacity: 1;
@@ -67,5 +67,23 @@
   100% {
     transform: translate(-50%, 20px);
     opacity: 0;
+  }
+}
+
+@keyframes fadeInMobileDrawer {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutMobileDrawer {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }

@@ -40,12 +40,10 @@ const Popup: FC<Props> = ({
   const handleClose = () => {
     setAnimated(true);
 
-    const setCloseTimeout = setTimeout(() => {
+    setTimeout(() => {
       setVisible(false);
       setAnimated(false);
     }, 260);
-
-    () => clearTimeout(setCloseTimeout);
   };
 
   const { mutateAsync, isLoading } = useMutation(async () => {

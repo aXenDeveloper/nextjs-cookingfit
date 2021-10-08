@@ -14,6 +14,7 @@ interface Props {
 }
 
 export const ShoppingListItem: FC<Props> = ({ item, handleChange, handleDelete, index }) => {
+  const [name, setName] = useState(item.name);
   const [checked, setChecked] = useState(!!item.checked || false);
   const [id] = useState(`shopping_item_${item.id}`);
   const { t } = useTranslation('global');
@@ -35,7 +36,7 @@ export const ShoppingListItem: FC<Props> = ({ item, handleChange, handleDelete, 
             <span className="shopping_list_contnet:quantity">
               {item.quantity} {item.unit}
             </span>
-            <span>{item.name}</span>
+            <span>{name}</span>
           </div>
 
           <ul className="shopping_list_action">
