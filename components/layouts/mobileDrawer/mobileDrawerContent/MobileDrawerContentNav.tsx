@@ -1,18 +1,15 @@
-import { FC } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { signOut } from 'next-auth/client';
 import { navigationMenuList } from '../../../../_utils/navigationMenuList';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from '../../../../context/useAuth';
 
-interface Props {
-  handleClose: () => void;
-}
-
-export const MobileDrawerContentNav: FC<Props> = ({ handleClose }) => {
+export const MobileDrawerContentNav = () => {
   const { t } = useTranslation('global');
   const { t: t_usermenu } = useTranslation('usermenu');
+  const { session } = useAuth();
 
   return (
     <ul className="mobileDrawer_content_nav">
@@ -29,14 +26,16 @@ export const MobileDrawerContentNav: FC<Props> = ({ handleClose }) => {
         </li>
       ))}
 
-      <li>
-        <button onClick={() => signOut()}>
-          <div>
-            <FontAwesomeIcon icon={faSignOutAlt} />
-          </div>
-          <span>{t_usermenu('sign_out')}</span>
-        </button>
-      </li>
+      {session && (
+        <li>
+          <button onClick={() => signOut()}>
+            <div>
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </div>
+            <span>{t_usermenu('sign_out')}</span>
+          </button>
+        </li>
+      )}
     </ul>
   );
 };

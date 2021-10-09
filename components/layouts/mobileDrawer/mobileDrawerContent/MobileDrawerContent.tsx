@@ -28,8 +28,8 @@ export const MobileDrawerContent: FC<Props> = ({ visible, animated, handleClose 
           <FontAwesomeIcon icon={faTimes} />
         </button>
 
-        <MobileDrawerContentHeader handleClose={handleClose} />
-        <MobileDrawerContentNav handleClose={handleClose} />
+        <MobileDrawerContentHeader />
+        <MobileDrawerContentNav />
       </div>
     </div>
   );

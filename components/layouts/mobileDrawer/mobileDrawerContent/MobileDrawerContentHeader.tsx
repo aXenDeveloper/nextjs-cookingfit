@@ -1,14 +1,9 @@
 import useTranslation from 'next-translate/useTranslation';
-import { FC } from 'react';
 import { useAuth } from '../../../../context/useAuth';
 import { Button } from '../../../Button';
 import { SpinnersLoading } from '../../../loading/SpinnersLoading';
 
-interface Props {
-  handleClose: () => void;
-}
-
-export const MobileDrawerContentHeader: FC<Props> = ({ handleClose }) => {
+export const MobileDrawerContentHeader = () => {
   const { t } = useTranslation('global');
   const { session, loading } = useAuth();
 
@@ -29,13 +24,7 @@ export const MobileDrawerContentHeader: FC<Props> = ({ handleClose }) => {
             </div>
           ) : (
             <>
-              <Button
-                type="link"
-                href="/login"
-                color="light"
-                ariaLabel={t('userbar_button_login')}
-                onClick={handleClose}
-              >
+              <Button type="link" href="/login" color="light" ariaLabel={t('userbar_button_login')}>
                 {t('userbar_button_login')}
               </Button>
 
@@ -44,7 +33,6 @@ export const MobileDrawerContentHeader: FC<Props> = ({ handleClose }) => {
                 href="/register"
                 color="primary"
                 ariaLabel={t('userbar_button_register')}
-                onClick={handleClose}
               >
                 {t('userbar_button_register')}
               </Button>
