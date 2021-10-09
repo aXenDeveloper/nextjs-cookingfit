@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
-import { useState } from 'react';
+import { MobileDrawerContent } from './mobileDrawerContent/MobileDrawerContent';
 
 export const MobileDrawer = () => {
   const [visible, setVisible] = useState(false);
@@ -33,22 +34,7 @@ export const MobileDrawer = () => {
         <FontAwesomeIcon icon={faBars} />
       </button>
 
-      {visible && (
-        <div
-          className={`mobileDrawer${animated ? ' mobileDrawer_fadeOut' : ''}`}
-          onClick={handleClose}
-        >
-          <div
-            className={`mobileDrawer_content${animated ? ' mobileDrawer_content_fadeOut' : ''}`}
-            onClick={e => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-          >
-            test
-          </div>
-        </div>
-      )}
+      <MobileDrawerContent visible={visible} animated={animated} handleClose={handleClose} />
     </>
   );
 };

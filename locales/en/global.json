@@ -153,5 +153,6 @@
   "shopping_nofound": "You don't have any products",
   "popup_recipe_delete": "Are you sure you want to delete this recipe?",
   "snackbar_shopping_add_success": "The product has been added to the shopping list",
-  "drawer_mobile_button_open": "Open menu"
+  "drawer_mobile_button_open": "Open menu",
+  "drawer_mobile_signed_in_as": "Signed in as"
 }

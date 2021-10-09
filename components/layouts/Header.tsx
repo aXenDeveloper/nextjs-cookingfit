@@ -5,7 +5,7 @@ import { useDarkTheme } from '../../context/useDarkTheme';
 import logoDark from '../../assets/logo/logo-dark.svg';
 import logoLight from '../../assets/logo/logo-light.svg';
 import { ChangeLang } from './ChangeLang';
-import { MobileDrawer } from './MobileDrawer';
+import { MobileDrawer } from './mobileDrawer/MobileDrawer';
 
 export const Header = () => {
   const { getDarkTheme } = useDarkTheme();

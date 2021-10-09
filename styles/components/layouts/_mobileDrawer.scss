@@ -12,6 +12,31 @@
     animation: fadeOut 0.2s linear;
   }
 
+  &_button {
+    background-color: var(--body-background);
+    border-radius: var(--radius);
+    width: 56px;
+    height: 36px;
+    border: 0;
+    color: inherit;
+    font-size: 22px;
+
+    &\:close {
+      position: absolute;
+      left: -27px;
+      background-color: var(--container-background);
+      width: 54px;
+      height: 54px;
+      border-radius: 54px;
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: inherit;
+      font-size: 24px;
+    }
+  }
+
   &_content {
     position: fixed;
     width: 290px;
@@ -26,19 +51,36 @@
     &_fadeOut {
       animation: fadeOutMobileDrawer 0.2s linear;
     }
-  }
 
-  &_button {
-    background-color: var(--body-background);
-    border-radius: var(--radius);
-    width: 56px;
-    height: 36px;
-    border: 0;
-    color: inherit;
+    &_header {
+      padding: 20px 30px;
+      border-bottom: 1px solid var(--color-ultra-light);
 
-    > svg {
-      width: 22px;
-      height: 22px;
+      > a {
+        width: 100%;
+
+        &:last-child {
+          margin-top: 10px;
+        }
+      }
+
+      &_auth {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &_name {
+          > span {
+            font-size: 12px;
+            color: var(--color-light);
+          }
+
+          > p {
+            margin: 0;
+            font-weight: bold;
+          }
+        }
+      }
     }
   }
 }

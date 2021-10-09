@@ -171,5 +171,6 @@
   "shopping_nofound": "Nie masz jeszcze produktów",
   "popup_recipe_delete": "Czy na pewno chcesz usunąć ten przepis?",
   "snackbar_shopping_add_success": "Produkt został dodany do listy zakupów",
-  "drawer_mobile_button_open": "Otwórz menu"
+  "drawer_mobile_button_open": "Otwórz menu",
+  "drawer_mobile_signed_in_as": "Zalogowany jako"
 }
