@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
@@ -23,6 +23,10 @@ export const MobileDrawer = () => {
       setAnimated(false);
     }, 200);
   };
+
+  useEffect(() => {
+    document.body.classList.remove('lockScreen');
+  }, []);
 
   return (
     <>

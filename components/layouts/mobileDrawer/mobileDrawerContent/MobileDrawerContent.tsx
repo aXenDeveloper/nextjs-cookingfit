@@ -1,6 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FC } from 'react';
+import { MobileDrawerContentFooter } from './MobileDrawerContentFooter';
 import { MobileDrawerContentHeader } from './MobileDrawerContentHeader';
 import { MobileDrawerContentNav } from './MobileDrawerContentNav';
 
@@ -30,6 +31,7 @@ export const MobileDrawerContent: FC<Props> = ({ visible, animated, handleClose 
 
         <MobileDrawerContentHeader />
         <MobileDrawerContentNav />
+        <MobileDrawerContentFooter />
       </div>
     </div>
   );

@@ -38,6 +38,8 @@
   }
 
   &_content {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     width: 290px;
     max-width: calc(100% - 50px);
@@ -89,8 +91,6 @@
       list-style: none;
 
       > li {
-        padding: 10px;
-
         > button,
         > a {
           display: flex;
@@ -100,7 +100,7 @@
           border: 0;
           font-size: inherit;
           font-family: inherit;
-          padding: 0;
+          padding: 10px;
 
           > div {
             width: 36px;
@@ -113,6 +113,19 @@
             margin-right: 10px;
           }
         }
+      }
+    }
+
+    &_footer {
+      margin-top: auto;
+      padding: 20px;
+      background-color: var(--body-background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > button {
+        margin-right: 20px;
       }
     }
   }

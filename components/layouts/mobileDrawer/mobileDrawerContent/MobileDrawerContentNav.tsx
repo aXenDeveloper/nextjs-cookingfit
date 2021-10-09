@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useTranslation from 'next-translate/useTranslation';
 import { signOut } from 'next-auth/client';
-import { navigationMenuList } from '../../../../_utils/navigationMenuList';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { navigationMenuList } from '../../../../_utils/navigationMenuList';
 import { useAuth } from '../../../../context/useAuth';
 
 export const MobileDrawerContentNav = () => {
