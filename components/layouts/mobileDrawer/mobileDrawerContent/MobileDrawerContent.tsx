@@ -2,6 +2,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FC } from 'react';
 import { MobileDrawerContentHeader } from './MobileDrawerContentHeader';
+import { MobileDrawerContentNav } from './MobileDrawerContentNav';
 
 interface Props {
   visible: boolean;
@@ -27,7 +28,8 @@ export const MobileDrawerContent: FC<Props> = ({ visible, animated, handleClose 
           <FontAwesomeIcon icon={faTimes} />
         </button>
 
-        <MobileDrawerContentHeader />
+        <MobileDrawerContentHeader handleClose={handleClose} />
+        <MobileDrawerContentNav handleClose={handleClose} />
       </div>
     </div>
   );

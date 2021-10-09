@@ -136,7 +136,7 @@ export const ShoppingAdd: FC<Props> = ({ refetch, list, setList }) => {
             type="button"
             color="secondary"
             typeButton="button"
-            onClick={handleSubmit}
+            onClick={e => e && handleSubmit(e)}
             ariaLabel={t('shopping_add')}
             disabled={!nameInput || !quantityInput || isLoading}
           >

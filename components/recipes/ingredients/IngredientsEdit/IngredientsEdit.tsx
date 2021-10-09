@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import { FC, MouseEventHandler, useState } from 'react';
+import { FC, MouseEvent, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 import { Button } from '../../../Button';
@@ -31,7 +31,7 @@ export const IngredientsEdit: FC<Props> = ({
   const [unitInput, setUnitInput] = useState('');
   const [nameInput, setNameInput] = useState('');
 
-  const handleSubmit: MouseEventHandler<HTMLButtonElement> = e => {
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     setIngredients([
@@ -154,7 +154,7 @@ export const IngredientsEdit: FC<Props> = ({
               type="button"
               color="secondary"
               typeButton="button"
-              onClick={handleSubmit}
+              onClick={e => e && handleSubmit(e)}
               ariaLabel={t('recipe_ingredients_submit')}
               disabled={!nameInput || !unitInput || !quantityInput}
             >

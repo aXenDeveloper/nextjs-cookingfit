@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler } from 'react';
+import { FC, MouseEvent } from 'react';
 import Link from 'next/link';
 
 interface ColorButtonProps {
@@ -10,7 +10,7 @@ interface LinkProps {
   ariaLabel: never;
   href: string;
   external?: boolean;
-  onClick?: never;
+  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
   typeButton?: never;
   fullWidth?: boolean;
   disabled?: never;
@@ -19,7 +19,7 @@ interface LinkProps {
 interface ButtonProps {
   type: 'button';
   ariaLabel: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
   href?: never;
   external?: never;
   typeButton?: 'button' | 'submit';
@@ -46,7 +46,7 @@ export const Button: FC<Props> = ({
       <button
         type={typeButton}
         className={`button button_${color}${fullWidth ? ' button:fullWidth' : ''}`}
-        onClick={onClick}
+        onClick={e => onClick && onClick(e)}
         disabled={disabled}
         aria-label={ariaLabel}
       >
@@ -60,6 +60,7 @@ export const Button: FC<Props> = ({
       <a
         href={href}
         className={`button button_${color}${fullWidth ? ' button:fullWidth' : ''}`}
+        onClick={() => onClick && onClick()}
         target="_blank"
         rel="nofollow noreferrer"
       >
