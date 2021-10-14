@@ -43,10 +43,12 @@ export const Breadcrumb: FC = ({ children }) => {
           );
         })}
 
-      <li>
-        <FontAwesomeIcon icon={faChevronRight} />
-        <span>{children}</span>
-      </li>
+      {children && (
+        <li>
+          <FontAwesomeIcon icon={faChevronRight} />
+          <span>{children}</span>
+        </li>
+      )}
     </ul>
   );
 };
