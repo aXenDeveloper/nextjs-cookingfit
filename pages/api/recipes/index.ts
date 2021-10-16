@@ -14,8 +14,8 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const page = +req.query.page <= 0 ? 1 : +req.query.page;
   const limit = +req.query.limit || 10;
-  const offset = (page - 1) * limit;
-  const where = req.query.category;
+  const offset = limit ? (page - 1) * limit : null;
+  const where = req.query.category || null;
 
   try {
     const countRecords = (await query(
@@ -44,7 +44,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
       INNER JOIN recipes_categories ON recipes_categories.id=recipes_recipes.category_id INNER JOIN core_members ON recipes_recipes.author_id=core_members.id
       ${where ? `WHERE recipes_categories.name='${where}'` : ''}
       ORDER BY recipes_recipes.publish_date DESC
-      LIMIT ${limit} OFFSET ${offset}`
+      LIMIT ${limit} ${offset ? `OFFSET ${offset}` : ''}`
     )) as RecipesModel[];
 
     return res.status(200).json({

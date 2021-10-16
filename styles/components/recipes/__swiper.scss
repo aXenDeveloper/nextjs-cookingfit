@@ -1,0 +1,18 @@
+&_swiper {
+  &_item {
+    display: flex;
+
+    &_image {
+      position: relative;
+      width: 215px;
+      height: 125px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background-color: var(--button-light-dark);
+
+      &.swiper_item_image\:loading {
+        @include lazyLoad;
+      }
+    }
+  }
+}
