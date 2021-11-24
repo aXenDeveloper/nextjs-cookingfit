@@ -11,7 +11,7 @@
   "dependencies": {
     "js-cookie": "^3.0.1",
     "multer": "^1.4.3",
-    "next": "^12.0.3",
+    "next": "^12.0.4",
     "next-auth": "^3.29.0",
     "next-connect": "^0.11.0",
     "next-seo": "^4.28.1",
@@ -21,9 +21,9 @@
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "17.0.2",
-    "react-hook-form": "^7.19.5",
-    "react-query": "^3.32.3",
-    "swiper": "^7.2.0",
+    "react-hook-form": "^7.20.2",
+    "react-query": "^3.33.4",
+    "swiper": "^7.3.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -34,21 +34,19 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@tippyjs/react": "^4.2.6",
     "@types/bcrypt": "^5.0.0",
-    "@types/js-cookie": "^3.0.0",
-    "@types/jsonwebtoken": "^8.5.5",
+    "@types/js-cookie": "^3.0.1",
     "@types/multer": "^1.4.7",
-    "@types/react": "^17.0.34",
+    "@types/react": "^17.0.36",
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-dom": "^17.0.11",
-    "@types/uuid": "^8.3.1",
+    "@types/uuid": "^8.3.3",
     "bcrypt": "^5.0.1",
     "eslint": "^7.32.0",
-    "eslint-config-next": "^12.0.3",
+    "eslint-config-next": "^12.0.4",
     "http": "0.0.1-security",
-    "jsonwebtoken": "^8.5.1",
     "sass": "^1.43.4",
     "serverless-mysql": "^1.5.4",
-    "slugify": "^1.6.2",
-    "typescript": "^4.4.4"
+    "slugify": "^1.6.3",
+    "typescript": "^4.5.2"
   }
 }

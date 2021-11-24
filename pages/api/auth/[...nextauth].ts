@@ -1,5 +1,4 @@
 import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { Session } from 'next-auth';
 import Providers from 'next-auth/providers';
@@ -69,9 +68,6 @@ const options = {
         return session;
       }
 
-      const encodedToken = sign(token, process.env.CSRF_KEY!);
-
-      session.token = encodedToken;
       session.accessToken = token.accessToken;
       session.user.id = existUser[0].id;
       session.user.name = existUser[0].name;
