@@ -1,6 +1,6 @@
 {
   "name": "nextjs-cookingfit",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,7 +17,6 @@
     "next-seo": "^4.28.1",
     "next-translate": "^1.2.0",
     "nextjs-progressbar": "0.0.13",
-    "node-jose-tools": "^1.6.28",
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "17.0.2",

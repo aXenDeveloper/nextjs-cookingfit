@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/client';
 import { Navigation } from './navigation/Navigation';
 import { Header } from './Header';
 import { AuthContext } from '../../context/useAuth';
-import { useSession } from 'next-auth/client';
 import { DarkThemeContext } from '../../context/useDarkTheme';
 import { Footer } from './Footer';
 
