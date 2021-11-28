@@ -7,7 +7,7 @@ const shoppingIndex = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
     return res.status(405).json({
       error: {
-        id: '3R108/2',
+        id: '3S108/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -18,7 +18,7 @@ const shoppingIndex = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!member_id) {
     return res.status(400).json({
       error: {
-        id: '3R108/3',
+        id: '3S108/3',
         message: 'INVALID_QUERY'
       }
     });
@@ -29,7 +29,7 @@ const shoppingIndex = async (req: NextApiRequest, res: NextApiResponse) => {
     if (session?.user.id !== +member_id && session?.user.group_id !== 4) {
       return res.status(403).json({
         error: {
-          id: '1R108/4',
+          id: '1S108/4',
           message: 'ACCESS_DENIED'
         }
       });
@@ -53,7 +53,7 @@ const shoppingIndex = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5R108/1'
+        id: '5S108/1'
       }
     });
   }

@@ -52,7 +52,7 @@ export const ShoppingView = () => {
     return (
       <>
         <Breadcrumb>{t('navigation_shopping')}</Breadcrumb>
-        <PermissionMessageBox code="1R108/4" />
+        <PermissionMessageBox code="1S108/4" />
       </>
     );
   }
@@ -61,7 +61,7 @@ export const ShoppingView = () => {
     return (
       <>
         <Breadcrumb>{t('navigation_shopping')}</Breadcrumb>
-        <MessageBox code="5R108/1" />
+        <MessageBox code="5S108/1" />
       </>
     );
   }

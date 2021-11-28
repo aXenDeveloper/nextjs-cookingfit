@@ -6,7 +6,7 @@ const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     return res.status(405).json({
       error: {
-        id: '3R107/2',
+        id: '3S107/2',
         message: 'INVALID_METHOD'
       }
     });
@@ -17,7 +17,7 @@ const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!member_id || !list) {
     return res.status(400).json({
       error: {
-        id: '3R107/3',
+        id: '3S107/3',
         message: 'INVALID_QUERY'
       }
     });
@@ -33,10 +33,10 @@ const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (e) {
     return res.status(500).json({
       error: {
-        id: '5R107/1'
+        id: '5S107/1'
       }
     });
   }
 };
 
-export default authenticated(shoppingAdd, '1R107/4');
+export default authenticated(shoppingAdd, '1S107/4');

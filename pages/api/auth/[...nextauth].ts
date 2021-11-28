@@ -76,8 +76,7 @@ const options = {
 
       return session;
     }
-  },
-  debug: true
+  }
 };
 
 const NextAuthAPI = (req: NextApiRequest, res: NextApiResponse) => NextAuth(req, res, options);

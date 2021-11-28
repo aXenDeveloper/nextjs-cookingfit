@@ -6,7 +6,6 @@ import { ServerResponse } from 'http';
 import { query } from '../../../functions/database';
 import { authenticated } from '../../../functions/authenticated';
 import { IngredientsProps } from '../../../types/database/RecipesType';
-import image from 'next/image';
 import { getSession } from 'next-auth/client';
 
 interface ServerResponseProps extends ServerResponse {
