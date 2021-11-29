@@ -152,26 +152,6 @@ api/account/signup
 - password: _string_,
 - confirmPassword: _string_
 
-### (POST) Sign In
-
-```
-api/account/signin
-```
-
-#### Body
-
-- email: _string_,
-- password: _string_
-
-#### Response
-
-```
-{
-  email: string;
-  csrf: string;
-}
-```
-
 ### (GET) Recipes
 
 ```
