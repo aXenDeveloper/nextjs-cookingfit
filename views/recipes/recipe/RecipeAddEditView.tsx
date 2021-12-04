@@ -44,7 +44,6 @@ export const RecipeAddEditView: FC<Props> = ({ recipe }) => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors }
   } = useForm<FormValuesTypes>();
   const [textCKEditor, setTextCKEDitor] = useState(recipe?.text ?? '');

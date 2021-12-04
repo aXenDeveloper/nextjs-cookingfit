@@ -224,13 +224,13 @@ api/recipe
 }
 ```
 
-### (POST) Add Recipe
+### (POST) Add / Edit Recipe
 
 ```
 api/recipes/add
 ```
 
-#### Query
+#### Body
 
 - title: _string_,
 - text: _string_,
@@ -245,6 +245,56 @@ api/recipes/add
 - carbohydrates: \_number\*,
 - ingredients?: \_string\*,
 - serve_count?: \_number\*
+
+#### Response
+
+```
+{
+  result: {
+    insertId: number;
+  },
+  recordURL: string;
+  url?: string;
+}
+```
+
+### (POST) Edit Recipe
+
+```
+api/recipes/edit
+```
+
+#### Query
+
+- id: _number_
+
+#### Body
+
+- title: _string_,
+- text: _string_,
+- time: _number_,
+- category_id: \_number\*,
+- author_id: \_number\*,
+- date: _number_,
+- file: _number_,
+- calories: \_number\*,
+- proteins: \_number\*,
+- fats: \_number\*,
+- carbohydrates: \_number\*,
+- ingredients?: \_string\*,
+- serve_count?: \_number\*
+
+### Response
+
+```
+{
+  result: {
+    insertId: number;
+  },
+  recordURL: string;
+  url?: string;
+}
+```
 
 ### (POST) Delete Recipe
 

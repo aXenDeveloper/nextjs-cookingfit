@@ -2,14 +2,14 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { getSession } from 'next-auth/client';
 
 export const authenticated =
-  (fn: NextApiHandler, errorCode404 = '2C100/2') =>
+  (fn: NextApiHandler, error = '2C100/2') =>
   async (req: NextApiRequest, res: NextApiResponse) => {
     const session = await getSession({ req });
 
     if (!session || !session?.user) {
       return res.status(401).json({
         error: {
-          id: errorCode404,
+          id: error,
           message: 'ACCESS_DENIED'
         }
       });
