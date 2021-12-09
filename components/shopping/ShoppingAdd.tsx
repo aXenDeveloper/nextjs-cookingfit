@@ -33,7 +33,7 @@ export const ShoppingAdd: FC<Props> = ({ refetch, list, setList }) => {
   const { session } = useAuth();
 
   const { mutateAsync, isLoading } = useMutation(async ({ member_id, list }: ShoppingListProps) => {
-    const res = await fetch('/api/recipes/shopping/add', {
+    const res = await fetch('/api/recipes/shopping/edit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

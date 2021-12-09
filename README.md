@@ -185,12 +185,11 @@ api/recipes
 ### (GET) Recipe
 
 ```
-api/recipe
+api/recipes/item
 ```
 
 #### Query
 
-- url: _string_,
 - id: _number_,
 - category: _string_
 
@@ -329,10 +328,10 @@ api/shopping
 }
 ```
 
-### (POST) Shopping List - Add
+### (POST) Shopping List - Edit
 
 ```
-api/shopping/add
+api/shopping/edit
 ```
 
 #### Body

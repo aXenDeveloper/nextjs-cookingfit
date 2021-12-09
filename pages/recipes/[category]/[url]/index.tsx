@@ -32,13 +32,11 @@ export const getServerSideProps = async (context: any) => {
   const currentID = currentIDfromArray[currentIDfromArray.length - 1];
   const currentURLformArray = currentIDfromArray.slice(0, currentIDfromArray.length - 1).join('-');
 
-  const res = await fetch(
-    `${apiURL}/recipes/item?category=${category}&id=${currentID}&url=${currentURLformArray}`
-  );
+  const res = await fetch(`${apiURL}/recipes/item?category=${category}&id=${currentID}`);
   const body = await res.json();
 
   return {
-    notFound: !body.result,
+    notFound: !body.result || !currentURLformArray,
     props: {
       recipe: body.result ? body.result[0] : null
     }

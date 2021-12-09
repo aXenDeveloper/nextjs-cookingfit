@@ -36,12 +36,7 @@ const shoppingIndex = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const results = (await query(
-      `SELECT
-
-      id,
-      member_id,
-      list
-
+      `SELECT id, member_id, list
       FROM recipes_shopping
       WHERE member_id=${+member_id}
       ORDER BY id DESC`

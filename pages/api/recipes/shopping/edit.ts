@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { authenticated } from '../../../../functions/authenticated';
 import { query } from '../../../../functions/database';
 
-const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
+const shoppingEdit = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     return res.status(405).json({
       error: {
@@ -39,4 +39,4 @@ const shoppingAdd = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default authenticated(shoppingAdd, '1S107/4');
+export default authenticated(shoppingEdit, '1S107/4');
