@@ -339,3 +339,17 @@ api/shopping/edit
 - member\_\_id: _number_,
 - name: _string_,
 - unit?: _string_,
+
+## 🎨 Figma
+
+The Figma project is name: `CookingFit.fig`
+
+## 📷 Screenshots
+
+![1](https://github.com/aXenDeveloper/nextjs-cookingfit/blob/main/screenshots/1.png?raw=true)
+
+![2](https://github.com/aXenDeveloper/nextjs-cookingfit/blob/main/screenshots/2.png?raw=true)
+
+![3](https://github.com/aXenDeveloper/nextjs-cookingfit/blob/main/screenshots/3.png?raw=true)
+
+![4](https://github.com/aXenDeveloper/nextjs-cookingfit/blob/main/screenshots/4.png?raw=true)
