@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { query } from '../../../functions/database';
 import { RecipesModel } from '../../../types/database/RecipesType';
 
-const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
+const recipes = async (req: any, res: NextApiResponse) => {
   if (req.method !== 'GET') {
     return res.status(405).json({
       error: {
@@ -18,12 +18,21 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
   const where = req.query.category || null;
 
   try {
-    const countRecords = (await query(
-      `SELECT COUNT(*) FROM recipes_recipes${
-        where ? ` WHERE recipes_categories.name='${where}'` : ''
-      }`
-    )) as [{}];
-    const lengthRecords = Object.values(countRecords[0])[0] as number;
+    let lengthRecords = 0;
+    if (where) {
+      const category = (await query(`SELECT * FROM recipes_categories WHERE name='${where}'`)) as [
+        {
+          id: number;
+        }
+      ];
+      const countRecords = (await query(
+        `SELECT COUNT(*) FROM recipes_recipes WHERE category_id=${category[0].id}`
+      )) as [{}];
+      lengthRecords = Object.values(countRecords[0])[0] as number;
+    } else {
+      const countRecords = (await query(`SELECT COUNT(*) FROM recipes_recipes`)) as [{}];
+      lengthRecords = Object.values(countRecords[0])[0] as number;
+    }
 
     const results = (await query(
       `SELECT
@@ -55,6 +64,7 @@ const recipes = async (req: NextApiRequest, res: NextApiResponse) => {
       results
     });
   } catch (e) {
+    console.log(e);
     return res.status(500).json({
       error: {
         id: '5R101/1'

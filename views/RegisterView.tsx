@@ -191,7 +191,7 @@ export const RegisterView = () => {
                 required: false,
                 showTextRequired: false
               }}
-              validate={value => value === getValues('password')}
+              validate={(value: string) => value === getValues('password')}
             >
               {!!errors.repeatPassword && t('input_box_label_repeatPassword_error')}
             </TextInput>

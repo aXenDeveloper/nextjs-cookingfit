@@ -5,5 +5,7 @@ module.exports = {
   reactStrictMode: true,
   images: {
     domains: ['images.unsplash.com']
-  }
+  },
+  output: 'standalone',
+  swcMinify: false
 };
